@@ -1,0 +1,952 @@
+
+ <!DOCTYPE HTML>
+<html >
+<head>
+  <meta charset="UTF-8">
+  
+    <title>Shemmy</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="Shemmy">
+    
+
+    
+    <meta name="description">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Shemmy">
+<meta property="og:url" content="http://yoursite.com/index.html">
+<meta property="og:site_name" content="Shemmy">
+<meta property="og:description">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Shemmy">
+<meta name="twitter:description">
+
+    
+    <link rel="alternative" href="/atom.xml" title="Shemmy" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="Shemmy" title="Shemmy"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="Shemmy">Shemmy</a></h1>
+				<h2 class="blog-motto"></h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/about">About</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="hidden" name="q" value="site:yoursite.com">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main">
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2016/04/29/状态栏-UIStatusBar-颜色/" title="状态栏(UIStatusBar)颜色" itemprop="url">状态栏(UIStatusBar)颜色</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Shemmy" target="_blank" itemprop="author">Shemmy</a>
+		
+  <p class="article-time">
+    <time datetime="2016-04-29T08:06:19.000Z" itemprop="datePublished"> Published 2016-04-29</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h1 id="UIStatusBar的相关设置"><a href="#UIStatusBar的相关设置" class="headerlink" title="UIStatusBar的相关设置"></a>UIStatusBar的相关设置</h1><h2 id="知识普及"><a href="#知识普及" class="headerlink" title="知识普及"></a>知识普及</h2><p>iOS上状态栏 就是指的最上面的20像素高的部分<br>状态栏分前后两部分，要分清这两个概念，后面会用到：<br>前景部分：就是指的显示电池、时间等部分；<br>背景部分：就是显示黑色或者图片的背景部分；</p>
+<p>如下图：前景部分为白色，背景部分为黑色<br><img src="/image/005046_Oztm_574576.png" alt=""><br>在此输入图片描述</p>
+<p>注意：这里只涉及到ios7以及更高版本，低版本下面的讲解可能无效。
+        
+        
+        <p class="article-more-link">
+          
+            <a href="/2016/04/29/状态栏-UIStatusBar-颜色/#more">Read More</a>
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/iOS/">iOS</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/2016/04/29/状态栏-UIStatusBar-颜色/#comments" class="ds-thread-count comments-count-link" data-thread-key="2016/04/29/状态栏-UIStatusBar-颜色/" data-count-type="comments">&nbsp;</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2016/03/04/Masony/" title="第三方库 Masonry使用心得" itemprop="url">第三方库 Masonry使用心得</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Shemmy" target="_blank" itemprop="author">Shemmy</a>
+		
+  <p class="article-time">
+    <time datetime="2016-03-03T16:10:32.000Z" itemprop="datePublished"> Published 2016-03-04</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <p>Masonry使用心得<br>Masonry是目前最流行的AutoLayout框架.<br>使用:将Masonry文件包拖入项目,删掉自带的info.plist文件.demo中对Masonry的引用在.pch文件中.<br>使用Masonry不需要设置<br>控件的translatesAutoresizingMaskIntoConstraints属性为NO;<br>Masonry简单实现<br>(左下角正方形):<br><figure class="highlight mm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[targetView mas_makeConstraints:^(MASConstraintMaker *make) &#123;</span><br><span class="line">make.bottom.equalTo(<span class="keyword">self</span>.view).offset(<span class="number">-20</span>);</span><br><span class="line">make.leading.equalTo(<span class="keyword">self</span>.view).offset(<span class="number">20</span>);</span><br><span class="line">make.size.mas_equalTo(<span class="built_in">CGSizeMake</span>(<span class="number">100</span>, <span class="number">100</span>));</span><br><span class="line">&#125;];</span><br></pre></td></tr></table></figure></p>
+<p>内边距为50:<br>第一种实现方式<br><figure class="highlight mm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">make.leading.top.mas_equalTo(@<span class="number">50</span>);</span><br><span class="line">make.trailing.bottom.mas_equalTo(@<span class="number">-50</span>);</span><br></pre></td></tr></table></figure></p>
+<p>第二种实现方式<br><figure class="highlight mm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">make.edges.insets(<span class="built_in">UIEdgeInsetsMake</span>(<span class="number">50</span>, <span class="number">50</span>, <span class="number">50</span>, <span class="number">50</span>));</span><br></pre></td></tr></table></figure></p>
+<p>Masonry使用技巧:<br>定义以下两个宏,在使用Masonry框架时就不需要加mas_前缀了<br>(定义宏一定要在引入Masonry.h文件之前).<br><figure class="highlight mm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//define this constant if you want to use Masonry without the 'mas_' prefix</span></span><br><span class="line"><span class="meta">#define MAS_SHORTHAND</span></span><br><span class="line"><span class="comment">//define this constant if you want to enable auto-boxing for default syntax</span></span><br><span class="line"><span class="meta">#define MAS_SHORTHAND_GLOBALS</span></span><br></pre></td></tr></table></figure></p>
+<p>使用Masonry添加兄弟控件约束不需要考虑父控件.<br>具体实现代码如下:<br><figure class="highlight mm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">[leftView mas_makeConstraints:^(MASConstraintMaker *make) &#123;</span><br><span class="line">make.leading.offset(<span class="number">20</span>);</span><br><span class="line">make.bottom.offset(<span class="number">-20</span>);</span><br><span class="line">make.trailing.equalTo(rightiew.leading).offset(<span class="number">-20</span>);</span><br><span class="line">make.height.equalTo(<span class="number">100</span>);</span><br><span class="line">make.height.equalTo(rightiew.height);</span><br><span class="line">&#125;];    </span><br><span class="line">[rightiew makeConstraints:^(MASConstraintMaker *make) &#123;</span><br><span class="line">make.trailing.equalTo(<span class="keyword">self</span>.view.trailing).offset(<span class="number">-20</span>);</span><br><span class="line">make.top.equalTo(leftView.top);</span><br><span class="line">make.width.equalTo(leftView.width);</span><br><span class="line">&#125;];</span><br></pre></td></tr></table></figure></p>
+<p>Masonry中可以封装一个这样的宏， 可以用于快读构建<br><figure class="highlight mm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#define MAS_MAKE_ZERO(view) make.top.left.bottom.and.right.equalTo(view).with.insets(UIEdgeInsetsMake(0, 0, 0, 0))</span></span><br><span class="line"><span class="meta">#define MAS_MAKE_INSETS(view, t, l, b, r) make.top.left.bottom.and.right.equalTo(view).with.insets(UIEdgeInsetsMake(t, l, b, r))</span></span><br></pre></td></tr></table></figure></p>
+<p>具体在代码中使用Masony的常规代码<br><figure class="highlight mm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[<span class="keyword">self</span>.textView mas_makeConstraints:^(MASConstraintMaker *make) &#123;</span><br><span class="line">    make.top.left.right.equalTo(<span class="keyword">self</span>.contentView).insets(<span class="built_in">UIEdgeInsetsMake</span>(<span class="number">0</span>, <span class="number">25</span>, <span class="number">0</span>, <span class="number">100</span>));</span><br><span class="line"><span class="comment">//        make.bottom.equalTo(self.content.mas_top).offset(5);</span></span><br><span class="line">&#125;];</span><br></pre></td></tr></table></figure></p>
+<p>make.bottom.equalTo(self.content.mas_top).offset(5)这句话翻译过来就是<br>配置：下部，对齐到（当前类的。content控件的上部），距离为5<br>也就是说textView的下部和content的上部距离是5<br>注意：<br>1.Masony使用是要控件已经添加到了视图上的，不然会崩溃掉。<br>2.Masony使用使用对齐不要添加2次不然会有计算不准确的情况。<br>3.equalTo 和 mas_equalTo真的很容易忘记。。<br>4.在xib或者storyboard中使用masonry框架相关方法的时候要将use Auto layout选项去掉，否则会不起作用。<br>在Masonry中能够添加autolayout约束有三个函数<br><figure class="highlight mm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="built_in">NSArray</span> *)mas_makeConstraints:(<span class="keyword">void</span>(^)(MASConstraintMaker *make))block;</span><br><span class="line">- (<span class="built_in">NSArray</span> *)mas_updateConstraints:(<span class="keyword">void</span>(^)(MASConstraintMaker *make))block;</span><br><span class="line">- (<span class="built_in">NSArray</span> *)mas_remakeConstraints:(<span class="keyword">void</span>(^)(MASConstraintMaker *make))block;</span><br><span class="line">```z</span><br><span class="line">mas_makeConstraints 只负责新增约束 Autolayout不能同时存在两条针对于同一对象的约束 否则会报错</span><br><span class="line">mas_updateConstraints 针对上面的情况 会更新在block中出现的约束 不会导致出现两个相同约束的情况</span><br><span class="line">mas_remakeConstraints 则会清除之前的所有约束 仅保留最新的约束</span><br><span class="line">```mm</span><br><span class="line"><span class="built_in">UIView</span> *sv = [<span class="built_in">UIView</span> new];</span><br><span class="line"><span class="comment">//在做autoLayout之前 一定要先将view添加到superview上 否则会报错</span></span><br><span class="line">[<span class="keyword">self</span>.view addSubview:sv];</span><br><span class="line"><span class="comment">//mas_makeConstraints就是Masonry的autolayout添加函数 将所需的约束添加到block中行了</span></span><br><span class="line">[sv mas_makeConstraints:^(MASConstraintMaker *make) &#123;</span><br><span class="line"><span class="comment">//将sv居中(很容易理解吧?)</span></span><br><span class="line">make.center.equalTo(ws.view);</span><br><span class="line"><span class="comment">//将size设置成(300,300)</span></span><br><span class="line">make.size.mas_equalTo(<span class="built_in">CGSizeMake</span>(<span class="number">300</span>, <span class="number">300</span>));</span><br><span class="line">&#125;];</span><br></pre></td></tr></table></figure></p>
+<p>equalTo 和 mas_equalTo的区别在哪里呢? 其实 mas_equalTo是一个MACRO,比较的是值，equalTo比较的是view<br><figure class="highlight mm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[sv3 mas_makeConstraints:^(MASConstraintMaker *make) &#123;</span><br><span class="line">make.centerY.mas_equalTo(sv.mas_centerY);</span><br><span class="line">make.left.equalTo(sv2.mas_right).with.offset(padding1);</span><br><span class="line">make.right.equalTo(sv.mas_right).with.offset(-padding1);</span><br><span class="line">make.height.mas_equalTo(@<span class="number">150</span>);</span><br><span class="line">make.width.equalTo(sv2);</span><br><span class="line">&#125;];</span><br></pre></td></tr></table></figure></p>
+<ol>
+<li>Masonry使用心得<br>1.1. Masonry是目前最流行的AutoLayout框架.<br>1.1.1. 使用:将Masonry文件包拖入项目,删掉自带的info.plist文件.demo中对Masonry的引用在.pch文件中.<br>1.1.2. 使用Masonry不需要设置<br>1.2. Masonry简单实现<br>1.2.1. 第一种实现方式<br>1.2.2. 第二种实现方式<br>1.3. Masonry使用技巧:<br>1.4. 使用Masonry添加兄弟控件约束不需要考虑父控件.</li>
+</ol>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/iOS-三方库/">iOS 三方库</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/2016/03/04/Masony/#comments" class="ds-thread-count comments-count-link" data-thread-key="2016/03/04/Masony/" data-count-type="comments">&nbsp;</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2016/02/19/使用Block传值来实现定位/" title="使用Block传值来实现定位" itemprop="url">使用Block传值来实现定位</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Shemmy" target="_blank" itemprop="author">Shemmy</a>
+		
+  <p class="article-time">
+    <time datetime="2016-02-19T05:29:19.000Z" itemprop="datePublished"> Published 2016-02-19</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h1 id="Objetive-C-中Block传值"><a href="#Objetive-C-中Block传值" class="headerlink" title="Objetive-C 中Block传值"></a>Objetive-C 中Block传值</h1><p>提到Block，可能大家有些陌生，但是提到必包可能大家就不会陌生了。<br>Block：带返回值的匿名函数，因为使用者不需要关心Block中代码是怎么实现的，只需要调用相应的Block就可以。<br>最近有一个想法，就是使用Catgary来实现调用一个方法就可以得到当前的人物所在地，和城市的信息，因为这个要获取到这个东西的值是在代理方法中，不得不改用继承的方式来写。<br>具体传值是用Block来进行的。下面上代码：
+        
+        
+        <p class="article-more-link">
+          
+            <a href="/2016/02/19/使用Block传值来实现定位/#more">Read More</a>
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/2016/02/19/使用Block传值来实现定位/#comments" class="ds-thread-count comments-count-link" data-thread-key="2016/02/19/使用Block传值来实现定位/" data-count-type="comments">&nbsp;</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2016/02/14/UIBezierPath实现果冻效果/" title="果冻效果 (UIBezierPath)" itemprop="url">果冻效果 (UIBezierPath)</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Shemmy" target="_blank" itemprop="author">Shemmy</a>
+		
+  <p class="article-time">
+    <time datetime="2016-02-13T18:05:11.000Z" itemprop="datePublished"> Published 2016-02-14</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h1 id="效果iOSUIBezierPath果冻"><a href="#效果iOSUIBezierPath果冻" class="headerlink" title="效果iOSUIBezierPath果冻"></a>效果iOSUIBezierPath果冻</h1><p>最近在网上看到一个很酷的下拉刷新效果。自己试着实现了一下其中的果冻回弹效果。</p>
+<h2 id="DEMO"><a href="#DEMO" class="headerlink" title="DEMO"></a>DEMO</h2><p>由于文笔不太好-.- ，建议先下载demo,再结合下面的分析，会好理解点。地址<br>逻辑<br>下图p1,蓝色部分图形是一个CAShapeLayer,他的形状由UIBezierPath的路径组成的。<br>这个路径是由r1,r2,r3,r4,r5这5个红点确定的。其中r1,r2,r3,r4都是不动点，唯一可以动的是r5点。<br>根据上面的动态图可以看出,CAShapeLayer的形状是随着r5红点的移动而相应变化的，所以只要获得r5的坐标变化就可以用UIBezierPath做出相应的路径，然后就可以形成相应的形状。</p>
+<h2 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h2><h3 id="初始化CAShapeLayer"><a href="#初始化CAShapeLayer" class="headerlink" title="初始化CAShapeLayer"></a>初始化CAShapeLayer</h3><figure class="highlight mm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="keyword">void</span>)configShapeLayer</span><br><span class="line">&#123; </span><br><span class="line">_shapeLayer = [<span class="built_in">CAShapeLayer</span> layer];</span><br><span class="line">_shapeLayer.fillColor = [<span class="built_in">UIColor</span> colorWithRed:<span class="number">57</span>/<span class="number">255.0</span> green:<span class="number">67</span>/<span class="number">255.0</span> blue:<span class="number">89</span>/<span class="number">255.0</span> alpha:<span class="number">1.0</span>].CGColor;</span><br><span class="line">[<span class="keyword">self</span>.layer addSublayer:_shapeLayer];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="初始化r5点"><a href="#初始化r5点" class="headerlink" title="初始化r5点"></a>初始化r5点</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- (void)configCurveView</span><br><span class="line">&#123;</span><br><span class="line">// _curveView就是r5点</span><br><span class="line">_curveX = SYS_DEVICE_WIDTH/2.0;       // r5点x坐标</span><br><span class="line">_curveY = MIN_HEIGHT;                 // r5点y坐标</span><br><span class="line">_curveView = [[UIView alloc] initWithFrame:CGRectMake(_curveX, _curveY, 3, 3)];</span><br><span class="line">_curveView.backgroundColor = [UIColor redColor];</span><br><span class="line">[self addSubview:_curveView];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="添加移动手势-amp-CADisplayLink"><a href="#添加移动手势-amp-CADisplayLink" class="headerlink" title="添加移动手势&amp;CADisplayLink"></a>添加移动手势&amp;CADisplayLink</h3><figure class="highlight m"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">- (void)configAction</span><br><span class="line">&#123;</span><br><span class="line">_mHeight <span class="built_in">=</span> <span class="number">100</span>;                       // 手势移动时相对高度</span><br><span class="line">_isAnimating <span class="built_in">=</span> NO;                    // 是否处于动效状态</span><br><span class="line"></span><br><span class="line">// 手势</span><br><span class="line">UIPanGestureRecognizer *pan <span class="built_in">=</span> [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePanAction:)];</span><br><span class="line">self.userInteractionEnabled <span class="built_in">=</span> YES;</span><br><span class="line">[self addGestureRecognizer:pan];</span><br><span class="line"></span><br><span class="line">// calculatePath方法是算出在运行期间_curveView的坐标，从而确定_shapeLayer的形状</span><br><span class="line">_displayLink <span class="built_in">=</span> [CADisplayLink displayLinkWithTarget:self selector:@selector(calculatePath)];</span><br><span class="line">[_displayLink addToRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];</span><br><span class="line">// 在手势结束的时候才调用calculatePath方法，所以一开始是暂停的</span><br><span class="line">_displayLink.paused <span class="built_in">=</span> YES;    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="手势解析"><a href="#手势解析" class="headerlink" title="手势解析"></a>手势解析</h3><p>手势移动时，r5红点跟着手势移动，_shapeLayer则根据r5的坐标来扩大自己的区域<br>手势结束时，r5红点通过UIView的动画方法来改变r5的坐标,同时_shapeLayer根据r5的坐标缩小自己的区域并最终返回原形。<br><figure class="highlight mm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="keyword">void</span>)handlePanAction:(<span class="built_in">UIPanGestureRecognizer</span> *)pan</span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">if</span>(!_isAnimating)</span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">if</span>(pan.state == <span class="built_in">UIGestureRecognizerStateChanged</span>)</span><br><span class="line">&#123;</span><br><span class="line"><span class="comment">// 手势移动时，_shapeLayer跟着手势向下扩大区域</span></span><br><span class="line"><span class="built_in">CGPoint</span> point = [pan translationInView:<span class="keyword">self</span>];</span><br><span class="line"></span><br><span class="line"><span class="comment">// 这部分代码使r5红点跟着手势走</span></span><br><span class="line">_mHeight = point.y*<span class="number">0.7</span> + MIN_HEIGHT;</span><br><span class="line">_curveX = SYS_DEVICE_WIDTH/<span class="number">2.0</span> + point.x;</span><br><span class="line">_curveY = _mHeight &gt; MIN_HEIGHT ? _mHeight : MIN_HEIGHT;</span><br><span class="line">_curveView.frame = <span class="built_in">CGRectMake</span>(_curveX,</span><br><span class="line">_curveY,</span><br><span class="line">_curveView.frame.size.width,</span><br><span class="line">_curveView.frame.size.height);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 根据r5坐标,更新_shapeLayer形状</span></span><br><span class="line">[<span class="keyword">self</span> updateShapeLayerPath];</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span> <span class="keyword">if</span> (pan.state == <span class="built_in">UIGestureRecognizerStateCancelled</span> ||</span><br><span class="line">pan.state == <span class="built_in">UIGestureRecognizerStateEnded</span> ||</span><br><span class="line">pan.state == <span class="built_in">UIGestureRecognizerStateFailed</span>)</span><br><span class="line">&#123;</span><br><span class="line"><span class="comment">// 手势结束时,_shapeLayer返回原状并产生弹簧动效</span></span><br><span class="line">_isAnimating = <span class="literal">YES</span>;</span><br><span class="line">_displayLink.paused = <span class="literal">NO</span>;           <span class="comment">//开启displaylink,会执行方法calculatePath.</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 弹簧动效</span></span><br><span class="line">[<span class="built_in">UIView</span> animateWithDuration:<span class="number">1.0</span></span><br><span class="line">delay:<span class="number">0.0</span></span><br><span class="line">usingSpringWithDamping:<span class="number">0.5</span></span><br><span class="line">initialSpringVelocity:<span class="number">0</span></span><br><span class="line">options:<span class="built_in">UIViewAnimationOptionCurveEaseInOut</span></span><br><span class="line">animations:^&#123;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 曲线点(r5点)是一个view.所以在block中有弹簧效果.然后根据他的动效路径,在calculatePath中计算弹性图形的形状</span></span><br><span class="line">_curveView.frame = <span class="built_in">CGRectMake</span>(SYS_DEVICE_WIDTH/<span class="number">2.0</span>, MIN_HEIGHT, <span class="number">3</span>, <span class="number">3</span>);</span><br><span class="line"></span><br><span class="line">&#125; completion:^(<span class="built_in">BOOL</span> finished) &#123;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(finished)</span><br><span class="line">&#123;</span><br><span class="line">_displayLink.paused = <span class="literal">YES</span>;</span><br><span class="line">_isAnimating = <span class="literal">NO</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#125;];</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="根据r5的位置-更新-shapeLayer形状"><a href="#根据r5的位置-更新-shapeLayer形状" class="headerlink" title="根据r5的位置,更新_shapeLayer形状"></a>根据r5的位置,更新_shapeLayer形状</h3><figure class="highlight mm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="keyword">void</span>)updateShapeLayerPath</span><br><span class="line">&#123;</span><br><span class="line"><span class="comment">// 更新_shapeLayer形状</span></span><br><span class="line"><span class="built_in">UIBezierPath</span> *tPath = [<span class="built_in">UIBezierPath</span> bezierPath];</span><br><span class="line">[tPath moveToPoint:<span class="built_in">CGPointMake</span>(<span class="number">0</span>, <span class="number">0</span>)];  <span class="comment">//r1点</span></span><br><span class="line">[tPath addLineToPoint:<span class="built_in">CGPointMake</span>(SYS_DEVICE_WIDTH, <span class="number">0</span>)];<span class="comment">// r2点</span></span><br><span class="line">[tPath addLineToPoint:<span class="built_in">CGPointMake</span>(SYS_DEVICE_WIDTH,  MIN_HEIGHT)]; <span class="comment">//r4点</span></span><br><span class="line">[tPath addQuadCurveToPoint:<span class="built_in">CGPointMake</span>(<span class="number">0</span>, MIN_HEIGHT)</span><br><span class="line">controlPoint:<span class="built_in">CGPointMake</span>(_curveX, _curveY)]; <span class="comment">// r3,r4,r5确定的一个弧线</span></span><br><span class="line">[tPath closePath];</span><br><span class="line">_shapeLayer.path = tPath.CGPath;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="计算弹簧效果坐标"><a href="#计算弹簧效果坐标" class="headerlink" title="计算弹簧效果坐标"></a>计算弹簧效果坐标</h3><figure class="highlight mm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="keyword">void</span>)calculatePath</span><br><span class="line">&#123;</span><br><span class="line"><span class="comment">// 由于手势结束时,r5执行了一个UIView的弹簧动画,把这个过程的坐标记录下来,并相应的画出_shapeLayer形状</span></span><br><span class="line"><span class="built_in">CALayer</span> *layer = _curveView.layer.presentationLayer;</span><br><span class="line">_curveX = layer.position.x;</span><br><span class="line">_curveY = layer.position.y;</span><br><span class="line">[<span class="keyword">self</span> updateShapeLayerPath];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="写在最后"><a href="#写在最后" class="headerlink" title="写在最后"></a>写在最后</h1><p>r5点的作用非常重要，因为直接对CAShapeLayer实现动效不太好实现。所以通过对r5点实现弹簧动效，记录r5点的坐标，再用UIBezierPath形成路径，最后赋予CAShapeLayer，间接的完成了CAShapeLayer的弹簧动效。<br>如果你有疑问或者发现错误请留言给我。3Q~~</p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/iOS-UIBezierPath/">iOS UIBezierPath</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/2016/02/14/UIBezierPath实现果冻效果/#comments" class="ds-thread-count comments-count-link" data-thread-key="2016/02/14/UIBezierPath实现果冻效果/" data-count-type="comments">&nbsp;</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2016/01/17/正则表达式/" title="正则表达式" itemprop="url">正则表达式</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Shemmy" target="_blank" itemprop="author">Shemmy</a>
+		
+  <p class="article-time">
+    <time datetime="2016-01-17T08:29:16.000Z" itemprop="datePublished"> Published 2016-01-17</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <p>正则表达式</p>
+<h1 id="正则表达式在IOS开发中的应用"><a href="#正则表达式在IOS开发中的应用" class="headerlink" title="正则表达式在IOS开发中的应用"></a>正则表达式在IOS开发中的应用</h1><p>正则表达式在字符串查找，替换，检测中的应用非常广泛，正则表达式是什么，有怎样的语法，我的另一篇博客中有详细的介绍。这里只简单说一下其概念 ，正则表达式是一种语法小巧简单的语言，用来约束一些过滤字符串条的条件。很多开发工具都有支持正则表达式的内容，IOS也不例外，在IOS中NSRegularExpression类就是一个专门来处理正则表达式的类。</p>
+<h2 id="初始化方法"><a href="#初始化方法" class="headerlink" title="初始化方法"></a>初始化方法</h2><h3 id="初始化NSRegularExpression的方法"><a href="#初始化NSRegularExpression的方法" class="headerlink" title="初始化NSRegularExpression的方法:"></a>初始化NSRegularExpression的方法:</h3><p>初始化有两种，一个init方法和一个类方法。其作用基本是一样的<br><figure class="highlight mm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">+ (<span class="built_in">NSRegularExpression</span> *)regularExpressionWithPattern:(<span class="built_in">NSString</span> *)pattern options:(<span class="built_in">NSRegularExpressionOptions</span>)options error:(<span class="built_in">NSError</span> **)error;</span><br><span class="line"></span><br><span class="line">- (instancetype)initWithPattern:(<span class="built_in">NSString</span> *)pattern options:(<span class="built_in">NSRegularExpressionOptions</span>)options error:(<span class="built_in">NSError</span> **)error</span><br></pre></td></tr></table></figure></p>
+<p>其中，pattern是正则表达式，options是参数。对于option参数，它是一个枚举，表示正则模式的设置，如下：<br><figure class="highlight mm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="built_in">NS_OPTIONS</span>(<span class="built_in">NSUInteger</span>, <span class="built_in">NSRegularExpressionOptions</span>) &#123;</span><br><span class="line"><span class="built_in">NSRegularExpressionCaseInsensitive</span>             = <span class="number">1</span> &lt;&lt; <span class="number">0</span>, <span class="comment">//不区分字母大小写的模式</span></span><br><span class="line"><span class="built_in">NSRegularExpressionAllowCommentsAndWhitespace</span>  = <span class="number">1</span> &lt;&lt; <span class="number">1</span>, <span class="comment">//忽略掉正则表达式中的空格和#号之后的字符</span></span><br><span class="line"><span class="built_in">NSRegularExpressionIgnoreMetacharacters</span>        = <span class="number">1</span> &lt;&lt; <span class="number">2</span>, <span class="comment">//将正则表达式整体作为字符串处理</span></span><br><span class="line"><span class="built_in">NSRegularExpressionDotMatchesLineSeparators</span>    = <span class="number">1</span> &lt;&lt; <span class="number">3</span>, <span class="comment">//允许.匹配任何字符，包括换行符  </span></span><br><span class="line"><span class="built_in">NSRegularExpressionAnchorsMatchLines</span>           = <span class="number">1</span> &lt;&lt; <span class="number">4</span>, <span class="comment">//允许^和$符号匹配行的开头和结尾</span></span><br><span class="line"><span class="built_in">NSRegularExpressionUseUnixLineSeparators</span>       = <span class="number">1</span> &lt;&lt; <span class="number">5</span>, <span class="comment">//设置\n为唯一的行分隔符，否则所有的都有效。</span></span><br><span class="line"><span class="built_in">NSRegularExpressionUseUnicodeWordBoundaries</span>    = <span class="number">1</span> &lt;&lt; <span class="number">6</span> <span class="comment">//使用Unicode TR#29标准作为词的边界，否则所有传统正则表达式的词边界都有效</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<h3 id="注意"><a href="#注意" class="headerlink" title="注意:"></a>注意:</h3><p>1、NSRegularExpressionCaseInsensitive模式下正则表达式 aBc 会匹配到abc.<br>2、NSRegularExpressionIgnoreMetacharacters模式下正则表达式a b c 会匹配到abc，正则表达式ab#c会匹配到ab。<br>3、NSRegularExpressionAllowCommentsAndWhitespace模式下正则表达式[a-z]，会匹配到[a-z]。</p>
+<h2 id="获取查询结果"><a href="#获取查询结果" class="headerlink" title="获取查询结果"></a>获取查询结果</h2><h3 id="正则表达式的查询"><a href="#正则表达式的查询" class="headerlink" title="正则表达式的查询"></a>正则表达式的查询</h3><p>初始化完毕正则表达式的处理类后，我们需要进行正则表达式的查询，IOS官方提供了两种模式：</p>
+<h4 id="带block模式的方法："><a href="#带block模式的方法：" class="headerlink" title="带block模式的方法："></a>带block模式的方法：</h4><figure class="highlight mm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="keyword">void</span>)enumerateMatchesInString:(<span class="built_in">NSString</span> *)string options:(<span class="built_in">NSMatchingOptions</span>)options range:(<span class="built_in">NSRange</span>)range usingBlock:(<span class="keyword">void</span> (^)(<span class="built_in">NSTextCheckingResult</span> *result, <span class="built_in">NSMatchingFlags</span> flags, <span class="built_in">BOOL</span> *stop))block;</span><br></pre></td></tr></table></figure>
+<h5 id="使用举例："><a href="#使用举例：" class="headerlink" title="使用举例："></a>使用举例：</h5><figure class="highlight mm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">NSRegularExpression</span> * regex = [[<span class="built_in">NSRegularExpression</span> alloc]initWithPattern:<span class="string">@"[a-z]"</span> options:<span class="built_in">NSRegularExpressionCaseInsensitive</span> error:<span class="literal">nil</span>];</span><br><span class="line">[regex enumerateMatchesInString:<span class="string">@"124a"</span> options:<span class="built_in">NSMatchingReportProgress</span> range:<span class="built_in">NSMakeRange</span>(<span class="number">0</span>, <span class="number">4</span>) usingBlock:^(<span class="built_in">NSTextCheckingResult</span> *result, <span class="built_in">NSMatchingFlags</span> flags, <span class="built_in">BOOL</span> *stop) &#123;</span><br><span class="line"><span class="built_in">NSLog</span>(<span class="string">@"%@"</span>,result);</span><br><span class="line">&#125; ];</span><br></pre></td></tr></table></figure>
+<h5 id="注意："><a href="#注意：" class="headerlink" title="注意："></a>注意：</h5><p>1、这个函数的一个参数options是一个枚举，设置回调的方式，如下：<br><figure class="highlight mm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="built_in">NS_OPTIONS</span>(<span class="built_in">NSUInteger</span>, <span class="built_in">NSMatchingOptions</span>) &#123;</span><br><span class="line"><span class="built_in">NSMatchingReportProgress</span>         = <span class="number">1</span> &lt;&lt; <span class="number">0</span>, <span class="comment">//找到最长的匹配字符串后调用block回调</span></span><br><span class="line"><span class="built_in">NSMatchingReportCompletion</span>       = <span class="number">1</span> &lt;&lt; <span class="number">1</span>, <span class="comment">//找到任何一个匹配串后都回调一次block</span></span><br><span class="line"><span class="built_in">NSMatchingAnchored</span>               = <span class="number">1</span> &lt;&lt; <span class="number">2</span>, <span class="comment">//从匹配范围的开始出进行极限匹配</span></span><br><span class="line"><span class="built_in">NSMatchingWithTransparentBounds</span>  = <span class="number">1</span> &lt;&lt; <span class="number">3</span>, <span class="comment">//允许匹配的范围超出设置的范围</span></span><br><span class="line"><span class="built_in">NSMatchingWithoutAnchoringBounds</span> = <span class="number">1</span> &lt;&lt; <span class="number">4</span>  <span class="comment">//禁止^和$自动匹配行还是和结束</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<p>2、block回调中的flags枚举对应如下：<br><figure class="highlight mm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="built_in">NS_OPTIONS</span>(<span class="built_in">NSUInteger</span>, <span class="built_in">NSMatchingFlags</span>) &#123;</span><br><span class="line"><span class="built_in">NSMatchingProgress</span>               = <span class="number">1</span> &lt;&lt; <span class="number">0</span>, <span class="comment">//匹配到最长串是被设置     </span></span><br><span class="line"><span class="built_in">NSMatchingCompleted</span>              = <span class="number">1</span> &lt;&lt; <span class="number">1</span>, <span class="comment">//全部分配完成后被设置    </span></span><br><span class="line"><span class="built_in">NSMatchingHitEnd</span>                 = <span class="number">1</span> &lt;&lt; <span class="number">2</span>, <span class="comment">//匹配到设置范围的末尾时被设置   </span></span><br><span class="line"><span class="built_in">NSMatchingRequiredEnd</span>            = <span class="number">1</span> &lt;&lt; <span class="number">3</span>, <span class="comment">//当前匹配到的字符串在匹配范围的末尾时被设置     </span></span><br><span class="line"><span class="built_in">NSMatchingInternalError</span>          = <span class="number">1</span> &lt;&lt; <span class="number">4</span>  <span class="comment">//由于错误导致的匹配失败时被设置   </span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<p>3、还有一点需要注意，就是那个bool值stop，我们可以在block块中设置它为YES，之后便会停止查找。</p>
+<h4 id="非block的方法"><a href="#非block的方法" class="headerlink" title="非block的方法"></a>非block的方法</h4><p>这个方法会返回一个结果数组，将所有匹配的结果返回<br><figure class="highlight mm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="built_in">NSArray</span> *)matchesInString:(<span class="built_in">NSString</span> *)string options:(<span class="built_in">NSMatchingOptions</span>)options range:(<span class="built_in">NSRange</span>)range;</span><br></pre></td></tr></table></figure></p>
+<p>这个方法会返回匹配到得字符串的个数<br><figure class="highlight mm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="built_in">NSUInteger</span>)numberOfMatchesInString:(<span class="built_in">NSString</span> *)string options:(<span class="built_in">NSMatchingOptions</span>)options range:(<span class="built_in">NSRange</span>)range;</span><br></pre></td></tr></table></figure></p>
+<p>这个方法会返回第一个查询到得结果，这个NSTextCheckingResult对象中有一个range属性，可以得到匹配到的字符串的范围。<br><figure class="highlight mm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="built_in">NSTextCheckingResult</span> *)firstMatchInString:(<span class="built_in">NSString</span> *)string options:(<span class="built_in">NSMatchingOptions</span>)options range:(<span class="built_in">NSRange</span>)range;</span><br></pre></td></tr></table></figure></p>
+<p>这个方法直接返回匹配到得范围，NSRange。<br><figure class="highlight mm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="built_in">NSRange</span>)rangeOfFirstMatchInString:(<span class="built_in">NSString</span> *)string options:(<span class="built_in">NSMatchingOptions</span>)options range:(<span class="built_in">NSRange</span>)range;</span><br></pre></td></tr></table></figure></p>
+<h2 id="辅助方法"><a href="#辅助方法" class="headerlink" title="辅助方法"></a>辅助方法</h2><p>在NSRegularExpression类中还提供了一个辅助方法：<br><figure class="highlight mm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">+ (<span class="built_in">NSString</span> *)escapedPatternForString:(<span class="built_in">NSString</span> *)string;</span><br></pre></td></tr></table></figure></p>
+<p>它可以帮助我们将正则表达式加上”\”进行保护，将元字符转化成字面值。<br>到此，在IOS中正则表达式的基本用法就介绍完了，希望正则表达式的应用，能为你的项目节省更多时间。<br>疏漏之处 欢迎指正<br>学习使用 欢迎转载</p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/2016/01/17/正则表达式/#comments" class="ds-thread-count comments-count-link" data-thread-key="2016/01/17/正则表达式/" data-count-type="comments">&nbsp;</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2016/01/14/UITextField中文输入法时对字符长度的限制/" title="中文输入法时对字符长度的限制(UITextField)" itemprop="url">中文输入法时对字符长度的限制(UITextField)</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Shemmy" target="_blank" itemprop="author">Shemmy</a>
+		
+  <p class="article-time">
+    <time datetime="2016-01-14T04:05:01.000Z" itemprop="datePublished"> Published 2016-01-14</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h1 id="转载-iOS-UITextField中文输入法输入时对字符长度的限制"><a href="#转载-iOS-UITextField中文输入法输入时对字符长度的限制" class="headerlink" title="[转载]iOS:UITextField中文输入法输入时对字符长度的限制"></a>[转载]iOS:UITextField中文输入法输入时对字符长度的限制</h1><p>如题的问题，又是个让我抓狂了大半天的问题，还是做个记录，有与类似问题的同学可参考，但不一定对。具体问题还需具体分析。我遇到的需求是这样的：有一个输入框，输入框内输入文字，文字字数限制在20字。</p>
+<h2 id="第一次实现"><a href="#第一次实现" class="headerlink" title="第一次实现:"></a>第一次实现:</h2><p>我采用了UITextField作为我的输入框控件，并且在委托方法：<br><figure class="highlight mm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="built_in">BOOL</span>)textField:(<span class="built_in">UITextField</span> *)textField shouldChangeCharactersInRange:(<span class="built_in">NSRange</span>)range replacementString:(<span class="built_in">NSString</span> *)string</span><br></pre></td></tr></table></figure></p>
+<p>中实现了对字符串的长度限制，实现如下：<br><figure class="highlight mm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#define kMaxLength 20</span></span><br><span class="line">- (<span class="built_in">BOOL</span>)textField:(<span class="built_in">UITextField</span> *)textField shouldChangeCharactersInRange:(<span class="built_in">NSRange</span>)range replacementString:(<span class="built_in">NSString</span> *)string&#123;</span><br><span class="line"></span><br><span class="line"><span class="built_in">NSString</span> * toBeString = [textField.text stringByReplacingCharactersInRange:range withString:string];</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (toBeString.length &gt; kMaxLength &amp;&amp; range.length!=<span class="number">1</span>)&#123;</span><br><span class="line">textField.text = [toBeString substringToIndex:kMaxLength];</span><br><span class="line"><span class="keyword">return</span> <span class="literal">NO</span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">return</span> <span class="literal">YES</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>这样实现的结果是：对于纯字符的统计没有什么问题，当输入的字符超过限制时输入框便截取最大限制长度的字符串。但是，有个问题，当使用拼音输入法时，该委托方法中的最后一个参数string接受的是输入的字母，而不是选择的汉字，造成的结果是，当想输入文字“我在编程”，输入拼音“wozaibiancheng”，每输入一个字母便会进入委托方法，统计的字符长度是字母的长度，实际上汉字还未超过限制长度，但是字母的长度超过了导致无法继续输入。<br>而且，致命的是，这个委托方法并不响应，选中候选汉字的过程，这就没有办法重新修正字符长度的统计了。</p>
+<h2 id="第二次实现"><a href="#第二次实现" class="headerlink" title="第二次实现"></a>第二次实现</h2><p>网上查了一些方法，有个叫Onyx的博主写了篇文章：iOS中UITextView/UITextField 输入英文和拼音状态下如何正确的统计输入的文字字数 看起来似乎是和我同样的问题，但是当我把他的代码搬到我的类里时，实现的结果并不理想，我没有得到想要的结果，而且他的方法看起来似乎复杂了点，我也没有研究清楚这个方法的问题出在哪。之所以把他的这篇博文引进来，是因为他的文章后来给了我些启发。<br>我刚开始时候并没有发现<br><figure class="highlight mm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="built_in">BOOL</span>)textField:(<span class="built_in">UITextField</span> *)textField shouldChangeCharactersInRange:(<span class="built_in">NSRange</span>)range replacementString:(<span class="built_in">NSString</span> *)string</span><br></pre></td></tr></table></figure></p>
+<p>这个委托方法没有响应最后拼音到汉字的过程，当我发现这个问题时，问题便也差不多得到了解决。因为在之前向微博上的一个朋友咨询时，他告诉我可以注册这个观察者 UITextInputCurrentInputModeDidChangeNotification<br>在它的监听下可以得到中文。我刚开始时候理解错了他的意思，以为得到的就是最终选中的汉字，而中间输入的拼音并不会被得到。但其实这个监听，比以上的委托方法多了最后一步而已，即从拼音到中文的过程。<br>所以实现的代码如下。</p>
+<h3 id="在init时候注册notification："><a href="#在init时候注册notification：" class="headerlink" title="在init时候注册notification："></a>在init时候注册notification：</h3><figure class="highlight mm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[[<span class="built_in">NSNotificationCenter</span> defaultCenter]addObserver:<span class="keyword">self</span> selector:<span class="keyword">@selector</span>(textFiledEditChanged:)</span><br><span class="line">name:<span class="string">@"UITextFieldTextDidChangeNotification"</span></span><br><span class="line">object:myTextField];</span><br></pre></td></tr></table></figure>
+<h3 id="实现监听方法："><a href="#实现监听方法：" class="headerlink" title="实现监听方法："></a>实现监听方法：</h3><figure class="highlight mm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">-(<span class="keyword">void</span>)textFiledEditChanged:(<span class="built_in">NSNotification</span> *)obj&#123;</span><br><span class="line"><span class="built_in">UITextField</span> *textField = (<span class="built_in">UITextField</span> *)obj.object;</span><br><span class="line"></span><br><span class="line"><span class="built_in">NSString</span> *toBeString = textField.text;</span><br><span class="line"><span class="built_in">NSString</span> *lang = [[<span class="built_in">UITextInputMode</span> currentInputMode] primaryLanguage]; <span class="comment">// 键盘输入模式</span></span><br><span class="line"><span class="keyword">if</span> ([lang isEqualToString:<span class="string">@"zh-Hans"</span>]) &#123; <span class="comment">// 简体中文输入，包括简体拼音，健体五笔，简体手写</span></span><br><span class="line"><span class="built_in">UITextRange</span> *selectedRange = [textField markedTextRange];</span><br><span class="line"><span class="comment">//获取高亮部分</span></span><br><span class="line"><span class="built_in">UITextPosition</span> *position = [textField positionFromPosition:selectedRange.start offset:<span class="number">0</span>];</span><br><span class="line"><span class="comment">// 没有高亮选择的字，则对已输入的文字进行字数统计和限制</span></span><br><span class="line"><span class="keyword">if</span> (!position) &#123;</span><br><span class="line"><span class="keyword">if</span> (toBeString.length &gt; kMaxLength) &#123;</span><br><span class="line">textField.text = [toBeString substringToIndex:kMaxLength];</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 有高亮选择的字符串，则暂不对文字进行统计和限制</span></span><br><span class="line"><span class="keyword">else</span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 中文输入法以外的直接对其统计限制即可，不考虑其他语种情况</span></span><br><span class="line"><span class="keyword">else</span>&#123;</span><br><span class="line"><span class="keyword">if</span> (toBeString.length &gt; kMaxLength) &#123;</span><br><span class="line">textField.text = [toBeString substringToIndex:kMaxLength];</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="在dealloc里注销掉监听方法，切记！"><a href="#在dealloc里注销掉监听方法，切记！" class="headerlink" title="在dealloc里注销掉监听方法，切记！"></a>在dealloc里注销掉监听方法，切记！</h3><figure class="highlight mm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">-(<span class="keyword">void</span>)dealloc&#123;</span><br><span class="line">[[<span class="built_in">NSNotificationCenter</span> defaultCenter]removeObserver:<span class="keyword">self</span></span><br><span class="line">name:<span class="string">@"UITextFieldTextDidChangeNotification"</span></span><br><span class="line">object:_albumNameTextField];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="注："><a href="#注：" class="headerlink" title="注："></a>注：</h1><p>本文主要提供思路，代码仅供参考，不为其百分百正确负责，若有不足之处欢迎讨论。</p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/iOS-UITextField-转载/">iOS UITextField 转载</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/2016/01/14/UITextField中文输入法时对字符长度的限制/#comments" class="ds-thread-count comments-count-link" data-thread-key="2016/01/14/UITextField中文输入法时对字符长度的限制/" data-count-type="comments">&nbsp;</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2015/12/30/Json解析之MJExtension应用举例/" title="第三方库 MJExtension" itemprop="url">第三方库 MJExtension</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Shemmy" target="_blank" itemprop="author">Shemmy</a>
+		
+  <p class="article-time">
+    <time datetime="2015-12-29T16:08:32.000Z" itemprop="datePublished"> Published 2015-12-30</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h1 id="MJExtension应用举例"><a href="#MJExtension应用举例" class="headerlink" title="MJExtension应用举例"></a>MJExtension应用举例</h1><h2 id="Plist-→-模型数组"><a href="#Plist-→-模型数组" class="headerlink" title="Plist → 模型数组"></a>Plist → 模型数组</h2><p>控制器中引用#import “MJExtension.h”<br><figure class="highlight mm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">模型数组 = [模型类名 objectArrayWithFilename:<span class="string">@"文件名.plist"</span>];</span><br></pre></td></tr></table></figure></p>
+<h2 id="对NSLog的优化，解决-调试时，打印模型，只打印出内存地址的问题"><a href="#对NSLog的优化，解决-调试时，打印模型，只打印出内存地址的问题" class="headerlink" title="对NSLog的优化，解决 调试时，打印模型，只打印出内存地址的问题"></a>对NSLog的优化，解决 调试时，打印模型，只打印出内存地址的问题</h2><p>使用方法：在模型类的.m文件中，引用#import “MJExtension.h”<br>在@implementation 和 @end之间，写上<br><figure class="highlight mm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">MJLogAllIvrs</span><br></pre></td></tr></table></figure></p>
+<h2 id="对NSCoding的优化，不用再写繁琐的解档和归档方法了"><a href="#对NSCoding的优化，不用再写繁琐的解档和归档方法了" class="headerlink" title="对NSCoding的优化，不用再写繁琐的解档和归档方法了"></a>对NSCoding的优化，不用再写繁琐的解档和归档方法了</h2><p>使用方法：在模型类的.m文件中，引用#import “MJExtension.h”<br>在@implementation 和 @end之间，写上<br><figure class="highlight mm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">MJCodingImplementation</span><br></pre></td></tr></table></figure></p>
+<h1 id="字典数组-→-模型数组"><a href="#字典数组-→-模型数组" class="headerlink" title="字典数组 → 模型数组"></a>字典数组 → 模型数组</h1><h2 id="场景一-字典1-字典2-字典3"><a href="#场景一-字典1-字典2-字典3" class="headerlink" title="场景一  [字典1,字典2,字典3];"></a>场景一  [字典1,字典2,字典3];</h2><p>如果每个字典都是一个模型，可以用<br><figure class="highlight mm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">NSArray</span> *modelArray = [模型类名 objectArrayWithKeyValuesArray:字段数组];</span><br></pre></td></tr></table></figure></p>
+<h2 id="场景二-在场景一的基础上，每个字典里面，有数组-假设数组的key值是arrayName"><a href="#场景二-在场景一的基础上，每个字典里面，有数组-假设数组的key值是arrayName" class="headerlink" title="场景二  在场景一的基础上，每个字典里面，有数组(假设数组的key值是arrayName)"></a>场景二  在场景一的基础上，每个字典里面，有数组(假设数组的key值是arrayName)</h2><p>数组里面存放着若干个相同的模型,使用下面的方法<br>使用方法：<br>首先在模型类.m文件中，引入#import “MJExtension.h”<br>然后在 @implementation 和 @end之间 写上<br><figure class="highlight mm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="built_in">NSDictionary</span> *)objectClassInArray</span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">return</span> @&#123;<span class="string">@"arrayName"</span> : [模型类名 class]&#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="如果-服务器传过来的-字典数组里的字典的Key，是OC里的关键字"><a href="#如果-服务器传过来的-字典数组里的字典的Key，是OC里的关键字" class="headerlink" title="如果 服务器传过来的 字典数组里的字典的Key，是OC里的关键字"></a>如果 服务器传过来的 字典数组里的字典的Key，是OC里的关键字</h2><p>而使用MJExtention的前提是，模型里的属性名和数组的key一致才行（区分大小写），怎么办？<br>使用replacedKeyFromPropertyName<br>使用方法：1.在模型类.m文件引入”MJExtension.h”<br>　　　　2.实现方法<br><figure class="highlight mm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">+ (<span class="built_in">NSDictionary</span> *)replacedKeyFromPropertyName</span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">return</span> @&#123;@“非关键字的属性名” : @“数组的key”&#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="单个字典-→-单个模型"><a href="#单个字典-→-单个模型" class="headerlink" title="单个字典 → 单个模型"></a>单个字典 → 单个模型</h2><figure class="highlight mm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">+ (instancetype)objectWithKeyValues:(<span class="built_in">NSDictionary</span> *)keyValues</span><br></pre></td></tr></table></figure>
+<h1 id="load-更多"><a href="#load-更多" class="headerlink" title="+load 更多"></a>+load 更多</h1><figure class="highlight mm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line">+ (<span class="keyword">void</span>)load</span><br><span class="line">&#123;</span><br><span class="line"><span class="meta">#pragma mark 如果使用NSObject来调用这些方法，代表所有类都会生效</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#pragma mark User类的只有name、icon属性参与字典转模型</span></span><br><span class="line"><span class="comment">//    [User setupAllowedPropertyNames:^NSArray *&#123;</span></span><br><span class="line"><span class="comment">//        return @[@"name", @"icon"];</span></span><br><span class="line"><span class="comment">//    &#125;];</span></span><br><span class="line"><span class="comment">// 相当于在User.m中实现了+(NSArray *)allowedPropertyNames方法</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#pragma mark Bag类中的name属性不参与归档</span></span><br><span class="line">[Bag setupIgnoredCodingPropertyNames:^<span class="built_in">NSArray</span> *&#123;</span><br><span class="line"><span class="keyword">return</span> @[<span class="string">@"name"</span>];</span><br><span class="line">&#125;];</span><br><span class="line"><span class="comment">// 相当于在Bag.m中实现了+(NSArray *)ignoredCodingPropertyNames方法</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#pragma mark Bag类中只有price属性参与归档</span></span><br><span class="line"><span class="comment">//    [Bag setupAllowedCodingPropertyNames:^NSArray *&#123;</span></span><br><span class="line"><span class="comment">//        return @[@"price"];</span></span><br><span class="line"><span class="comment">//    &#125;];</span></span><br><span class="line"><span class="comment">// 相当于在Bag.m中实现了+(NSArray *)allowedCodingPropertyNames方法</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#pragma mark StatusResult类中的statuses数组中存放的是Status模型</span></span><br><span class="line"><span class="meta">#pragma mark StatusResult类中的ads数组中存放的是Ad模型</span></span><br><span class="line">[StatusResult setupObjectClassInArray:^<span class="built_in">NSDictionary</span> *&#123;</span><br><span class="line"><span class="keyword">return</span> @&#123;</span><br><span class="line"><span class="string">@"statuses"</span> : <span class="string">@"Status"</span>,</span><br><span class="line"><span class="comment">//                 @"statuses" : [Status class],</span></span><br><span class="line"><span class="string">@"ads"</span> : <span class="string">@"Ad"</span></span><br><span class="line"><span class="comment">//                 @"ads" : [Ad class]</span></span><br><span class="line">&#125;;</span><br><span class="line">&#125;];</span><br><span class="line"><span class="comment">// 相当于在StatusResult.m中实现了+(NSDictionary *)objectClassInArray方法</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#pragma mark Student中的ID属性对应着字典中的id</span></span><br><span class="line"><span class="meta">#pragma mark ....</span></span><br><span class="line">[Student setupReplacedKeyFromPropertyName:^<span class="built_in">NSDictionary</span> *&#123;</span><br><span class="line"><span class="keyword">return</span> @&#123;<span class="string">@"ID"</span> : <span class="string">@"id"</span>,</span><br><span class="line"><span class="string">@"desc"</span> : <span class="string">@"desciption"</span>,</span><br><span class="line"><span class="string">@"oldName"</span> : <span class="string">@"name.oldName"</span>,</span><br><span class="line"><span class="string">@"nowName"</span> : <span class="string">@"name.newName"</span>,</span><br><span class="line"><span class="string">@"otherName"</span> : @[<span class="string">@"otherName"</span>, <span class="string">@"name.newName"</span>, <span class="string">@"name.oldName"</span>],</span><br><span class="line"><span class="string">@"nameChangedTime"</span> : <span class="string">@"name.info[1].nameChangedTime"</span>,</span><br><span class="line"><span class="string">@"bag"</span> : <span class="string">@"other.bag"</span></span><br><span class="line">&#125;;</span><br><span class="line">&#125;];</span><br><span class="line"><span class="comment">// 相当于在Student.m中实现了+(NSDictionary *)replacedKeyFromPropertyName方法</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#pragma mark Dog的所有驼峰属性转成下划线key去字典中取值</span></span><br><span class="line">[Dog setupReplacedKeyFromPropertyName121:^<span class="built_in">NSString</span> *(<span class="built_in">NSString</span> *propertyName) &#123;</span><br><span class="line"><span class="keyword">return</span> [propertyName underlineFromCamel];</span><br><span class="line">&#125;];</span><br><span class="line"><span class="comment">// 相当于在Dog.m中实现了+(NSDictionary *)replacedKeyFromPropertyName121:方法</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#pragma mark Book的日期处理、字符串nil值处理</span></span><br><span class="line">[Book setupNewValueFromOldValue:^<span class="keyword">id</span>(<span class="keyword">id</span> object, <span class="keyword">id</span> oldValue, MJProperty *property) &#123;</span><br><span class="line"><span class="keyword">if</span> ([property.name isEqualToString:<span class="string">@"publisher"</span>]) &#123;</span><br><span class="line"><span class="keyword">if</span> (oldValue == <span class="literal">nil</span> || [oldValue isKindOfClass:[<span class="built_in">NSNull</span> class]]) <span class="keyword">return</span> <span class="string">@""</span>;</span><br><span class="line">&#125; <span class="keyword">else</span> <span class="keyword">if</span> (property.type.typeClass == [<span class="built_in">NSDate</span> class]) &#123;</span><br><span class="line"><span class="built_in">NSDateFormatter</span> *fmt = [[<span class="built_in">NSDateFormatter</span> alloc] init];</span><br><span class="line">fmt.dateFormat = <span class="string">@"yyyy-MM-dd"</span>;</span><br><span class="line"><span class="keyword">return</span> [fmt dateFromString:oldValue];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">return</span> oldValue;</span><br><span class="line">&#125;];</span><br><span class="line"><span class="comment">// 相当于在Book.中实现了- (id)newValueFromOldValue:property:方法</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/iOS-三方库/">iOS 三方库</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/2015/12/30/Json解析之MJExtension应用举例/#comments" class="ds-thread-count comments-count-link" data-thread-key="2015/12/30/Json解析之MJExtension应用举例/" data-count-type="comments">&nbsp;</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2015/12/24/iOS7中UIKit支持的动力行为之UIAttachmentBehavior/" title="iOS7中UIKit支持的动力行为之UIAttachmentBehavior" itemprop="url">iOS7中UIKit支持的动力行为之UIAttachmentBehavior</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Shemmy" target="_blank" itemprop="author">Shemmy</a>
+		
+  <p class="article-time">
+    <time datetime="2015-12-23T17:08:32.000Z" itemprop="datePublished"> Published 2015-12-24</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍:"></a>介绍:</h1><p>Inherits from UIDynamicBehavior : NSObject<br>Conforms to NSObject (NSObject)<br>Framework /System/Library/Frameworks/UIKit.framework<br>Availability Available in iOS 7.0 and later.<br>Declared in UIAttachmentBehavior.h 概述 吸附行为规定了两种动力item之间或者一个动力item与一个锚点之间的动态连接，默认情况下，两个item之间的吸附点是他们的中点，不过这个是可以设置的。<br>动力item可以是任何符合UIDynamicItem协议的iOS对象或者自定义对象，UIView和UICollectionViewLayoutAttributes类在iOS7.0才开始实现这个协议。你可以用一个自定义对象作为动力item,这个动力item能够对旋转或位置的改变作出反应，这些都是由一个动力动画制作者（UIDynamicAnimator类的实例）来计算的。<br>当一个动力item移动的时候，通过跟踪手势或其他输入方式，任何被吸附的动力item都要移动。如果可能，还可以给这些被吸附的动力item设置另外的动力参数和边界。你可以使用length、damping和frequency属性设置吸附行为。<br>若要实现动力item的吸附行为，要执行以下几个步骤：<br>1.用一个或者两个item初始化吸附行为, 初始化方法是initWithItem:…<br>2.通过使用addBehavior:method将它添加到动画中去 吸附行为还与坐标系统有关，你可以和行为一起用的动力items的类型，取决于你怎么初始化相关的动画。<br>3.你也能在自定义的复合行为中包含吸附行为，这个复合行为要以UIDynamicBehavior对象开始，用addChildBehavior:method添加吸附行为。<br>4.如果你想吸附行为在每一步动力动画上都很流畅的话，就要实现继承的action方法。</p>
+<h1 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h1><h3 id="初始化和管理吸附行为"><a href="#初始化和管理吸附行为" class="headerlink" title="初始化和管理吸附行为"></a>初始化和管理吸附行为</h3><p>参数：items<br>– initWithItem:attachedToAnchor:<br>– initWithItem:attachedToItem:<br>– initWithItem:offsetFromCenter:attachedToAnchor:<br>– initWithItem:offsetFromCenter:attachedToItem:offsetFromCenter:</p>
+<h3 id="配置吸附行为"><a href="#配置吸附行为" class="headerlink" title="配置吸附行为"></a>配置吸附行为</h3><p>anchorPoint property<br>attachedBehaviorType property<br>damping property<br>frequency property<br>length property</p>
+<h3 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h3><p>anchorPoint: UIAttachmentBehaviorTypeAnchor类型的依赖行为的锚点，锚点与行为相关的动力动画的坐标系统有关。 @property(readwrite, nonatomic) CGPoint anchorPoint<br>attachedBehaviorType: 吸附行为的类型 @property(readonly, nonatomic) UIAttachmentBehaviorType attachedBehaviorType damping: 描述吸附行为减弱的阻力大小 @property(readwrite, nonatomic) CGFloat damping<br>frequency: 吸附行为震荡的频率 @property(readwrite, nonatomic) CGFloat frequency<br>items： 与吸附行为相连的动态项目，当吸附行为类型是UIAttachmentBehaviorTypeItems时有2个元素，当吸附行为类型是UIAttachmentBehaviorTypeAnchor时只有一个元素。 @property(nonatomic, readonly, copy) NSArray *items<br>length： 吸附行为中的两个吸附点之间的距离，通常用这个属性来调整吸附的长度，可以创建吸附行为之后调用。系统基于你创建吸附行为的方法来自动初始化这个长度 @property(readwrite, nonatomic) CGFloat length</p>
+<h2 id="方法举例"><a href="#方法举例" class="headerlink" title="方法举例"></a>方法举例</h2><p>initWithItem:attachedToAnchor: 初始化连接动力item的中心和锚点的吸附行为<br>(instancetype)initWithItem:(id)item attachedToAnchor:(CGPoint)point<br>参数:item是你要应用吸附行为的动力项，point是吸附行为的锚点，与跟行为相关的动态动画所在在系统坐标有关。 返回：初始化的attachment behavior,如果初始化过程出错将会返回nil。 该初始化方法的吸附行为的类型是UIAttachmentBehaviorTypeAnchor<br>initWithItem:attachedToItem:初始化连接两个动力项中心的吸附行为<br>(instancetype)initWithItem:(id)item1 attachedToItem:(id)item2<br>参数：item1第一个被吸附行为连接的动力项，item2第二个被吸附行为连接的动力项 返回：初始化的attachment behavior,如果初始化过程出错将会返回nil。 该初始化方法的吸附行为的类型是UIAttachmentBehaviorTypeItems<br>initWithItem:offsetFromCenter:attachedToAnchor:初始化连接动力项中某一点和锚点的吸附行为<br>(instancetype)initWithItem:(id)item offsetFromCenter:(UIOffset)p1 attachedToAnchor:(CGPoint)point<br>参数：item要应用吸附行为的动力项，p1相对于item中心的偏移，point是吸附行为的锚点，与跟行为相关的动力动画所在在系统坐标有关。 返回：初始化的attachment behavior,如果初始化过程出错将会返回nil。 该初始化方法的吸附行为的类型是UIAttachmentBehaviorTypeAnchor<br>initWithItem:offsetFromCenter:attachedToItem:offsetFromCenter:初始化连接一个动力item中某一点和另一个动力item中某一点的吸附行为<br>(instancetype)initWithItem:(id)item1 offsetFromCenter:(UIOffset)p1 attachedToItem:(id)item2 offsetFromCenter:(UIOffset)p2<br>参数：item1第一个被吸附行为连接的动力项，p1相对于item1中心的偏移，item2第二个被吸附行为连接的动力项，p2相对于item2中心的偏移 返回：返回：初始化的attachment behavior,如果初始化过程出错将会返回nil。 这是为UIAttachmentBehavior类指定的初始化程序。</p>
+<h2 id="常量"><a href="#常量" class="headerlink" title="常量"></a>常量</h2><p>UIAttachmentBehaviorType<br>吸附行为的类型，说明吸附到的是什么样子的动力项。<br>typedef enum {<br>UIAttachmentBehaviorTypeItems,<br>UIAttachmentBehaviorTypeAnchor<br>} UIAttachmentBehaviorType;<br>UIAttachmentBehaviorTypeItems:表示连接两个item的吸附行为<br>UIAttachmentBehaviorTypeAnchor:表示连接一个item与锚点的吸附行为</p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/2015/12/24/iOS7中UIKit支持的动力行为之UIAttachmentBehavior/#comments" class="ds-thread-count comments-count-link" data-thread-key="2015/12/24/iOS7中UIKit支持的动力行为之UIAttachmentBehavior/" data-count-type="comments">&nbsp;</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2015/12/23/iOS动画-拖动视图移动效果实现/" title="动画-拖动视图实现移动效果" itemprop="url">动画-拖动视图实现移动效果</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Shemmy" target="_blank" itemprop="author">Shemmy</a>
+		
+  <p class="article-time">
+    <time datetime="2015-12-22T17:18:32.000Z" itemprop="datePublished"> Published 2015-12-23</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <p>iOS 动画-拖动视图实现移动效果</p>
+<p>拖动视图实现移动效果<br>曾今，答应一个朋友写这么一个小功能。忽然，想起来，还是写一下。<br>该功能，就是拖动View到指定的位置。<br>其实，功能比较简单，就是iOS手势动画中的拖动。就不废话了，直接代码<br>注册拖动动画<br><figure class="highlight mm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">UIPanGestureRecognizer</span> * panGestureRecognizer = [[<span class="built_in">UIPanGestureRecognizer</span> alloc] initWithTarget:<span class="keyword">self</span></span><br><span class="line">action:<span class="keyword">@selector</span>(doHandlePanAction:)];</span><br><span class="line">[<span class="keyword">self</span>.vLight addGestureRecognizer:panGestureRecognizer];</span><br></pre></td></tr></table></figure></p>
+<p>注：vLight就是要加入拖动的View子类。<br>拖动处理函数<br><figure class="highlight mm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="keyword">void</span>) doHandlePanAction:(<span class="built_in">UIPanGestureRecognizer</span> *)paramSender&#123;</span><br><span class="line"></span><br><span class="line"><span class="built_in">CGPoint</span> point = [paramSender translationInView:<span class="keyword">self</span>.view];</span><br><span class="line"><span class="built_in">NSLog</span>(<span class="string">@"X:%f;Y:%f"</span>,point.x,point.y);</span><br><span class="line"></span><br><span class="line">paramSender.view.center = <span class="built_in">CGPointMake</span>(paramSender.view.center.x + point.x, paramSender.view.center.y + point.y);</span><br><span class="line">**[paramSender setTranslation:<span class="built_in">CGPointMake</span>(<span class="number">0</span>, <span class="number">0</span>) inView:<span class="keyword">self</span>.view];**</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>注:B代码，为关键代码，因为拖动起来一直是在递增，所以每次都要用setTranslation:方法将每次触摸都设置为0位置，这样才不至于不受控制般滑动出视图。</p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/iOS/">iOS</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/2015/12/23/iOS动画-拖动视图移动效果实现/#comments" class="ds-thread-count comments-count-link" data-thread-key="2015/12/23/iOS动画-拖动视图移动效果实现/" data-count-type="comments">&nbsp;</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2015/12/21/Objective-C Runtime/" title="Objective-C Runtime" itemprop="url">Objective-C Runtime</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Shemmy" target="_blank" itemprop="author">Shemmy</a>
+		
+  <p class="article-time">
+    <time datetime="2015-12-21T12:05:12.000Z" itemprop="datePublished"> Published 2015-12-21</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <p>Objective-C Runtime<br>运行时之类与对象<br>Objective-C语言是一门动态语言，它将很多静态语言在编译和链接时期做的事放到了运行时来处理。这种动态语言的优势在于：我们写代码时更具灵活性，如我们可以把消息转发给我们想要的对象，或者随意交换一个方法的实现等。<br>这种特性意味着Objective-C不仅需要一个编译器，还需要一个运行时系统来执行编译的代码。对于Objective-C来说，这个运行时系统就像一个操作系统一样：它让所有的工作可以正常的运行。这个运行时系统即Objc Runtime。Objc Runtime其实是一个Runtime库，它基本上是用C和汇编写的，这个库使得C语言有了面向对象的能力。<br>Runtime库主要做下面几件事：<br>1 封装：在这个库中，对象可以用C语言中的结构体表示，而方法可以用C函数来实现，另外再加上了一些额外的特性。这些结构体和函数被runtime函数封装后，我们就可以在程序运行时创建，检查，修改类、对象和它们的方法了。<br>2 找出方法的最终执行代码：当程序执行[object doSomething]时，会向消息接收者(object)发送一条消息(doSomething)，runtime会根据消息接收者是否能响应该消息而做出不同的反应。这将在后面详细介绍。<br>Objective-C runtime目前有两个版本：Modern runtime和Legacy runtime。Modern Runtime 覆盖了64位的Mac OS X Apps，还有 iOS Apps，Legacy Runtime 是早期用来给32位 Mac OS X Apps 用的，也就是可以不用管就是了。<br>在这一系列文章中，我们将介绍runtime的基本工作原理，以及如何利用它让我们的程序变得更加灵活。在本文中，我们先来介绍一下类与对象，这是面向对象的基础，我们看看在Runtime中，类是如何实现的。<br>类与对象基础数据结构<br>Class<br>Objective-C类是由Class类型来表示的，它实际上是一个指向objc_class结构体的指针。它的定义如下：<br>typedef struct objc_class *Class;<br>查看objc/runtime.h中objc_class结构体的定义如下：<br>struct objc_class {<br>Class isa OBJC_ISA_AVAILABILITY;</p>
+<p>#if !OBJC2<br>Class super_class OBJC2_UNAVAILABLE; // 父类<br>const char <em>name OBJC2_UNAVAILABLE; // 类名<br>long version OBJC2_UNAVAILABLE; // 类的版本信息，默认为0<br>long info OBJC2_UNAVAILABLE; // 类信息，供运行期使用的一些位标识<br>long instance_size OBJC2_UNAVAILABLE; // 该类的实例变量大小<br>struct objc_ivar_list </em>ivars OBJC2_UNAVAILABLE; // 该类的成员变量链表<br>struct objc_method_list <em>*methodLists OBJC2_UNAVAILABLE; // 方法定义的链表<br>struct objc_cache </em>cache OBJC2_UNAVAILABLE; // 方法缓存<br>struct objc_protocol_list *protocols OBJC2_UNAVAILABLE; // 协议链表</p>
+<p>#endif<br>} OBJC2_UNAVAILABLE;<br>在这个定义中，下面几个字段是我们感兴趣的<br>1 isa：需要注意的是在Objective-C中，所有的类自身也是一个对象，这个对象的Class里面也有一个isa指针，它指向metaClass(元类)，我们会在后面介绍它。<br>2 super_class：指向该类的父类，如果该类已经是最顶层的根类(如NSObject或NSProxy)，则super_class为NULL。<br>3 cache：用于缓存最近使用的方法。一个接收者对象接收到一个消息时，它会根据isa指针去查找能够响应这个消息的对象。在实际使用中，这个对象只有一部分方法是常用的，很多方法其实很少用或者根本用不上。这种情况下，如果每次消息来时，我们都是methodLists中遍历一遍，性能势必很差。这时，cache就派上用场了。在我们每次调用过一个方法后，这个方法就会被缓存到cache列表中，下次调用的时候runtime就会优先去cache中查找，如果cache没有，才去methodLists中查找方法。这样，对于那些经常用到的方法的调用，但提高了调用的效率。<br>4 version：我们可以使用这个字段来提供类的版本信息。这对于对象的序列化非常有用，它可是让我们识别出不同类定义版本中实例变量布局的改变。<br>针对cache，我们用下面例子来说明其执行过程：<br>NSArray <em>array = [[NSArray alloc] init];<br>其流程是：<br>1 [NSArray alloc]先被执行。因为NSArray没有+alloc方法，于是去父类NSObject去查找。<br>2 检测NSObject是否响应+alloc方法，发现响应，于是检测NSArray类，并根据其所需的内存空间大小开始分配内存空间，然后把isa指针指向NSArray类。同时，+alloc也被加进cache列表里面。<br>3 接着，执行-init方法，如果NSArray响应该方法，则直接将其加入cache；如果不响应，则去父类查找。<br>4 在后期的操作中，如果再以[[NSArray alloc] init]这种方式来创建数组，则会直接从cache中取出相应的方法，直接调用。<br>objc_object与id<br>objc_object是表示一个类的实例的结构体，它的定义如下(objc/objc.h)：<br>struct objc_object {<br>Class isa OBJC_ISA_AVAILABILITY;<br>};<br>typedef struct objc_object id;<br>可以看到，这个结构体只有一个字体，即指向其类的isa指针。这样，当我们向一个Objective-C对象发送消息时，运行时库会根据实例对象的isa指针找到这个实例对象所属的类。Runtime库会在类的方法列表及父类的方法列表中去寻找与消息对应的selector指向的方法。找到后即运行这个方法。<br>当创建一个特定类的实例对象时，分配的内存包含一个objc_object数据结构，然后是类的实例变量的数据。NSObject类的alloc和allocWithZone:方法使用函数class_createInstance来创建objc_object数据结构。<br>另外还有我们常见的id，它是一个objc_object结构类型的指针。它的存在可以让我们实现类似于C++中泛型的一些操作。该类型的对象可以转换为任何一种对象，有点类似于C语言中void 指针类型的作用。<br>objc_cache<br>上面提到了objc_class结构体中的cache字段，它用于缓存调用过的方法。这个字段是一个指向objc_cache结构体的指针，其定义如下：<br>struct objc_cache {<br>unsigned int mask / total = mask + 1 / OBJC2_UNAVAILABLE;<br>unsigned int occupied OBJC2_UNAVAILABLE;<br>Method buckets[1] OBJC2_UNAVAILABLE;<br>};<br>该结构体的字段描述如下：<br>1 mask：一个整数，指定分配的缓存bucket的总数。在方法查找过程中，Objective-C runtime使用这个字段来确定开始线性查找数组的索引位置。指向方法selector的指针与该字段做一个AND位操作(index = (mask &amp; selector))。这可以作为一个简单的hash散列算法。<br>2 occupied：一个整数，指定实际占用的缓存bucket的总数。<br>3 buckets：指向Method数据结构指针的数组。这个数组可能包含不超过mask+1个元素。需要注意的是，指针可能是NULL，表示这个缓存bucket没有被占用，另外被占用的bucket可能是不连续的。这个数组可能会随着时间而增长。<br>元类(Meta Class)<br>在上面我们提到，所有的类自身也是一个对象，我们可以向这个对象发送消息(即调用类方法)。如：<br>NSArray </em>array = [NSArray array];<br>这个例子中，+array消息发送给了NSArray类，而这个NSArray也是一个对象。既然是对象，那么它也是一个objc_object指针，它包含一个指向其类的一个isa指针。那么这些就有一个问题了，这个isa指针指向什么呢？为了调用+array方法，这个类的isa指针必须指向一个包含这些类方法的一个objc_class结构体。这就引出了meta-class的概念<br>meta-class是一个类对象的类。<br>当我们向一个对象发送消息时，runtime会在这个对象所属的这个类的方法列表中查找方法；而向一个类发送消息时，会在这个类的meta-class的方法列表中查找。<br>meta-class之所以重要，是因为它存储着一个类的所有类方法。每个类都会有一个单独的meta-class，因为每个类的类方法基本不可能完全相同。<br>再深入一下，meta-class也是一个类，也可以向它发送一个消息，那么它的isa又是指向什么呢？为了不让这种结构无限延伸下去，Objective-C的设计者让所有的meta-class的isa指向基类的meta-class，以此作为它们的所属类。即，任何NSObject继承体系下的meta-class都使用NSObject的meta-class作为自己的所属类，而基类的meta-class的isa指针是指向它自己。这样就形成了一个完美的闭环。<br>通过上面的描述，再加上对objc_class结构体中super_class指针的分析，我们就可以描绘出类及相应meta-class类的一个继承体系了，如下图所示：<br>￼<br>对于NSObject继承体系来说，其实例方法对体系中的所有实例、类和meta-class都是有效的；而类方法对于体系内的所有类和meta-class都是有效的。<br>讲了这么多，我们还是来写个例子吧：<br>void TestMetaClass(id self, SEL _cmd) {<br>NSLog(@”This objcet is %p”, self);<br>NSLog(@”Class is %@, super class is %@”, [self class], [self superclass]);<br>Class currentClass = [self class];<br>for (int i = 0; i &lt; 4; i++) {<br>NSLog(@”Following the isa pointer %d times gives %p”, i, currentClass);<br>currentClass = objc_getClass((<strong>bridge void *)currentClass);<br>}<br>NSLog(@”NSObject’s class is %p”, [NSObject class]);<br>NSLog(@”NSObject’s meta class is %p”, objc_getClass((</strong>bridge void *)[NSObject class]));<br>}</p>
+<p>#pragma mark -<br>@implementation Test<br>(void)ex_registerClassPair {<br>Class newClass = objc_allocateClassPair([NSError class], “TestClass”, 0);<br>class_addMethod(newClass, @selector(testMetaClass), (IMP)TestMetaClass, “v@:”);<br>objc_registerClassPair(newClass);<br>id instance = [[newClass alloc] initWithDomain:@”some domain” code:0 userInfo:nil];<br>[instance performSelector:@selector(testMetaClass)];<br>}<br>@end<br>这个例子是在运行时创建了一个NSError的子类TestClass，然后为这个子类添加一个方法testMetaClass，这个方法的实现是TestMetaClass函数。<br>运行后，打印结果是<br>2014-10-20 22:57:07.352 mountain[1303:41490] This objcet is 0x7a6e22b0<br>2014-10-20 22:57:07.353 mountain[1303:41490] Class is TestStringClass, super class is NSError<br>2014-10-20 22:57:07.353 mountain[1303:41490] Following the isa pointer 0 times gives 0x7a6e21b0<br>2014-10-20 22:57:07.353 mountain[1303:41490] Following the isa pointer 1 times gives 0x0<br>2014-10-20 22:57:07.353 mountain[1303:41490] Following the isa pointer 2 times gives 0x0<br>2014-10-20 22:57:07.353 mountain[1303:41490] Following the isa pointer 3 times gives 0x0<br>2014-10-20 22:57:07.353 mountain[1303:41490] NSObject’s class is 0xe10000<br>2014-10-20 22:57:07.354 mountain[1303:41490] NSObject’s meta class is 0x0<br>我们在for循环中，我们通过objcgetClass来获取对象的isa，并将其打印出来，依此一直回溯到NSObject的meta-class。分析打印结果，可以看到最后指针指向的地址是0x0，即NSObject的meta-class的类地址。<br>这里需要注意的是：我们在一个类对象调用class方法是无法获取meta-class，它只是返回类而已。<br>类与对象操作函数<br>runtime提供了大量的函数来操作类与对象。类的操作方法大部分是以class为前缀的，而对象的操作方法大部分是以objc或object为前缀。下面我们将根据这些方法的用途来分类讨论这些方法的使用。<br>类相关操作函数<br>我们可以回过头去看看objc_class的定义，runtime提供的操作类的方法主要就是针对这个结构体中的各个字段的。下面我们分别介绍这一些的函数。并在最后以实例来演示这些函数的具体用法。<br>类名(name)<br>类名操作的函数主要有：<br>// 获取类的类名<br>const char <em> class_getName ( Class cls );<br>● 对于class_getName函数，如果传入的cls为Nil，则返回一个字字符串。<br>父类(super_class)和元类(meta-class)<br>父类和元类操作的函数主要有：<br>// 获取类的父类<br>Class class_getSuperclass ( Class cls );<br>// 判断给定的Class是否是一个元类<br>BOOL class_isMetaClass ( Class cls );<br>● class_getSuperclass函数，当cls为Nil或者cls为根类时，返回Nil。不过通常我们可以使用NSObject类的superclass方法来达到同样的目的。<br>● class_isMetaClass函数，如果是cls是元类，则返回YES；如果否或者传入的cls为Nil，则返回NO。<br>实例变量大小(instance_size)<br>实例变量大小操作的函数有：<br>// 获取实例大小<br>size_t class_getInstanceSize ( Class cls );<br>成员变量(ivars)及属性<br>在objc_class中，所有的成员变量、属性的信息是放在链表ivars中的。ivars是一个数组，数组中每个元素是指向Ivar(变量信息)的指针。runtime提供了丰富的函数来操作这一字段。大体上可以分为以下几类：<br>1.成员变量操作函数，主要包含以下函数：<br>// 获取类中指定名称实例成员变量的信息<br>Ivar class_getInstanceVariable ( Class cls, const char </em>name );<br>// 获取类成员变量的信息<br>Ivar class_getClassVariable ( Class cls, const char <em>name );<br>// 添加成员变量<br>BOOL class_addIvar ( Class cls, const char name, size_t size, uint8_t alignment, const char types );<br>// 获取整个成员变量列表<br>Ivar class_copyIvarList ( Class cls, unsigned int outCount );<br>● class_getInstanceVariable函数，它返回一个指向包含name指定的成员变量信息的objc_ivar结构体的指针(Ivar)。<br>● class_getClassVariable函数，目前没有找到关于Objective-C中类变量的信息，一般认为Objective-C不支持类变量。注意，返回的列表不包含父类的成员变量和属性。<br>● Objective-C不支持往已存在的类中添加实例变量，因此不管是系统库提供的提供的类，还是我们自定义的类，都无法动态添加成员变量。但如果我们通过运行时来创建一个类的话，又应该如何给它添加成员变量呢？这时我们就可以使用class_addIvar函数了。不过需要注意的是，这个方法只能在objc_allocateClassPair函数与objc_registerClassPair之间调用。另外，这个类也不能是元类。成员变量的按字节最小对齐量是1&lt;&lt;alignment。这取决于ivar的类型和机器的架构。如果变量的类型是指针类型，则传递log2(sizeof(pointer_type))。<br>● class_copyIvarList函数，它返回一个指向成员变量信息的数组，数组中每个元素是指向该成员变量信息的objc_ivar结构体的指针。这个数组不包含在父类中声明的变量。outCount指针返回数组的大小。需要注意的是，我们必须使用free()来释放这个数组。<br>2.属性操作函数，主要包含以下函数：<br>// 获取指定的属性<br>objc_property_t class_getProperty ( Class cls, const char </em>name );<br>// 获取属性列表<br>objc_property_t class_copyPropertyList ( Class cls, unsigned int outCount );<br>// 为类添加属性<br>BOOL class_addProperty ( Class cls, const char name, const objc_property_attribute_t attributes, unsigned int attributeCount );<br>// 替换类的属性<br>void class_replaceProperty ( Class cls, const char name, const objc_property_attribute_t attributes, unsigned int attributeCount );<br>这一种方法也是针对ivars来操作，不过只操作那些是属性的值。我们在后面介绍属性时会再遇到这些函数。<br>3.在MAC OS X系统中，我们可以使用垃圾回收器。runtime提供了几个函数来确定一个对象的内存区域是否可以被垃圾回收器扫描，以处理strong/weak引用。这几个函数定义如下：<br>const uint8_t <em> class_getIvarLayout ( Class cls );<br>void class_setIvarLayout ( Class cls, const uint8_t </em>layout );<br>const uint8_t <em> class_getWeakIvarLayout ( Class cls );<br>void class_setWeakIvarLayout ( Class cls, const uint8_t </em>layout );<br>但通常情况下，我们不需要去主动调用这些方法；在调用objc_registerClassPair时，会生成合理的布局。在此不详细介绍这些函数。<br>方法(methodLists)<br>方法操作主要有以下函数：<br>// 添加方法<br>BOOL class_addMethod ( Class cls, SEL name, IMP imp, const char <em>types );<br>// 获取实例方法<br>Method class_getInstanceMethod ( Class cls, SEL name );<br>// 获取类方法<br>Method class_getClassMethod ( Class cls, SEL name );<br>// 获取所有方法的数组<br>Method class_copyMethodList ( Class cls, unsigned int outCount );<br>// 替代方法的实现<br>IMP class_replaceMethod ( Class cls, SEL name, IMP imp, const char </em>types );<br>// 返回方法的具体实现<br>IMP class_getMethodImplementation ( Class cls, SEL name );<br>IMP class_getMethodImplementation_stret ( Class cls, SEL name );<br>// 类实例是否响应指定的selector<br>BOOL class_respondsToSelector ( Class cls, SEL sel );<br>● class_addMethod的实现会覆盖父类的方法实现，但不会取代本类中已存在的实现，如果本类中包含一个同名的实现，则函数会返回NO。如果要修改已存在实现，可以使用method_setImplementation。一个Objective-C方法是一个简单的C函数，它至少包含两个参数—self和_cmd。所以，我们的实现函数(IMP参数指向的函数)至少需要两个参数，如下所示：<br>void myMethodIMP(id self, SEL _cmd)<br>{<br>// implementation ….<br>}<br>与成员变量不同的是，我们可以为类动态添加方法，不管这个类是否已存在。<br>另外，参数types是一个描述传递给方法的参数类型的字符数组，这就涉及到类型编码，我们将在后面介绍。<br>● class_getInstanceMethod、class_getClassMethod函数，与class_copyMethodList不同的是，这两个函数都会去搜索父类的实现。<br>● class_copyMethodList函数，返回包含所有实例方法的数组，如果需要获取类方法，则可以使用class_copyMethodList(object_getClass(cls), &amp;count)(一个类的实例方法是定义在元类里面)。该列表不包含父类实现的方法。outCount参数返回方法的个数。在获取到列表后，我们需要使用free()方法来释放它。<br>● class_replaceMethod函数，该函数的行为可以分为两种：如果类中不存在name指定的方法，则类似于class_addMethod函数一样会添加方法；如果类中已存在name指定的方法，则类似于method_setImplementation一样替代原方法的实现。<br>● class_getMethodImplementation函数，该函数在向类实例发送消息时会被调用，并返回一个指向方法实现函数的指针。这个函数会比method_getImplementation(class_getInstanceMethod(cls, name))更快。返回的函数指针可能是一个指向runtime内部的函数，而不一定是方法的实际实现。例如，如果类实例无法响应selector，则返回的函数指针将是运行时消息转发机制的一部分。<br>● class_respondsToSelector函数，我们通常使用NSObject类的respondsToSelector:或instancesRespondToSelector:方法来达到相同目的。<br>协议(objc_protocol_list)<br>协议相关的操作包含以下函数：<br>// 添加协议<br>BOOL class_addProtocol ( Class cls, Protocol <em>protocol );<br>// 返回类是否实现指定的协议<br>BOOL class_conformsToProtocol ( Class cls, Protocol </em>protocol );<br>// 返回类实现的协议列表<br>Protocol class_copyProtocolList ( Class cls, unsigned int outCount );<br>● class_conformsToProtocol函数可以使用NSObject类的conformsToProtocol:方法来替代。<br>● class_copyProtocolList函数返回的是一个数组，在使用后我们需要使用free()手动释放。<br>版本(version)<br>版本相关的操作包含以下函数：<br>// 获取版本号<br>int class_getVersion ( Class cls );<br>// 设置版本号<br>void class_setVersion ( Class cls, int version );<br>其它<br>runtime还提供了两个函数来供CoreFoundation的tool-free bridging使用，即：<br>Class objc_getFutureClass ( const char <em>name );<br>void objc_setFutureClass ( Class cls, const char </em>name );<br>通常我们不直接使用这两个函数。<br>实例(Example)<br>上面列举了大量类操作的函数，下面我们写个实例，来看看这些函数的实例效果：<br>//———————————————————–<br>// MyClass.h<br>@interface MyClass : NSObject<br>@property (nonatomic, strong) NSArray <em>array;<br>@property (nonatomic, copy) NSString </em>string;<br>(void)method1;<br>(void)method2;<br>(void)classMethod1;<br>@end<br>//———————————————————–<br>// MyClass.m</p>
+<p>#import “MyClass.h”<br>@interface MyClass () {<br>NSInteger _instance1;<br>NSString <em> _instance2;<br>}<br>@property (nonatomic, assign) NSUInteger integer;<br>(void)method3WithArg1:(NSInteger)arg1 arg2:(NSString </em>)arg2;<br>@end<br>@implementation MyClass<br>(void)classMethod1 {<br>}<br>(void)method1 {<br>NSLog(@”call method method1”);<br>}<br>(void)method2 {<br>}<br>(void)method3WithArg1:(NSInteger)arg1 arg2:(NSString *)arg2 {<br>NSLog(@”arg1 : %ld, arg2 : %@”, arg1, arg2);<br>}<br>@end<br>//———————————————————–<br>// main.h</p>
+<p>#import “MyClass.h”</p>
+<p>#import “MySubClass.h”</p>
+<p>#import<br>int main(int argc, const char <em> argv[]) {<br>@autoreleasepool {<br>MyClass </em>myClass = [[MyClass alloc] init];<br>unsigned int outCount = 0;<br>Class cls = myClass.class;<br>// 类名<br>NSLog(@”class name: %s”, class_getName(cls));<br>NSLog(@”==========================================================”);<br>// 父类<br>NSLog(@”super class name: %s”, class_getName(class_getSuperclass(cls)));<br>NSLog(@”==========================================================”);<br>// 是否是元类<br>NSLog(@”MyClass is %@ a meta-class”, (class_isMetaClass(cls) ? @”” : @”not”));<br>NSLog(@”==========================================================”);<br>Class meta_class = objc_getMetaClass(class_getName(cls));<br>NSLog(@”%s’s meta-class is %s”, class_getName(cls), class_getName(meta_class));<br>NSLog(@”==========================================================”);<br>// 变量实例大小<br>NSLog(@”instance size: %zu”, class_getInstanceSize(cls));<br>NSLog(@”==========================================================”);<br>// 成员变量<br>Ivar <em>ivars = class_copyIvarList(cls, &amp;outCount);<br>for (int i = 0; i &lt; outCount; i++) {<br>Ivar ivar = ivars[i];<br>NSLog(@”instance variable’s name: %s at index: %d”, ivar_getName(ivar), i);<br>}<br>free(ivars);<br>Ivar string = class_getInstanceVariable(cls, “_string”);<br>if (string != NULL) {<br>NSLog(@”instace variable %s”, ivar_getName(string));<br>}<br>NSLog(@”==========================================================”);<br>// 属性操作<br>objc_property_t </em> properties = class_copyPropertyList(cls, &amp;outCount);<br>for (int i = 0; i &lt; outCount; i++) {<br>objc_property_t property = properties[i];<br>NSLog(@”property’s name: %s”, property_getName(property));<br>}<br>free(properties);<br>objc_property_t array = class_getProperty(cls, “array”);<br>if (array != NULL) {<br>NSLog(@”property %s”, property_getName(array));<br>}<br>NSLog(@”==========================================================”);<br>// 方法操作<br>Method <em>methods = class_copyMethodList(cls, &amp;outCount);<br>for (int i = 0; i &lt; outCount; i++) {<br>Method method = methods[i];<br>NSLog(@”method’s signature: %s”, method_getName(method));<br>}<br>free(methods);<br>Method method1 = class_getInstanceMethod(cls, @selector(method1));<br>if (method1 != NULL) {<br>NSLog(@”method %s”, method_getName(method1));<br>}<br>Method classMethod = class_getClassMethod(cls, @selector(classMethod1));<br>if (classMethod != NULL) {<br>NSLog(@”class method : %s”, method_getName(classMethod));<br>}<br>NSLog(@”MyClass is%@ responsd to selector: method3WithArg1:arg2:”, class_respondsToSelector(cls, @selector(method3WithArg1:arg2:)) ? @”” : @” not”);<br>IMP imp = class_getMethodImplementation(cls, @selector(method1));<br>imp();<br>NSLog(@”==========================================================”);<br>// 协议<br>Protocol __unsafe_unretained protocols = class_copyProtocolList(cls, &amp;outCount);<br>Protocol </em> protocol;<br>for (int i = 0; i &lt; outCount; i++) {<br>protocol = protocols[i];<br>NSLog(@”protocol name: %s”, protocol_getName(protocol));<br>}<br>NSLog(@”MyClass is%@ responsed to protocol %s”, class_conformsToProtocol(cls, protocol) ? @”” : @” not”, protocol_getName(protocol));<br>NSLog(@”==========================================================”);<br>}<br>return 0;<br>}<br>这段程序的输出如下：<br>2014-10-22 19:41:37.452 RuntimeTest[3189:156810] class name: MyClass<br>2014-10-22 19:41:37.453 RuntimeTest[3189:156810] ==========================================================<br>2014-10-22 19:41:37.454 RuntimeTest[3189:156810] super class name: NSObject<br>2014-10-22 19:41:37.454 RuntimeTest[3189:156810] ==========================================================<br>2014-10-22 19:41:37.454 RuntimeTest[3189:156810] MyClass is not a meta-class<br>2014-10-22 19:41:37.454 RuntimeTest[3189:156810] ==========================================================<br>2014-10-22 19:41:37.454 RuntimeTest[3189:156810] MyClass’s meta-class is MyClass<br>2014-10-22 19:41:37.455 RuntimeTest[3189:156810] ==========================================================<br>2014-10-22 19:41:37.455 RuntimeTest[3189:156810] instance size: 48<br>2014-10-22 19:41:37.455 RuntimeTest[3189:156810] ==========================================================<br>2014-10-22 19:41:37.455 RuntimeTest[3189:156810] instance variable’s name: _instance1 at index: 0<br>2014-10-22 19:41:37.455 RuntimeTest[3189:156810] instance variable’s name: _instance2 at index: 1<br>2014-10-22 19:41:37.455 RuntimeTest[3189:156810] instance variable’s name: _array at index: 2<br>2014-10-22 19:41:37.455 RuntimeTest[3189:156810] instance variable’s name: _string at index: 3<br>2014-10-22 19:41:37.463 RuntimeTest[3189:156810] instance variable’s name: _integer at index: 4<br>2014-10-22 19:41:37.463 RuntimeTest[3189:156810] instace variable _string<br>2014-10-22 19:41:37.463 RuntimeTest[3189:156810] ==========================================================<br>2014-10-22 19:41:37.463 RuntimeTest[3189:156810] property’s name: array<br>2014-10-22 19:41:37.463 RuntimeTest[3189:156810] property’s name: string<br>2014-10-22 19:41:37.464 RuntimeTest[3189:156810] property’s name: integer<br>2014-10-22 19:41:37.464 RuntimeTest[3189:156810] property array<br>2014-10-22 19:41:37.464 RuntimeTest[3189:156810] ==========================================================<br>2014-10-22 19:41:37.464 RuntimeTest[3189:156810] method’s signature: method1<br>2014-10-22 19:41:37.464 RuntimeTest[3189:156810] method’s signature: method2<br>2014-10-22 19:41:37.464 RuntimeTest[3189:156810] method’s signature: method3WithArg1:arg2:<br>2014-10-22 19:41:37.465 RuntimeTest[3189:156810] method’s signature: integer<br>2014-10-22 19:41:37.465 RuntimeTest[3189:156810] method’s signature: setInteger:<br>2014-10-22 19:41:37.465 RuntimeTest[3189:156810] method’s signature: array<br>2014-10-22 19:41:37.465 RuntimeTest[3189:156810] method’s signature: string<br>2014-10-22 19:41:37.465 RuntimeTest[3189:156810] method’s signature: setString:<br>2014-10-22 19:41:37.465 RuntimeTest[3189:156810] method’s signature: setArray:<br>2014-10-22 19:41:37.466 RuntimeTest[3189:156810] method’s signature: .cxx_destruct<br>2014-10-22 19:41:37.466 RuntimeTest[3189:156810] method method1<br>2014-10-22 19:41:37.466 RuntimeTest[3189:156810] class method : classMethod1<br>2014-10-22 19:41:37.466 RuntimeTest[3189:156810] MyClass is responsd to selector: method3WithArg1:arg2:<br>2014-10-22 19:41:37.467 RuntimeTest[3189:156810] call method method1<br>2014-10-22 19:41:37.467 RuntimeTest[3189:156810] ==========================================================<br>2014-10-22 19:41:37.467 RuntimeTest[3189:156810] protocol name: NSCopying<br>2014-10-22 19:41:37.467 RuntimeTest[3189:156810] protocol name: NSCoding<br>2014-10-22 19:41:37.467 RuntimeTest[3189:156810] MyClass is responsed to protocol NSCoding<br>2014-10-22 19:41:37.468 RuntimeTest[3189:156810] ==========================================================<br>动态创建类和对象<br>runtime的强大之处在于它能在运行时创建类和对象。<br>动态创建类<br>动态创建类涉及到以下几个函数：<br>// 创建一个新类和元类<br>Class objc_allocateClassPair ( Class superclass, const char <em>name, size_t extraBytes );<br>// 销毁一个类及其相关联的类<br>void objc_disposeClassPair ( Class cls );<br>// 在应用中注册由objc_allocateClassPair创建的类<br>void objc_registerClassPair ( Class cls );<br>● objc_allocateClassPair函数：如果我们要创建一个根类，则superclass指定为Nil。extraBytes通常指定为0，该参数是分配给类和元类对象尾部的索引ivars的字节数。<br>为了创建一个新类，我们需要调用objc_allocateClassPair。然后使用诸如class_addMethod，class_addIvar等函数来为新创建的类添加方法、实例变量和属性等。完成这些后，我们需要调用objc_registerClassPair函数来注册类，之后这个新类就可以在程序中使用了。<br>实例方法和实例变量应该添加到类自身上，而类方法应该添加到类的元类上。<br>● objc_disposeClassPair函数用于销毁一个类，不过需要注意的是，如果程序运行中还存在类或其子类的实例，则不能调用针对类调用该方法。<br>在前面介绍元类时，我们已经有接触到这几个函数了，在此我们再举个实例来看看这几个函数的使用。<br>Class cls = objc_allocateClassPair(MyClass.class, “MySubClass”, 0);<br>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>class_addMethod(cls, @selector(submethod1), (IMP)imp_submethod1, “v@:”);<br>class_replaceMethod(cls, @selector(method1), (IMP)imp_submethod1, “v@:”);<br>class_addIvar(cls, “_ivar1”, sizeof(NSString ), log(sizeof(NSString )), “i”);<br>objc_property_attribute_t type = {“T”, “@\”NSString\””};<br>objc_property_attribute_t ownership = { “C”, “” };<br>objc_property_attribute_t backingivar = { “V”, “_ivar1”};<br>objc_property_attribute_t attrs[] = {type, ownership, backingivar};<br>class_addProperty(cls, “property2”, attrs, 3);<br>objc_registerClassPair(cls);<br>id instance = [[cls alloc] init];<br>[instance performSelector:@selector(submethod1)];<br>[instance performSelector:@selector(method1)];<br>程序的输出如下：<br>2014-10-23 11:35:31.006 RuntimeTest[3800:66152] run sub method 1<br>2014-10-23 11:35:31.006 RuntimeTest[3800:66152] run sub method 1<br>动态创建对象<br>动态创建对象的函数如下：<br>// 创建类实例<br>id class_createInstance ( Class cls, size_t extraBytes );<br>// 在指定位置创建类实例<br>id objc_constructInstance ( Class cls, void </em>bytes );<br>// 销毁类实例<br>void <em> objc_destructInstance ( id obj );<br>● class_createInstance函数：创建实例时，会在默认的内存区域为类分配内存。extraBytes参数表示分配的额外字节数。这些额外的字节可用于存储在类定义中所定义的实例变量之外的实例变量。该函数在ARC环境下无法使用。<br>调用class_createInstance的效果与+alloc方法类似。不过在使用class_createInstance时，我们需要确切的知道我们要用它来做什么。在下面的例子中，我们用NSString来测试一下该函数的实际效果：<br>id theObject = class_createInstance(NSString.class, sizeof(unsigned));<br>1<br>2<br>3<br>4<br>5<br>6<br>id str1 = [theObject init];<br>NSLog(@”%@”, [str1 class]);<br>id str2 = [[NSString alloc] initWithString:@”test”];<br>NSLog(@”%@”, [str2 class]);<br>输出结果是：<br>2014-10-23 12:46:50.781 RuntimeTest[4039:89088] NSString<br>2014-10-23 12:46:50.781 RuntimeTest[4039:89088] NSCFConstantString<br>可以看到，使用class_createInstance函数获取的是NSString实例，而不是类簇中的默认占位符类NSCFConstantString。<br>● objc_constructInstance函数：在指定的位置(bytes)创建类实例。<br>● objc_destructInstance函数：销毁一个类的实例，但不会释放并移除任何与其相关的引用。<br>实例操作函数<br>实例操作函数主要是针对我们创建的实例对象的一系列操作函数，我们可以使用这组函数来从实例对象中获取我们想要的一些信息，如实例对象中变量的值。这组函数可以分为三小类：<br>1.针对整个对象进行操作的函数，这类函数包含<br>// 返回指定对象的一份拷贝<br>id object_copy ( id obj, size_t size );<br>// 释放指定对象占用的内存<br>id object_dispose ( id obj );<br>有这样一种场景，假设我们有类A和类B，且类B是类A的子类。类B通过添加一些额外的属性来扩展类A。现在我们创建了一个A类的实例对象，并希望在运行时将这个对象转换为B类的实例对象，这样可以添加数据到B类的属性中。这种情况下，我们没有办法直接转换，因为B类的实例会比A类的实例更大，没有足够的空间来放置对象。此时，我们就要以使用以上几个函数来处理这种情况，如下代码所示：<br>NSObject </em>a = [[NSObject alloc] init];<br>id newB = object_copy(a, class_getInstanceSize(MyClass.class));<br>object_setClass(newB, MyClass.class);<br>object_dispose(a);<br>2.针对对象实例变量进行操作的函数，这类函数包含：<br>// 修改类实例的实例变量的值<br>Ivar object_setInstanceVariable ( id obj, const char name, void value );<br>// 获取对象实例变量的值<br>Ivar object_getInstanceVariable ( id obj, const char name, void <em>outValue );<br>// 返回指向给定对象分配的任何额外字节的指针<br>void </em> object_getIndexedIvars ( id obj );<br>// 返回对象中实例变量的值<br>id object_getIvar ( id obj, Ivar ivar );<br>// 设置对象中实例变量的值<br>void object_setIvar ( id obj, Ivar ivar, id value );<br>如果实例变量的Ivar已经知道，那么调用object_getIvar会比object_getInstanceVariable函数快，相同情况下，object_setIvar也比object_setInstanceVariable快。<br>3.针对对象的类进行操作的函数，这类函数包含：<br>// 返回给定对象的类名<br>const char <em> object_getClassName ( id obj );<br>// 返回对象的类<br>Class object_getClass ( id obj );<br>// 设置对象的类<br>Class object_setClass ( id obj, Class cls );<br>获取类定义<br>Objective-C动态运行库会自动注册我们代码中定义的所有的类。我们也可以在运行时创建类定义并使用objc_addClass函数来注册它们。runtime提供了一系列函数来获取类定义相关的信息，这些函数主要包括：<br>// 获取已注册的类定义的列表<br>int objc_getClassList ( Class </em>buffer, int bufferCount );<br>// 创建并返回一个指向所有已注册类的指针列表<br>Class objc_copyClassList ( unsigned int outCount );<br>// 返回指定类的类定义<br>Class objc_lookUpClass ( const char <em>name );<br>Class objc_getClass ( const char </em>name );<br>Class objc_getRequiredClass ( const char <em>name );<br>// 返回指定类的元类<br>Class objc_getMetaClass ( const char </em>name );<br>● objc_getClassList函数：获取已注册的类定义的列表。我们不能假设从该函数中获取的类对象是继承自NSObject体系的，所以在这些类上调用方法是，都应该先检测一下这个方法是否在这个类中实现。<br>下面代码演示了该函数的用法：<br>int numClasses;<br>Class classes = NULL;<br>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>numClasses = objc_getClassList(NULL, 0);<br>if (numClasses &gt; 0) {<br>classes = malloc(sizeof(Class) numClasses);<br>numClasses = objc_getClassList(classes, numClasses);<br>NSLog(@”number of classes: %d”, numClasses);<br>for (int i = 0; i &lt; numClasses; i++) {<br>Class cls = classes[i];<br>NSLog(@”class name: %s”, class_getName(cls));<br>}<br>free(classes);<br>}<br>输出结果如下：<br>2014-10-23 16:20:52.589 RuntimeTest[8437:188589] number of classes: 1282<br>2014-10-23 16:20:52.589 RuntimeTest[8437:188589] class name: DDTokenRegexp<br>2014-10-23 16:20:52.590 RuntimeTest[8437:188589] class name: _NSMostCommonKoreanCharsKeySet<br>2014-10-23 16:20:52.590 RuntimeTest[8437:188589] class name: OS_xpc_dictionary<br>2014-10-23 16:20:52.590 RuntimeTest[8437:188589] class name: NSFileCoordinator<br>2014-10-23 16:20:52.590 RuntimeTest[8437:188589] class name: NSAssertionHandler<br>2014-10-23 16:20:52.590 RuntimeTest[8437:188589] class name: PFUbiquityTransactionLogMigrator<br>2014-10-23 16:20:52.591 RuntimeTest[8437:188589] class name: NSNotification<br>2014-10-23 16:20:52.591 RuntimeTest[8437:188589] class name: NSKeyValueNilSetEnumerator<br>2014-10-23 16:20:52.591 RuntimeTest[8437:188589] class name: OS_tcp_connection_tls_session<br>2014-10-23 16:20:52.591 RuntimeTest[8437:188589] class name: _PFRoutines<br>……还有大量输出<br>● 获取类定义的方法有三个：objc_lookUpClass, objc_getClass和objc_getRequiredClass。如果类在运行时未注册，则objc_lookUpClass会返回nil，而objc_getClass会调用类处理回调，并再次确认类是否注册，如果确认未注册，再返回nil。而objc_getRequiredClass函数的操作与objc_getClass相同，只不过如果没有找到类，则会杀死进程。<br>● objc_getMetaClass函数：如果指定的类没有注册，则该函数会调用类处理回调，并再次确认类是否注册，如果确认未注册，再返回nil。不过，每个类定义都必须有一个有效的元类定义，所以这个函数总是会返回一个元类定义，不管它是否有效。<br>小结<br>在这一章中我们介绍了Runtime运行时中与类和对象相关的数据结构，通过这些数据函数，我们可以管窥Objective-C底层面向对象实现的一些信息。另外，通过丰富的操作函数，可以灵活地对这些数据进行操作。<br>回复 围观者: 对于NSObject继承体系来说，其实例方法对体系中的所有实例、类和meta-class都是有效的；而类方法对于体系内的所有类和meta-class都是有效的。<br>博主：实例方法如果对类和meta-class也有效的话，怎么实例方法只能实例对象调用？<br>回复 围观者: 你这里面，有很多地方，不敢苟同啊<br>回复 围观者: 从你打印，第一个类的isa来看，他只想的是他的类对象，可是类对象里面的isa指向地址打印是0x0,而0x0这个地址正式NULL的地址。所以说每个类实例的对象的isa指向当前类对象，而类对象的isa指向的是NULL。还有，这些类对象都是在程序编译的时候，就被存在静态内存中。而每个类对象实例被创建的时候，objc_object结构本身含有isa的类对象，而这个类的其他实例变量，也是自动的被添加到这个objc_object结构体中。<br>回复 围观者: 博主大体都是对的，只是获取MetaClass的方法应该是object_getClass而不是objec_getClass<br>回复 围观者: MyClass的元类肯定还是MyClass啊，MyClass的元类的isa才是NSObject</p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/iOS/">iOS</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/2015/12/21/Objective-C Runtime/#comments" class="ds-thread-count comments-count-link" data-thread-key="2015/12/21/Objective-C Runtime/" data-count-type="comments">&nbsp;</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+
+  <nav id="page-nav" class="clearfix">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next<span></span></a>
+  </nav>
+
+</div>
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+
+
+  
+
+  
+<div class="tagslist">
+	<p class="asidetitle">Tags</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/iOS/" title="iOS">iOS<sup>5</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/iOS-三方库/" title="iOS 三方库">iOS 三方库<sup>4</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/C-C-iOS/" title="C C++ iOS">C C++ iOS<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/iOS-UITextField-转载/" title="iOS UITextField 转载">iOS UITextField 转载<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/iOS-UIBezierPath/" title="iOS UIBezierPath">iOS UIBezierPath<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">Links</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="https://www.github.com/lishengmin" target="_blank" title="一个无聊的程序员小工具">李盛民的GitHub</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://wuchong.me" target="_blank" title="Jark&#39;s Blog">Jark&#39;s Blog</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
+</div>
+
+  <div class="weiboshow">
+  <p class="asidetitle">Weibo</p>
+    <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=null&verifier=b3593ceb&dpc=1"></iframe>
+</div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> Hello ,I&#39;m Sheemy Page in GitHub. <br/>
+			This is my blog,believe it or not.</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		<a href="http://weibo.com/2176287895" target="_blank" class="icon-weibo" title="微博"></a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Shemmy</a> © 2016 
+		
+		<a href="/about" target="_blank" title="Shemmy">Shemmy</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?e6d1f421bbc9962127a50488f9ed37d1";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="Back to Top"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+ </html>

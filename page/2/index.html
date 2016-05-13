@@ -1,0 +1,907 @@
+
+ <!DOCTYPE HTML>
+<html >
+<head>
+  <meta charset="UTF-8">
+  
+    <title>Shemmy</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="Shemmy">
+    
+
+    
+    <meta name="description">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Shemmy">
+<meta property="og:url" content="http://yoursite.com/page/2/index.html">
+<meta property="og:site_name" content="Shemmy">
+<meta property="og:description">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Shemmy">
+<meta name="twitter:description">
+
+    
+    <link rel="alternative" href="/atom.xml" title="Shemmy" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="Shemmy" title="Shemmy"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="Shemmy">Shemmy</a></h1>
+				<h2 class="blog-motto"></h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/about">About</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="hidden" name="q" value="site:yoursite.com">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main">
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2015/12/21/多线程/" title="多线程" itemprop="url">多线程</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Shemmy" target="_blank" itemprop="author">Shemmy</a>
+		
+  <p class="article-time">
+    <time datetime="2015-12-21T08:29:16.000Z" itemprop="datePublished"> Published 2015-12-21</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <p>多线程</p>
+<p>文章目錄</p>
+<ol>
+<li>“&gt;多线程：就是一些耗时的操作 需要用多线程<br>1.1. 按使用框架分类<br>1.2. 按串并行方式分类：<br>1.2.1. 串行<br>1.2.2. 全局对列 默认优先级<br>1.2.3. 自定义队列语法<br>1.2.4. 创建一个组 让想干的事放在一个组里面<br>1.3. 多线程使用<br>1.3.1. 设计模式单例<br>1.3.2. 遍历/Users/sevenqizai/hexo/source/_posts/多线程.md<br>1.3.3. 延时执行</li>
+</ol>
+<h1 id="多线程：就是一些耗时的操作-需要用多线程"><a href="#多线程：就是一些耗时的操作-需要用多线程" class="headerlink" title="多线程：就是一些耗时的操作 需要用多线程"></a>多线程：就是一些耗时的操作 需要用多线程</h1><h2 id="按使用框架分类"><a href="#按使用框架分类" class="headerlink" title="按使用框架分类"></a>按使用框架分类</h2><p>NSThread：线程 管理的麻烦 然后苹果就将这些东西封装成了队列<br>NSOperationQueue ：队列<br>GCD：grand 豪华的 Center 中心的 Dispath 分发 － 强大的中心队列调度</p>
+<p>##按串并行方式分类：<br>串行：有顺序的<br>并行：没有顺序<br>同步：执行到这个东西，顺序执行新的操作<br>异步：执行到这个东西，开启新的线程，然后完成耗时的操作。</p>
+<h3 id="串行"><a href="#串行" class="headerlink" title="串行"></a>串行</h3><p>//调用主队列：运行在主线程的对列 －串行<br><figure class="highlight mm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">dispatch_queue_t</span> quueue = dispatch_get_main_queue（）；</span><br><span class="line"></span><br><span class="line"><span class="built_in">dispatch_async</span>（queue,^&#123;</span><br><span class="line">nslog(@“<span class="number">1</span>”);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">dispatch_async</span>（queue,^&#123;</span><br><span class="line">nslog(@“<span class="number">2</span>”);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">dispatch_async</span>（queue,^&#123;</span><br><span class="line">nslog(@“<span class="number">3</span>”);</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">dispatch_async</span>（queue,^&#123;</span><br><span class="line">nslog(@“<span class="number">4</span>”);</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">dispatch_async</span>（queue,^&#123;</span><br><span class="line">nslog(@“<span class="number">5</span>”);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>输出结果：<br>1,2,3,4,5</p>
+<h3 id="全局对列-默认优先级"><a href="#全局对列-默认优先级" class="headerlink" title="全局对列 默认优先级"></a>全局对列 默认优先级</h3><figure class="highlight mm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">dispatch_queue_t</span> queue = dispatch_get_global_queue (dispatch_queue_priority_defaut,<span class="number">0</span>);</span><br><span class="line"><span class="built_in">dispatch_async</span>（queue,^&#123;</span><br><span class="line">nslog(@“<span class="number">1</span>”);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">dispatch_async</span>（queue,^&#123;</span><br><span class="line">nslog(@“<span class="number">2</span>”);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">dispatch_async</span>（queue,^&#123;</span><br><span class="line">nslog(@“<span class="number">3</span>”);</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">dispatch_async</span>（queue,^&#123;</span><br><span class="line">nslog(@“<span class="number">4</span>”);</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">dispatch_async</span>（queue,^&#123;</span><br><span class="line">nslog(@“<span class="number">5</span>”);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>输出结果：<br>//1，2，3，4，5<br>//1,3,2,4,5<br>//3,2,1,5,4</p>
+<h3 id="自定义队列语法"><a href="#自定义队列语法" class="headerlink" title="自定义队列语法"></a>自定义队列语法</h3><figure class="highlight mm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">dispatch_queue_t</span>  queue = dispath_queue_create (<span class="keyword">const</span> <span class="keyword">char</span>* label,dispatch_queue_attr_t atrr)</span><br><span class="line"></span><br><span class="line"><span class="comment">//自定义队列</span></span><br><span class="line"><span class="built_in">dispatch_queue_t</span> queue = dispath_queue_create(“com.bjsxt.app”,dispatch_queue_concurrent);</span><br><span class="line"><span class="built_in">dispatch_async</span>（queue,^&#123;</span><br><span class="line">nslog(@“<span class="number">1</span>”);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">dispatch_async</span>（queue,^&#123;</span><br><span class="line">nslog(@“<span class="number">2</span>”);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">dispatch_async</span>（queue,^&#123;</span><br><span class="line">nslog(@“<span class="number">3</span>”);</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">dispatch_async</span>（queue,^&#123;</span><br><span class="line">nslog(@“<span class="number">4</span>”);</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">dispatch_async</span>（queue,^&#123;</span><br><span class="line">nslog(@“<span class="number">5</span>”);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>输出结果：<br>//2，1，4，3，5</p>
+<h3 id="创建一个组-让想干的事放在一个组里面"><a href="#创建一个组-让想干的事放在一个组里面" class="headerlink" title="创建一个组 让想干的事放在一个组里面"></a>创建一个组 让想干的事放在一个组里面</h3><figure class="highlight mm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">dispath_group_t group = diapath_group_create()；</span><br><span class="line"><span class="built_in">dispatch_queue_t</span> queue = dispatch_get_global_queue(dispatch_queue_priority_default,<span class="number">0</span>);</span><br><span class="line">dispatch_group_async(group_ <span class="built_in">dispatch_queue_t</span> queue,^(<span class="keyword">void</span>)block);</span><br><span class="line">dispatch_group_async(group,queue,^&#123;</span><br><span class="line">nslog(@“<span class="number">1</span>”);</span><br><span class="line">&#125;);</span><br><span class="line">dispatch_group_async(group,queue,^&#123;</span><br><span class="line">nslog(@“<span class="number">2</span>”);</span><br><span class="line">&#125;);</span><br><span class="line">dispatch_group_async(group,queue,^&#123;</span><br><span class="line">nslog(@“<span class="number">3</span>”);</span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">//前面执行完成后 通知后面的组可以执行了，</span></span><br><span class="line">dispatch_group_notify(group,queue,^&#123;</span><br><span class="line">nslog(@“<span class="number">4</span>”);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>输出结果：<br>//1,2,3,4<br>//1,3,2,4<br>//2,1,3,4</p>
+<h2 id="多线程使用"><a href="#多线程使用" class="headerlink" title="多线程使用"></a>多线程使用</h2><h3 id="设计模式单例"><a href="#设计模式单例" class="headerlink" title="设计模式单例"></a>设计模式单例</h3><figure class="highlight mm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span> <span class="built_in">dispatch_once_t</span> oncetoken;</span><br><span class="line"><span class="built_in">dispatch_once</span>(&amp;oncetoken,^&#123;</span><br><span class="line">nslog(@“onceToken”);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h3 id="遍历"><a href="#遍历" class="headerlink" title="遍历"></a>遍历</h3><figure class="highlight mm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">dispatch_apply (size_titerations,diapatch_queue_t)</span><br><span class="line">diapath_apply(<span class="number">5</span>,dispatch_get_global_queue(<span class="number">0</span>,<span class="number">0</span>),^(size_t i)&#123;</span><br><span class="line">nslog(@“%lu”,i);</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i= <span class="number">0</span> ; i&lt;<span class="number">11</span>;<span class="number">1</span>++)  <span class="comment">//可以获取到索引值  速度最快的方式</span></span><br><span class="line"><span class="keyword">for</span>(type* object <span class="keyword">in</span> cull~)<span class="comment">//快速遍历</span></span><br><span class="line"></span><br><span class="line">[arr enumerateobjectsusingblock:^(<span class="keyword">id</span> _nonnull obj, nsinteger idx, <span class="keyword">bool</span>* _nonnull stop)&#123;</span><br><span class="line"></span><br><span class="line">&#125;];<span class="comment">//既有索引 还有乱七八糟的东西</span></span><br></pre></td></tr></table></figure>
+<h3 id="延时执行"><a href="#延时执行" class="headerlink" title="延时执行"></a>延时执行</h3><figure class="highlight mm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">dispatch_time_t time = dispatch_time(dispatch_time_t when,int64_t delta);</span><br><span class="line">dispatch_time_t time = dispatch_time(dispatch_time_now, <span class="number">2</span>*nsec_per_sec);<span class="comment">//延时方式</span></span><br><span class="line">dispatch_after(time,dispatch_get_global_queue(<span class="number">0</span>,<span class="number">0</span>),^&#123;</span><br><span class="line"><span class="built_in">NSLog</span>(@“dispatch_after”);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h3 id="嘻嘻"><a href="#嘻嘻" class="headerlink" title="嘻嘻"></a>嘻嘻</h3><figure class="highlight mm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">diapatch_barrier_async(diapatch_queue~);</span><br></pre></td></tr></table></figure>
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/2015/12/21/多线程/#comments" class="ds-thread-count comments-count-link" data-thread-key="2015/12/21/多线程/" data-count-type="comments">&nbsp;</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2015/12/19/基于AFNetWorking 网络请求/" title="基于AFNetWorking 网络请求" itemprop="url">基于AFNetWorking 网络请求</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Shemmy" target="_blank" itemprop="author">Shemmy</a>
+		
+  <p class="article-time">
+    <time datetime="2015-12-19T04:27:39.000Z" itemprop="datePublished"> Published 2015-12-19</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h1 id="网络请求概念"><a href="#网络请求概念" class="headerlink" title="网络请求概念"></a>网络请求概念</h1><p>网络请求分为以下两个部分：1.请求头 2.请求体，根据使用条件不同主要分为get，post请求两种， 以下get请求是将参数裸露出来的，比较不安全，post请求是将请求体封装起来，传输，保证数据安全。get请求请求到的字符数有上限值。</p>
+<h3 id="get请求头："><a href="#get请求头：" class="headerlink" title="get请求头："></a>get请求头：</h3><p>网络协议:// 主机地址/资源路径?参数＝值&amp;参数2=值</p>
+<h3 id="post请求头："><a href="#post请求头：" class="headerlink" title="post请求头："></a>post请求头：</h3><p>网络协议://主机地址/资源路径</p>
+<h3 id="post请求体："><a href="#post请求体：" class="headerlink" title="post请求体："></a>post请求体：</h3><p>request setbody:(参数＝值&amp;参数＝值)<br>content-type<br>application/x-www-form-urlencoded 最常用的type（对应的就是key=value&amp;key=value格式）</p>
+<h4 id="按照上面的方式去设定参数的格式"><a href="#按照上面的方式去设定参数的格式" class="headerlink" title="按照上面的方式去设定参数的格式"></a>按照上面的方式去设定参数的格式</h4><p>@“username=dancer&amp;password=123456”<br>content-length</p>
+<h1 id="以下是在objc中的使用AFNetWorking封装的请求"><a href="#以下是在objc中的使用AFNetWorking封装的请求" class="headerlink" title="以下是在objc中的使用AFNetWorking封装的请求"></a>以下是在objc中的使用AFNetWorking封装的请求</h1><h3 id="h文件"><a href="#h文件" class="headerlink" title=".h文件"></a>.h文件</h3><figure class="highlight mm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#import <span class="meta-string">&lt;Foundation/Foundation.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#import <span class="meta-string">"AFHTTPSessionManager.h"</span></span></span><br><span class="line"><span class="meta">#import <span class="meta-string">&lt;UIKit/UIKit.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">AFHttpClient</span> : <span class="title">AFHTTPSessionManager</span></span></span><br><span class="line"></span><br><span class="line">+ (instancetype)sharedClient;</span><br><span class="line"></span><br><span class="line"><span class="keyword">@end</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">void</span> (^HttpSuccessBlock) (<span class="keyword">id</span> JSON);</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">void</span> (^HttpFailureBlock) (<span class="built_in">NSError</span> *error);</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">HttpTool</span> : <span class="title">NSObject</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span><br><span class="line">*  AFN get请求</span><br><span class="line">*</span><br><span class="line">*  @param path URL地址</span><br><span class="line">*</span><br><span class="line">*  @param params 请求参数 (NSDictionary)</span><br><span class="line">*</span><br><span class="line">*  @param success 请求成功返回值（NSArray or NSDictionary）</span><br><span class="line">*</span><br><span class="line">*  @param failure 请求失败值 (NSError)</span><br><span class="line">*/</span></span><br><span class="line">+ (<span class="keyword">void</span>)getWithPath:(<span class="built_in">NSString</span> *)path</span><br><span class="line">params:(<span class="built_in">NSDictionary</span> *)params</span><br><span class="line">success:(HttpSuccessBlock)success</span><br><span class="line">failure:(HttpFailureBlock)failure;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span><br><span class="line">*  AFN post请求</span><br><span class="line">*</span><br><span class="line">*  @param path URL地址</span><br><span class="line">*</span><br><span class="line">*  @param params 请求参数 (NSDictionary)</span><br><span class="line">*</span><br><span class="line">*  @param success 请求成功返回值（NSArray or NSDictionary）</span><br><span class="line">*</span><br><span class="line">*  @param failure 请求失败值 (NSError)</span><br><span class="line">*/</span></span><br><span class="line">+ (<span class="keyword">void</span>)postWithPath:(<span class="built_in">NSString</span> *)path</span><br><span class="line">params:(<span class="built_in">NSDictionary</span> *)params</span><br><span class="line">success:(HttpSuccessBlock)success</span><br><span class="line">failure:(HttpFailureBlock)failure;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span><br><span class="line">*  AFN POST上传图片</span><br><span class="line">*</span><br><span class="line">*  @param path URL地址</span><br><span class="line">*</span><br><span class="line">*  @param params 请求参数 (NSDictionary)</span><br><span class="line">*</span><br><span class="line">*  @param success 请求成功返回值（NSArray or NSDictionary）</span><br><span class="line">*</span><br><span class="line">*  @param images 需要上传的图片数组，二进制格式的图片</span><br><span class="line">*</span><br><span class="line">*  @param failure 请求失败值 (NSError)</span><br><span class="line">*/</span></span><br><span class="line">+ (<span class="keyword">void</span>)postWithImgPath:(<span class="built_in">NSString</span> *)path</span><br><span class="line">params:(<span class="built_in">NSDictionary</span> *)params</span><br><span class="line">images:(<span class="built_in">NSArray</span> *)images</span><br><span class="line">success:(HttpSuccessBlock)success</span><br><span class="line">failure:(HttpFailureBlock)failure;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span><br><span class="line">*   取消网络请求</span><br><span class="line">*/</span></span><br><span class="line">+ (<span class="keyword">void</span>)cancelAllRequest;</span><br><span class="line"></span><br><span class="line"><span class="keyword">@end</span></span><br></pre></td></tr></table></figure>
+<h3 id="m文件"><a href="#m文件" class="headerlink" title=".m文件"></a>.m文件</h3><figure class="highlight mm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#import <span class="meta-string">"HttpTool.h"</span></span></span><br><span class="line"><span class="meta">#import <span class="meta-string">"AFNetworking.h"</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 服务器地址</span></span><br><span class="line"><span class="keyword">static</span> <span class="built_in">NSString</span> *<span class="keyword">const</span> kBaseURLString = <span class="string">@"http://iappfree.candou.com:8080/"</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">AFHttpClient</span></span></span><br><span class="line"></span><br><span class="line">+ (instancetype)sharedClient &#123;</span><br><span class="line"><span class="keyword">static</span> AFHttpClient *_sharedClient = <span class="literal">nil</span>;</span><br><span class="line"><span class="keyword">static</span> <span class="built_in">dispatch_once_t</span> onceToken;</span><br><span class="line"></span><br><span class="line"><span class="built_in">dispatch_once</span>(&amp;onceToken, ^&#123;</span><br><span class="line">_sharedClient = [[AFHttpClient alloc] initWithBaseURL:[<span class="built_in">NSURL</span> URLWithString:kBaseURLString]];</span><br><span class="line">_sharedClient.responseSerializer = [AFJSONResponseSerializer serializer];</span><br><span class="line">_sharedClient.responseSerializer.acceptableContentTypes = [<span class="built_in">NSSet</span> setWithObjects:<span class="string">@"application/json"</span>,<span class="string">@"text/html"</span>, <span class="string">@"text/json"</span>, <span class="string">@"text/javascript"</span>,<span class="string">@"text/plain"</span>,<span class="string">@"image/gif"</span>, <span class="literal">nil</span>];</span><br><span class="line">_sharedClient.securityPolicy = [AFSecurityPolicy policyWithPinningMode:AFSSLPinningModeNone];</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">return</span> _sharedClient;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">@end</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">HttpTool</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#pragma mark - AFN网络请求</span></span><br><span class="line"><span class="meta">#pragma mark POST请求</span></span><br><span class="line">+ (<span class="keyword">void</span>)postWithPath:(<span class="built_in">NSString</span> *)path</span><br><span class="line">params:(<span class="built_in">NSDictionary</span> *)params</span><br><span class="line">success:(HttpSuccessBlock)success</span><br><span class="line">failure:(HttpFailureBlock)failure &#123;</span><br><span class="line">AFHttpClient *manager = [AFHttpClient sharedClient];</span><br><span class="line"></span><br><span class="line">[manager POST:path parameters:params success:^(<span class="built_in">NSURLSessionDataTask</span> *task, <span class="keyword">id</span> JSON) &#123;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (success == <span class="literal">nil</span>) <span class="keyword">return</span>;</span><br><span class="line">success(JSON);</span><br><span class="line"></span><br><span class="line">&#125; failure:^(<span class="built_in">NSURLSessionDataTask</span> *task, <span class="built_in">NSError</span> *error) &#123;</span><br><span class="line"><span class="keyword">if</span> (failure == <span class="literal">nil</span>) <span class="keyword">return</span>;</span><br><span class="line">failure(error);</span><br><span class="line"></span><br><span class="line">&#125;];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">#pragma mark GET请求</span></span><br><span class="line">+ (<span class="keyword">void</span>)getWithPath:(<span class="built_in">NSString</span> *)path</span><br><span class="line">params:(<span class="built_in">NSDictionary</span> *)params</span><br><span class="line">success:(HttpSuccessBlock)success</span><br><span class="line">failure:(HttpFailureBlock)failure &#123;</span><br><span class="line">AFHttpClient *manager = [AFHttpClient sharedClient];</span><br><span class="line"></span><br><span class="line">[manager GET:path parameters:params success:^(<span class="built_in">NSURLSessionDataTask</span> *task, <span class="keyword">id</span> JSON) &#123;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (success == <span class="literal">nil</span>) <span class="keyword">return</span>;</span><br><span class="line">success(JSON);</span><br><span class="line"></span><br><span class="line">&#125; failure:^(<span class="built_in">NSURLSessionDataTask</span> *task, <span class="built_in">NSError</span> *error) &#123;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (failure == <span class="literal">nil</span>) <span class="keyword">return</span>;</span><br><span class="line">failure(error);</span><br><span class="line"></span><br><span class="line">&#125;];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">#pragma mark POST上传图片</span></span><br><span class="line">+ (<span class="keyword">void</span>)postWithImgPath:(<span class="built_in">NSString</span> *)path</span><br><span class="line">params:(<span class="built_in">NSDictionary</span> *)params</span><br><span class="line">images:(<span class="built_in">NSArray</span> *)images</span><br><span class="line">success:(HttpSuccessBlock)success</span><br><span class="line">failure:(HttpFailureBlock)failure &#123;</span><br><span class="line"><span class="built_in">NSString</span> *basePath  = [<span class="built_in">NSString</span> stringWithFormat:<span class="string">@"%@%@"</span>, kBaseURLString, path];</span><br><span class="line"></span><br><span class="line"><span class="built_in">NSMutableURLRequest</span> *request = [[AFHTTPRequestSerializer serializer] multipartFormRequestWithMethod:<span class="string">@"POST"</span> URLString:basePath parameters:params constructingBodyWithBlock:^(<span class="keyword">id</span>&lt;AFMultipartFormData&gt; formData) &#123;</span><br><span class="line"><span class="keyword">for</span> (<span class="built_in">NSUInteger</span> idx = <span class="number">0</span>; idx &lt; images.count; idx ++) &#123;</span><br><span class="line"></span><br><span class="line"><span class="built_in">NSDate</span> *date = [<span class="built_in">NSDate</span> new];</span><br><span class="line"><span class="built_in">NSDateFormatter</span> *df = [[<span class="built_in">NSDateFormatter</span> alloc]init];</span><br><span class="line">[df setDateFormat:<span class="string">@"yyyyMMddHHmmss"</span>];</span><br><span class="line">[df setLocale:[[<span class="built_in">NSLocale</span> alloc]initWithLocaleIdentifier:<span class="string">@"zh_CN"</span>]];</span><br><span class="line"></span><br><span class="line">[formData appendPartWithFileData:images[idx] name:[<span class="built_in">NSString</span> stringWithFormat:<span class="string">@"file%zi"</span>, idx + <span class="number">1</span> ] fileName:[<span class="built_in">NSString</span> stringWithFormat:<span class="string">@"%@%zi.jpg"</span>, [df stringFromDate:date], idx + <span class="number">1</span> ] mimeType:<span class="string">@"image/jpg"</span>];</span><br><span class="line">&#125;</span><br><span class="line">&#125; error:<span class="literal">nil</span>];</span><br><span class="line"></span><br><span class="line">AFHTTPRequestOperation *opration = [[AFHTTPRequestOperation alloc]initWithRequest:request];</span><br><span class="line">opration.responseSerializer = [AFJSONResponseSerializer serializer];</span><br><span class="line">opration.responseSerializer.acceptableContentTypes = [<span class="built_in">NSSet</span> setWithObject:<span class="string">@"text/html"</span>];</span><br><span class="line"></span><br><span class="line">[opration setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, <span class="keyword">id</span> responseObject) &#123;</span><br><span class="line"><span class="keyword">if</span> (success == <span class="literal">nil</span>) <span class="keyword">return</span>;</span><br><span class="line">success(responseObject);</span><br><span class="line">&#125; failure:^(AFHTTPRequestOperation *operation, <span class="built_in">NSError</span> *error) &#123;</span><br><span class="line"><span class="keyword">if</span> (failure == <span class="literal">nil</span>) <span class="keyword">return</span>;</span><br><span class="line">failure(error);</span><br><span class="line">&#125;];</span><br><span class="line"></span><br><span class="line">[opration start];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">#pragma mark -</span></span><br><span class="line"><span class="meta">#pragma mark 取消网络请求</span></span><br><span class="line">+ (<span class="keyword">void</span>)cancelAllRequest &#123;</span><br><span class="line">AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];</span><br><span class="line">[manager.operationQueue cancelAllOperations];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">@end</span></span><br></pre></td></tr></table></figure>
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/2015/12/19/基于AFNetWorking 网络请求/#comments" class="ds-thread-count comments-count-link" data-thread-key="2015/12/19/基于AFNetWorking 网络请求/" data-count-type="comments">&nbsp;</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2015/12/08/启动引导界面和启动界面设置/" title="引导界面和启动界面设置" itemprop="url">引导界面和启动界面设置</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Shemmy" target="_blank" itemprop="author">Shemmy</a>
+		
+  <p class="article-time">
+    <time datetime="2015-12-08T04:27:39.000Z" itemprop="datePublished"> Published 2015-12-08</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <p>APP下载安装第一次使用一般会显示一个首次启动引导界面然后进入主界面，非首次开启APP也通常会显示一个启动界面然后进入主界面。<br>1、本例首次启动显示FirstUseViewController，添加一个button，点击进入LaunchViewController<br>2、非首次LaunchViewController，显示2s后进入主界面ViewController<br>3、主界面ViewController<br>4、不深究细节，一般启动引导都会有动画，图片之类的，非本次练习重点，所以没有设置，只有简单地标志作界面区分<br>（效果图在文末）
+        
+        
+        <p class="article-more-link">
+          
+            <a href="/2015/12/08/启动引导界面和启动界面设置/#more">Read More</a>
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/2015/12/08/启动引导界面和启动界面设置/#comments" class="ds-thread-count comments-count-link" data-thread-key="2015/12/08/启动引导界面和启动界面设置/" data-count-type="comments">&nbsp;</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2015/12/04/iOS 保存文件的方法/" title="iOS 保存文件的方法" itemprop="url">iOS 保存文件的方法</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Shemmy" target="_blank" itemprop="author">Shemmy</a>
+		
+  <p class="article-time">
+    <time datetime="2015-12-04T03:29:34.000Z" itemprop="datePublished"> Published 2015-12-04</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <p>iOS 保存文件的方法</p>
+<h1 id="iOS-保存文件的方法"><a href="#iOS-保存文件的方法" class="headerlink" title="iOS 保存文件的方法"></a>iOS 保存文件的方法</h1><p>!<br>!<br>!</p>
+<h2 id="Plist文件的使用"><a href="#Plist文件的使用" class="headerlink" title="Plist文件的使用"></a>Plist文件的使用</h2><figure class="highlight mm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1.</span><span class="built_in">NSString</span> *path = [[<span class="built_in">NSBundle</span> mainBundle] pathForResource:<span class="string">@"文件名"</span> ofType:<span class="string">@"plist"</span>];</span><br><span class="line"><span class="comment">// 文件数据类型是array</span></span><br><span class="line"><span class="built_in">NSArray</span> *array=[<span class="built_in">NSArray</span> arrayWithContentsOfFile:path];</span><br><span class="line"><span class="comment">//文件数据类型是*dictionary</span></span><br><span class="line"><span class="built_in">NSDictionary</span> *dictionary = [<span class="built_in">NSDictionary</span> dictionaryWithContentsOfFile:path];</span><br></pre></td></tr></table></figure>
+<h3 id="创建一个plist文件"><a href="#创建一个plist文件" class="headerlink" title="创建一个plist文件"></a>创建一个plist文件</h3><figure class="highlight mm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">NSArray</span> *paths=<span class="built_in">NSSearchPathForDirectoriesInDomains</span>(<span class="built_in">NSDocumentDirectory</span>,<span class="built_in">NSUserDomainMask</span>,<span class="literal">YES</span>);</span><br><span class="line"><span class="built_in">NSString</span> *path=[paths    objectAtIndex:<span class="number">0</span>];</span><br><span class="line"><span class="built_in">NSLog</span>(<span class="string">@"path = %@"</span>,path);</span><br><span class="line"><span class="built_in">NSString</span> *filename=[path stringByAppendingPathComponent:<span class="string">@"test.plist"</span>];    </span><br><span class="line"><span class="built_in">NSFileManager</span>* fm = [<span class="built_in">NSFileManager</span> defaultManager];</span><br><span class="line">[fm createFileAtPath:filename contents:<span class="literal">nil</span> attributes:<span class="literal">nil</span>];        </span><br><span class="line"><span class="comment">//NSDictionary* dic = [NSDictionary dictionaryWithContentsOfFile:plistPath];</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//创建一个dic，写到plist文件里</span></span><br><span class="line"><span class="built_in">NSDictionary</span>* dic = [<span class="built_in">NSDictionary</span> dictionaryWithObjectsAndKeys:<span class="string">@"sina"</span>,<span class="string">@"1"</span>,<span class="string">@"163"</span>,<span class="string">@"2"</span>,<span class="literal">nil</span>];</span><br><span class="line">[dic writeToFile:filename atomically:<span class="literal">YES</span>];</span><br><span class="line"></span><br><span class="line"><span class="comment">//读文件</span></span><br><span class="line"><span class="built_in">NSDictionary</span>* dic2 = [<span class="built_in">NSDictionary</span> dictionaryWithContentsOfFile:filename];</span><br><span class="line"><span class="built_in">NSLog</span>(<span class="string">@"dic is:%@"</span>,dic2);</span><br></pre></td></tr></table></figure>
+<h3 id="NSUserDefaults-的使用"><a href="#NSUserDefaults-的使用" class="headerlink" title="NSUserDefaults*的使用"></a>NSUserDefaults*的使用</h3><p>创建一个user defaults方法有多个，最简单得快速创建方法:<br><figure class="highlight mm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">NSUserDefaults</span> *accountDefaults = [<span class="built_in">NSUserDefaults</span> standardUserDefaults];</span><br></pre></td></tr></table></figure></p>
+<h4 id="数据到-user-defaults"><a href="#数据到-user-defaults" class="headerlink" title="数据到 user defaults:"></a>数据到 user defaults:</h4><figure class="highlight mm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[accountDefaults setObject:nameField.text forKey:UserDefaultNameKey];</span><br></pre></td></tr></table></figure>
+<p>也可以添加基本数据类型int, float, bool等，有相应得方法<br><figure class="highlight m"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[accountDefaults setBool:YES forKey:UserDefaultBoolKey];</span><br></pre></td></tr></table></figure></p>
+<h4 id="从user-defaults中获取数据"><a href="#从user-defaults中获取数据" class="headerlink" title="从user defaults中获取数据:"></a>从user defaults中获取数据:</h4><figure class="highlight mm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[accountDefaults objectForKey:NCUserDefaultNameKey];</span><br><span class="line">[accountDefaults boolForKey: UserDefaultBoolKey];</span><br></pre></td></tr></table></figure>
+<h4 id="要点"><a href="#要点" class="headerlink" title="要点"></a>要点</h4><p>NSUserDefaults非常好用，并不需要用户在程序中设置NSUserDefaults的全局变量，需要在哪里使用NSUserDefaults的数据，那么就在哪里创建一个NSUserDefaults对象，然后进行读或者写操作。<br>针对同一个关键字对应的对象或者数据，可以对它进行重写，重写之后关键字就对应新的对象或者数据，旧的对象或者数据会被自动清理。</p>
+<h3 id="关于NSUserDefaults保存不了数据的问题"><a href="#关于NSUserDefaults保存不了数据的问题" class="headerlink" title="关于NSUserDefaults保存不了数据的问题"></a>关于NSUserDefaults保存不了数据的问题</h3><p>If you terminate your app by pressing the home button (in the Simulator or on the device), your User Defaults will get saved.<br>如果你按HOME键终止你的应用（真机或者模拟器上），你的值是会被保存的。<br>~<br>If you terminate your app by pressing “Stop” in Xcode (in the Simulator or on the device), your User Defaults might get saved, but there’s a good chance they won’t. NSUserDefaults persists any changes periodically, and if you terminate the process before they’ve been persisted, they’ll be gone. You can force the save by calling:<br>[[NSUserDefaults standardUserDefaults] synchronize];</p>
+<h3 id="Error"><a href="#Error" class="headerlink" title="Error"></a>Error</h3><p>如果你在XCODE中，终止你的应用（在模拟器或者真机上），你的值或许不会被保存。原因在于<br>你可以使用以下代码强制保存<br><figure class="highlight mm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[[<span class="built_in">NSUserDefaults</span> standardUserDefaults] synchronize];</span><br></pre></td></tr></table></figure></p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/2015/12/04/iOS 保存文件的方法/#comments" class="ds-thread-count comments-count-link" data-thread-key="2015/12/04/iOS 保存文件的方法/" data-count-type="comments">&nbsp;</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2015/10/05/MJRefresh/" title="第三方库 MJRefresh" itemprop="url">第三方库 MJRefresh</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Shemmy" target="_blank" itemprop="author">Shemmy</a>
+		
+  <p class="article-time">
+    <time datetime="2015-10-04T17:15:02.000Z" itemprop="datePublished"> Published 2015-10-05</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h1 id="在表现表格视图的-m文件中，引入MJRefresh"><a href="#在表现表格视图的-m文件中，引入MJRefresh" class="headerlink" title="在表现表格视图的.m文件中，引入MJRefresh"></a>在表现表格视图的.m文件中，引入MJRefresh</h1><figure class="highlight mm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#import <span class="meta-string">"MJRefresh.h"</span></span></span><br></pre></td></tr></table></figure>
+<figure class="highlight mm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="keyword">void</span>)viewDidLoad &#123;    </span><br><span class="line">[<span class="keyword">super</span> viewDidLoad];</span><br><span class="line"><span class="comment">//集成刷新控件</span></span><br><span class="line">[<span class="keyword">self</span> setupRefresh];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h1><h2 id="集成刷新控件"><a href="#集成刷新控件" class="headerlink" title="集成刷新控件"></a>集成刷新控件</h2><figure class="highlight mm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="keyword">void</span>)setupRefresh&#123;</span><br><span class="line"><span class="comment">// 1.下拉刷新(进入刷新状态就会调用self的headerRereshing)    </span></span><br><span class="line">[<span class="keyword">self</span>.tableView addHeaderWithTarget:<span class="keyword">self</span> action:<span class="keyword">@selector</span>(headerRereshing)];</span><br><span class="line"><span class="meta">#warning 自动刷新(一进入程序就下拉刷新)    </span></span><br><span class="line">[<span class="keyword">self</span>.tableView headerBeginRefreshing];        </span><br><span class="line"><span class="comment">// 2.上拉加载更多(进入刷新状态就会调用self的footerRereshing)    </span></span><br><span class="line">[<span class="keyword">self</span>.tableView addFooterWithTarget:<span class="keyword">self</span> action:<span class="keyword">@selector</span>(footerRereshing)];        </span><br><span class="line"><span class="comment">// 设置文字(也可以不设置,默认的文字在MJRefreshConst中修改)    </span></span><br><span class="line"><span class="keyword">self</span>.tableView.headerPullToRefreshText = <span class="string">@"下拉可以刷新了"</span>;    </span><br><span class="line"><span class="keyword">self</span>.tableView.headerReleaseToRefreshText = <span class="string">@"松开马上刷新了"</span>;    </span><br><span class="line"><span class="keyword">self</span>.tableView.headerRefreshingText = <span class="string">@"MJ哥正在帮你刷新中,不客气"</span>;        </span><br><span class="line"><span class="keyword">self</span>.tableView.footerPullToRefreshText = <span class="string">@"上拉可以加载更多数据了"</span>;    </span><br><span class="line"><span class="keyword">self</span>.tableView.footerReleaseToRefreshText = <span class="string">@"松开马上加载更多数据了"</span>;    </span><br><span class="line"><span class="keyword">self</span>.tableView.footerRefreshingText = <span class="string">@"MJ哥正在帮你加载中,不客气"</span>;&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="开始进入刷新状态"><a href="#开始进入刷新状态" class="headerlink" title="开始进入刷新状态"></a>开始进入刷新状态</h2><figure class="highlight mm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="keyword">void</span>)headerRereshing&#123;       <span class="comment">// 1.添加假数据//    </span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i&lt;<span class="number">5</span>; i++) &#123;<span class="comment">//        </span></span><br><span class="line">[<span class="keyword">self</span>.fakeData insertObject:MJRandomData atIndex:<span class="number">0</span>];    </span><br><span class="line">&#125;        </span><br><span class="line"><span class="comment">// 2.2秒后刷新表格UI    </span></span><br><span class="line">dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(<span class="number">2.0</span> * <span class="built_in">NSEC_PER_SEC</span>)), dispatch_get_main_queue(), ^&#123;    <span class="comment">// 刷新表格        </span></span><br><span class="line">[<span class="keyword">self</span>.tableView reloadData];         <span class="comment">// (最好在刷新表格后调用)调用endRefreshing可以结束刷新状态       </span></span><br><span class="line">[<span class="keyword">self</span>.tableView headerEndRefreshing];</span><br><span class="line">&#125;);</span><br><span class="line">&#125;</span><br><span class="line">- (<span class="keyword">void</span>)footerRereshing&#123;      <span class="comment">// 1.添加假数据</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i&lt;<span class="number">5</span>; i++) &#123;        </span><br><span class="line">[<span class="keyword">self</span>.fakeData addObject:MJRandomData]; </span><br><span class="line">&#125;        </span><br><span class="line"><span class="comment">// 2.2秒后刷新表格UI    </span></span><br><span class="line">dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(<span class="number">2.0</span> * <span class="built_in">NSEC_PER_SEC</span>)), dispatch_get_main_queue(), ^&#123;        <span class="comment">// 刷新表格        </span></span><br><span class="line">[<span class="keyword">self</span>.tableView reloadData];                <span class="comment">// (最好在刷新表格后调用)调用endRefreshing可以结束刷新状态        </span></span><br><span class="line">[<span class="keyword">self</span>.tableView footerEndRefreshing];    </span><br><span class="line">&#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="Error"><a href="#Error" class="headerlink" title="Error"></a>Error</h1><p>在运行时，会发现有 Too many arguments to function call, expected 0, have * 的错误，可以如下修改<br>选中项目<br>Project - Build Settings - ENABLE_STRICT_OBJC_MSGSEND 将其设置为 NO 即可</p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/iOS-三方库/">iOS 三方库</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/2015/10/05/MJRefresh/#comments" class="ds-thread-count comments-count-link" data-thread-key="2015/10/05/MJRefresh/" data-count-type="comments">&nbsp;</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2015/08/03/NSNumber的使用/" title="数字有关的类（int NSNumber...）" itemprop="url">数字有关的类（int NSNumber...）</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Shemmy" target="_blank" itemprop="author">Shemmy</a>
+		
+  <p class="article-time">
+    <time datetime="2015-08-03T14:05:12.000Z" itemprop="datePublished"> Published 2015-08-03</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <p>iOS开发之int,NSInteger,NSUInteger,NSNumber的使用<br>1、首先先了解下NSNumber类型：<br>苹果官方文档地址：<a href="https://developer.apple.com/library/ios/documentation/Cocoa/Reference/Foundation/Classes/NSNumber_Class/Reference/Reference.html" target="_blank" rel="external">https://developer.apple.com/library/ios/documentation/Cocoa/Reference/Foundation/Classes/NSNumber_Class/Reference/Reference.html</a><br>NSNumber是NSValue的一个子类，它是一个对象来存储数字值包括bool型，它提供了一系列的方法来存储char a signed or unsigned char, short int, int, long int, long long int, float, or double or as a BOOL，它提供了一个compare：方法来决定两个NSNumber对象的排序；<br>创建一个NSNumber对象有以下方法：<br><figure class="highlight mm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">+ numberWithBool:  </span><br><span class="line">+ numberWithChar:  </span><br><span class="line">+ numberWithDouble:  </span><br><span class="line">+ numberWithFloat:  </span><br><span class="line">+ numberWithInt:  </span><br><span class="line">+ numberWithInteger:  </span><br><span class="line">+ numberWithLong:  </span><br><span class="line">+ numberWithLongLong:  </span><br><span class="line">+ numberWithShort:  </span><br><span class="line">+ numberWithUnsignedChar:  </span><br><span class="line">+ numberWithUnsignedInt:  </span><br><span class="line">+ numberWithUnsignedInteger:  </span><br><span class="line">+ numberWithUnsignedLong:  </span><br><span class="line">+ numberWithUnsignedLongLong:  </span><br><span class="line">+ numberWithUnsignedShort:</span><br></pre></td></tr></table></figure></p>
+<p>初始化方法：<br><figure class="highlight mm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">	– initWithBool:  </span><br><span class="line">	– initWithChar:  </span><br><span class="line">    – initWithDouble:  </span><br><span class="line">	– initWithFloat:  </span><br><span class="line">	– initWithInt:  </span><br><span class="line">	– initWithInteger:  </span><br><span class="line">	– initWithLong:  </span><br><span class="line">	– initWithLongLong:  </span><br><span class="line">	– initWithShort:  </span><br><span class="line">	– initWithUnsignedChar:  </span><br><span class="line">	– initWithUnsignedInt:  </span><br><span class="line">	– initWithUnsignedInteger:  </span><br><span class="line">	– initWithUnsignedLong:  </span><br><span class="line">	– initWithUnsignedLongLong:  </span><br><span class="line">	– initWithUnsignedShort: </span><br><span class="line">``` </span><br><span class="line">检索</span><br><span class="line"></span><br><span class="line">```mm</span><br><span class="line"><span class="number">1</span>	– boolValue  </span><br><span class="line"><span class="number">2</span>	– charValue  </span><br><span class="line"><span class="number">3</span>	– decimalValue  </span><br><span class="line"><span class="number">4</span>	– doubleValue  </span><br><span class="line"><span class="number">5</span>	– floatValue  </span><br><span class="line"><span class="number">6</span>	– intValue  </span><br><span class="line"><span class="number">7</span>	– integerValue  </span><br><span class="line"><span class="number">8</span>	– longLongValue  </span><br><span class="line"><span class="number">9</span>	– longValue  </span><br><span class="line"><span class="number">10</span>	– shortValue  </span><br><span class="line"><span class="number">11</span>	– unsignedCharValue  </span><br><span class="line"><span class="number">12</span>	– unsignedIntegerValue  </span><br><span class="line"><span class="number">13</span>	– unsignedIntValue  </span><br><span class="line"><span class="number">14</span>	– unsignedLongLongValue  </span><br><span class="line"><span class="number">15</span>	– unsignedLongValue  </span><br><span class="line"><span class="number">16</span>	– unsignedShortValue</span><br><span class="line">```  </span><br><span class="line"><span class="built_in">NSNumber</span>类型有点类似<span class="keyword">id</span>类型，对于任何类型的数字对象都能用它来声明，也就是用它来声明数字对象，通过声明，很难判断声明变量是什么数字类型，确定数字对象类型多是在初始化的时候才能确定。</span><br><span class="line"></span><br><span class="line">数字对象的创建或者初始化：</span><br><span class="line">格式：</span><br><span class="line"><span class="built_in">NSNumber</span> 数字对象 ＝ ［<span class="built_in">NSNumber</span> numberWith数字类型：数值］；</span><br><span class="line">```mm</span><br><span class="line">	intNumber = [<span class="built_in">NSNumber</span> numberWithInt:<span class="number">100</span>];  </span><br><span class="line">	longNumber = [<span class="built_in">NSNumber</span> numberWithLong:<span class="number">0xabcdef</span>];  </span><br><span class="line">	floatNumber = [<span class="built_in">NSNumber</span> numberWithFloat:<span class="number">10.01</span>];</span><br></pre></td></tr></table></figure></p>
+<p>2、int、 NSInteger、 NSUInteger、NSNumber之间的区别和联系<br>int ： 当使用int类型定义变量的时候，可以像写C程序一样，用int也可以用NSInteger，推荐使用NSInteger ，因为这样就不用考虑设备是32位还是64位了。<br>NSUInteger是无符号的，即没有负数，NSInteger是有符号的。<br>1》、当需要使用int类型的变量的时候，可以像写C的程序一样，用int，也可以用NSInteger，但更推荐使用NSInteger，因为这样就不用考虑设备是32位的还是64位的。<br>2》、NSUInteger是无符号的，即没有负数,NSInteger是有符号的。<br>3》、有人说既然都有了NSInteger等这些基础类型了为什么还要有NSNumber？它们的功能当然是不同的。<br>NSInteger是基础类型，但是NSNumber是一个类。如果想要存储一个数值，直接用NSInteger是不行的，比如在一个Array里面这样用：<br><figure class="highlight mm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">NSArray</span> *array= [[<span class="built_in">NSArray</span> alloc]init];</span><br><span class="line">[array addObject:<span class="number">3</span>];<span class="comment">//会编译错误</span></span><br><span class="line">这样是会引发编译错误的，因为<span class="built_in">NSArray</span>里面放的需要是一个类，但‘<span class="number">3</span>’不是。这个时候需要用到<span class="built_in">NSNumber</span>:</span><br><span class="line"><span class="built_in">NSMutableArray</span> *array= [[<span class="built_in">NSMutableArray</span> alloc]init];</span><br><span class="line">[array addObject:[<span class="built_in">NSNumber</span> numberWithInt:<span class="number">3</span>]];</span><br><span class="line"></span><br><span class="line">一下两行代码是会有警告的  因为<span class="built_in">NSArray</span> 是不可变的.</span><br><span class="line"><span class="built_in">NSArray</span> *array1= [[<span class="built_in">NSArray</span> alloc]init];</span><br><span class="line">[array1 addObject:[<span class="built_in">NSNumber</span> numberWithInt:<span class="number">3</span>]];</span><br></pre></td></tr></table></figure></p>
+<p>Cocoa提供了NSNumber类来包装（即以对象形式实现）基本数据类型。<br>例如以下创建方法：<br><figure class="highlight mm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">+ (<span class="built_in">NSNumber</span>*)numberWithChar: (<span class="keyword">char</span>)value;</span><br><span class="line">+ (<span class="built_in">NSNumber</span>*)numberWithInt: (<span class="keyword">int</span>)value;</span><br><span class="line">+ (<span class="built_in">NSNumber</span>*)numberWithFloat: (<span class="keyword">float</span>)value;</span><br><span class="line">+ (<span class="built_in">NSNumber</span>*)numberWithBool: (<span class="built_in">BOOL</span>) value;</span><br></pre></td></tr></table></figure></p>
+<p>将基本类型数据封装到NSNumber中后，就可以通过下面的实例方法重新获取它：<br><figure class="highlight mm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="keyword">char</span>)charValue;</span><br><span class="line">- (<span class="keyword">int</span>)intValue;</span><br><span class="line">- (<span class="keyword">float</span>)floatValue;</span><br><span class="line">- (<span class="built_in">BOOL</span>)boolValue;</span><br><span class="line">- (<span class="built_in">NSString</span>*)stringValue;</span><br></pre></td></tr></table></figure></p>
+<p>参考:<br><a href="http://www.wuleilei.com/blog/335" target="_blank" rel="external">http://www.wuleilei.com/blog/335</a><br><a href="http://blog.csdn.net/weasleyqi/article/details/33396809" target="_blank" rel="external">http://blog.csdn.net/weasleyqi/article/details/33396809</a></p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/iOS/">iOS</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/2015/08/03/NSNumber的使用/#comments" class="ds-thread-count comments-count-link" data-thread-key="2015/08/03/NSNumber的使用/" data-count-type="comments">&nbsp;</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2015/06/03/NSUserDefaults/" title="自定义对象存储 （NSUserDefaults）" itemprop="url">自定义对象存储 （NSUserDefaults）</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Shemmy" target="_blank" itemprop="author">Shemmy</a>
+		
+  <p class="article-time">
+    <time datetime="2015-06-03T14:05:12.000Z" itemprop="datePublished"> Published 2015-06-03</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h1 id="NSUserDefaults-简介，使用-NSUserDefaults-存储自定义对象"><a href="#NSUserDefaults-简介，使用-NSUserDefaults-存储自定义对象" class="headerlink" title="NSUserDefaults 简介，使用 NSUserDefaults 存储自定义对象"></a>NSUserDefaults 简介，使用 NSUserDefaults 存储自定义对象</h1><h2 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h2><p>NSUserDefaults适合存储轻量级的本地数据，一些简单的数据（NSString类型的）例如密码，网址等，NSUserDefaults肯定是首选，但是如果我们自定义了一个对象，对象保存的是一些信息，这时候就不能直接存储到NSUserDefaults了</p>
+<h2 id="了解NSUserDefaults以及它可以直接存储的类型"><a href="#了解NSUserDefaults以及它可以直接存储的类型" class="headerlink" title="了解NSUserDefaults以及它可以直接存储的类型"></a>了解NSUserDefaults以及它可以直接存储的类型</h2><p>NSUserDefaults是一个<a href="">单例</a>，在整个程序中只有<a href="">一个实例对象</a>，他可以用于数据的永久保存，而且简单实用，这是它可以让数据自由传递的一个前提，也是大家喜欢用它保存简单数据的一个主要原因。<br>使用 NSUserDefaults 存储自定义对象的最初，我们必须认识NSUserDefaults可以存储哪一些类型的数据，下面一一列出：<br>NSUserDefaults支持的数据类型有：NSNumber（NSInteger、float、double），NSString，NSDate，NSArray，NSDictionary，BOOL.<br>如果想要将上述数据类型的数据永久保存到NSUserDefaults中去，只需要简单的操作(一个Value 一个Key ),例如，想要保存一个NSString的对象,代码实现为：<br><figure class="highlight mm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//将NSString 对象存储到 NSUserDefaults 中</span></span><br><span class="line"><span class="built_in">NSString</span> *passWord = <span class="string">@"1234567"</span>;</span><br><span class="line"><span class="built_in">NSUserDefaults</span> *user = [<span class="built_in">NSUserDefaults</span> standardUserDefaults];</span><br><span class="line">[user setObject:passWord forKey:<span class="string">@"userPassWord"</span>];</span><br></pre></td></tr></table></figure></p>
+<h2 id="数据取出"><a href="#数据取出" class="headerlink" title="数据取出"></a>数据取出</h2><p>将数据取出也很简单，只需要取出key 对应的值就好了，代码如下：<br><figure class="highlight mm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">NSUserDefaults</span> *user = [<span class="built_in">NSUserDefaults</span> standardUserDefaults];</span><br><span class="line"><span class="built_in">NSString</span> *passWord = [ user objectForKey:<span class="string">@"userPassWord"</span>];</span><br></pre></td></tr></table></figure></p>
+<p>注意：对相同的Key赋值约等于一次覆盖，要保证每一个Key的唯一性</p>
+<h3 id="值得注意的是："><a href="#值得注意的是：" class="headerlink" title="值得注意的是："></a>值得注意的是：</h3><p>NSUserDefaults 存储的对象全是不可变的（这一点非常关键，弄错的话程序会出bug），例如，如果我想要存储一个 NSMutableArray 对象，我必须先创建一个不可变数组（NSArray）再将它存入NSUserDefaults中去，代码如下：<br><figure class="highlight mm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">NSMutableArray</span> *mutableArray = [<span class="built_in">NSMutableArray</span> arrayWithObjects:<span class="string">@"123"</span>,<span class="string">@"234"</span>, <span class="literal">nil</span>];</span><br><span class="line"><span class="built_in">NSArray</span> * array = [<span class="built_in">NSArray</span> arrayWithArray:mutableArray];</span><br><span class="line"></span><br><span class="line"><span class="built_in">NSUserDefaults</span> *user = [<span class="built_in">NSUserDefaults</span> standardUserDefaults];</span><br><span class="line">[user setObject:array forKey:<span class="string">@"记住存放的一定是不可变的"</span>];</span><br></pre></td></tr></table></figure></p>
+<p>取出数据是一样的，想要用NSUserDefaults中的数据给可变数组赋值</p>
+<h3 id="先给出一个错误的写法："><a href="#先给出一个错误的写法：" class="headerlink" title="先给出一个错误的写法："></a>先给出一个错误的写法：</h3><figure class="highlight mm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*-------------------------错误的赋值方法-------------------*/</span></span><br><span class="line"><span class="built_in">NSUserDefaults</span> *user = [<span class="built_in">NSUserDefaults</span> standardUserDefaults];</span><br><span class="line"></span><br><span class="line"><span class="comment">//这样写后，mutableArray 就变成了不可变数组了，如果你要在数组中添加或删除数据就会出现bug</span></span><br><span class="line"><span class="built_in">NSMutableArray</span> *mutableArray = [user objectForKey:<span class="string">@"记住存放的一定是不可变的"</span>];</span><br></pre></td></tr></table></figure>
+<h3 id="正确的写法："><a href="#正确的写法：" class="headerlink" title="正确的写法："></a>正确的写法：</h3><figure class="highlight mm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*-------------------------正确的赋值方法-------------------*/</span></span><br><span class="line"><span class="built_in">NSUserDefaults</span> *user = [<span class="built_in">NSUserDefaults</span> standardUserDefaults];</span><br><span class="line"></span><br><span class="line"><span class="comment">//可以用alloc 方法代替</span></span><br><span class="line"><span class="built_in">NSMutableArray</span> *mutableArray = [<span class="built_in">NSMutableArray</span> arrayWithArray:[user objectForKey:<span class="string">@"记住存放的一定是不可变的"</span>]];</span><br></pre></td></tr></table></figure>
+<p>使用 NSUserDefaults 存储自定义对象</p>
+<h2 id="将自定义类型转换为NSData类型"><a href="#将自定义类型转换为NSData类型" class="headerlink" title="将自定义类型转换为NSData类型"></a>将自定义类型转换为NSData类型</h2><p>当数据重复而且多的时候（例如想存储全班同学的学号，姓名，性别（这个数据量可能太大了 ）），如果不用SQLite 存储 （多数据最好还是用这个），你可以选择使用归档，再将文件写入本地，但是这种方式和 NSUserDefaults 比起来麻烦多了（因为NSFileManage 本来就挺复杂） ，但是问题是，NSUserDefaults 本身不支持自定义对象的存储，不过它支持NSData的类型，下面举一个例子来介绍。<br>我们先建立一个叫Student 的类，这个类里有三个属性（学号，姓名，性别）,如图：<br>￼<br>我们要做的就是将Student类型变成NSData类型 ，那么就必须实现归档：<br>这里要实现 在.h 文件中申明 NSCoding 协议，再 在 .m 中实现 encodeWithCoder 方法 和<br>initWithCoder 方法就可以了 ：<br>.h 中修改文件如图 ：<br>￼<br>.m中加入代码 ：<br>￼<br>这样做就可以将自定义类型转变为NSData类型了</p>
+<h2 id="将自定义类型数据存入-NSUserDefaults-中"><a href="#将自定义类型数据存入-NSUserDefaults-中" class="headerlink" title="将自定义类型数据存入 NSUserDefaults 中"></a>将自定义类型数据存入 NSUserDefaults 中</h2><p>如果要存储全班同学的信息，我们可以建一个NSMutableArray 来存放全班同学的信息（里面存储的全是NSData对象）在需要存储的地方加入代码：<br><figure class="highlight mm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//首先，要建立一个可变数组来存储 NSDate对象</span></span><br><span class="line"></span><br><span class="line">Student *student = [[Student alloc] ini];</span><br><span class="line"></span><br><span class="line"><span class="comment">//下面进行的是对student对象的 name ， studentNumber ，sex 的赋值</span></span><br><span class="line">student.name = <span class="string">@"lady-奕奕"</span>;</span><br><span class="line">student.studentNumber = <span class="string">@"3100104006"</span>;</span><br><span class="line">student.sex = <span class="string">@"女"</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//这是一个存放全班同学的数组</span></span><br><span class="line"><span class="built_in">NSMutableArray</span> * dataArray = [<span class="built_in">NSMutableArray</span> arrayWithCapacity:<span class="number">50</span>];</span><br><span class="line"></span><br><span class="line"><span class="comment">//将student类型变为NSData类型</span></span><br><span class="line"><span class="built_in">NSData</span> *data = [<span class="built_in">NSKeyedArchiver</span> archivedDataWithRootObject:student];</span><br><span class="line"></span><br><span class="line"><span class="comment">//存放数据的数组将data加入进去</span></span><br><span class="line">[dataArray addObject:data];</span><br></pre></td></tr></table></figure></p>
+<p>如果你只想存一个人的信息，你可以直接将NSData存入NSUserDefaults中 :<br><figure class="highlight mm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">NSData</span> *data = [<span class="built_in">NSKeyedArchiver</span> archivedDataWithRootObject:student];   </span><br><span class="line"></span><br><span class="line"><span class="built_in">NSUserDefaults</span> *user = [<span class="built_in">NSUserDefaults</span> standardUserDefaults];</span><br><span class="line">[user setObject:data forKey:<span class="string">@"oneStudent"</span>];</span><br></pre></td></tr></table></figure></p>
+<p>如果你想存储全班同学的信息，你还要用一个for循环将data 放入 dataArray中，这里具体的操作就不实现了，只给出存放的代码：<br><figure class="highlight mm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//记住要转换成不可变数组类型</span></span><br><span class="line"><span class="built_in">NSArray</span> * array = [<span class="built_in">NSArray</span> arrayWithArray:dataArray];</span><br><span class="line"></span><br><span class="line"><span class="built_in">NSUserDefaults</span> *user = [<span class="built_in">NSUserDefaults</span> standardUserDefaults];</span><br><span class="line">[user setObject:array forKey:<span class="string">@"allStudent"</span>];</span><br></pre></td></tr></table></figure></p>
+<p>从NSUserDefaults中取出数据在还原也很简单<br>例如还原一个学生的数据：<br><figure class="highlight mm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">NSUserDefaults</span> *user = [<span class="built_in">NSUserDefaults</span> standardUserDefaults];</span><br><span class="line"></span><br><span class="line"><span class="built_in">NSdData</span> *data = [user objectForKey:<span class="string">@"oneStudent"</span>];</span><br><span class="line"></span><br><span class="line">Student *student = [<span class="built_in">NSKeyedUnarchiver</span> unarchiveObjectWithData:data];</span><br></pre></td></tr></table></figure></p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>总之，NSUserDefaults 在我们编写代码中是最常用的一个永久保存数据的方法，也是最简单的。</p>
+<ol>
+<li>摘要<br>1.1. 了解NSUserDefaults以及它可以直接存储的类型<br>1.1.1. 数据取出<br>1.2. 使用 NSUserDefaults 存储自定义对象<br>1.2.1. 将自定义类型转换为NSData类型<br>1.2.2. 将自定义类型数据存入 NSUserDefaults 中</li>
+<li>总结</li>
+</ol>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/iOS/">iOS</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/2015/06/03/NSUserDefaults/#comments" class="ds-thread-count comments-count-link" data-thread-key="2015/06/03/NSUserDefaults/" data-count-type="comments">&nbsp;</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2015/03/02/SDWebImage的使用/" title="第三方库 SDWebImage" itemprop="url">第三方库 SDWebImage</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Shemmy" target="_blank" itemprop="author">Shemmy</a>
+		
+  <p class="article-time">
+    <time datetime="2015-03-02T14:05:11.000Z" itemprop="datePublished"> Published 2015-03-02</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <p>最新版SDWebImage的使用<br>我之前写过一篇博客，介绍缓存处理的三种方式，其中最难，最麻烦，最占内存资源的还是图片缓存，最近做的项目有大量的图片处理，还是采用了SDWebImage来处理，但是发现之前封装好的代码报错了。研究发现，是我用了新版的SDWebImage，好多方法都变了。<br>现在把代码贴出来，供大家参考。尤其是新手，看完这篇博客，图片缓存so easy。最后有demo供大家下载，先学习。<br>第一步，下载SDWebImage，导入工程。github托管地址<a href="https://github.com/rs/SDWebImage" target="_blank" rel="external">https://github.com/rs/SDWebImage</a><br>第二步，在需要的地方导入头文件<br><figure class="highlight mm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#import <span class="meta-string">"UIImageView+WebCache.h"</span></span></span><br></pre></td></tr></table></figure></p>
+<p>第三步，调用sd_setImageWithURL：方法缓存图片，注意，这就是新版本的新方法，旧方法是setImageWithURL:。下面将几个方法都介绍一下。<br>sd_setImageWithURL：<br>//图片缓存的基本代码，就是这么简单<br><figure class="highlight mm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[<span class="keyword">self</span>.image1 sd_setImageWithURL:imagePath1];</span><br></pre></td></tr></table></figure></p>
+<p>sd_setImageWithURL: completed:<br>//用block 可以在图片加载完成之后做些事情<br><figure class="highlight mm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[<span class="keyword">self</span>.image2 sd_setImageWithURL:imagePath2 completed:^(<span class="built_in">UIImage</span> *image, <span class="built_in">NSError</span> *error, SDImageCacheType cacheType, <span class="built_in">NSURL</span> *imageURL) &#123;</span><br><span class="line"></span><br><span class="line"><span class="built_in">NSLog</span>(<span class="string">@"这里可以在图片加载完成之后做些事情"</span>);</span><br><span class="line"></span><br><span class="line">&#125;];</span><br></pre></td></tr></table></figure></p>
+<p>sd_setImageWithURL: placeholderImage:<br>//给一张默认图片，先使用默认图片，当图片加载完成后再替换<br><figure class="highlight mm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[<span class="keyword">self</span>.image1 sd_setImageWithURL:imagePath1 placeholderImage:[<span class="built_in">UIImage</span> imageNamed:<span class="string">@"default"</span>]];</span><br></pre></td></tr></table></figure></p>
+<p>sd_setImageWithURL: placeholderImage: completed:<br>//使用默认图片，而且用block 在完成后做一些事情<br><figure class="highlight mm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[<span class="keyword">self</span>.image1 sd_setImageWithURL:imagePath1 placeholderImage:[<span class="built_in">UIImage</span> imageNamed:<span class="string">@"default"</span>] completed:^(<span class="built_in">UIImage</span> *image, <span class="built_in">NSError</span> *error, SDImageCacheType cacheType, <span class="built_in">NSURL</span> *imageURL) &#123;</span><br><span class="line"></span><br><span class="line"><span class="built_in">NSLog</span>(<span class="string">@"图片加载完成后做的事情"</span>);</span><br><span class="line"></span><br><span class="line">&#125;];</span><br></pre></td></tr></table></figure></p>
+<p>sd_setImageWithURL: placeholderImage: options:<br>//options 选择方式<br><figure class="highlight mm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[<span class="keyword">self</span>.image1 sd_setImageWithURL:imagePath1 placeholderImage:[<span class="built_in">UIImage</span> imageNamed:<span class="string">@"default"</span>] options:SDWebImageRetryFailed];</span><br></pre></td></tr></table></figure></p>
+<p>其他就不一一介绍了，oc是自文档语言，看方法名就知道干什么的了。除了带options选项的方法，其他的方法都是综合存储，也就是内存缓存和磁盘缓存结合的方式，如果你只需要内存缓存，那么在options这里选择SDWebImageCacheMemoryOnly就可以了。<br>如果不想深入了解，到这里你已经可以用SDWebimage进行图片缓存了，接下来我要解释options的所有选项，以及SDWebImage内部执行流程。</p>
+<h2 id="options所有选项："><a href="#options所有选项：" class="headerlink" title="options所有选项："></a>options所有选项：</h2><p>　　//失败后重试<br>SDWebImageRetryFailed = 1 &lt;&lt; 0,<br>//UI交互期间开始下载，导致延迟下载比如UIScrollView减速。<br>SDWebImageLowPriority = 1 &lt;&lt; 1,</p>
+<p>//只进行内存缓存<br>SDWebImageCacheMemoryOnly = 1 &lt;&lt; 2,</p>
+<p>//这个标志可以渐进式下载,显示的图像是逐步在下载<br>SDWebImageProgressiveDownload = 1 &lt;&lt; 3,</p>
+<p>//刷新缓存<br>SDWebImageRefreshCached = 1 &lt;&lt; 4,</p>
+<p>//后台下载<br>SDWebImageContinueInBackground = 1 &lt;&lt; 5,</p>
+<p>//NSMutableURLRequest.HTTPShouldHandleCookies = YES;</p>
+<p>SDWebImageHandleCookies = 1 &lt;&lt; 6,</p>
+<p>//允许使用无效的SSL证书<br>//SDWebImageAllowInvalidSSLCertificates = 1 &lt;&lt; 7,</p>
+<p>//优先下载<br>SDWebImageHighPriority = 1 &lt;&lt; 8,</p>
+<p>//延迟占位符<br>SDWebImageDelayPlaceholder = 1 &lt;&lt; 9,</p>
+<p>//改变动画形象<br>SDWebImageTransformAnimatedImage = 1 &lt;&lt; 10,</p>
+<h2 id="SDWebImage内部实现过程"><a href="#SDWebImage内部实现过程" class="headerlink" title="SDWebImage内部实现过程"></a>SDWebImage内部实现过程</h2><p>1 入口 setImageWithURL:placeholderImage:options: 会先把 placeholderImage 显示，然后 SDWebImageManager 根据 URL 开始处理图片。<br>2 进入 SDWebImageManager-downloadWithURL:delegate:options:userInfo:，交给 SDImageCache 从缓存查找图片是否已经下载 queryDiskCacheForKey:delegate:userInfo:.<br>3 先从内存图片缓存查找是否有图片，如果内存中已经有图片缓存，SDImageCacheDelegate 回调 imageCache:didFindImage:forKey:userInfo: 到 SDWebImageManager。<br>4 SDWebImageManagerDelegate 回调 webImageManager:didFinishWithImage: 到 UIImageView+WebCache 等前端展示图片。<br>5 如果内存缓存中没有，生成 NSInvocationOperation 添加到队列开始从硬盘查找图片是否已经缓存。<br>6 根据 URLKey 在硬盘缓存目录下尝试读取图片文件。这一步是在 NSOperation 进行的操作，所以回主线程进行结果回调 notifyDelegate:。<br>7 如果上一操作从硬盘读取到了图片，将图片添加到内存缓存中（如果空闲内存过小，会先清空内存缓存）。SDImageCacheDelegate 回调 imageCache:didFindImage:forKey:userInfo:。进而回调展示图片。<br>8 如果从硬盘缓存目录读取不到图片，说明所有缓存都不存在该图片，需要下载图片，回调 imageCache:didNotFindImageForKey:userInfo:。<br>9 共享或重新生成一个下载器 SDWebImageDownloader 开始下载图片。<br>10 图片下载由 NSURLConnection 来做，实现相关 delegate 来判断图片下载中、下载完成和下载失败。<br>11 connection:didReceiveData: 中利用 ImageIO 做了按图片下载进度加载效果。<br>12 connectionDidFinishLoading: 数据下载完成后交给 SDWebImageDecoder 做图片解码处理。<br>13 图片解码处理在一个 NSOperationQueue 完成，不会拖慢主线程 UI。如果有需要对下载的图片进行二次处理，最好也在这里完成，效率会好很多。<br>14 在主线程 notifyDelegateOnMainThreadWithInfo: 宣告解码完成，imageDecoder:didFinishDecodingImage:userInfo: 回调给 SDWebImageDownloader。<br>15 imageDownloader:didFinishWithImage: 回调给 SDWebImageManager 告知图片下载完成。<br>16 通知所有的 downloadDelegates 下载完成，回调给需要的地方展示图片。<br>17 将图片保存到 SDImageCache 中，内存缓存和硬盘缓存同时保存。写文件到硬盘也在以单独 NSInvocationOperation 完成，避免拖慢主线程。<br>18 SDImageCache 在初始化的时候会注册一些消息通知，在内存警告或退到后台的时候清理内存图片缓存，应用结束的时候清理过期图片。<br>19 SDWI 也提供了 UIButton+WebCache 和 MKAnnotationView+WebCache，方便使用。<br>20 SDWebImagePrefetcher 可以预先下载图片，方便后续使用。<br>从上面流程可以看出，当你调用setImageWithURL:方法的时候，他会自动去给你干这么多事，当你需要在某一具体时刻做事情的时候，你可以覆盖这些方法。比如在下载某个图片的过程中要响应一个事件，就覆盖这个方法：<br>//覆盖方法，指哪打哪，这个方法是下载imagePath2的时候响应<br><figure class="highlight mm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">SDWebImageManager *manager = [SDWebImageManager sharedManager];</span><br><span class="line">[manager downloadImageWithURL:imagePath2 options:SDWebImageRetryFailed progress:^(<span class="built_in">NSInteger</span> receivedSize, <span class="built_in">NSInteger</span> expectedSize) &#123;</span><br><span class="line"></span><br><span class="line"><span class="built_in">NSLog</span>(<span class="string">@"显示当前进度"</span>);</span><br><span class="line"></span><br><span class="line">&#125; completed:^(<span class="built_in">UIImage</span> *image, <span class="built_in">NSError</span> *error, SDImageCacheType cacheType, <span class="built_in">BOOL</span> finished, <span class="built_in">NSURL</span> *imageURL) &#123;</span><br><span class="line"></span><br><span class="line"><span class="built_in">NSLog</span>(<span class="string">@"下载完成"</span>);</span><br><span class="line">&#125;];</span><br></pre></td></tr></table></figure></p>
+<p>对于初级来说，用sd_setImageWithURL:的若干个方法就可以实现很好的图片缓存。</p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/iOS-三方库/">iOS 三方库</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/2015/03/02/SDWebImage的使用/#comments" class="ds-thread-count comments-count-link" data-thread-key="2015/03/02/SDWebImage的使用/" data-count-type="comments">&nbsp;</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2015/02/14/Static Const 详解/" title="Static Const" itemprop="url">Static Const</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Shemmy" target="_blank" itemprop="author">Shemmy</a>
+		
+  <p class="article-time">
+    <time datetime="2015-02-13T18:05:11.000Z" itemprop="datePublished"> Published 2015-02-14</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h1 id="Static-Const-说明"><a href="#Static-Const-说明" class="headerlink" title="Static Const 说明"></a>Static Const 说明</h1><p>对于C/C++语言来讲<br>const就是只读的意思,只在声明中使用;<br>static一般有2个作用,规定作用域和存储方式.对于局部变量,static规定其为静态存储方式,每次调用的初始值为上一次调用的值,调用结束后存储空间不释放;<br>对于全局变量,如果以文件划分作用域的话,此变量只在当前文件可见;对于static函数也是在当前模块内函数可见.<br>static const 应该就是上面两者的合集. </p>
+<h2 id="const-Static在其他情况说明"><a href="#const-Static在其他情况说明" class="headerlink" title="const Static在其他情况说明:"></a>const Static在其他情况说明:</h2><h3 id="全局"><a href="#全局" class="headerlink" title="全局:"></a>全局:</h3><p>const,只读的全局变量,其值不可修改.<br>static,规定此全局变量只在当前模块(文件)中可见.<br>static const,既是只读的,又是只在当前模块中可见的.</p>
+<h3 id="文件"><a href="#文件" class="headerlink" title="文件:"></a>文件:</h3><p>文件指针可当作一个变量来看,与上面所说类似.</p>
+<h3 id="函数"><a href="#函数" class="headerlink" title="函数:"></a>函数:</h3><p>const,返回只读变量的函数.<br>static,规定此函数只在当前模块可见.</p>
+<h3 id="类"><a href="#类" class="headerlink" title="类:"></a>类:</h3><p>const,一般不修饰类,(在VC6.0中试了一下,修饰类没啥作用)<br>static,C++中似乎没有静态类这个说法,一般还是拿类当特殊的变量来看.C#中有静态类的详细说明,且用法与普通类大不相同</p>
+<h2 id="Const用法"><a href="#Const用法" class="headerlink" title="Const用法"></a>Const用法</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> num= <span class="number">7</span>;</span><br><span class="line">num = <span class="number">9</span>; <span class="comment">//有/可能得到编译器的警告。</span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">char</span> ptr，则表示该指针所指向的内容不会被改变，如果在程序中被发生对其赋值的操作，编译时将出错误提示。如：</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">char</span> ptr = “hello”;</span><br><span class="line">ptr = ‘H’;<span class="comment">//错误，所指内容不可改变也可将const 放在星号后面来声明指针本身不可改变。如:</span></span><br><span class="line"><span class="keyword">char</span> <span class="keyword">const</span> ptr;</span><br><span class="line">ptr++; <span class="comment">//错误，指针本身不可改变</span></span><br><span class="line">也可同时禁止改变指针和它所引用的内容，其形式如下： <span class="keyword">const</span> <span class="keyword">char</span>* <span class="keyword">const</span> ptr;</span><br></pre></td></tr></table></figure>
+<h2 id="Static用法"><a href="#Static用法" class="headerlink" title="Static用法"></a>Static用法</h2><p>static 是一个能够减少命名冲突的有用工具。将只在一个模块文件中的变量和函数使用static 修饰，将不会和其他模块可能具有相同名称的函数和变量在模块连接时不会产生名称冲突。一般来说，只要不是提供给其它模块使用的函数，和非全局变量，均应使用static 修饰。将子程序中的变量使用static 修饰时，表示这个变量在程序开始时分配内存，在程序结束时释放，它们在程序执行期间保持它们的值。如：<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">func1</span><span class="params">(<span class="keyword">void</span>)</span></span><br><span class="line"></span>&#123;</span><br><span class="line"><span class="keyword">static</span> <span class="keyword">int</span> time = <span class="number">0</span>;</span><br><span class="line">time++</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">func2</span><span class="params">(<span class="keyword">void</span>)</span></span><br><span class="line"></span>&#123;</span><br><span class="line"><span class="keyword">static</span> <span class="keyword">int</span> time = <span class="number">0</span>;</span><br><span class="line">time++;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>两个子程序中的time 变量使用static 修饰，所以它们是静态变量，每调用一次time将进行加1，并保持这个值。它们的功能与下面程序相似：<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> time1 = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">int</span> time2 = <span class="number">0</span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">func1</span><span class="params">(<span class="keyword">void</span>)</span></span><br><span class="line"></span>&#123;</span><br><span class="line">time1++</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">func2</span><span class="params">(<span class="keyword">void</span>)</span></span><br><span class="line"></span>&#123;</span><br><span class="line">time2++;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>我们可以看出，使用static 修饰后，模块中的全局变量减少，使得程序的更为简单。</p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/C-C-iOS/">C C++ iOS</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/2015/02/14/Static Const 详解/#comments" class="ds-thread-count comments-count-link" data-thread-key="2015/02/14/Static Const 详解/" data-count-type="comments">&nbsp;</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+
+  <nav id="page-nav" class="clearfix">
+    <a class="extend prev" rel="prev" href="/"><span></span>Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+  </nav>
+
+</div>
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+
+
+  
+
+  
+<div class="tagslist">
+	<p class="asidetitle">Tags</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/iOS/" title="iOS">iOS<sup>5</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/iOS-三方库/" title="iOS 三方库">iOS 三方库<sup>4</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/C-C-iOS/" title="C C++ iOS">C C++ iOS<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/iOS-UITextField-转载/" title="iOS UITextField 转载">iOS UITextField 转载<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/iOS-UIBezierPath/" title="iOS UIBezierPath">iOS UIBezierPath<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">Links</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="https://www.github.com/lishengmin" target="_blank" title="一个无聊的程序员小工具">李盛民的GitHub</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://wuchong.me" target="_blank" title="Jark&#39;s Blog">Jark&#39;s Blog</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
+</div>
+
+  <div class="weiboshow">
+  <p class="asidetitle">Weibo</p>
+    <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=null&verifier=b3593ceb&dpc=1"></iframe>
+</div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> Hello ,I&#39;m Sheemy Page in GitHub. <br/>
+			This is my blog,believe it or not.</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		<a href="http://weibo.com/2176287895" target="_blank" class="icon-weibo" title="微博"></a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Shemmy</a> © 2016 
+		
+		<a href="/about" target="_blank" title="Shemmy">Shemmy</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?e6d1f421bbc9962127a50488f9ed37d1";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="Back to Top"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+ </html>

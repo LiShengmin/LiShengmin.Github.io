@@ -1,0 +1,499 @@
+
+ <!DOCTYPE HTML>
+<html >
+<head>
+  <meta charset="UTF-8">
+  
+    <title>第三方库 MJExtension | Shemmy</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="Shemmy">
+    
+
+    
+    <meta name="description" content="MJExtension应用举例Plist → 模型数组控制器中引用#import “MJExtension.h”1模型数组 = [模型类名 objectArrayWithFilename:@&quot;文件名.plist&quot;];
+对NSLog的优化，解决 调试时，打印模型，只打印出内存地址的问题使用方法：在模型类的.m文件中，引用#import “MJExtension.h”在@implementation">
+<meta property="og:type" content="article">
+<meta property="og:title" content="第三方库 MJExtension">
+<meta property="og:url" content="http://yoursite.com/2015/12/30/Json解析之MJExtension应用举例/index.html">
+<meta property="og:site_name" content="Shemmy">
+<meta property="og:description" content="MJExtension应用举例Plist → 模型数组控制器中引用#import “MJExtension.h”1模型数组 = [模型类名 objectArrayWithFilename:@&quot;文件名.plist&quot;];
+对NSLog的优化，解决 调试时，打印模型，只打印出内存地址的问题使用方法：在模型类的.m文件中，引用#import “MJExtension.h”在@implementation">
+<meta property="og:updated_time" content="2016-04-11T04:40:57.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="第三方库 MJExtension">
+<meta name="twitter:description" content="MJExtension应用举例Plist → 模型数组控制器中引用#import “MJExtension.h”1模型数组 = [模型类名 objectArrayWithFilename:@&quot;文件名.plist&quot;];
+对NSLog的优化，解决 调试时，打印模型，只打印出内存地址的问题使用方法：在模型类的.m文件中，引用#import “MJExtension.h”在@implementation">
+
+    
+    <link rel="alternative" href="/atom.xml" title="Shemmy" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="Shemmy" title="Shemmy"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="Shemmy">Shemmy</a></h1>
+				<h2 class="blog-motto"></h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/about">About</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="hidden" name="q" value="site:yoursite.com">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2015/12/30/Json解析之MJExtension应用举例/" title="第三方库 MJExtension" itemprop="url">第三方库 MJExtension</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Shemmy" target="_blank" itemprop="author">Shemmy</a>
+		
+  <p class="article-time">
+    <time datetime="2015-12-29T16:08:32.000Z" itemprop="datePublished"> Published 2015-12-30</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#MJExtension应用举例"><span class="toc-number">1.</span> <span class="toc-text">MJExtension应用举例</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Plist-→-模型数组"><span class="toc-number">1.1.</span> <span class="toc-text">Plist → 模型数组</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#对NSLog的优化，解决-调试时，打印模型，只打印出内存地址的问题"><span class="toc-number">1.2.</span> <span class="toc-text">对NSLog的优化，解决 调试时，打印模型，只打印出内存地址的问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#对NSCoding的优化，不用再写繁琐的解档和归档方法了"><span class="toc-number">1.3.</span> <span class="toc-text">对NSCoding的优化，不用再写繁琐的解档和归档方法了</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#字典数组-→-模型数组"><span class="toc-number">2.</span> <span class="toc-text">字典数组 → 模型数组</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#场景一-字典1-字典2-字典3"><span class="toc-number">2.1.</span> <span class="toc-text">场景一  [字典1,字典2,字典3];</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#场景二-在场景一的基础上，每个字典里面，有数组-假设数组的key值是arrayName"><span class="toc-number">2.2.</span> <span class="toc-text">场景二  在场景一的基础上，每个字典里面，有数组(假设数组的key值是arrayName)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#如果-服务器传过来的-字典数组里的字典的Key，是OC里的关键字"><span class="toc-number">2.3.</span> <span class="toc-text">如果 服务器传过来的 字典数组里的字典的Key，是OC里的关键字</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#单个字典-→-单个模型"><span class="toc-number">2.4.</span> <span class="toc-text">单个字典 → 单个模型</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#load-更多"><span class="toc-number">3.</span> <span class="toc-text">+load 更多</span></a></li></ol>
+		
+		</div>
+		
+		<h1 id="MJExtension应用举例"><a href="#MJExtension应用举例" class="headerlink" title="MJExtension应用举例"></a>MJExtension应用举例</h1><h2 id="Plist-→-模型数组"><a href="#Plist-→-模型数组" class="headerlink" title="Plist → 模型数组"></a>Plist → 模型数组</h2><p>控制器中引用#import “MJExtension.h”<br><figure class="highlight mm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">模型数组 = [模型类名 objectArrayWithFilename:<span class="string">@"文件名.plist"</span>];</span><br></pre></td></tr></table></figure></p>
+<h2 id="对NSLog的优化，解决-调试时，打印模型，只打印出内存地址的问题"><a href="#对NSLog的优化，解决-调试时，打印模型，只打印出内存地址的问题" class="headerlink" title="对NSLog的优化，解决 调试时，打印模型，只打印出内存地址的问题"></a>对NSLog的优化，解决 调试时，打印模型，只打印出内存地址的问题</h2><p>使用方法：在模型类的.m文件中，引用#import “MJExtension.h”<br>在@implementation 和 @end之间，写上<br><figure class="highlight mm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">MJLogAllIvrs</span><br></pre></td></tr></table></figure></p>
+<h2 id="对NSCoding的优化，不用再写繁琐的解档和归档方法了"><a href="#对NSCoding的优化，不用再写繁琐的解档和归档方法了" class="headerlink" title="对NSCoding的优化，不用再写繁琐的解档和归档方法了"></a>对NSCoding的优化，不用再写繁琐的解档和归档方法了</h2><p>使用方法：在模型类的.m文件中，引用#import “MJExtension.h”<br>在@implementation 和 @end之间，写上<br><figure class="highlight mm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">MJCodingImplementation</span><br></pre></td></tr></table></figure></p>
+<h1 id="字典数组-→-模型数组"><a href="#字典数组-→-模型数组" class="headerlink" title="字典数组 → 模型数组"></a>字典数组 → 模型数组</h1><h2 id="场景一-字典1-字典2-字典3"><a href="#场景一-字典1-字典2-字典3" class="headerlink" title="场景一  [字典1,字典2,字典3];"></a>场景一  [字典1,字典2,字典3];</h2><p>如果每个字典都是一个模型，可以用<br><figure class="highlight mm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">NSArray</span> *modelArray = [模型类名 objectArrayWithKeyValuesArray:字段数组];</span><br></pre></td></tr></table></figure></p>
+<h2 id="场景二-在场景一的基础上，每个字典里面，有数组-假设数组的key值是arrayName"><a href="#场景二-在场景一的基础上，每个字典里面，有数组-假设数组的key值是arrayName" class="headerlink" title="场景二  在场景一的基础上，每个字典里面，有数组(假设数组的key值是arrayName)"></a>场景二  在场景一的基础上，每个字典里面，有数组(假设数组的key值是arrayName)</h2><p>数组里面存放着若干个相同的模型,使用下面的方法<br>使用方法：<br>首先在模型类.m文件中，引入#import “MJExtension.h”<br>然后在 @implementation 和 @end之间 写上<br><figure class="highlight mm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="built_in">NSDictionary</span> *)objectClassInArray</span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">return</span> @&#123;<span class="string">@"arrayName"</span> : [模型类名 class]&#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="如果-服务器传过来的-字典数组里的字典的Key，是OC里的关键字"><a href="#如果-服务器传过来的-字典数组里的字典的Key，是OC里的关键字" class="headerlink" title="如果 服务器传过来的 字典数组里的字典的Key，是OC里的关键字"></a>如果 服务器传过来的 字典数组里的字典的Key，是OC里的关键字</h2><p>而使用MJExtention的前提是，模型里的属性名和数组的key一致才行（区分大小写），怎么办？<br>使用replacedKeyFromPropertyName<br>使用方法：1.在模型类.m文件引入”MJExtension.h”<br>　　　　2.实现方法<br><figure class="highlight mm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">+ (<span class="built_in">NSDictionary</span> *)replacedKeyFromPropertyName</span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">return</span> @&#123;@“非关键字的属性名” : @“数组的key”&#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="单个字典-→-单个模型"><a href="#单个字典-→-单个模型" class="headerlink" title="单个字典 → 单个模型"></a>单个字典 → 单个模型</h2><figure class="highlight mm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">+ (instancetype)objectWithKeyValues:(<span class="built_in">NSDictionary</span> *)keyValues</span><br></pre></td></tr></table></figure>
+<h1 id="load-更多"><a href="#load-更多" class="headerlink" title="+load 更多"></a>+load 更多</h1><figure class="highlight mm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line">+ (<span class="keyword">void</span>)load</span><br><span class="line">&#123;</span><br><span class="line"><span class="meta">#pragma mark 如果使用NSObject来调用这些方法，代表所有类都会生效</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#pragma mark User类的只有name、icon属性参与字典转模型</span></span><br><span class="line"><span class="comment">//    [User setupAllowedPropertyNames:^NSArray *&#123;</span></span><br><span class="line"><span class="comment">//        return @[@"name", @"icon"];</span></span><br><span class="line"><span class="comment">//    &#125;];</span></span><br><span class="line"><span class="comment">// 相当于在User.m中实现了+(NSArray *)allowedPropertyNames方法</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#pragma mark Bag类中的name属性不参与归档</span></span><br><span class="line">[Bag setupIgnoredCodingPropertyNames:^<span class="built_in">NSArray</span> *&#123;</span><br><span class="line"><span class="keyword">return</span> @[<span class="string">@"name"</span>];</span><br><span class="line">&#125;];</span><br><span class="line"><span class="comment">// 相当于在Bag.m中实现了+(NSArray *)ignoredCodingPropertyNames方法</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#pragma mark Bag类中只有price属性参与归档</span></span><br><span class="line"><span class="comment">//    [Bag setupAllowedCodingPropertyNames:^NSArray *&#123;</span></span><br><span class="line"><span class="comment">//        return @[@"price"];</span></span><br><span class="line"><span class="comment">//    &#125;];</span></span><br><span class="line"><span class="comment">// 相当于在Bag.m中实现了+(NSArray *)allowedCodingPropertyNames方法</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#pragma mark StatusResult类中的statuses数组中存放的是Status模型</span></span><br><span class="line"><span class="meta">#pragma mark StatusResult类中的ads数组中存放的是Ad模型</span></span><br><span class="line">[StatusResult setupObjectClassInArray:^<span class="built_in">NSDictionary</span> *&#123;</span><br><span class="line"><span class="keyword">return</span> @&#123;</span><br><span class="line"><span class="string">@"statuses"</span> : <span class="string">@"Status"</span>,</span><br><span class="line"><span class="comment">//                 @"statuses" : [Status class],</span></span><br><span class="line"><span class="string">@"ads"</span> : <span class="string">@"Ad"</span></span><br><span class="line"><span class="comment">//                 @"ads" : [Ad class]</span></span><br><span class="line">&#125;;</span><br><span class="line">&#125;];</span><br><span class="line"><span class="comment">// 相当于在StatusResult.m中实现了+(NSDictionary *)objectClassInArray方法</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#pragma mark Student中的ID属性对应着字典中的id</span></span><br><span class="line"><span class="meta">#pragma mark ....</span></span><br><span class="line">[Student setupReplacedKeyFromPropertyName:^<span class="built_in">NSDictionary</span> *&#123;</span><br><span class="line"><span class="keyword">return</span> @&#123;<span class="string">@"ID"</span> : <span class="string">@"id"</span>,</span><br><span class="line"><span class="string">@"desc"</span> : <span class="string">@"desciption"</span>,</span><br><span class="line"><span class="string">@"oldName"</span> : <span class="string">@"name.oldName"</span>,</span><br><span class="line"><span class="string">@"nowName"</span> : <span class="string">@"name.newName"</span>,</span><br><span class="line"><span class="string">@"otherName"</span> : @[<span class="string">@"otherName"</span>, <span class="string">@"name.newName"</span>, <span class="string">@"name.oldName"</span>],</span><br><span class="line"><span class="string">@"nameChangedTime"</span> : <span class="string">@"name.info[1].nameChangedTime"</span>,</span><br><span class="line"><span class="string">@"bag"</span> : <span class="string">@"other.bag"</span></span><br><span class="line">&#125;;</span><br><span class="line">&#125;];</span><br><span class="line"><span class="comment">// 相当于在Student.m中实现了+(NSDictionary *)replacedKeyFromPropertyName方法</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#pragma mark Dog的所有驼峰属性转成下划线key去字典中取值</span></span><br><span class="line">[Dog setupReplacedKeyFromPropertyName121:^<span class="built_in">NSString</span> *(<span class="built_in">NSString</span> *propertyName) &#123;</span><br><span class="line"><span class="keyword">return</span> [propertyName underlineFromCamel];</span><br><span class="line">&#125;];</span><br><span class="line"><span class="comment">// 相当于在Dog.m中实现了+(NSDictionary *)replacedKeyFromPropertyName121:方法</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#pragma mark Book的日期处理、字符串nil值处理</span></span><br><span class="line">[Book setupNewValueFromOldValue:^<span class="keyword">id</span>(<span class="keyword">id</span> object, <span class="keyword">id</span> oldValue, MJProperty *property) &#123;</span><br><span class="line"><span class="keyword">if</span> ([property.name isEqualToString:<span class="string">@"publisher"</span>]) &#123;</span><br><span class="line"><span class="keyword">if</span> (oldValue == <span class="literal">nil</span> || [oldValue isKindOfClass:[<span class="built_in">NSNull</span> class]]) <span class="keyword">return</span> <span class="string">@""</span>;</span><br><span class="line">&#125; <span class="keyword">else</span> <span class="keyword">if</span> (property.type.typeClass == [<span class="built_in">NSDate</span> class]) &#123;</span><br><span class="line"><span class="built_in">NSDateFormatter</span> *fmt = [[<span class="built_in">NSDateFormatter</span> alloc] init];</span><br><span class="line">fmt.dateFormat = <span class="string">@"yyyy-MM-dd"</span>;</span><br><span class="line"><span class="keyword">return</span> [fmt dateFromString:oldValue];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">return</span> oldValue;</span><br><span class="line">&#125;];</span><br><span class="line"><span class="comment">// 相当于在Book.中实现了- (id)newValueFromOldValue:property:方法</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/iOS-三方库/">iOS 三方库</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://yoursite.com/2015/12/30/Json解析之MJExtension应用举例/" data-title="第三方库 MJExtension | Shemmy" data-tsina="null" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2016/01/14/UITextField中文输入法时对字符长度的限制/" title="中文输入法时对字符长度的限制(UITextField)">
+  <strong>上一篇：</strong><br/>
+  <span>
+  中文输入法时对字符长度的限制(UITextField)</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2015/12/24/iOS7中UIKit支持的动力行为之UIAttachmentBehavior/"  title="iOS7中UIKit支持的动力行为之UIAttachmentBehavior">
+ <strong>下一篇：</strong><br/> 
+ <span>iOS7中UIKit支持的动力行为之UIAttachmentBehavior
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+<section id="comments" class="comment">
+	<div class="ds-thread" data-thread-key="2015/12/30/Json解析之MJExtension应用举例/" data-title="第三方库 MJExtension" data-url="http://yoursite.com/2015/12/30/Json解析之MJExtension应用举例/"></div>
+</section>
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#MJExtension应用举例"><span class="toc-number">1.</span> <span class="toc-text">MJExtension应用举例</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Plist-→-模型数组"><span class="toc-number">1.1.</span> <span class="toc-text">Plist → 模型数组</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#对NSLog的优化，解决-调试时，打印模型，只打印出内存地址的问题"><span class="toc-number">1.2.</span> <span class="toc-text">对NSLog的优化，解决 调试时，打印模型，只打印出内存地址的问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#对NSCoding的优化，不用再写繁琐的解档和归档方法了"><span class="toc-number">1.3.</span> <span class="toc-text">对NSCoding的优化，不用再写繁琐的解档和归档方法了</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#字典数组-→-模型数组"><span class="toc-number">2.</span> <span class="toc-text">字典数组 → 模型数组</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#场景一-字典1-字典2-字典3"><span class="toc-number">2.1.</span> <span class="toc-text">场景一  [字典1,字典2,字典3];</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#场景二-在场景一的基础上，每个字典里面，有数组-假设数组的key值是arrayName"><span class="toc-number">2.2.</span> <span class="toc-text">场景二  在场景一的基础上，每个字典里面，有数组(假设数组的key值是arrayName)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#如果-服务器传过来的-字典数组里的字典的Key，是OC里的关键字"><span class="toc-number">2.3.</span> <span class="toc-text">如果 服务器传过来的 字典数组里的字典的Key，是OC里的关键字</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#单个字典-→-单个模型"><span class="toc-number">2.4.</span> <span class="toc-text">单个字典 → 单个模型</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#load-更多"><span class="toc-number">3.</span> <span class="toc-text">+load 更多</span></a></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+
+
+  
+
+  
+<div class="tagslist">
+	<p class="asidetitle">Tags</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/iOS/" title="iOS">iOS<sup>5</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/iOS-三方库/" title="iOS 三方库">iOS 三方库<sup>4</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/C-C-iOS/" title="C C++ iOS">C C++ iOS<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/iOS-UITextField-转载/" title="iOS UITextField 转载">iOS UITextField 转载<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/iOS-UIBezierPath/" title="iOS UIBezierPath">iOS UIBezierPath<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">Links</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="https://www.github.com/lishengmin" target="_blank" title="一个无聊的程序员小工具">李盛民的GitHub</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://wuchong.me" target="_blank" title="Jark&#39;s Blog">Jark&#39;s Blog</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
+</div>
+
+  <div class="weiboshow">
+  <p class="asidetitle">Weibo</p>
+    <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=null&verifier=b3593ceb&dpc=1"></iframe>
+</div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> Hello ,I&#39;m Sheemy Page in GitHub. <br/>
+			This is my blog,believe it or not.</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		<a href="http://weibo.com/2176287895" target="_blank" class="icon-weibo" title="微博"></a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Shemmy</a> © 2016 
+		
+		<a href="/about" target="_blank" title="Shemmy">Shemmy</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"https://lcvem.duoshuo.com"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script> 
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?e6d1f421bbc9962127a50488f9ed37d1";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="Back to Top"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>

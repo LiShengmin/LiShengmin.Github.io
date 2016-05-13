@@ -1,0 +1,512 @@
+
+ <!DOCTYPE HTML>
+<html >
+<head>
+  <meta charset="UTF-8">
+  
+    <title>状态栏(UIStatusBar)颜色 | Shemmy</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="Shemmy">
+    
+
+    
+    <meta name="description" content="UIStatusBar的相关设置知识普及iOS上状态栏 就是指的最上面的20像素高的部分状态栏分前后两部分，要分清这两个概念，后面会用到：前景部分：就是指的显示电池、时间等部分；背景部分：就是显示黑色或者图片的背景部分；
+如下图：前景部分为白色，背景部分为黑色在此输入图片描述
+注意：这里只涉及到ios7以及更高版本，低版本下面的讲解可能无效。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="状态栏(UIStatusBar)颜色">
+<meta property="og:url" content="http://yoursite.com/2016/04/29/状态栏-UIStatusBar-颜色/index.html">
+<meta property="og:site_name" content="Shemmy">
+<meta property="og:description" content="UIStatusBar的相关设置知识普及iOS上状态栏 就是指的最上面的20像素高的部分状态栏分前后两部分，要分清这两个概念，后面会用到：前景部分：就是指的显示电池、时间等部分；背景部分：就是显示黑色或者图片的背景部分；
+如下图：前景部分为白色，背景部分为黑色在此输入图片描述
+注意：这里只涉及到ios7以及更高版本，低版本下面的讲解可能无效。">
+<meta property="og:image" content="http://yoursite.com/image/005046_Oztm_574576.png">
+<meta property="og:updated_time" content="2016-04-29T08:37:34.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="状态栏(UIStatusBar)颜色">
+<meta name="twitter:description" content="UIStatusBar的相关设置知识普及iOS上状态栏 就是指的最上面的20像素高的部分状态栏分前后两部分，要分清这两个概念，后面会用到：前景部分：就是指的显示电池、时间等部分；背景部分：就是显示黑色或者图片的背景部分；
+如下图：前景部分为白色，背景部分为黑色在此输入图片描述
+注意：这里只涉及到ios7以及更高版本，低版本下面的讲解可能无效。">
+<meta name="twitter:image" content="http://yoursite.com/image/005046_Oztm_574576.png">
+
+    
+    <link rel="alternative" href="/atom.xml" title="Shemmy" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="Shemmy" title="Shemmy"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="Shemmy">Shemmy</a></h1>
+				<h2 class="blog-motto"></h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/about">About</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="hidden" name="q" value="site:yoursite.com">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2016/04/29/状态栏-UIStatusBar-颜色/" title="状态栏(UIStatusBar)颜色" itemprop="url">状态栏(UIStatusBar)颜色</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Shemmy" target="_blank" itemprop="author">Shemmy</a>
+		
+  <p class="article-time">
+    <time datetime="2016-04-29T08:06:19.000Z" itemprop="datePublished"> Published 2016-04-29</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#UIStatusBar的相关设置"><span class="toc-number">1.</span> <span class="toc-text">UIStatusBar的相关设置</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#知识普及"><span class="toc-number">1.1.</span> <span class="toc-text">知识普及</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#设置statusBar的【前景部分】"><span class="toc-number">1.2.</span> <span class="toc-text">设置statusBar的【前景部分】</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-plist设置statusBar"><span class="toc-number">1.2.1.</span> <span class="toc-text">1.plist设置statusBar</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-程序代码里设置statusBar"><span class="toc-number">1.2.2.</span> <span class="toc-text">2.程序代码里设置statusBar</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#注意："><span class="toc-number">1.2.2.1.</span> <span class="toc-text">注意：</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#设置statusBar的【背景部分】"><span class="toc-number">1.3.</span> <span class="toc-text">设置statusBar的【背景部分】</span></a></li></ol></li></ol>
+		
+		</div>
+		
+		<h1 id="UIStatusBar的相关设置"><a href="#UIStatusBar的相关设置" class="headerlink" title="UIStatusBar的相关设置"></a>UIStatusBar的相关设置</h1><h2 id="知识普及"><a href="#知识普及" class="headerlink" title="知识普及"></a>知识普及</h2><p>iOS上状态栏 就是指的最上面的20像素高的部分<br>状态栏分前后两部分，要分清这两个概念，后面会用到：<br>前景部分：就是指的显示电池、时间等部分；<br>背景部分：就是显示黑色或者图片的背景部分；</p>
+<p>如下图：前景部分为白色，背景部分为黑色<br><img src="/image/005046_Oztm_574576.png" alt=""><br>在此输入图片描述</p>
+<p>注意：这里只涉及到ios7以及更高版本，低版本下面的讲解可能无效。<a id="more"></a></p>
+<h2 id="设置statusBar的【前景部分】"><a href="#设置statusBar的【前景部分】" class="headerlink" title="设置statusBar的【前景部分】"></a>设置statusBar的【前景部分】</h2><p>简单来说，就是设置显示电池电量、时间、网络部分标示的颜色，<br>这里只能设置两种颜色：<br>    默认的黑色（UIStatusBarStyleDefault）<br>    白色     （UIStatusBarStyleLightContent）<br>可以设置的地方有两个：plist设置里面 和 程序代码里</p>
+<h3 id="1-plist设置statusBar"><a href="#1-plist设置statusBar" class="headerlink" title="1.plist设置statusBar"></a>1.plist设置statusBar</h3><p>在plist里增加一行 UIStatusBarStyle(或者是“Status bar style”也可以)，这里可以设置两个值，就是上面提到那两个<br>UIStatusBarStyleDefault 和 UIStatusBarStyleLightContent<br>这样在app启动的launch页显示的时候，statusBar的样式就是上面plist设置的风格。</p>
+<h3 id="2-程序代码里设置statusBar"><a href="#2-程序代码里设置statusBar" class="headerlink" title="2.程序代码里设置statusBar"></a>2.程序代码里设置statusBar</h3><figure class="highlight mm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[[<span class="built_in">UIApplication</span> sharedApplication] setStatusBarStyle:<span class="built_in">UIStatusBarStyleLightContent</span>];</span><br></pre></td></tr></table></figure>
+<p>或者<br>//相对于上面的接口，这个接口可以动画的改变statusBar的前景色<br><figure class="highlight mm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[[<span class="built_in">UIApplication</span> sharedApplication] setStatusBarStyle:<span class="built_in">UIStatusBarStyleLightContent</span> animated:<span class="literal">YES</span>];</span><br></pre></td></tr></table></figure></p>
+<p>不仅如此，ios还很贴心的在UIViewController也增加了几个接口，<br>目的是让状态栏根据当前显示的UIViewController来定制statusBar的前景部分。<br><figure class="highlight mm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="built_in">UIStatusBarStyle</span>)preferredStatusBarStyle;</span><br><span class="line">- (<span class="built_in">UIViewController</span> *)childViewControllerForStatusBarStyle;</span><br><span class="line">- (<span class="keyword">void</span>)setNeedsStatusBarAppearanceUpdate</span><br><span class="line">- (<span class="built_in">UIStatusBarStyle</span>)preferredStatusBarStyle:</span><br></pre></td></tr></table></figure></p>
+<p>在你自己的UIViewController里重写此方法，返回你需要的值(UIStatusBarStyleDefault 或者 UIStatusBarStyleLightContent)；</p>
+<h4 id="注意："><a href="#注意：" class="headerlink" title="注意："></a>注意：</h4><p>这里如果你只是简单的return一个固定的值，那么该UIViewController显示的时候，程序就会马上调用该方法，来改变statusBar的前景部分；<br>如果在该UIViewController已经在显示在当前，你可能还要在当前页面不时的更改statusBar的前景色，那么，你首先需要调用下面的setNeedsStatusBarAppearanceUpdate方法(这个方法会通知系统去调用当前UIViewController的preferredStatusBarStyle方法)， 这个和UIView的setNeedsDisplay原理差不多(调用UIView对象的setNeedsDisplay方法后，系统会在下次页面刷新时，调用重绘该view，系统最快能1秒刷新60次页面，具体要看程序设置)。<br><figure class="highlight mm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="built_in">UIViewController</span> *)childViewControllerForStatusBarStyle:</span><br></pre></td></tr></table></figure></p>
+<p>这个接口也很重要，默认返回值为nil。当我们调用setNeedsStatusBarAppearanceUpdate时，系统会调用application.window的rootViewController的preferredStatusBarStyle方法，我们的程序里一般都是用UINavigationController做root，如果是这种情况，那我们自己的UIViewController里的preferredStatusBarStyle根本不会被调用；<br>这种情况下childViewControllerForStatusBarStyle就派上用场了，<br>我们要子类化一个UINavigationController，在这个子类里面重写childViewControllerForStatusBarStyle方法，如下：<br><figure class="highlight mm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="built_in">UIViewController</span> *)childViewControllerForStatusBarStyle&#123;</span><br><span class="line"><span class="keyword">return</span> <span class="keyword">self</span>.topViewController;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>上面代码的意思就是说，不要调用我自己(就是UINavigationController)的preferredStatusBarStyle方法，而是去调用navigationController.topViewController的preferredStatusBarStyle方法，这样写的话，就能保证当前显示的UIViewController的preferredStatusBarStyle方法能影响statusBar的前景部分。</p>
+<p>另外，有时我们的当前显示的UIViewController可能有多个childViewController，重写当前UIViewController的childViewControllerForStatusBarStyle方法，让childViewController的preferredStatusBarStyle生效(当前UIViewController的preferredStatusBarStyle就不会被调用了)。</p>
+<p>简单来说，只要UIViewController重写的的childViewControllerForStatusBarStyle方法返回值不是nil，那么，UIViewController的preferredStatusBarStyle方法就不会被系统调用，系统会调用childViewControllerForStatusBarStyle方法返回的UIViewController的preferredStatusBarStyle方法。</p>
+<ul>
+<li>(void)setNeedsStatusBarAppearanceUpdate:</li>
+</ul>
+<p>让系统去调用application.window的rootViewController的preferredStatusBarStyle方法,如果rootViewController的childViewControllerForStatusBarStyle返回值不为nil，则参考上面的讲解。</p>
+<h2 id="设置statusBar的【背景部分】"><a href="#设置statusBar的【背景部分】" class="headerlink" title="设置statusBar的【背景部分】"></a>设置statusBar的【背景部分】</h2><p>背景部分，简单来说，就是背景色；改变方法有两种：<br>系统提供的方法<br>navigationBar的setBarTintColor接口，用此接口可改变statusBar的背景色<br>注意：一旦你设置了navigationBar的- (void)setBackgroundImage:(UIImage *)backgroundImage forBarMetrics:(UIBarMetrics)barMetrics接口，那么上面的setBarTintColor接口就不能改变statusBar的背景色，statusBar的背景色就会变成纯黑色。<br>另辟蹊径<br>创建一个UIView，<br>设置该UIView的frame.size 和statusBar大小一样，<br>设置该UIView的frame.origin 为{0,-20},<br>设置该UIView的背景色为你希望的statusBar的颜色，<br>在navigationBar上addSubView该UIView即可。<br>注意：<br>1.引用来自“云天青”的评论<br>你好，<br><figure class="highlight mm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[[<span class="built_in">UIApplication</span> sharedApplication] setStatusBarStyle:<span class="built_in">UIStatusBarStyleLightContent</span>];在 AppDelegate里</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight mm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="built_in">BOOL</span>)application:(<span class="built_in">UIApplication</span> *)application didFinishLaunchingWithOptions:(<span class="built_in">NSDictionary</span> *)launchOptions &#123; 执行也不会起作用。就在控制里写</span><br><span class="line">- (<span class="built_in">UIStatusBarStyle</span>)preferredStatusBarStyle:起到作用。请问这是什么问题？</span><br></pre></td></tr></table></figure>
+<p>回答：<br>info.plist文件中，View controller-based status bar appearance项设为YES，则View controller对status bar的设置优先级高于application的设置。为NO则以application的设置为准，view controller的prefersStatusBarHidden方法无效，是根本不会被调用的</p>
+<p>作者：shede333<br>版权声明：原创文章，版权声明：自由转载-非商用-非衍生-保持署名<br>主页：<a href="http://my.oschina.net/shede333" target="_blank" rel="external">主页1</a> &amp;&amp; <a href="http://blog.sina.com.cn/u/1509658847" target="_blank" rel="external">主页2</a></p>
+<p>第三方方法<br>“CWStatusBarNotification 在状态栏显示自定义通知”,我感觉 这个第三方,挺好用的 <a href="http://www.ios122.com/2015/08/cwstatusbarnotification/" target="_blank" rel="external">地址</a></p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/iOS/">iOS</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://yoursite.com/2016/04/29/状态栏-UIStatusBar-颜色/" data-title="状态栏(UIStatusBar)颜色 | Shemmy" data-tsina="null" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+
+<div class="next">
+<a href="/2016/03/04/Masony/"  title="第三方库 Masonry使用心得">
+ <strong>下一篇：</strong><br/> 
+ <span>第三方库 Masonry使用心得
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+<section id="comments" class="comment">
+	<div class="ds-thread" data-thread-key="2016/04/29/状态栏-UIStatusBar-颜色/" data-title="状态栏(UIStatusBar)颜色" data-url="http://yoursite.com/2016/04/29/状态栏-UIStatusBar-颜色/"></div>
+</section>
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#UIStatusBar的相关设置"><span class="toc-number">1.</span> <span class="toc-text">UIStatusBar的相关设置</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#知识普及"><span class="toc-number">1.1.</span> <span class="toc-text">知识普及</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#设置statusBar的【前景部分】"><span class="toc-number">1.2.</span> <span class="toc-text">设置statusBar的【前景部分】</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-plist设置statusBar"><span class="toc-number">1.2.1.</span> <span class="toc-text">1.plist设置statusBar</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-程序代码里设置statusBar"><span class="toc-number">1.2.2.</span> <span class="toc-text">2.程序代码里设置statusBar</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#注意："><span class="toc-number">1.2.2.1.</span> <span class="toc-text">注意：</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#设置statusBar的【背景部分】"><span class="toc-number">1.3.</span> <span class="toc-text">设置statusBar的【背景部分】</span></a></li></ol></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+
+
+  
+
+  
+<div class="tagslist">
+	<p class="asidetitle">Tags</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/iOS/" title="iOS">iOS<sup>5</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/iOS-三方库/" title="iOS 三方库">iOS 三方库<sup>4</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/C-C-iOS/" title="C C++ iOS">C C++ iOS<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/iOS-UITextField-转载/" title="iOS UITextField 转载">iOS UITextField 转载<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/iOS-UIBezierPath/" title="iOS UIBezierPath">iOS UIBezierPath<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">Links</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="https://www.github.com/lishengmin" target="_blank" title="一个无聊的程序员小工具">李盛民的GitHub</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://wuchong.me" target="_blank" title="Jark&#39;s Blog">Jark&#39;s Blog</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
+</div>
+
+  <div class="weiboshow">
+  <p class="asidetitle">Weibo</p>
+    <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=null&verifier=b3593ceb&dpc=1"></iframe>
+</div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> Hello ,I&#39;m Sheemy Page in GitHub. <br/>
+			This is my blog,believe it or not.</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		<a href="http://weibo.com/2176287895" target="_blank" class="icon-weibo" title="微博"></a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Shemmy</a> © 2016 
+		
+		<a href="/about" target="_blank" title="Shemmy">Shemmy</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"https://lcvem.duoshuo.com"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script> 
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?e6d1f421bbc9962127a50488f9ed37d1";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="Back to Top"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>
