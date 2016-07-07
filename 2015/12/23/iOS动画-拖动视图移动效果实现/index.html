@@ -11,19 +11,16 @@
     
 
     
-    <meta name="description" content="iOS 动画-拖动视图实现移动效果
-拖动视图实现移动效果曾今，答应一个朋友写这么一个小功能。忽然，想起来，还是写一下。该功能，就是拖动View到指定的位置。其实，功能比较简单，就是iOS手势动画中的拖动。就不废话了，直接代码注册拖动动画123UIPanGestureRecognizer * panGestureRecognizer = [[UIPanGestureRecognizer alloc]">
+    <meta name="description" content="拖动视图实现移动效果曾今，答应一个朋友写这么一个小功能。忽然，想起来，还是写一下。该功能，就是拖动View到指定的位置。其实，功能比较简单，就是iOS手势动画中的拖动。就不废话了，直接代码">
 <meta property="og:type" content="article">
 <meta property="og:title" content="动画-拖动视图实现移动效果">
 <meta property="og:url" content="http://yoursite.com/2015/12/23/iOS动画-拖动视图移动效果实现/index.html">
 <meta property="og:site_name" content="Shemmy">
-<meta property="og:description" content="iOS 动画-拖动视图实现移动效果
-拖动视图实现移动效果曾今，答应一个朋友写这么一个小功能。忽然，想起来，还是写一下。该功能，就是拖动View到指定的位置。其实，功能比较简单，就是iOS手势动画中的拖动。就不废话了，直接代码注册拖动动画123UIPanGestureRecognizer * panGestureRecognizer = [[UIPanGestureRecognizer alloc]">
-<meta property="og:updated_time" content="2016-04-09T12:42:59.000Z">
+<meta property="og:description" content="拖动视图实现移动效果曾今，答应一个朋友写这么一个小功能。忽然，想起来，还是写一下。该功能，就是拖动View到指定的位置。其实，功能比较简单，就是iOS手势动画中的拖动。就不废话了，直接代码">
+<meta property="og:updated_time" content="2016-07-07T15:36:18.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="动画-拖动视图实现移动效果">
-<meta name="twitter:description" content="iOS 动画-拖动视图实现移动效果
-拖动视图实现移动效果曾今，答应一个朋友写这么一个小功能。忽然，想起来，还是写一下。该功能，就是拖动View到指定的位置。其实，功能比较简单，就是iOS手势动画中的拖动。就不废话了，直接代码注册拖动动画123UIPanGestureRecognizer * panGestureRecognizer = [[UIPanGestureRecognizer alloc]">
+<meta name="twitter:description" content="拖动视图实现移动效果曾今，答应一个朋友写这么一个小功能。忽然，想起来，还是写一下。该功能，就是拖动View到指定的位置。其实，功能比较简单，就是iOS手势动画中的拖动。就不废话了，直接代码">
 
     
     <link rel="alternative" href="/atom.xml" title="Shemmy" type="application/atom+xml">
@@ -99,14 +96,15 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">Contents</strong>
 		
-			
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#拖动视图实现移动效果"><span class="toc-number">1.</span> <span class="toc-text">拖动视图实现移动效果</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#注册拖动动画"><span class="toc-number">1.1.</span> <span class="toc-text">注册拖动动画</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#拖动处理函数"><span class="toc-number">1.2.</span> <span class="toc-text">拖动处理函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#注"><span class="toc-number">1.3.</span> <span class="toc-text">注:</span></a></li></ol></li></ol>
 		
 		</div>
 		
-		<p>iOS 动画-拖动视图实现移动效果</p>
-<p>拖动视图实现移动效果<br>曾今，答应一个朋友写这么一个小功能。忽然，想起来，还是写一下。<br>该功能，就是拖动View到指定的位置。<br>其实，功能比较简单，就是iOS手势动画中的拖动。就不废话了，直接代码<br>注册拖动动画<br><figure class="highlight mm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">UIPanGestureRecognizer</span> * panGestureRecognizer = [[<span class="built_in">UIPanGestureRecognizer</span> alloc] initWithTarget:<span class="keyword">self</span></span><br><span class="line">action:<span class="keyword">@selector</span>(doHandlePanAction:)];</span><br><span class="line">[<span class="keyword">self</span>.vLight addGestureRecognizer:panGestureRecognizer];</span><br></pre></td></tr></table></figure></p>
-<p>注：vLight就是要加入拖动的View子类。<br>拖动处理函数<br><figure class="highlight mm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="keyword">void</span>) doHandlePanAction:(<span class="built_in">UIPanGestureRecognizer</span> *)paramSender&#123;</span><br><span class="line"></span><br><span class="line"><span class="built_in">CGPoint</span> point = [paramSender translationInView:<span class="keyword">self</span>.view];</span><br><span class="line"><span class="built_in">NSLog</span>(<span class="string">@"X:%f;Y:%f"</span>,point.x,point.y);</span><br><span class="line"></span><br><span class="line">paramSender.view.center = <span class="built_in">CGPointMake</span>(paramSender.view.center.x + point.x, paramSender.view.center.y + point.y);</span><br><span class="line">**[paramSender setTranslation:<span class="built_in">CGPointMake</span>(<span class="number">0</span>, <span class="number">0</span>) inView:<span class="keyword">self</span>.view];**</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>注:B代码，为关键代码，因为拖动起来一直是在递增，所以每次都要用setTranslation:方法将每次触摸都设置为0位置，这样才不至于不受控制般滑动出视图。</p>
+		<h1 id="拖动视图实现移动效果"><a href="#拖动视图实现移动效果" class="headerlink" title="拖动视图实现移动效果"></a>拖动视图实现移动效果</h1><p>曾今，答应一个朋友写这么一个小功能。忽然，想起来，还是写一下。<br>该功能，就是拖动View到指定的位置。<br>其实，功能比较简单，就是iOS手势动画中的拖动。就不废话了，直接代码 <a id="more"></a></p>
+<h2 id="注册拖动动画"><a href="#注册拖动动画" class="headerlink" title="注册拖动动画"></a>注册拖动动画</h2><figure class="highlight mm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">UIPanGestureRecognizer</span> * panGestureRecognizer = [[<span class="built_in">UIPanGestureRecognizer</span> alloc] initWithTarget:<span class="keyword">self</span></span><br><span class="line">action:<span class="keyword">@selector</span>(doHandlePanAction:)];</span><br><span class="line">[<span class="keyword">self</span>.vLight addGestureRecognizer:panGestureRecognizer];</span><br></pre></td></tr></table></figure>
+<p>注：vLight就是要加入拖动的View子类。</p>
+<h2 id="拖动处理函数"><a href="#拖动处理函数" class="headerlink" title="拖动处理函数"></a>拖动处理函数</h2><figure class="highlight mm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="keyword">void</span>) doHandlePanAction:(<span class="built_in">UIPanGestureRecognizer</span> *)paramSender&#123;</span><br><span class="line"></span><br><span class="line"><span class="built_in">CGPoint</span> point = [paramSender translationInView:<span class="keyword">self</span>.view];</span><br><span class="line"><span class="built_in">NSLog</span>(<span class="string">@"X:%f;Y:%f"</span>,point.x,point.y);</span><br><span class="line"></span><br><span class="line">paramSender.view.center = <span class="built_in">CGPointMake</span>(paramSender.view.center.x + point.x, paramSender.view.center.y + point.y);</span><br><span class="line">**[paramSender setTranslation:<span class="built_in">CGPointMake</span>(<span class="number">0</span>, <span class="number">0</span>) inView:<span class="keyword">self</span>.view];**</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="注"><a href="#注" class="headerlink" title="注:"></a>注:</h2><p>B代码，为关键代码，因为拖动起来一直是在递增，所以每次都要用setTranslation:方法将每次触摸都设置为0位置，这样才不至于不受控制般滑动出视图。</p>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -168,7 +166,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">Contents</strong>
  
- 
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#拖动视图实现移动效果"><span class="toc-number">1.</span> <span class="toc-text">拖动视图实现移动效果</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#注册拖动动画"><span class="toc-number">1.1.</span> <span class="toc-text">注册拖动动画</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#拖动处理函数"><span class="toc-number">1.2.</span> <span class="toc-text">拖动处理函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#注"><span class="toc-number">1.3.</span> <span class="toc-text">注:</span></a></li></ol></li></ol>
  
   </div>
 

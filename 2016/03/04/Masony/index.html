@@ -11,16 +11,16 @@
     
 
     
-    <meta name="description" content="Masonry使用心得Masonry是目前最流行的AutoLayout框架.使用:将Masonry文件包拖入项目,删掉自带的info.plist文件.demo中对Masonry的引用在.pch文件中.使用Masonry不需要设置控件的translatesAutoresizingMaskIntoConstraints属性为NO;Masonry简单实现(左下角正方形):12345[targetView">
+    <meta name="description" content="Masonry使用心得Masonry是目前最流行的AutoLayout框架.使用:将Masonry文件包拖入项目,删掉自带的info.plist文件.demo中对Masonry的引用在.pch文件中.使用Masonry不需要设置控件的translatesAutoresizingMaskIntoConstraints属性为NO;">
 <meta property="og:type" content="article">
 <meta property="og:title" content="第三方库 Masonry使用心得">
 <meta property="og:url" content="http://yoursite.com/2016/03/04/Masony/index.html">
 <meta property="og:site_name" content="Shemmy">
-<meta property="og:description" content="Masonry使用心得Masonry是目前最流行的AutoLayout框架.使用:将Masonry文件包拖入项目,删掉自带的info.plist文件.demo中对Masonry的引用在.pch文件中.使用Masonry不需要设置控件的translatesAutoresizingMaskIntoConstraints属性为NO;Masonry简单实现(左下角正方形):12345[targetView">
-<meta property="og:updated_time" content="2016-04-29T08:35:47.000Z">
+<meta property="og:description" content="Masonry使用心得Masonry是目前最流行的AutoLayout框架.使用:将Masonry文件包拖入项目,删掉自带的info.plist文件.demo中对Masonry的引用在.pch文件中.使用Masonry不需要设置控件的translatesAutoresizingMaskIntoConstraints属性为NO;">
+<meta property="og:updated_time" content="2016-07-07T15:33:18.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="第三方库 Masonry使用心得">
-<meta name="twitter:description" content="Masonry使用心得Masonry是目前最流行的AutoLayout框架.使用:将Masonry文件包拖入项目,删掉自带的info.plist文件.demo中对Masonry的引用在.pch文件中.使用Masonry不需要设置控件的translatesAutoresizingMaskIntoConstraints属性为NO;Masonry简单实现(左下角正方形):12345[targetView">
+<meta name="twitter:description" content="Masonry使用心得Masonry是目前最流行的AutoLayout框架.使用:将Masonry文件包拖入项目,删掉自带的info.plist文件.demo中对Masonry的引用在.pch文件中.使用Masonry不需要设置控件的translatesAutoresizingMaskIntoConstraints属性为NO;">
 
     
     <link rel="alternative" href="/atom.xml" title="Shemmy" type="application/atom+xml">
@@ -100,7 +100,7 @@
 		
 		</div>
 		
-		<p>Masonry使用心得<br>Masonry是目前最流行的AutoLayout框架.<br>使用:将Masonry文件包拖入项目,删掉自带的info.plist文件.demo中对Masonry的引用在.pch文件中.<br>使用Masonry不需要设置<br>控件的translatesAutoresizingMaskIntoConstraints属性为NO;<br>Masonry简单实现<br>(左下角正方形):<br><figure class="highlight mm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[targetView mas_makeConstraints:^(MASConstraintMaker *make) &#123;</span><br><span class="line">make.bottom.equalTo(<span class="keyword">self</span>.view).offset(<span class="number">-20</span>);</span><br><span class="line">make.leading.equalTo(<span class="keyword">self</span>.view).offset(<span class="number">20</span>);</span><br><span class="line">make.size.mas_equalTo(<span class="built_in">CGSizeMake</span>(<span class="number">100</span>, <span class="number">100</span>));</span><br><span class="line">&#125;];</span><br></pre></td></tr></table></figure></p>
+		<p>Masonry使用心得<br>Masonry是目前最流行的AutoLayout框架.<br>使用:将Masonry文件包拖入项目,删掉自带的info.plist文件.demo中对Masonry的引用在.pch文件中.<br>使用Masonry不需要设置<br>控件的translatesAutoresizingMaskIntoConstraints属性为NO;<a id="more"></a><br>Masonry简单实现<br>(左下角正方形):<br><figure class="highlight mm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[targetView mas_makeConstraints:^(MASConstraintMaker *make) &#123;</span><br><span class="line">make.bottom.equalTo(<span class="keyword">self</span>.view).offset(<span class="number">-20</span>);</span><br><span class="line">make.leading.equalTo(<span class="keyword">self</span>.view).offset(<span class="number">20</span>);</span><br><span class="line">make.size.mas_equalTo(<span class="built_in">CGSizeMake</span>(<span class="number">100</span>, <span class="number">100</span>));</span><br><span class="line">&#125;];</span><br></pre></td></tr></table></figure></p>
 <p>内边距为50:<br>第一种实现方式<br><figure class="highlight mm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">make.leading.top.mas_equalTo(@<span class="number">50</span>);</span><br><span class="line">make.trailing.bottom.mas_equalTo(@<span class="number">-50</span>);</span><br></pre></td></tr></table></figure></p>
 <p>第二种实现方式<br><figure class="highlight mm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">make.edges.insets(<span class="built_in">UIEdgeInsetsMake</span>(<span class="number">50</span>, <span class="number">50</span>, <span class="number">50</span>, <span class="number">50</span>));</span><br></pre></td></tr></table></figure></p>
 <p>Masonry使用技巧:<br>定义以下两个宏,在使用Masonry框架时就不需要加mas_前缀了<br>(定义宏一定要在引入Masonry.h文件之前).<br><figure class="highlight mm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//define this constant if you want to use Masonry without the 'mas_' prefix</span></span><br><span class="line"><span class="meta">#define MAS_SHORTHAND</span></span><br><span class="line"><span class="comment">//define this constant if you want to enable auto-boxing for default syntax</span></span><br><span class="line"><span class="meta">#define MAS_SHORTHAND_GLOBALS</span></span><br></pre></td></tr></table></figure></p>

@@ -11,16 +11,16 @@
     
 
     
-    <meta name="description" content="Static Const 说明对于C/C++语言来讲const就是只读的意思,只在声明中使用;static一般有2个作用,规定作用域和存储方式.对于局部变量,static规定其为静态存储方式,每次调用的初始值为上一次调用的值,调用结束后存储空间不释放;对于全局变量,如果以文件划分作用域的话,此变量只在当前文件可见;对于static函数也是在当前模块内函数可见.static const 应该就是上面">
+    <meta name="description" content="Static Const 说明对于C/C++语言来讲const就是只读的意思,只在声明中使用;static一般有2个作用,规定作用域和存储方式.对于局部变量,static规定其为静态存储方式,每次调用的初始值为上一次调用的值,调用结束后存储空间不释放;对于全局变量,如果以文件划分作用域的话,此变量只在当前文件可见;对于static函数也是在当前模块内函数可见.">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Static Const">
 <meta property="og:url" content="http://yoursite.com/2015/02/14/Static Const 详解/index.html">
 <meta property="og:site_name" content="Shemmy">
-<meta property="og:description" content="Static Const 说明对于C/C++语言来讲const就是只读的意思,只在声明中使用;static一般有2个作用,规定作用域和存储方式.对于局部变量,static规定其为静态存储方式,每次调用的初始值为上一次调用的值,调用结束后存储空间不释放;对于全局变量,如果以文件划分作用域的话,此变量只在当前文件可见;对于static函数也是在当前模块内函数可见.static const 应该就是上面">
-<meta property="og:updated_time" content="2016-04-11T04:44:40.000Z">
+<meta property="og:description" content="Static Const 说明对于C/C++语言来讲const就是只读的意思,只在声明中使用;static一般有2个作用,规定作用域和存储方式.对于局部变量,static规定其为静态存储方式,每次调用的初始值为上一次调用的值,调用结束后存储空间不释放;对于全局变量,如果以文件划分作用域的话,此变量只在当前文件可见;对于static函数也是在当前模块内函数可见.">
+<meta property="og:updated_time" content="2016-07-07T15:38:21.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Static Const">
-<meta name="twitter:description" content="Static Const 说明对于C/C++语言来讲const就是只读的意思,只在声明中使用;static一般有2个作用,规定作用域和存储方式.对于局部变量,static规定其为静态存储方式,每次调用的初始值为上一次调用的值,调用结束后存储空间不释放;对于全局变量,如果以文件划分作用域的话,此变量只在当前文件可见;对于static函数也是在当前模块内函数可见.static const 应该就是上面">
+<meta name="twitter:description" content="Static Const 说明对于C/C++语言来讲const就是只读的意思,只在声明中使用;static一般有2个作用,规定作用域和存储方式.对于局部变量,static规定其为静态存储方式,每次调用的初始值为上一次调用的值,调用结束后存储空间不释放;对于全局变量,如果以文件划分作用域的话,此变量只在当前文件可见;对于static函数也是在当前模块内函数可见.">
 
     
     <link rel="alternative" href="/atom.xml" title="Shemmy" type="application/atom+xml">
@@ -100,7 +100,7 @@
 		
 		</div>
 		
-		<h1 id="Static-Const-说明"><a href="#Static-Const-说明" class="headerlink" title="Static Const 说明"></a>Static Const 说明</h1><p>对于C/C++语言来讲<br>const就是只读的意思,只在声明中使用;<br>static一般有2个作用,规定作用域和存储方式.对于局部变量,static规定其为静态存储方式,每次调用的初始值为上一次调用的值,调用结束后存储空间不释放;<br>对于全局变量,如果以文件划分作用域的话,此变量只在当前文件可见;对于static函数也是在当前模块内函数可见.<br>static const 应该就是上面两者的合集. </p>
+		<h1 id="Static-Const-说明"><a href="#Static-Const-说明" class="headerlink" title="Static Const 说明"></a>Static Const 说明</h1><p>对于C/C++语言来讲<br>const就是只读的意思,只在声明中使用;<br>static一般有2个作用,规定作用域和存储方式.对于局部变量,static规定其为静态存储方式,每次调用的初始值为上一次调用的值,调用结束后存储空间不释放;<br>对于全局变量,如果以文件划分作用域的话,此变量只在当前文件可见;对于static函数也是在当前模块内函数可见.<a id="more"></a><br>static const 应该就是上面两者的合集. </p>
 <h2 id="const-Static在其他情况说明"><a href="#const-Static在其他情况说明" class="headerlink" title="const Static在其他情况说明:"></a>const Static在其他情况说明:</h2><h3 id="全局"><a href="#全局" class="headerlink" title="全局:"></a>全局:</h3><p>const,只读的全局变量,其值不可修改.<br>static,规定此全局变量只在当前模块(文件)中可见.<br>static const,既是只读的,又是只在当前模块中可见的.</p>
 <h3 id="文件"><a href="#文件" class="headerlink" title="文件:"></a>文件:</h3><p>文件指针可当作一个变量来看,与上面所说类似.</p>
 <h3 id="函数"><a href="#函数" class="headerlink" title="函数:"></a>函数:</h3><p>const,返回只读变量的函数.<br>static,规定此函数只在当前模块可见.</p>

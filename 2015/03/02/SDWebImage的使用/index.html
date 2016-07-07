@@ -11,16 +11,16 @@
     
 
     
-    <meta name="description" content="最新版SDWebImage的使用我之前写过一篇博客，介绍缓存处理的三种方式，其中最难，最麻烦，最占内存资源的还是图片缓存，最近做的项目有大量的图片处理，还是采用了SDWebImage来处理，但是发现之前封装好的代码报错了。研究发现，是我用了新版的SDWebImage，好多方法都变了。现在把代码贴出来，供大家参考。尤其是新手，看完这篇博客，图片缓存so easy。最后有demo供大家下载，先学习。第">
+    <meta name="description" content="最新版SDWebImage的使用我之前写过一篇博客，介绍缓存处理的三种方式，其中最难，最麻烦，最占内存资源的还是图片缓存，最近做的项目有大量的图片处理，还是采用了SDWebImage来处理，但是发现之前封装好的代码报错了。研究发现，是我用了新版的SDWebImage，好多方法都变了。现在把代码贴出来，供大家参考。尤其是新手，看完这篇博客，图片缓存so easy。最后有demo供大家下载，先学习。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="第三方库 SDWebImage">
 <meta property="og:url" content="http://yoursite.com/2015/03/02/SDWebImage的使用/index.html">
 <meta property="og:site_name" content="Shemmy">
-<meta property="og:description" content="最新版SDWebImage的使用我之前写过一篇博客，介绍缓存处理的三种方式，其中最难，最麻烦，最占内存资源的还是图片缓存，最近做的项目有大量的图片处理，还是采用了SDWebImage来处理，但是发现之前封装好的代码报错了。研究发现，是我用了新版的SDWebImage，好多方法都变了。现在把代码贴出来，供大家参考。尤其是新手，看完这篇博客，图片缓存so easy。最后有demo供大家下载，先学习。第">
-<meta property="og:updated_time" content="2016-04-11T04:40:15.000Z">
+<meta property="og:description" content="最新版SDWebImage的使用我之前写过一篇博客，介绍缓存处理的三种方式，其中最难，最麻烦，最占内存资源的还是图片缓存，最近做的项目有大量的图片处理，还是采用了SDWebImage来处理，但是发现之前封装好的代码报错了。研究发现，是我用了新版的SDWebImage，好多方法都变了。现在把代码贴出来，供大家参考。尤其是新手，看完这篇博客，图片缓存so easy。最后有demo供大家下载，先学习。">
+<meta property="og:updated_time" content="2016-07-07T15:38:13.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="第三方库 SDWebImage">
-<meta name="twitter:description" content="最新版SDWebImage的使用我之前写过一篇博客，介绍缓存处理的三种方式，其中最难，最麻烦，最占内存资源的还是图片缓存，最近做的项目有大量的图片处理，还是采用了SDWebImage来处理，但是发现之前封装好的代码报错了。研究发现，是我用了新版的SDWebImage，好多方法都变了。现在把代码贴出来，供大家参考。尤其是新手，看完这篇博客，图片缓存so easy。最后有demo供大家下载，先学习。第">
+<meta name="twitter:description" content="最新版SDWebImage的使用我之前写过一篇博客，介绍缓存处理的三种方式，其中最难，最麻烦，最占内存资源的还是图片缓存，最近做的项目有大量的图片处理，还是采用了SDWebImage来处理，但是发现之前封装好的代码报错了。研究发现，是我用了新版的SDWebImage，好多方法都变了。现在把代码贴出来，供大家参考。尤其是新手，看完这篇博客，图片缓存so easy。最后有demo供大家下载，先学习。">
 
     
     <link rel="alternative" href="/atom.xml" title="Shemmy" type="application/atom+xml">
@@ -100,7 +100,7 @@
 		
 		</div>
 		
-		<p>最新版SDWebImage的使用<br>我之前写过一篇博客，介绍缓存处理的三种方式，其中最难，最麻烦，最占内存资源的还是图片缓存，最近做的项目有大量的图片处理，还是采用了SDWebImage来处理，但是发现之前封装好的代码报错了。研究发现，是我用了新版的SDWebImage，好多方法都变了。<br>现在把代码贴出来，供大家参考。尤其是新手，看完这篇博客，图片缓存so easy。最后有demo供大家下载，先学习。<br>第一步，下载SDWebImage，导入工程。github托管地址<a href="https://github.com/rs/SDWebImage" target="_blank" rel="external">https://github.com/rs/SDWebImage</a><br>第二步，在需要的地方导入头文件<br><figure class="highlight mm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#import <span class="meta-string">"UIImageView+WebCache.h"</span></span></span><br></pre></td></tr></table></figure></p>
+		<p>最新版SDWebImage的使用<br>我之前写过一篇博客，介绍缓存处理的三种方式，其中最难，最麻烦，最占内存资源的还是图片缓存，最近做的项目有大量的图片处理，还是采用了SDWebImage来处理，但是发现之前封装好的代码报错了。研究发现，是我用了新版的SDWebImage，好多方法都变了。<br>现在把代码贴出来，供大家参考。尤其是新手，看完这篇博客，图片缓存so easy。最后有demo供大家下载，先学习。<a id="more"></a><br>    第一步，下载SDWebImage，导入工程。github托管地址<a href="https://github.com/rs/SDWebImage" target="_blank" rel="external">https://github.com/rs/SDWebImage</a><br>    第二步，在需要的地方导入头文件<br><figure class="highlight mm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#import <span class="meta-string">"UIImageView+WebCache.h"</span></span></span><br></pre></td></tr></table></figure></p>
 <p>第三步，调用sd_setImageWithURL：方法缓存图片，注意，这就是新版本的新方法，旧方法是setImageWithURL:。下面将几个方法都介绍一下。<br>sd_setImageWithURL：<br>//图片缓存的基本代码，就是这么简单<br><figure class="highlight mm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[<span class="keyword">self</span>.image1 sd_setImageWithURL:imagePath1];</span><br></pre></td></tr></table></figure></p>
 <p>sd_setImageWithURL: completed:<br>//用block 可以在图片加载完成之后做些事情<br><figure class="highlight mm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[<span class="keyword">self</span>.image2 sd_setImageWithURL:imagePath2 completed:^(<span class="built_in">UIImage</span> *image, <span class="built_in">NSError</span> *error, SDImageCacheType cacheType, <span class="built_in">NSURL</span> *imageURL) &#123;</span><br><span class="line"></span><br><span class="line"><span class="built_in">NSLog</span>(<span class="string">@"这里可以在图片加载完成之后做些事情"</span>);</span><br><span class="line"></span><br><span class="line">&#125;];</span><br></pre></td></tr></table></figure></p>
 <p>sd_setImageWithURL: placeholderImage:<br>//给一张默认图片，先使用默认图片，当图片加载完成后再替换<br><figure class="highlight mm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[<span class="keyword">self</span>.image1 sd_setImageWithURL:imagePath1 placeholderImage:[<span class="built_in">UIImage</span> imageNamed:<span class="string">@"default"</span>]];</span><br></pre></td></tr></table></figure></p>

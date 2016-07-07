@@ -11,19 +11,16 @@
     
 
     
-    <meta name="description" content="[转载]iOS:UITextField中文输入法输入时对字符长度的限制如题的问题，又是个让我抓狂了大半天的问题，还是做个记录，有与类似问题的同学可参考，但不一定对。具体问题还需具体分析。我遇到的需求是这样的：有一个输入框，输入框内输入文字，文字字数限制在20字。
-第一次实现:我采用了UITextField作为我的输入框控件，并且在委托方法：1- (BOOL)textField:(UITextFie">
+    <meta name="description" content="[转载]iOS:UITextField中文输入法输入时对字符长度的限制如题的问题，又是个让我抓狂了大半天的问题，还是做个记录，有与类似问题的同学可参考，但不一定对。具体问题还需具体分析。我遇到的需求是这样的：有一个输入框，输入框内输入文字，文字字数限制在20字。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="中文输入法时对字符长度的限制(UITextField)">
 <meta property="og:url" content="http://yoursite.com/2016/01/14/UITextField中文输入法时对字符长度的限制/index.html">
 <meta property="og:site_name" content="Shemmy">
-<meta property="og:description" content="[转载]iOS:UITextField中文输入法输入时对字符长度的限制如题的问题，又是个让我抓狂了大半天的问题，还是做个记录，有与类似问题的同学可参考，但不一定对。具体问题还需具体分析。我遇到的需求是这样的：有一个输入框，输入框内输入文字，文字字数限制在20字。
-第一次实现:我采用了UITextField作为我的输入框控件，并且在委托方法：1- (BOOL)textField:(UITextFie">
-<meta property="og:updated_time" content="2016-04-11T04:50:06.000Z">
+<meta property="og:description" content="[转载]iOS:UITextField中文输入法输入时对字符长度的限制如题的问题，又是个让我抓狂了大半天的问题，还是做个记录，有与类似问题的同学可参考，但不一定对。具体问题还需具体分析。我遇到的需求是这样的：有一个输入框，输入框内输入文字，文字字数限制在20字。">
+<meta property="og:updated_time" content="2016-07-07T15:38:43.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="中文输入法时对字符长度的限制(UITextField)">
-<meta name="twitter:description" content="[转载]iOS:UITextField中文输入法输入时对字符长度的限制如题的问题，又是个让我抓狂了大半天的问题，还是做个记录，有与类似问题的同学可参考，但不一定对。具体问题还需具体分析。我遇到的需求是这样的：有一个输入框，输入框内输入文字，文字字数限制在20字。
-第一次实现:我采用了UITextField作为我的输入框控件，并且在委托方法：1- (BOOL)textField:(UITextFie">
+<meta name="twitter:description" content="[转载]iOS:UITextField中文输入法输入时对字符长度的限制如题的问题，又是个让我抓狂了大半天的问题，还是做个记录，有与类似问题的同学可参考，但不一定对。具体问题还需具体分析。我遇到的需求是这样的：有一个输入框，输入框内输入文字，文字字数限制在20字。">
 
     
     <link rel="alternative" href="/atom.xml" title="Shemmy" type="application/atom+xml">
@@ -103,7 +100,7 @@
 		
 		</div>
 		
-		<h1 id="转载-iOS-UITextField中文输入法输入时对字符长度的限制"><a href="#转载-iOS-UITextField中文输入法输入时对字符长度的限制" class="headerlink" title="[转载]iOS:UITextField中文输入法输入时对字符长度的限制"></a>[转载]iOS:UITextField中文输入法输入时对字符长度的限制</h1><p>如题的问题，又是个让我抓狂了大半天的问题，还是做个记录，有与类似问题的同学可参考，但不一定对。具体问题还需具体分析。我遇到的需求是这样的：有一个输入框，输入框内输入文字，文字字数限制在20字。</p>
+		<h1 id="转载-iOS-UITextField中文输入法输入时对字符长度的限制"><a href="#转载-iOS-UITextField中文输入法输入时对字符长度的限制" class="headerlink" title="[转载]iOS:UITextField中文输入法输入时对字符长度的限制"></a>[转载]iOS:UITextField中文输入法输入时对字符长度的限制</h1><p>如题的问题，又是个让我抓狂了大半天的问题，还是做个记录，有与类似问题的同学可参考，但不一定对。具体问题还需具体分析。我遇到的需求是这样的：有一个输入框，输入框内输入文字，文字字数限制在20字。<a id="more"></a></p>
 <h2 id="第一次实现"><a href="#第一次实现" class="headerlink" title="第一次实现:"></a>第一次实现:</h2><p>我采用了UITextField作为我的输入框控件，并且在委托方法：<br><figure class="highlight mm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="built_in">BOOL</span>)textField:(<span class="built_in">UITextField</span> *)textField shouldChangeCharactersInRange:(<span class="built_in">NSRange</span>)range replacementString:(<span class="built_in">NSString</span> *)string</span><br></pre></td></tr></table></figure></p>
 <p>中实现了对字符串的长度限制，实现如下：<br><figure class="highlight mm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#define kMaxLength 20</span></span><br><span class="line">- (<span class="built_in">BOOL</span>)textField:(<span class="built_in">UITextField</span> *)textField shouldChangeCharactersInRange:(<span class="built_in">NSRange</span>)range replacementString:(<span class="built_in">NSString</span> *)string&#123;</span><br><span class="line"></span><br><span class="line"><span class="built_in">NSString</span> * toBeString = [textField.text stringByReplacingCharactersInRange:range withString:string];</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (toBeString.length &gt; kMaxLength &amp;&amp; range.length!=<span class="number">1</span>)&#123;</span><br><span class="line">textField.text = [toBeString substringToIndex:kMaxLength];</span><br><span class="line"><span class="keyword">return</span> <span class="literal">NO</span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">return</span> <span class="literal">YES</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>这样实现的结果是：对于纯字符的统计没有什么问题，当输入的字符超过限制时输入框便截取最大限制长度的字符串。但是，有个问题，当使用拼音输入法时，该委托方法中的最后一个参数string接受的是输入的字母，而不是选择的汉字，造成的结果是，当想输入文字“我在编程”，输入拼音“wozaibiancheng”，每输入一个字母便会进入委托方法，统计的字符长度是字母的长度，实际上汉字还未超过限制长度，但是字母的长度超过了导致无法继续输入。<br>而且，致命的是，这个委托方法并不响应，选中候选汉字的过程，这就没有办法重新修正字符长度的统计了。</p>
