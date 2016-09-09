@@ -81,6 +81,179 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
+      <a href="/2016/03/04/Masony/" title="第三方库 Masonry使用心得" itemprop="url">第三方库 Masonry使用心得</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Shemmy" target="_blank" itemprop="author">Shemmy</a>
+		
+  <p class="article-time">
+    <time datetime="2016-03-03T16:10:32.000Z" itemprop="datePublished"> Published 2016-03-04</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <p>Masonry使用心得<br>Masonry是目前最流行的AutoLayout框架.<br>使用:将Masonry文件包拖入项目,删掉自带的info.plist文件.demo中对Masonry的引用在.pch文件中.<br>使用Masonry不需要设置<br>控件的translatesAutoresizingMaskIntoConstraints属性为NO;
+        
+        
+        <p class="article-more-link">
+          
+            <a href="/2016/03/04/Masony/#more">Read More</a>
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/iOS-三方库/">iOS 三方库</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/2016/03/04/Masony/#comments" class="ds-thread-count comments-count-link" data-thread-key="2016/03/04/Masony/" data-count-type="comments">&nbsp;</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2016/02/19/使用Block传值来实现定位/" title="使用Block传值来实现定位" itemprop="url">使用Block传值来实现定位</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Shemmy" target="_blank" itemprop="author">Shemmy</a>
+		
+  <p class="article-time">
+    <time datetime="2016-02-19T05:29:19.000Z" itemprop="datePublished"> Published 2016-02-19</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h1 id="Objetive-C-中Block传值"><a href="#Objetive-C-中Block传值" class="headerlink" title="Objetive-C 中Block传值"></a>Objetive-C 中Block传值</h1><p>提到Block，可能大家有些陌生，但是提到必包可能大家就不会陌生了。<br>Block：带返回值的匿名函数，因为使用者不需要关心Block中代码是怎么实现的，只需要调用相应的Block就可以。<br>最近有一个想法，就是使用Catgary来实现调用一个方法就可以得到当前的人物所在地，和城市的信息，因为这个要获取到这个东西的值是在代理方法中，不得不改用继承的方式来写。<br>具体传值是用Block来进行的。下面上代码：
+        
+        
+        <p class="article-more-link">
+          
+            <a href="/2016/02/19/使用Block传值来实现定位/#more">Read More</a>
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/2016/02/19/使用Block传值来实现定位/#comments" class="ds-thread-count comments-count-link" data-thread-key="2016/02/19/使用Block传值来实现定位/" data-count-type="comments">&nbsp;</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2016/02/14/UIBezierPath实现果冻效果/" title="果冻效果 (UIBezierPath)" itemprop="url">果冻效果 (UIBezierPath)</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Shemmy" target="_blank" itemprop="author">Shemmy</a>
+		
+  <p class="article-time">
+    <time datetime="2016-02-13T18:05:11.000Z" itemprop="datePublished"> Published 2016-02-14</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h1 id="效果iOSUIBezierPath果冻"><a href="#效果iOSUIBezierPath果冻" class="headerlink" title="效果iOSUIBezierPath果冻"></a>效果iOSUIBezierPath果冻</h1><p>最近在网上看到一个很酷的下拉刷新效果。自己试着实现了一下其中的果冻回弹效果。</p>
+<h2 id="DEMO"><a href="#DEMO" class="headerlink" title="DEMO"></a>DEMO</h2><p>由于文笔不太好-.- ，建议先下载demo,再结合下面的分析，会好理解点。地址<br>逻辑<br>下图p1,蓝色部分图形是一个CAShapeLayer,他的形状由UIBezierPath的路径组成的。<br>这个路径是由r1,r2,r3,r4,r5这5个红点确定的。其中r1,r2,r3,r4都是不动点，唯一可以动的是r5点。<br>根据上面的动态图可以看出,CAShapeLayer的形状是随着r5红点的移动而相应变化的，所以只要获得r5的坐标变化就可以用UIBezierPath做出相应的路径，然后就可以形成相应的形状。
+        
+        
+        <p class="article-more-link">
+          
+            <a href="/2016/02/14/UIBezierPath实现果冻效果/#more">Read More</a>
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/iOS-UIBezierPath/">iOS UIBezierPath</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/2016/02/14/UIBezierPath实现果冻效果/#comments" class="ds-thread-count comments-count-link" data-thread-key="2016/02/14/UIBezierPath实现果冻效果/" data-count-type="comments">&nbsp;</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
       <a href="/2016/01/17/正则表达式/" title="正则表达式" itemprop="url">正则表达式</a>
   </h1>
   <p class="article-author">By
@@ -480,169 +653,6 @@
 
 
 
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2015/12/19/基于AFNetWorking 网络请求/" title="基于AFNetWorking 网络请求" itemprop="url">基于AFNetWorking 网络请求</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="Shemmy" target="_blank" itemprop="author">Shemmy</a>
-		
-  <p class="article-time">
-    <time datetime="2015-12-19T04:27:39.000Z" itemprop="datePublished"> Published 2015-12-19</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h1 id="网络请求概念"><a href="#网络请求概念" class="headerlink" title="网络请求概念"></a>网络请求概念</h1><p>网络请求分为以下两个部分：1.请求头 2.请求体，根据使用条件不同主要分为get，post请求两种， 以下get请求是将参数裸露出来的，比较不安全，post请求是将请求体封装起来，传输，保证数据安全。get请求请求到的字符数有上限值。
-        
-        
-        <p class="article-more-link">
-          
-            <a href="/2015/12/19/基于AFNetWorking 网络请求/#more">Read More</a>
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-	  	<span></span>
-		<a href="/2015/12/19/基于AFNetWorking 网络请求/#comments" class="ds-thread-count comments-count-link" data-thread-key="2015/12/19/基于AFNetWorking 网络请求/" data-count-type="comments">&nbsp;</a>
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2015/12/08/启动引导界面和启动界面设置/" title="引导界面和启动界面设置" itemprop="url">引导界面和启动界面设置</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="Shemmy" target="_blank" itemprop="author">Shemmy</a>
-		
-  <p class="article-time">
-    <time datetime="2015-12-08T04:27:39.000Z" itemprop="datePublished"> Published 2015-12-08</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <p>APP下载安装第一次使用一般会显示一个首次启动引导界面然后进入主界面，非首次开启APP也通常会显示一个启动界面然后进入主界面。<br>1、本例首次启动显示FirstUseViewController，添加一个button，点击进入LaunchViewController<br>2、非首次LaunchViewController，显示2s后进入主界面ViewController<br>3、主界面ViewController<br>4、不深究细节，一般启动引导都会有动画，图片之类的，非本次练习重点，所以没有设置，只有简单地标志作界面区分<br>（效果图在文末）
-        
-        
-        <p class="article-more-link">
-          
-            <a href="/2015/12/08/启动引导界面和启动界面设置/#more">Read More</a>
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-	  	<span></span>
-		<a href="/2015/12/08/启动引导界面和启动界面设置/#comments" class="ds-thread-count comments-count-link" data-thread-key="2015/12/08/启动引导界面和启动界面设置/" data-count-type="comments">&nbsp;</a>
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2015/12/04/iOS 保存文件的方法/" title="iOS 保存文件的方法" itemprop="url">iOS 保存文件的方法</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="Shemmy" target="_blank" itemprop="author">Shemmy</a>
-		
-  <p class="article-time">
-    <time datetime="2015-12-04T03:29:34.000Z" itemprop="datePublished"> Published 2015-12-04</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h1 id="iOS-保存文件的方法"><a href="#iOS-保存文件的方法" class="headerlink" title="iOS 保存文件的方法"></a>iOS 保存文件的方法</h1><h2 id="Plist文件的使用"><a href="#Plist文件的使用" class="headerlink" title="Plist文件的使用"></a>Plist文件的使用</h2><figure class="highlight mm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1.</span><span class="built_in">NSString</span> *path = [[<span class="built_in">NSBundle</span> mainBundle] pathForResource:<span class="string">@"文件名"</span> ofType:<span class="string">@"plist"</span>];</span><br><span class="line"><span class="comment">// 文件数据类型是array </span></span><br><span class="line"><span class="built_in">NSArray</span> *array=[<span class="built_in">NSArray</span> arrayWithContentsOfFile:path];</span><br><span class="line"><span class="comment">//文件数据类型是*dictionary</span></span><br><span class="line"><span class="built_in">NSDictionary</span> *dictionary = [<span class="built_in">NSDictionary</span> dictionaryWithContentsOfFile:path];</span><br></pre></td></tr></table></figure>
-<h3 id="创建一个plist文件"><a href="#创建一个plist文件" class="headerlink" title="创建一个plist文件"></a>创建一个plist文件
-        
-        
-        <p class="article-more-link">
-          
-            <a href="/2015/12/04/iOS 保存文件的方法/#more">Read More</a>
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-	  	<span></span>
-		<a href="/2015/12/04/iOS 保存文件的方法/#comments" class="ds-thread-count comments-count-link" data-thread-key="2015/12/04/iOS 保存文件的方法/" data-count-type="comments">&nbsp;</a>
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
 
   <nav id="page-nav" class="clearfix">
     <a class="extend prev" rel="prev" href="/"><span></span>Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">Next<span></span></a>
@@ -682,7 +692,11 @@
 			
 		
 			
-				<li><a href="/tags/iOS-UITextField-转载/" title="iOS UITextField 转载">iOS UITextField 转载<sup>1</sup></a></li>
+				<li><a href="/tags/textfield-ios-oc-光标-offset/" title="textfield   ios   oc   光标   offset">textfield   ios   oc   光标   offset<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/C-C-iOS/" title="C C++ iOS">C C++ iOS<sup>1</sup></a></li>
 			
 		
 			
@@ -690,7 +704,7 @@
 			
 		
 			
-				<li><a href="/tags/C-C-iOS/" title="C C++ iOS">C C++ iOS<sup>1</sup></a></li>
+				<li><a href="/tags/iOS-UITextField-转载/" title="iOS UITextField 转载">iOS UITextField 转载<sup>1</sup></a></li>
 			
 		
 			
