@@ -12,6 +12,7 @@
 
     
     <meta name="description" content="Static Const 说明对于C/C++语言来讲const就是只读的意思,只在声明中使用;static一般有2个作用,规定作用域和存储方式.对于局部变量,static规定其为静态存储方式,每次调用的初始值为上一次调用的值,调用结束后存储空间不释放;对于全局变量,如果以文件划分作用域的话,此变量只在当前文件可见;对于static函数也是在当前模块内函数可见.">
+<meta name="keywords" content="C C++ iOS">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Static Const">
 <meta property="og:url" content="http://yoursite.com/2015/02/14/Static Const 详解/index.html">
@@ -48,7 +49,7 @@
 				<h1 class="site-name"><a href="/" title="Shemmy">Shemmy</a></h1>
 				<h2 class="blog-motto"></h2>
 			</div>
-			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
 			</a></div>
 			<nav class="animated">
 				<ul>
@@ -64,7 +65,7 @@
  					
 					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
 						<label>Search</label>
-						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
 						<input type="hidden" name="q" value="site:yoursite.com">
 					</form>
 					
@@ -87,14 +88,14 @@
 		<a href="/about" title="Shemmy" target="_blank" itemprop="author">Shemmy</a>
 		
   <p class="article-time">
-    <time datetime="2015-02-13T18:05:11.000Z" itemprop="datePublished"> 发表于 2015-02-14</time>
+    <time datetime="2015-02-13T18:05:11.000Z" itemprop="datePublished"> Published 2015-02-14</time>
     
   </p>
 </header>
 	<div class="article-content">
 		
 		<div id="toc" class="toc-article">
-			<strong class="toc-title">文章目录</strong>
+			<strong class="toc-title">Contents</strong>
 		
 			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Static-Const-说明"><span class="toc-number">1.</span> <span class="toc-text">Static Const 说明</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#const-Static在其他情况说明"><span class="toc-number">1.1.</span> <span class="toc-text">const Static在其他情况说明:</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#全局"><span class="toc-number">1.1.1.</span> <span class="toc-text">全局:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#文件"><span class="toc-number">1.1.2.</span> <span class="toc-text">文件:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#函数"><span class="toc-number">1.1.3.</span> <span class="toc-text">函数:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#类"><span class="toc-number">1.1.4.</span> <span class="toc-text">类:</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Const用法"><span class="toc-number">1.2.</span> <span class="toc-text">Const用法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Static用法"><span class="toc-number">1.3.</span> <span class="toc-text">Static用法</span></a></li></ol></li></ol>
 		
@@ -105,9 +106,9 @@
 <h3 id="文件"><a href="#文件" class="headerlink" title="文件:"></a>文件:</h3><p>文件指针可当作一个变量来看,与上面所说类似.</p>
 <h3 id="函数"><a href="#函数" class="headerlink" title="函数:"></a>函数:</h3><p>const,返回只读变量的函数.<br>static,规定此函数只在当前模块可见.</p>
 <h3 id="类"><a href="#类" class="headerlink" title="类:"></a>类:</h3><p>const,一般不修饰类,(在VC6.0中试了一下,修饰类没啥作用)<br>static,C++中似乎没有静态类这个说法,一般还是拿类当特殊的变量来看.C#中有静态类的详细说明,且用法与普通类大不相同</p>
-<h2 id="Const用法"><a href="#Const用法" class="headerlink" title="Const用法"></a>Const用法</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> num= <span class="number">7</span>;</span><br><span class="line">num = <span class="number">9</span>; <span class="comment">//有/可能得到编译器的警告。</span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">char</span> ptr，则表示该指针所指向的内容不会被改变，如果在程序中被发生对其赋值的操作，编译时将出错误提示。如：</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">char</span> ptr = “hello”;</span><br><span class="line">ptr = ‘H’;<span class="comment">//错误，所指内容不可改变也可将const 放在星号后面来声明指针本身不可改变。如:</span></span><br><span class="line"><span class="keyword">char</span> <span class="keyword">const</span> ptr;</span><br><span class="line">ptr++; <span class="comment">//错误，指针本身不可改变</span></span><br><span class="line">也可同时禁止改变指针和它所引用的内容，其形式如下： <span class="keyword">const</span> <span class="keyword">char</span>* <span class="keyword">const</span> ptr;</span><br></pre></td></tr></table></figure>
-<h2 id="Static用法"><a href="#Static用法" class="headerlink" title="Static用法"></a>Static用法</h2><p>static 是一个能够减少命名冲突的有用工具。将只在一个模块文件中的变量和函数使用static 修饰，将不会和其他模块可能具有相同名称的函数和变量在模块连接时不会产生名称冲突。一般来说，只要不是提供给其它模块使用的函数，和非全局变量，均应使用static 修饰。将子程序中的变量使用static 修饰时，表示这个变量在程序开始时分配内存，在程序结束时释放，它们在程序执行期间保持它们的值。如：<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">func1</span><span class="params">(<span class="keyword">void</span>)</span></span><br><span class="line"></span>&#123;</span><br><span class="line"><span class="keyword">static</span> <span class="keyword">int</span> time = <span class="number">0</span>;</span><br><span class="line">time++</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">func2</span><span class="params">(<span class="keyword">void</span>)</span></span><br><span class="line"></span>&#123;</span><br><span class="line"><span class="keyword">static</span> <span class="keyword">int</span> time = <span class="number">0</span>;</span><br><span class="line">time++;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>两个子程序中的time 变量使用static 修饰，所以它们是静态变量，每调用一次time将进行加1，并保持这个值。它们的功能与下面程序相似：<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> time1 = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">int</span> time2 = <span class="number">0</span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">func1</span><span class="params">(<span class="keyword">void</span>)</span></span><br><span class="line"></span>&#123;</span><br><span class="line">time1++</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">func2</span><span class="params">(<span class="keyword">void</span>)</span></span><br><span class="line"></span>&#123;</span><br><span class="line">time2++;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="Const用法"><a href="#Const用法" class="headerlink" title="Const用法"></a>Const用法</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> num= <span class="number">7</span>;</div><div class="line">num = <span class="number">9</span>; <span class="comment">//有/可能得到编译器的警告。</span></div><div class="line"><span class="keyword">const</span> <span class="keyword">char</span> ptr，则表示该指针所指向的内容不会被改变，如果在程序中被发生对其赋值的操作，编译时将出错误提示。如：</div><div class="line"><span class="keyword">const</span> <span class="keyword">char</span> ptr = “hello”;</div><div class="line">ptr = ‘H’;<span class="comment">//错误，所指内容不可改变也可将const 放在星号后面来声明指针本身不可改变。如:</span></div><div class="line"><span class="keyword">char</span> <span class="keyword">const</span> ptr;</div><div class="line">ptr++; <span class="comment">//错误，指针本身不可改变</span></div><div class="line">也可同时禁止改变指针和它所引用的内容，其形式如下： <span class="keyword">const</span> <span class="keyword">char</span>* <span class="keyword">const</span> ptr;</div></pre></td></tr></table></figure>
+<h2 id="Static用法"><a href="#Static用法" class="headerlink" title="Static用法"></a>Static用法</h2><p>static 是一个能够减少命名冲突的有用工具。将只在一个模块文件中的变量和函数使用static 修饰，将不会和其他模块可能具有相同名称的函数和变量在模块连接时不会产生名称冲突。一般来说，只要不是提供给其它模块使用的函数，和非全局变量，均应使用static 修饰。将子程序中的变量使用static 修饰时，表示这个变量在程序开始时分配内存，在程序结束时释放，它们在程序执行期间保持它们的值。如：<br><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">func1</span><span class="params">(<span class="keyword">void</span>)</span></span></div><div class="line">&#123;</div><div class="line"><span class="keyword">static</span> <span class="keyword">int</span> time = <span class="number">0</span>;</div><div class="line">time++</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">func2</span><span class="params">(<span class="keyword">void</span>)</span></span></div><div class="line">&#123;</div><div class="line"><span class="keyword">static</span> <span class="keyword">int</span> time = <span class="number">0</span>;</div><div class="line">time++;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>两个子程序中的time 变量使用static 修饰，所以它们是静态变量，每调用一次time将进行加1，并保持这个值。它们的功能与下面程序相似：<br><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span> time1 = <span class="number">0</span>;</div><div class="line"><span class="keyword">int</span> time2 = <span class="number">0</span>;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">func1</span><span class="params">(<span class="keyword">void</span>)</span></span></div><div class="line">&#123;</div><div class="line">time1++</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">func2</span><span class="params">(<span class="keyword">void</span>)</span></span></div><div class="line">&#123;</div><div class="line">time2++;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>我们可以看出，使用static 修饰后，模块中的全局变量减少，使得程序的更为简单。</p>
   
 	</div>
@@ -139,14 +140,14 @@
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/2015/03/02/SDWebImage的使用/" title="第三方库 SDWebImage">
-  <strong>上一篇：</strong><br/>
-  <span>
-  第三方库 SDWebImage</span>
+
+<div class="next">
+<a href="/2015/03/02/SDWebImage的使用/"  title="第三方库 SDWebImage">
+ <strong>下一篇：</strong><br/> 
+ <span>第三方库 SDWebImage
+</span>
 </a>
 </div>
-
 
 </nav>
 
@@ -157,17 +158,17 @@
 
 
 </div>  
-      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
 
   <div id="toc" class="toc-aside">
-  <strong class="toc-title">文章目录</strong>
+  <strong class="toc-title">Contents</strong>
  
  <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Static-Const-说明"><span class="toc-number">1.</span> <span class="toc-text">Static Const 说明</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#const-Static在其他情况说明"><span class="toc-number">1.1.</span> <span class="toc-text">const Static在其他情况说明:</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#全局"><span class="toc-number">1.1.1.</span> <span class="toc-text">全局:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#文件"><span class="toc-number">1.1.2.</span> <span class="toc-text">文件:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#函数"><span class="toc-number">1.1.3.</span> <span class="toc-text">函数:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#类"><span class="toc-number">1.1.4.</span> <span class="toc-text">类:</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Const用法"><span class="toc-number">1.2.</span> <span class="toc-text">Const用法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Static用法"><span class="toc-number">1.3.</span> <span class="toc-text">Static用法</span></a></li></ol></li></ol>
  
   </div>
 
 <div id="asidepart">
-<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
 <aside class="clearfix">
 
   
@@ -177,7 +178,7 @@
 
   
 <div class="tagslist">
-	<p class="asidetitle">标签</p>
+	<p class="asidetitle">Tags</p>
 		<ul class="clearfix">
 		
 			
@@ -193,15 +194,7 @@
 			
 		
 			
-				<li><a href="/tags/iOS-UICollectionView/" title="iOS UICollectionView">iOS UICollectionView<sup>1</sup></a></li>
-			
-		
-			
 				<li><a href="/tags/RunTime/" title="RunTime">RunTime<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/iOS-CollectionViewCell-Obj-C/" title="iOS CollectionViewCell Obj-C">iOS CollectionViewCell Obj-C<sup>1</sup></a></li>
 			
 		
 			
@@ -209,11 +202,23 @@
 			
 		
 			
-				<li><a href="/tags/iOS-UITextField-转载/" title="iOS UITextField 转载">iOS UITextField 转载<sup>1</sup></a></li>
+				<li><a href="/tags/Swift3/" title="Swift3">Swift3<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/iOS-CollectionViewCell-Obj-C/" title="iOS CollectionViewCell Obj-C">iOS CollectionViewCell Obj-C<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/iOS-UICollectionView/" title="iOS UICollectionView">iOS UICollectionView<sup>1</sup></a></li>
 			
 		
 			
 				<li><a href="/tags/textfield-ios-oc-光标-offset/" title="textfield   ios   oc   光标   offset">textfield   ios   oc   光标   offset<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/iOS-UITextField-转载/" title="iOS UITextField 转载">iOS UITextField 转载<sup>1</sup></a></li>
 			
 		
 			
@@ -233,7 +238,7 @@
 
 
   <div class="linkslist">
-  <p class="asidetitle">友情链接</p>
+  <p class="asidetitle">Links</p>
     <ul>
         
           <li>
@@ -255,11 +260,11 @@
 
 
   <div class="rsspart">
-	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
+	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
 </div>
 
   <div class="weiboshow">
-  <p class="asidetitle">新浪微博</p>
+  <p class="asidetitle">Weibo</p>
     <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=null&verifier=b3593ceb&dpc=1"></iframe>
 </div>
 
@@ -298,7 +303,7 @@
 		
 
 		<p class="copyright">
-		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Shemmy</a> © 2016 
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Shemmy</a> © 2017 
 		
 		<a href="/about" target="_blank" title="Shemmy">Shemmy</a>
 		
@@ -498,7 +503,7 @@ var _hmt = _hmt || [];
 <!-- Totop Begin -->
 
 	<div id="totop">
-	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	<a title="Back to Top"><img src="/img/scrollup.png"/></a>
 	</div>
 	<script src="/js/totop.js"></script>
 

@@ -12,6 +12,7 @@
 
     
     <meta name="description" content="iOS开发之int,NSInteger,NSUInteger,NSNumber的使用1、首先先了解下NSNumber类型：苹果官方文档地址：https://developer.apple.com/library/ios/documentation/Cocoa/Reference/Foundation/Classes/NSNumber_Class/Reference/Reference.htmlNS">
+<meta name="keywords" content="iOS">
 <meta property="og:type" content="article">
 <meta property="og:title" content="数字有关的类（int NSNumber...）">
 <meta property="og:url" content="http://yoursite.com/2015/08/03/NSNumber的使用/index.html">
@@ -48,7 +49,7 @@
 				<h1 class="site-name"><a href="/" title="Shemmy">Shemmy</a></h1>
 				<h2 class="blog-motto"></h2>
 			</div>
-			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
 			</a></div>
 			<nav class="animated">
 				<ul>
@@ -64,7 +65,7 @@
  					
 					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
 						<label>Search</label>
-						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
 						<input type="hidden" name="q" value="site:yoursite.com">
 					</form>
 					
@@ -87,24 +88,24 @@
 		<a href="/about" title="Shemmy" target="_blank" itemprop="author">Shemmy</a>
 		
   <p class="article-time">
-    <time datetime="2015-08-03T14:05:12.000Z" itemprop="datePublished"> 发表于 2015-08-03</time>
+    <time datetime="2015-08-03T14:05:12.000Z" itemprop="datePublished"> Published 2015-08-03</time>
     
   </p>
 </header>
 	<div class="article-content">
 		
 		<div id="toc" class="toc-article">
-			<strong class="toc-title">文章目录</strong>
+			<strong class="toc-title">Contents</strong>
 		
 			
 		
 		</div>
 		
-		<p>iOS开发之int,NSInteger,NSUInteger,NSNumber的使用<br>1、首先先了解下NSNumber类型：<br>苹果官方文档地址：<a href="https://developer.apple.com/library/ios/documentation/Cocoa/Reference/Foundation/Classes/NSNumber_Class/Reference/Reference.html" target="_blank" rel="external">https://developer.apple.com/library/ios/documentation/Cocoa/Reference/Foundation/Classes/NSNumber_Class/Reference/Reference.html</a><br>NSNumber是NSValue的一个子类，它是一个对象来存储数字值包括bool型，它提供了一系列的方法来存储char a signed or unsigned char, short int, int, long int, long long int, float, or double or as a BOOL，它提供了一个compare：方法来决定两个NSNumber对象的排序；<a id="more"></a><br>创建一个NSNumber对象有以下方法：<br><figure class="highlight mm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">+ numberWithBool:  </span><br><span class="line">+ numberWithChar:  </span><br><span class="line">+ numberWithDouble:  </span><br><span class="line">+ numberWithFloat:  </span><br><span class="line">+ numberWithInt:  </span><br><span class="line">+ numberWithInteger:  </span><br><span class="line">+ numberWithLong:  </span><br><span class="line">+ numberWithLongLong:  </span><br><span class="line">+ numberWithShort:  </span><br><span class="line">+ numberWithUnsignedChar:  </span><br><span class="line">+ numberWithUnsignedInt:  </span><br><span class="line">+ numberWithUnsignedInteger:  </span><br><span class="line">+ numberWithUnsignedLong:  </span><br><span class="line">+ numberWithUnsignedLongLong:  </span><br><span class="line">+ numberWithUnsignedShort:</span><br></pre></td></tr></table></figure></p>
-<p>初始化方法：<br><figure class="highlight mm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">	– initWithBool:  </span><br><span class="line">	– initWithChar:  </span><br><span class="line">    – initWithDouble:  </span><br><span class="line">	– initWithFloat:  </span><br><span class="line">	– initWithInt:  </span><br><span class="line">	– initWithInteger:  </span><br><span class="line">	– initWithLong:  </span><br><span class="line">	– initWithLongLong:  </span><br><span class="line">	– initWithShort:  </span><br><span class="line">	– initWithUnsignedChar:  </span><br><span class="line">	– initWithUnsignedInt:  </span><br><span class="line">	– initWithUnsignedInteger:  </span><br><span class="line">	– initWithUnsignedLong:  </span><br><span class="line">	– initWithUnsignedLongLong:  </span><br><span class="line">	– initWithUnsignedShort: </span><br><span class="line">``` </span><br><span class="line">检索</span><br><span class="line"></span><br><span class="line">```mm</span><br><span class="line"><span class="number">1</span>	– boolValue  </span><br><span class="line"><span class="number">2</span>	– charValue  </span><br><span class="line"><span class="number">3</span>	– decimalValue  </span><br><span class="line"><span class="number">4</span>	– doubleValue  </span><br><span class="line"><span class="number">5</span>	– floatValue  </span><br><span class="line"><span class="number">6</span>	– intValue  </span><br><span class="line"><span class="number">7</span>	– integerValue  </span><br><span class="line"><span class="number">8</span>	– longLongValue  </span><br><span class="line"><span class="number">9</span>	– longValue  </span><br><span class="line"><span class="number">10</span>	– shortValue  </span><br><span class="line"><span class="number">11</span>	– unsignedCharValue  </span><br><span class="line"><span class="number">12</span>	– unsignedIntegerValue  </span><br><span class="line"><span class="number">13</span>	– unsignedIntValue  </span><br><span class="line"><span class="number">14</span>	– unsignedLongLongValue  </span><br><span class="line"><span class="number">15</span>	– unsignedLongValue  </span><br><span class="line"><span class="number">16</span>	– unsignedShortValue</span><br><span class="line">```  </span><br><span class="line"><span class="built_in">NSNumber</span>类型有点类似<span class="keyword">id</span>类型，对于任何类型的数字对象都能用它来声明，也就是用它来声明数字对象，通过声明，很难判断声明变量是什么数字类型，确定数字对象类型多是在初始化的时候才能确定。</span><br><span class="line"></span><br><span class="line">数字对象的创建或者初始化：</span><br><span class="line">格式：</span><br><span class="line"><span class="built_in">NSNumber</span> 数字对象 ＝ ［<span class="built_in">NSNumber</span> numberWith数字类型：数值］；</span><br><span class="line">```mm</span><br><span class="line">	intNumber = [<span class="built_in">NSNumber</span> numberWithInt:<span class="number">100</span>];  </span><br><span class="line">	longNumber = [<span class="built_in">NSNumber</span> numberWithLong:<span class="number">0xabcdef</span>];  </span><br><span class="line">	floatNumber = [<span class="built_in">NSNumber</span> numberWithFloat:<span class="number">10.01</span>];</span><br></pre></td></tr></table></figure></p>
-<p>2、int、 NSInteger、 NSUInteger、NSNumber之间的区别和联系<br>int ： 当使用int类型定义变量的时候，可以像写C程序一样，用int也可以用NSInteger，推荐使用NSInteger ，因为这样就不用考虑设备是32位还是64位了。<br>NSUInteger是无符号的，即没有负数，NSInteger是有符号的。<br>1》、当需要使用int类型的变量的时候，可以像写C的程序一样，用int，也可以用NSInteger，但更推荐使用NSInteger，因为这样就不用考虑设备是32位的还是64位的。<br>2》、NSUInteger是无符号的，即没有负数,NSInteger是有符号的。<br>3》、有人说既然都有了NSInteger等这些基础类型了为什么还要有NSNumber？它们的功能当然是不同的。<br>NSInteger是基础类型，但是NSNumber是一个类。如果想要存储一个数值，直接用NSInteger是不行的，比如在一个Array里面这样用：<br><figure class="highlight mm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">NSArray</span> *array= [[<span class="built_in">NSArray</span> alloc]init];</span><br><span class="line">[array addObject:<span class="number">3</span>];<span class="comment">//会编译错误</span></span><br><span class="line">这样是会引发编译错误的，因为<span class="built_in">NSArray</span>里面放的需要是一个类，但‘<span class="number">3</span>’不是。这个时候需要用到<span class="built_in">NSNumber</span>:</span><br><span class="line"><span class="built_in">NSMutableArray</span> *array= [[<span class="built_in">NSMutableArray</span> alloc]init];</span><br><span class="line">[array addObject:[<span class="built_in">NSNumber</span> numberWithInt:<span class="number">3</span>]];</span><br><span class="line"></span><br><span class="line">一下两行代码是会有警告的  因为<span class="built_in">NSArray</span> 是不可变的.</span><br><span class="line"><span class="built_in">NSArray</span> *array1= [[<span class="built_in">NSArray</span> alloc]init];</span><br><span class="line">[array1 addObject:[<span class="built_in">NSNumber</span> numberWithInt:<span class="number">3</span>]];</span><br></pre></td></tr></table></figure></p>
-<p>Cocoa提供了NSNumber类来包装（即以对象形式实现）基本数据类型。<br>例如以下创建方法：<br><figure class="highlight mm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">+ (<span class="built_in">NSNumber</span>*)numberWithChar: (<span class="keyword">char</span>)value;</span><br><span class="line">+ (<span class="built_in">NSNumber</span>*)numberWithInt: (<span class="keyword">int</span>)value;</span><br><span class="line">+ (<span class="built_in">NSNumber</span>*)numberWithFloat: (<span class="keyword">float</span>)value;</span><br><span class="line">+ (<span class="built_in">NSNumber</span>*)numberWithBool: (<span class="built_in">BOOL</span>) value;</span><br></pre></td></tr></table></figure></p>
-<p>将基本类型数据封装到NSNumber中后，就可以通过下面的实例方法重新获取它：<br><figure class="highlight mm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="keyword">char</span>)charValue;</span><br><span class="line">- (<span class="keyword">int</span>)intValue;</span><br><span class="line">- (<span class="keyword">float</span>)floatValue;</span><br><span class="line">- (<span class="built_in">BOOL</span>)boolValue;</span><br><span class="line">- (<span class="built_in">NSString</span>*)stringValue;</span><br></pre></td></tr></table></figure></p>
+		<p>iOS开发之int,NSInteger,NSUInteger,NSNumber的使用<br>1、首先先了解下NSNumber类型：<br>苹果官方文档地址：<a href="https://developer.apple.com/library/ios/documentation/Cocoa/Reference/Foundation/Classes/NSNumber_Class/Reference/Reference.html" target="_blank" rel="external">https://developer.apple.com/library/ios/documentation/Cocoa/Reference/Foundation/Classes/NSNumber_Class/Reference/Reference.html</a><br>NSNumber是NSValue的一个子类，它是一个对象来存储数字值包括bool型，它提供了一系列的方法来存储char a signed or unsigned char, short int, int, long int, long long int, float, or double or as a BOOL，它提供了一个compare：方法来决定两个NSNumber对象的排序；<a id="more"></a><br>创建一个NSNumber对象有以下方法：<br><figure class="highlight mm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">+ numberWithBool:  </div><div class="line">+ numberWithChar:  </div><div class="line">+ numberWithDouble:  </div><div class="line">+ numberWithFloat:  </div><div class="line">+ numberWithInt:  </div><div class="line">+ numberWithInteger:  </div><div class="line">+ numberWithLong:  </div><div class="line">+ numberWithLongLong:  </div><div class="line">+ numberWithShort:  </div><div class="line">+ numberWithUnsignedChar:  </div><div class="line">+ numberWithUnsignedInt:  </div><div class="line">+ numberWithUnsignedInteger:  </div><div class="line">+ numberWithUnsignedLong:  </div><div class="line">+ numberWithUnsignedLongLong:  </div><div class="line">+ numberWithUnsignedShort:</div></pre></td></tr></table></figure></p>
+<p>初始化方法：<br><figure class="highlight mm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div></pre></td><td class="code"><pre><div class="line">	– initWithBool:  </div><div class="line">	– initWithChar:  </div><div class="line">    – initWithDouble:  </div><div class="line">	– initWithFloat:  </div><div class="line">	– initWithInt:  </div><div class="line">	– initWithInteger:  </div><div class="line">	– initWithLong:  </div><div class="line">	– initWithLongLong:  </div><div class="line">	– initWithShort:  </div><div class="line">	– initWithUnsignedChar:  </div><div class="line">	– initWithUnsignedInt:  </div><div class="line">	– initWithUnsignedInteger:  </div><div class="line">	– initWithUnsignedLong:  </div><div class="line">	– initWithUnsignedLongLong:  </div><div class="line">	– initWithUnsignedShort: </div><div class="line">``` </div><div class="line">检索</div><div class="line"></div><div class="line">```mm</div><div class="line"><span class="number">1</span>	– boolValue  </div><div class="line"><span class="number">2</span>	– charValue  </div><div class="line"><span class="number">3</span>	– decimalValue  </div><div class="line"><span class="number">4</span>	– doubleValue  </div><div class="line"><span class="number">5</span>	– floatValue  </div><div class="line"><span class="number">6</span>	– intValue  </div><div class="line"><span class="number">7</span>	– integerValue  </div><div class="line"><span class="number">8</span>	– longLongValue  </div><div class="line"><span class="number">9</span>	– longValue  </div><div class="line"><span class="number">10</span>	– shortValue  </div><div class="line"><span class="number">11</span>	– unsignedCharValue  </div><div class="line"><span class="number">12</span>	– unsignedIntegerValue  </div><div class="line"><span class="number">13</span>	– unsignedIntValue  </div><div class="line"><span class="number">14</span>	– unsignedLongLongValue  </div><div class="line"><span class="number">15</span>	– unsignedLongValue  </div><div class="line"><span class="number">16</span>	– unsignedShortValue</div><div class="line">```  </div><div class="line"><span class="built_in">NSNumber</span>类型有点类似<span class="keyword">id</span>类型，对于任何类型的数字对象都能用它来声明，也就是用它来声明数字对象，通过声明，很难判断声明变量是什么数字类型，确定数字对象类型多是在初始化的时候才能确定。</div><div class="line"></div><div class="line">数字对象的创建或者初始化：</div><div class="line">格式：</div><div class="line"><span class="built_in">NSNumber</span> 数字对象 ＝ ［<span class="built_in">NSNumber</span> numberWith数字类型：数值］；</div><div class="line">```mm</div><div class="line">	intNumber = [<span class="built_in">NSNumber</span> numberWithInt:<span class="number">100</span>];  </div><div class="line">	longNumber = [<span class="built_in">NSNumber</span> numberWithLong:<span class="number">0xabcdef</span>];  </div><div class="line">	floatNumber = [<span class="built_in">NSNumber</span> numberWithFloat:<span class="number">10.01</span>];</div></pre></td></tr></table></figure></p>
+<p>2、int、 NSInteger、 NSUInteger、NSNumber之间的区别和联系<br>int ： 当使用int类型定义变量的时候，可以像写C程序一样，用int也可以用NSInteger，推荐使用NSInteger ，因为这样就不用考虑设备是32位还是64位了。<br>NSUInteger是无符号的，即没有负数，NSInteger是有符号的。<br>1》、当需要使用int类型的变量的时候，可以像写C的程序一样，用int，也可以用NSInteger，但更推荐使用NSInteger，因为这样就不用考虑设备是32位的还是64位的。<br>2》、NSUInteger是无符号的，即没有负数,NSInteger是有符号的。<br>3》、有人说既然都有了NSInteger等这些基础类型了为什么还要有NSNumber？它们的功能当然是不同的。<br>NSInteger是基础类型，但是NSNumber是一个类。如果想要存储一个数值，直接用NSInteger是不行的，比如在一个Array里面这样用：<br><figure class="highlight mm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">NSArray</span> *array= [[<span class="built_in">NSArray</span> alloc]init];</div><div class="line">[array addObject:<span class="number">3</span>];<span class="comment">//会编译错误</span></div><div class="line">这样是会引发编译错误的，因为<span class="built_in">NSArray</span>里面放的需要是一个类，但‘<span class="number">3</span>’不是。这个时候需要用到<span class="built_in">NSNumber</span>:</div><div class="line"><span class="built_in">NSMutableArray</span> *array= [[<span class="built_in">NSMutableArray</span> alloc]init];</div><div class="line">[array addObject:[<span class="built_in">NSNumber</span> numberWithInt:<span class="number">3</span>]];</div><div class="line"></div><div class="line">一下两行代码是会有警告的  因为<span class="built_in">NSArray</span> 是不可变的.</div><div class="line"><span class="built_in">NSArray</span> *array1= [[<span class="built_in">NSArray</span> alloc]init];</div><div class="line">[array1 addObject:[<span class="built_in">NSNumber</span> numberWithInt:<span class="number">3</span>]];</div></pre></td></tr></table></figure></p>
+<p>Cocoa提供了NSNumber类来包装（即以对象形式实现）基本数据类型。<br>例如以下创建方法：<br><figure class="highlight mm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">+ (<span class="built_in">NSNumber</span>*)numberWithChar: (<span class="keyword">char</span>)value;</div><div class="line">+ (<span class="built_in">NSNumber</span>*)numberWithInt: (<span class="keyword">int</span>)value;</div><div class="line">+ (<span class="built_in">NSNumber</span>*)numberWithFloat: (<span class="keyword">float</span>)value;</div><div class="line">+ (<span class="built_in">NSNumber</span>*)numberWithBool: (<span class="built_in">BOOL</span>) value;</div></pre></td></tr></table></figure></p>
+<p>将基本类型数据封装到NSNumber中后，就可以通过下面的实例方法重新获取它：<br><figure class="highlight mm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">- (<span class="keyword">char</span>)charValue;</div><div class="line">- (<span class="keyword">int</span>)intValue;</div><div class="line">- (<span class="keyword">float</span>)floatValue;</div><div class="line">- (<span class="built_in">BOOL</span>)boolValue;</div><div class="line">- (<span class="built_in">NSString</span>*)stringValue;</div></pre></td></tr></table></figure></p>
 <p>参考:<br><a href="http://www.wuleilei.com/blog/335" target="_blank" rel="external">http://www.wuleilei.com/blog/335</a><br><a href="http://blog.csdn.net/weasleyqi/article/details/33396809" target="_blank" rel="external">http://blog.csdn.net/weasleyqi/article/details/33396809</a></p>
   
 	</div>
@@ -137,18 +138,18 @@
 <nav class="article-nav clearfix">
  
  <div class="prev" >
- <a href="/2015/10/05/MJRefresh/" title="第三方库 MJRefresh">
+ <a href="/2015/06/03/NSUserDefaults/" title="自定义对象存储 （NSUserDefaults）">
   <strong>上一篇：</strong><br/>
   <span>
-  第三方库 MJRefresh</span>
+  自定义对象存储 （NSUserDefaults）</span>
 </a>
 </div>
 
 
 <div class="next">
-<a href="/2015/06/03/NSUserDefaults/"  title="自定义对象存储 （NSUserDefaults）">
+<a href="/2015/10/05/MJRefresh/"  title="第三方库 MJRefresh">
  <strong>下一篇：</strong><br/> 
- <span>自定义对象存储 （NSUserDefaults）
+ <span>第三方库 MJRefresh
 </span>
 </a>
 </div>
@@ -162,17 +163,17 @@
 
 
 </div>  
-      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
 
   <div id="toc" class="toc-aside">
-  <strong class="toc-title">文章目录</strong>
+  <strong class="toc-title">Contents</strong>
  
  
  
   </div>
 
 <div id="asidepart">
-<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
 <aside class="clearfix">
 
   
@@ -182,7 +183,7 @@
 
   
 <div class="tagslist">
-	<p class="asidetitle">标签</p>
+	<p class="asidetitle">Tags</p>
 		<ul class="clearfix">
 		
 			
@@ -198,15 +199,7 @@
 			
 		
 			
-				<li><a href="/tags/iOS-UICollectionView/" title="iOS UICollectionView">iOS UICollectionView<sup>1</sup></a></li>
-			
-		
-			
 				<li><a href="/tags/RunTime/" title="RunTime">RunTime<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/iOS-CollectionViewCell-Obj-C/" title="iOS CollectionViewCell Obj-C">iOS CollectionViewCell Obj-C<sup>1</sup></a></li>
 			
 		
 			
@@ -214,11 +207,23 @@
 			
 		
 			
-				<li><a href="/tags/iOS-UITextField-转载/" title="iOS UITextField 转载">iOS UITextField 转载<sup>1</sup></a></li>
+				<li><a href="/tags/Swift3/" title="Swift3">Swift3<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/iOS-CollectionViewCell-Obj-C/" title="iOS CollectionViewCell Obj-C">iOS CollectionViewCell Obj-C<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/iOS-UICollectionView/" title="iOS UICollectionView">iOS UICollectionView<sup>1</sup></a></li>
 			
 		
 			
 				<li><a href="/tags/textfield-ios-oc-光标-offset/" title="textfield   ios   oc   光标   offset">textfield   ios   oc   光标   offset<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/iOS-UITextField-转载/" title="iOS UITextField 转载">iOS UITextField 转载<sup>1</sup></a></li>
 			
 		
 			
@@ -238,7 +243,7 @@
 
 
   <div class="linkslist">
-  <p class="asidetitle">友情链接</p>
+  <p class="asidetitle">Links</p>
     <ul>
         
           <li>
@@ -260,11 +265,11 @@
 
 
   <div class="rsspart">
-	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
+	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
 </div>
 
   <div class="weiboshow">
-  <p class="asidetitle">新浪微博</p>
+  <p class="asidetitle">Weibo</p>
     <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=null&verifier=b3593ceb&dpc=1"></iframe>
 </div>
 
@@ -303,7 +308,7 @@
 		
 
 		<p class="copyright">
-		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Shemmy</a> © 2016 
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Shemmy</a> © 2017 
 		
 		<a href="/about" target="_blank" title="Shemmy">Shemmy</a>
 		
@@ -503,7 +508,7 @@ var _hmt = _hmt || [];
 <!-- Totop Begin -->
 
 	<div id="totop">
-	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	<a title="Back to Top"><img src="/img/scrollup.png"/></a>
 	</div>
 	<script src="/js/totop.js"></script>
 

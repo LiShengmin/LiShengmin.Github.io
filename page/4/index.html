@@ -11,15 +11,12 @@
     
 
     
-    <meta name="description">
-<meta property="og:type" content="website">
+    <meta property="og:type" content="website">
 <meta property="og:title" content="Shemmy">
 <meta property="og:url" content="http://yoursite.com/page/4/index.html">
 <meta property="og:site_name" content="Shemmy">
-<meta property="og:description">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Shemmy">
-<meta name="twitter:description">
 
     
     <link rel="alternative" href="/atom.xml" title="Shemmy" type="application/atom+xml">
@@ -47,7 +44,7 @@
 				<h1 class="site-name"><a href="/" title="Shemmy">Shemmy</a></h1>
 				<h2 class="blog-motto"></h2>
 			</div>
-			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
 			</a></div>
 			<nav class="animated">
 				<ul>
@@ -63,7 +60,7 @@
  					
 					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
 						<label>Search</label>
-						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
 						<input type="hidden" name="q" value="site:yoursite.com">
 					</form>
 					
@@ -81,6 +78,128 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
+      <a href="/2015/10/05/MJRefresh/" title="第三方库 MJRefresh" itemprop="url">第三方库 MJRefresh</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Shemmy" target="_blank" itemprop="author">Shemmy</a>
+		
+  <p class="article-time">
+    <time datetime="2015-10-04T17:15:02.000Z" itemprop="datePublished"> Published 2015-10-05</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <a id="more"></a>
+<h1 id="在表现表格视图的-m文件中，引入MJRefresh"><a href="#在表现表格视图的-m文件中，引入MJRefresh" class="headerlink" title="在表现表格视图的.m文件中，引入MJRefresh"></a>在表现表格视图的.m文件中，引入MJRefresh</h1><figure class="highlight mm"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#import <span class="meta-string">"MJRefresh.h"</span></span></div></pre></td></tr></table></figure>
+<figure class="highlight mm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">- (<span class="keyword">void</span>)viewDidLoad &#123;    </div><div class="line">[<span class="keyword">super</span> viewDidLoad];</div><div class="line"><span class="comment">//集成刷新控件</span></div><div class="line">[<span class="keyword">self</span> setupRefresh];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h1><h2 id="集成刷新控件"><a href="#集成刷新控件" class="headerlink" title="集成刷新控件"></a>集成刷新控件</h2><figure class="highlight mm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">- (<span class="keyword">void</span>)setupRefresh&#123;</div><div class="line"><span class="comment">// 1.下拉刷新(进入刷新状态就会调用self的headerRereshing)    </span></div><div class="line">[<span class="keyword">self</span>.tableView addHeaderWithTarget:<span class="keyword">self</span> action:<span class="keyword">@selector</span>(headerRereshing)];</div><div class="line"><span class="meta">#warning 自动刷新(一进入程序就下拉刷新)    </span></div><div class="line">[<span class="keyword">self</span>.tableView headerBeginRefreshing];        </div><div class="line"><span class="comment">// 2.上拉加载更多(进入刷新状态就会调用self的footerRereshing)    </span></div><div class="line">[<span class="keyword">self</span>.tableView addFooterWithTarget:<span class="keyword">self</span> action:<span class="keyword">@selector</span>(footerRereshing)];        </div><div class="line"><span class="comment">// 设置文字(也可以不设置,默认的文字在MJRefreshConst中修改)    </span></div><div class="line"><span class="keyword">self</span>.tableView.headerPullToRefreshText = <span class="string">@"下拉可以刷新了"</span>;    </div><div class="line"><span class="keyword">self</span>.tableView.headerReleaseToRefreshText = <span class="string">@"松开马上刷新了"</span>;    </div><div class="line"><span class="keyword">self</span>.tableView.headerRefreshingText = <span class="string">@"MJ哥正在帮你刷新中,不客气"</span>;        </div><div class="line"><span class="keyword">self</span>.tableView.footerPullToRefreshText = <span class="string">@"上拉可以加载更多数据了"</span>;    </div><div class="line"><span class="keyword">self</span>.tableView.footerReleaseToRefreshText = <span class="string">@"松开马上加载更多数据了"</span>;    </div><div class="line"><span class="keyword">self</span>.tableView.footerRefreshingText = <span class="string">@"MJ哥正在帮你加载中,不客气"</span>;&#125;</div></pre></td></tr></table></figure>
+<h2 id="开始进入刷新状态"><a href="#开始进入刷新状态" class="headerlink" title="开始进入刷新状态"></a>开始进入刷新状态</h2><figure class="highlight mm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">- (<span class="keyword">void</span>)headerRereshing&#123;       <span class="comment">// 1.添加假数据//    </span></div><div class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i&lt;<span class="number">5</span>; i++) &#123;<span class="comment">//        </span></div><div class="line">[<span class="keyword">self</span>.fakeData insertObject:MJRandomData atIndex:<span class="number">0</span>];    </div><div class="line">&#125;        </div><div class="line"><span class="comment">// 2.2秒后刷新表格UI    </span></div><div class="line">dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(<span class="number">2.0</span> * <span class="built_in">NSEC_PER_SEC</span>)), dispatch_get_main_queue(), ^&#123;    <span class="comment">// 刷新表格        </span></div><div class="line">[<span class="keyword">self</span>.tableView reloadData];         <span class="comment">// (最好在刷新表格后调用)调用endRefreshing可以结束刷新状态       </span></div><div class="line">[<span class="keyword">self</span>.tableView headerEndRefreshing];</div><div class="line">&#125;);</div><div class="line">&#125;</div><div class="line">- (<span class="keyword">void</span>)footerRereshing&#123;      <span class="comment">// 1.添加假数据</span></div><div class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i&lt;<span class="number">5</span>; i++) &#123;        </div><div class="line">[<span class="keyword">self</span>.fakeData addObject:MJRandomData]; </div><div class="line">&#125;        </div><div class="line"><span class="comment">// 2.2秒后刷新表格UI    </span></div><div class="line">dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(<span class="number">2.0</span> * <span class="built_in">NSEC_PER_SEC</span>)), dispatch_get_main_queue(), ^&#123;        <span class="comment">// 刷新表格        </span></div><div class="line">[<span class="keyword">self</span>.tableView reloadData];                <span class="comment">// (最好在刷新表格后调用)调用endRefreshing可以结束刷新状态        </span></div><div class="line">[<span class="keyword">self</span>.tableView footerEndRefreshing];    </div><div class="line">&#125;);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="Error"><a href="#Error" class="headerlink" title="Error"></a>Error</h1><p>在运行时，会发现有 Too many arguments to function call, expected 0, have * 的错误，可以如下修改<br>选中项目<br>Project - Build Settings - ENABLE_STRICT_OBJC_MSGSEND 将其设置为 NO 即可</p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/iOS-三方库/">iOS 三方库</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/2015/10/05/MJRefresh/#comments" class="ds-thread-count comments-count-link" data-thread-key="2015/10/05/MJRefresh/" data-count-type="comments">&nbsp;</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2015/08/03/NSNumber的使用/" title="数字有关的类（int NSNumber...）" itemprop="url">数字有关的类（int NSNumber...）</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Shemmy" target="_blank" itemprop="author">Shemmy</a>
+		
+  <p class="article-time">
+    <time datetime="2015-08-03T14:05:12.000Z" itemprop="datePublished"> Published 2015-08-03</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <p>iOS开发之int,NSInteger,NSUInteger,NSNumber的使用<br>1、首先先了解下NSNumber类型：<br>苹果官方文档地址：<a href="https://developer.apple.com/library/ios/documentation/Cocoa/Reference/Foundation/Classes/NSNumber_Class/Reference/Reference.html">https://developer.apple.com/library/ios/documentation/Cocoa/Reference/Foundation/Classes/NSNumber_Class/Reference/Reference.html</a><br>NSNumber是NSValue的一个子类，它是一个对象来存储数字值包括bool型，它提供了一系列的方法来存储char a signed or unsigned char, short int, int, long int, long long int, float, or double or as a BOOL，它提供了一个compare：方法来决定两个NSNumber对象的排序；
+        
+        
+        <p class="article-more-link">
+          
+            <a href="/2015/08/03/NSNumber的使用/#more">Read More</a>
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/iOS/">iOS</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/2015/08/03/NSNumber的使用/#comments" class="ds-thread-count comments-count-link" data-thread-key="2015/08/03/NSNumber的使用/" data-count-type="comments">&nbsp;</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
       <a href="/2015/06/03/NSUserDefaults/" title="自定义对象存储 （NSUserDefaults）" itemprop="url">自定义对象存储 （NSUserDefaults）</a>
   </h1>
   <p class="article-author">By
@@ -88,7 +207,7 @@
 		<a href="/about" title="Shemmy" target="_blank" itemprop="author">Shemmy</a>
 		
   <p class="article-time">
-    <time datetime="2015-06-03T14:05:12.000Z" itemprop="datePublished"> 发表于 2015-06-03</time>
+    <time datetime="2015-06-03T14:05:12.000Z" itemprop="datePublished"> Published 2015-06-03</time>
     
   </p>
 </header>
@@ -148,7 +267,7 @@
 		<a href="/about" title="Shemmy" target="_blank" itemprop="author">Shemmy</a>
 		
   <p class="article-time">
-    <time datetime="2015-03-02T14:05:11.000Z" itemprop="datePublished"> 发表于 2015-03-02</time>
+    <time datetime="2015-03-02T14:05:11.000Z" itemprop="datePublished"> Published 2015-03-02</time>
     
   </p>
 </header>
@@ -207,7 +326,7 @@
 		<a href="/about" title="Shemmy" target="_blank" itemprop="author">Shemmy</a>
 		
   <p class="article-time">
-    <time datetime="2015-02-13T18:05:11.000Z" itemprop="datePublished"> 发表于 2015-02-14</time>
+    <time datetime="2015-02-13T18:05:11.000Z" itemprop="datePublished"> Published 2015-02-14</time>
     
   </p>
 </header>
@@ -259,10 +378,10 @@
   </nav>
 
 </div>
-      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
 
 <div id="asidepart">
-<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
 <aside class="clearfix">
 
   
@@ -272,7 +391,7 @@
 
   
 <div class="tagslist">
-	<p class="asidetitle">标签</p>
+	<p class="asidetitle">Tags</p>
 		<ul class="clearfix">
 		
 			
@@ -288,15 +407,7 @@
 			
 		
 			
-				<li><a href="/tags/iOS-UICollectionView/" title="iOS UICollectionView">iOS UICollectionView<sup>1</sup></a></li>
-			
-		
-			
 				<li><a href="/tags/RunTime/" title="RunTime">RunTime<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/iOS-CollectionViewCell-Obj-C/" title="iOS CollectionViewCell Obj-C">iOS CollectionViewCell Obj-C<sup>1</sup></a></li>
 			
 		
 			
@@ -304,11 +415,23 @@
 			
 		
 			
-				<li><a href="/tags/iOS-UITextField-转载/" title="iOS UITextField 转载">iOS UITextField 转载<sup>1</sup></a></li>
+				<li><a href="/tags/Swift3/" title="Swift3">Swift3<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/iOS-CollectionViewCell-Obj-C/" title="iOS CollectionViewCell Obj-C">iOS CollectionViewCell Obj-C<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/iOS-UICollectionView/" title="iOS UICollectionView">iOS UICollectionView<sup>1</sup></a></li>
 			
 		
 			
 				<li><a href="/tags/textfield-ios-oc-光标-offset/" title="textfield   ios   oc   光标   offset">textfield   ios   oc   光标   offset<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/iOS-UITextField-转载/" title="iOS UITextField 转载">iOS UITextField 转载<sup>1</sup></a></li>
 			
 		
 			
@@ -328,7 +451,7 @@
 
 
   <div class="linkslist">
-  <p class="asidetitle">友情链接</p>
+  <p class="asidetitle">Links</p>
     <ul>
         
           <li>
@@ -350,11 +473,11 @@
 
 
   <div class="rsspart">
-	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
+	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
 </div>
 
   <div class="weiboshow">
-  <p class="asidetitle">新浪微博</p>
+  <p class="asidetitle">Weibo</p>
     <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=null&verifier=b3593ceb&dpc=1"></iframe>
 </div>
 
@@ -393,7 +516,7 @@
 		
 
 		<p class="copyright">
-		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Shemmy</a> © 2016 
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Shemmy</a> © 2017 
 		
 		<a href="/about" target="_blank" title="Shemmy">Shemmy</a>
 		
@@ -504,7 +627,7 @@ var _hmt = _hmt || [];
 <!-- Totop Begin -->
 
 	<div id="totop">
-	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	<a title="Back to Top"><img src="/img/scrollup.png"/></a>
 	</div>
 	<script src="/js/totop.js"></script>
 

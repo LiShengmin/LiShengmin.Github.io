@@ -12,6 +12,7 @@
 
     
     <meta name="description" content="APP下载安装第一次使用一般会显示一个首次启动引导界面然后进入主界面，非首次开启APP也通常会显示一个启动界面然后进入主界面。1、本例首次启动显示FirstUseViewController，添加一个button，点击进入LaunchViewController2、非首次LaunchViewController，显示2s后进入主界面ViewController3、主界面ViewController">
+<meta name="keywords">
 <meta property="og:type" content="article">
 <meta property="og:title" content="引导界面和启动界面设置">
 <meta property="og:url" content="http://yoursite.com/2015/12/08/启动引导界面和启动界面设置/index.html">
@@ -48,7 +49,7 @@
 				<h1 class="site-name"><a href="/" title="Shemmy">Shemmy</a></h1>
 				<h2 class="blog-motto"></h2>
 			</div>
-			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
 			</a></div>
 			<nav class="animated">
 				<ul>
@@ -64,7 +65,7 @@
  					
 					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
 						<label>Search</label>
-						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
 						<input type="hidden" name="q" value="site:yoursite.com">
 					</form>
 					
@@ -87,23 +88,23 @@
 		<a href="/about" title="Shemmy" target="_blank" itemprop="author">Shemmy</a>
 		
   <p class="article-time">
-    <time datetime="2015-12-08T04:27:39.000Z" itemprop="datePublished"> 发表于 2015-12-08</time>
+    <time datetime="2015-12-08T04:27:39.000Z" itemprop="datePublished"> Published 2015-12-08</time>
     
   </p>
 </header>
 	<div class="article-content">
 		
 		<div id="toc" class="toc-article">
-			<strong class="toc-title">文章目录</strong>
+			<strong class="toc-title">Contents</strong>
 		
 			
 		
 		</div>
 		
-		<p>APP下载安装第一次使用一般会显示一个首次启动引导界面然后进入主界面，非首次开启APP也通常会显示一个启动界面然后进入主界面。<br>1、本例首次启动显示FirstUseViewController，添加一个button，点击进入LaunchViewController<br>2、非首次LaunchViewController，显示2s后进入主界面ViewController<br>3、主界面ViewController<br>4、不深究细节，一般启动引导都会有动画，图片之类的，非本次练习重点，所以没有设置，只有简单地标志作界面区分<br>（效果图在文末）<a id="more"></a><br>FirstUseViewController.m<br><figure class="highlight mm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="keyword">void</span>)viewDidLoad &#123; </span><br><span class="line">[<span class="keyword">super</span> viewDidLoad];</span><br><span class="line"><span class="keyword">self</span>.view.backgroundColor = [<span class="built_in">UIColor</span> greenColor];</span><br><span class="line"></span><br><span class="line"><span class="built_in">UIButton</span> *button = [[<span class="built_in">UIButton</span> alloc] initWithFrame:<span class="built_in">CGRectMake</span>(<span class="number">0</span>, <span class="number">0</span>, <span class="number">100</span>, <span class="number">100</span>)];</span><br><span class="line">button.center = <span class="keyword">self</span>.view.center;</span><br><span class="line">[button setTitle:<span class="string">@"Welcome"</span> forState:<span class="built_in">UIControlStateNormal</span>];</span><br><span class="line">[button addTarget:<span class="keyword">self</span> action:<span class="keyword">@selector</span>(btnAction:) forControlEvents:<span class="built_in">UIControlEventTouchUpInside</span>];</span><br><span class="line">[<span class="keyword">self</span>.view addSubview:button];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//点击button切换到下一个界面</span></span><br><span class="line">- (<span class="keyword">void</span>)btnAction:(<span class="built_in">UIButton</span> *)btn &#123;</span><br><span class="line">LaunchViewController *vc = [[LaunchViewController alloc] init];</span><br><span class="line"><span class="keyword">self</span>.view.window.rootViewController = vc;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>LaunchViewController.m<br><figure class="highlight mm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="keyword">void</span>)viewDidLoad &#123;</span><br><span class="line"></span><br><span class="line">[<span class="keyword">super</span> viewDidLoad];</span><br><span class="line"></span><br><span class="line"><span class="keyword">self</span>.view.backgroundColor = [<span class="built_in">UIColor</span> blueColor];</span><br><span class="line"><span class="built_in">UILabel</span> *label = [[<span class="built_in">UILabel</span> alloc] initWithFrame:<span class="built_in">CGRectMake</span>(<span class="number">0</span>, <span class="number">0</span>, <span class="number">200</span>, <span class="number">50</span>)];</span><br><span class="line">label.center = <span class="keyword">self</span>.view.center;</span><br><span class="line">[label setFont:[<span class="built_in">UIFont</span> systemFontOfSize:<span class="number">30</span>]];</span><br><span class="line">label.text = <span class="string">@"启动页面"</span>;</span><br><span class="line">[<span class="keyword">self</span>.view addSubview:label];</span><br><span class="line"></span><br><span class="line"><span class="comment">//    延迟2s调用，一般启动页面会停留，或者有些动画什么的，本例只简述思路，不深究细节</span></span><br><span class="line">[<span class="keyword">self</span> performSelector:<span class="keyword">@selector</span>(changeView) withObject:<span class="keyword">self</span> afterDelay:<span class="number">2</span>];</span><br><span class="line"><span class="comment">// Do any additional setup after loading the view.</span></span><br><span class="line">&#125;	</span><br><span class="line"></span><br><span class="line"><span class="comment">//切换到下一个界面</span></span><br><span class="line">- (<span class="keyword">void</span>)changeView &#123;</span><br><span class="line"><span class="built_in">UIWindow</span> *window = <span class="keyword">self</span>.view.window;</span><br><span class="line">ViewController *main = [[ViewController alloc] init];</span><br><span class="line"></span><br><span class="line"><span class="comment">//添加一个缩放效果</span></span><br><span class="line">main.view.transform = <span class="built_in">CGAffineTransformMakeScale</span>(<span class="number">0.2</span>, <span class="number">0.2</span>);</span><br><span class="line">[<span class="built_in">UIView</span> animateWithDuration:<span class="number">0.1</span> animations:^&#123;</span><br><span class="line">main.view.transform = <span class="built_in">CGAffineTransformIdentity</span>;</span><br><span class="line">&#125;];</span><br><span class="line"></span><br><span class="line">window.rootViewController = main;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>ViewController.m<br><figure class="highlight mm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="keyword">void</span>)viewDidLoad &#123;</span><br><span class="line">[<span class="keyword">super</span> viewDidLoad];</span><br><span class="line"></span><br><span class="line"><span class="keyword">self</span>.view.backgroundColor = [<span class="built_in">UIColor</span> grayColor];</span><br><span class="line"><span class="built_in">UILabel</span> *label = [[<span class="built_in">UILabel</span> alloc] initWithFrame:<span class="built_in">CGRectMake</span>(<span class="number">0</span>, <span class="number">0</span>, <span class="number">100</span>, <span class="number">50</span>)];</span><br><span class="line">label.center = <span class="keyword">self</span>.view.center;</span><br><span class="line">[label setFont:[<span class="built_in">UIFont</span> systemFontOfSize:<span class="number">30</span>]];</span><br><span class="line">label.text = <span class="string">@"主界面"</span>;</span><br><span class="line">[<span class="keyword">self</span>.view addSubview:label];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>AppDelegate.m设置，两种方法。个人觉得第二种利用NSUserDefaults实现更方便<br><figure class="highlight mm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="built_in">BOOL</span>)application:(<span class="built_in">UIApplication</span> *)application didFinishLaunchingWithOptions:(<span class="built_in">NSDictionary</span> *)launchOptions &#123;</span><br><span class="line"><span class="keyword">self</span>.window = [[<span class="built_in">UIWindow</span> alloc] initWithFrame:[<span class="built_in">UIScreen</span> mainScreen].bounds];</span><br><span class="line"><span class="keyword">self</span>.window.backgroundColor = [<span class="built_in">UIColor</span> whiteColor];</span><br><span class="line">[<span class="keyword">self</span>.window makeKeyAndVisible];</span><br><span class="line"></span><br><span class="line"><span class="comment">////    利用文件操作判断是否为第一次使用此APP</span></span><br><span class="line"><span class="comment">//    NSString *filePath = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/firstUse.plist"];    //第一次启动，没有此文件，会自动创建</span></span><br><span class="line"><span class="comment">//    NSDictionary *dic = [NSDictionary dictionaryWithContentsOfFile:filePath];</span></span><br><span class="line"><span class="comment">//    </span></span><br><span class="line"><span class="comment">//    BOOL notFirstUse = YES;</span></span><br><span class="line"><span class="comment">//    notFirstUse = [dic[@"notFirstUse"] boolValue];</span></span><br><span class="line"><span class="comment">//    if (!notFirstUse) &#123;</span></span><br><span class="line"><span class="comment">//        NSDictionary *dic = @&#123;@"notFirstUse" : @YES &#125;;</span></span><br><span class="line"><span class="comment">//        [dic writeToFile:filePath atomically:YES];</span></span><br><span class="line"><span class="comment">//        FirstUseViewController *vc = [[FirstUseViewController alloc] init];</span></span><br><span class="line"><span class="comment">//        self.window.rootViewController = vc;</span></span><br><span class="line"><span class="comment">//    &#125;else &#123;</span></span><br><span class="line"><span class="comment">//        LaunchViewController *vc = [[LaunchViewController alloc] init];</span></span><br><span class="line"><span class="comment">//        self.window.rootViewController = vc;</span></span><br><span class="line"><span class="comment">//    &#125;</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//    利用NSUserDefaults实现</span></span><br><span class="line"><span class="keyword">if</span>(![[<span class="built_in">NSUserDefaults</span> standardUserDefaults] boolForKey:<span class="string">@"firstLaunch"</span>]) &#123;</span><br><span class="line">[[<span class="built_in">NSUserDefaults</span> standardUserDefaults] setBool:<span class="literal">YES</span> forKey:<span class="string">@"firstLaunch"</span>];</span><br><span class="line"><span class="built_in">NSLog</span>(<span class="string">@"首次启动"</span>);</span><br><span class="line">FirstUseViewController *vc = [[FirstUseViewController alloc] init];</span><br><span class="line"><span class="keyword">self</span>.window.rootViewController = vc;</span><br><span class="line">&#125;<span class="keyword">else</span> &#123;</span><br><span class="line"><span class="built_in">NSLog</span>(<span class="string">@"非首次启动"</span>);</span><br><span class="line">LaunchViewController *vc = [[LaunchViewController alloc] init];</span><br><span class="line"><span class="keyword">self</span>.window.rootViewController = vc;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">return</span> <span class="literal">YES</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+		<p>APP下载安装第一次使用一般会显示一个首次启动引导界面然后进入主界面，非首次开启APP也通常会显示一个启动界面然后进入主界面。<br>1、本例首次启动显示FirstUseViewController，添加一个button，点击进入LaunchViewController<br>2、非首次LaunchViewController，显示2s后进入主界面ViewController<br>3、主界面ViewController<br>4、不深究细节，一般启动引导都会有动画，图片之类的，非本次练习重点，所以没有设置，只有简单地标志作界面区分<br>（效果图在文末）<a id="more"></a><br>FirstUseViewController.m<br><figure class="highlight mm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">- (<span class="keyword">void</span>)viewDidLoad &#123; </div><div class="line">[<span class="keyword">super</span> viewDidLoad];</div><div class="line"><span class="keyword">self</span>.view.backgroundColor = [<span class="built_in">UIColor</span> greenColor];</div><div class="line"></div><div class="line"><span class="built_in">UIButton</span> *button = [[<span class="built_in">UIButton</span> alloc] initWithFrame:<span class="built_in">CGRectMake</span>(<span class="number">0</span>, <span class="number">0</span>, <span class="number">100</span>, <span class="number">100</span>)];</div><div class="line">button.center = <span class="keyword">self</span>.view.center;</div><div class="line">[button setTitle:<span class="string">@"Welcome"</span> forState:<span class="built_in">UIControlStateNormal</span>];</div><div class="line">[button addTarget:<span class="keyword">self</span> action:<span class="keyword">@selector</span>(btnAction:) forControlEvents:<span class="built_in">UIControlEventTouchUpInside</span>];</div><div class="line">[<span class="keyword">self</span>.view addSubview:button];</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//点击button切换到下一个界面</span></div><div class="line">- (<span class="keyword">void</span>)btnAction:(<span class="built_in">UIButton</span> *)btn &#123;</div><div class="line">LaunchViewController *vc = [[LaunchViewController alloc] init];</div><div class="line"><span class="keyword">self</span>.view.window.rootViewController = vc;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>LaunchViewController.m<br><figure class="highlight mm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line">- (<span class="keyword">void</span>)viewDidLoad &#123;</div><div class="line"></div><div class="line">[<span class="keyword">super</span> viewDidLoad];</div><div class="line"></div><div class="line"><span class="keyword">self</span>.view.backgroundColor = [<span class="built_in">UIColor</span> blueColor];</div><div class="line"><span class="built_in">UILabel</span> *label = [[<span class="built_in">UILabel</span> alloc] initWithFrame:<span class="built_in">CGRectMake</span>(<span class="number">0</span>, <span class="number">0</span>, <span class="number">200</span>, <span class="number">50</span>)];</div><div class="line">label.center = <span class="keyword">self</span>.view.center;</div><div class="line">[label setFont:[<span class="built_in">UIFont</span> systemFontOfSize:<span class="number">30</span>]];</div><div class="line">label.text = <span class="string">@"启动页面"</span>;</div><div class="line">[<span class="keyword">self</span>.view addSubview:label];</div><div class="line"></div><div class="line"><span class="comment">//    延迟2s调用，一般启动页面会停留，或者有些动画什么的，本例只简述思路，不深究细节</span></div><div class="line">[<span class="keyword">self</span> performSelector:<span class="keyword">@selector</span>(changeView) withObject:<span class="keyword">self</span> afterDelay:<span class="number">2</span>];</div><div class="line"><span class="comment">// Do any additional setup after loading the view.</span></div><div class="line">&#125;	</div><div class="line"></div><div class="line"><span class="comment">//切换到下一个界面</span></div><div class="line">- (<span class="keyword">void</span>)changeView &#123;</div><div class="line"><span class="built_in">UIWindow</span> *window = <span class="keyword">self</span>.view.window;</div><div class="line">ViewController *main = [[ViewController alloc] init];</div><div class="line"></div><div class="line"><span class="comment">//添加一个缩放效果</span></div><div class="line">main.view.transform = <span class="built_in">CGAffineTransformMakeScale</span>(<span class="number">0.2</span>, <span class="number">0.2</span>);</div><div class="line">[<span class="built_in">UIView</span> animateWithDuration:<span class="number">0.1</span> animations:^&#123;</div><div class="line">main.view.transform = <span class="built_in">CGAffineTransformIdentity</span>;</div><div class="line">&#125;];</div><div class="line"></div><div class="line">window.rootViewController = main;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>ViewController.m<br><figure class="highlight mm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">- (<span class="keyword">void</span>)viewDidLoad &#123;</div><div class="line">[<span class="keyword">super</span> viewDidLoad];</div><div class="line"></div><div class="line"><span class="keyword">self</span>.view.backgroundColor = [<span class="built_in">UIColor</span> grayColor];</div><div class="line"><span class="built_in">UILabel</span> *label = [[<span class="built_in">UILabel</span> alloc] initWithFrame:<span class="built_in">CGRectMake</span>(<span class="number">0</span>, <span class="number">0</span>, <span class="number">100</span>, <span class="number">50</span>)];</div><div class="line">label.center = <span class="keyword">self</span>.view.center;</div><div class="line">[label setFont:[<span class="built_in">UIFont</span> systemFontOfSize:<span class="number">30</span>]];</div><div class="line">label.text = <span class="string">@"主界面"</span>;</div><div class="line">[<span class="keyword">self</span>.view addSubview:label];</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>AppDelegate.m设置，两种方法。个人觉得第二种利用NSUserDefaults实现更方便<br><figure class="highlight mm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line">- (<span class="built_in">BOOL</span>)application:(<span class="built_in">UIApplication</span> *)application didFinishLaunchingWithOptions:(<span class="built_in">NSDictionary</span> *)launchOptions &#123;</div><div class="line"><span class="keyword">self</span>.window = [[<span class="built_in">UIWindow</span> alloc] initWithFrame:[<span class="built_in">UIScreen</span> mainScreen].bounds];</div><div class="line"><span class="keyword">self</span>.window.backgroundColor = [<span class="built_in">UIColor</span> whiteColor];</div><div class="line">[<span class="keyword">self</span>.window makeKeyAndVisible];</div><div class="line"></div><div class="line"><span class="comment">////    利用文件操作判断是否为第一次使用此APP</span></div><div class="line"><span class="comment">//    NSString *filePath = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/firstUse.plist"];    //第一次启动，没有此文件，会自动创建</span></div><div class="line"><span class="comment">//    NSDictionary *dic = [NSDictionary dictionaryWithContentsOfFile:filePath];</span></div><div class="line"><span class="comment">//    </span></div><div class="line"><span class="comment">//    BOOL notFirstUse = YES;</span></div><div class="line"><span class="comment">//    notFirstUse = [dic[@"notFirstUse"] boolValue];</span></div><div class="line"><span class="comment">//    if (!notFirstUse) &#123;</span></div><div class="line"><span class="comment">//        NSDictionary *dic = @&#123;@"notFirstUse" : @YES &#125;;</span></div><div class="line"><span class="comment">//        [dic writeToFile:filePath atomically:YES];</span></div><div class="line"><span class="comment">//        FirstUseViewController *vc = [[FirstUseViewController alloc] init];</span></div><div class="line"><span class="comment">//        self.window.rootViewController = vc;</span></div><div class="line"><span class="comment">//    &#125;else &#123;</span></div><div class="line"><span class="comment">//        LaunchViewController *vc = [[LaunchViewController alloc] init];</span></div><div class="line"><span class="comment">//        self.window.rootViewController = vc;</span></div><div class="line"><span class="comment">//    &#125;</span></div><div class="line"><span class="comment">//</span></div><div class="line"></div><div class="line"><span class="comment">//    利用NSUserDefaults实现</span></div><div class="line"><span class="keyword">if</span>(![[<span class="built_in">NSUserDefaults</span> standardUserDefaults] boolForKey:<span class="string">@"firstLaunch"</span>]) &#123;</div><div class="line">[[<span class="built_in">NSUserDefaults</span> standardUserDefaults] setBool:<span class="literal">YES</span> forKey:<span class="string">@"firstLaunch"</span>];</div><div class="line"><span class="built_in">NSLog</span>(<span class="string">@"首次启动"</span>);</div><div class="line">FirstUseViewController *vc = [[FirstUseViewController alloc] init];</div><div class="line"><span class="keyword">self</span>.window.rootViewController = vc;</div><div class="line">&#125;<span class="keyword">else</span> &#123;</div><div class="line"><span class="built_in">NSLog</span>(<span class="string">@"非首次启动"</span>);</div><div class="line">LaunchViewController *vc = [[LaunchViewController alloc] init];</div><div class="line"><span class="keyword">self</span>.window.rootViewController = vc;</div><div class="line">&#125;</div><div class="line"><span class="keyword">return</span> <span class="literal">YES</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>版权声明：本文为博主原创文章，未经博主允许不得转载。</p>
   
 	</div>
@@ -131,18 +132,18 @@
 <nav class="article-nav clearfix">
  
  <div class="prev" >
- <a href="/2015/12/19/基于AFNetWorking 网络请求/" title="基于AFNetWorking 网络请求">
+ <a href="/2015/12/04/iOS 保存文件的方法/" title="iOS 保存文件的方法">
   <strong>上一篇：</strong><br/>
   <span>
-  基于AFNetWorking 网络请求</span>
+  iOS 保存文件的方法</span>
 </a>
 </div>
 
 
 <div class="next">
-<a href="/2015/12/04/iOS 保存文件的方法/"  title="iOS 保存文件的方法">
+<a href="/2015/12/19/基于AFNetWorking 网络请求/"  title="基于AFNetWorking 网络请求">
  <strong>下一篇：</strong><br/> 
- <span>iOS 保存文件的方法
+ <span>基于AFNetWorking 网络请求
 </span>
 </a>
 </div>
@@ -156,17 +157,17 @@
 
 
 </div>  
-      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
 
   <div id="toc" class="toc-aside">
-  <strong class="toc-title">文章目录</strong>
+  <strong class="toc-title">Contents</strong>
  
  
  
   </div>
 
 <div id="asidepart">
-<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
 <aside class="clearfix">
 
   
@@ -176,7 +177,7 @@
 
   
 <div class="tagslist">
-	<p class="asidetitle">标签</p>
+	<p class="asidetitle">Tags</p>
 		<ul class="clearfix">
 		
 			
@@ -192,15 +193,7 @@
 			
 		
 			
-				<li><a href="/tags/iOS-UICollectionView/" title="iOS UICollectionView">iOS UICollectionView<sup>1</sup></a></li>
-			
-		
-			
 				<li><a href="/tags/RunTime/" title="RunTime">RunTime<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/iOS-CollectionViewCell-Obj-C/" title="iOS CollectionViewCell Obj-C">iOS CollectionViewCell Obj-C<sup>1</sup></a></li>
 			
 		
 			
@@ -208,11 +201,23 @@
 			
 		
 			
-				<li><a href="/tags/iOS-UITextField-转载/" title="iOS UITextField 转载">iOS UITextField 转载<sup>1</sup></a></li>
+				<li><a href="/tags/Swift3/" title="Swift3">Swift3<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/iOS-CollectionViewCell-Obj-C/" title="iOS CollectionViewCell Obj-C">iOS CollectionViewCell Obj-C<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/iOS-UICollectionView/" title="iOS UICollectionView">iOS UICollectionView<sup>1</sup></a></li>
 			
 		
 			
 				<li><a href="/tags/textfield-ios-oc-光标-offset/" title="textfield   ios   oc   光标   offset">textfield   ios   oc   光标   offset<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/iOS-UITextField-转载/" title="iOS UITextField 转载">iOS UITextField 转载<sup>1</sup></a></li>
 			
 		
 			
@@ -232,7 +237,7 @@
 
 
   <div class="linkslist">
-  <p class="asidetitle">友情链接</p>
+  <p class="asidetitle">Links</p>
     <ul>
         
           <li>
@@ -254,11 +259,11 @@
 
 
   <div class="rsspart">
-	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
+	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
 </div>
 
   <div class="weiboshow">
-  <p class="asidetitle">新浪微博</p>
+  <p class="asidetitle">Weibo</p>
     <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=null&verifier=b3593ceb&dpc=1"></iframe>
 </div>
 
@@ -297,7 +302,7 @@
 		
 
 		<p class="copyright">
-		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Shemmy</a> © 2016 
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Shemmy</a> © 2017 
 		
 		<a href="/about" target="_blank" title="Shemmy">Shemmy</a>
 		
@@ -497,7 +502,7 @@ var _hmt = _hmt || [];
 <!-- Totop Begin -->
 
 	<div id="totop">
-	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	<a title="Back to Top"><img src="/img/scrollup.png"/></a>
 	</div>
 	<script src="/js/totop.js"></script>
 

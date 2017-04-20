@@ -12,6 +12,7 @@
 
     
     <meta name="description" content="拖动视图实现移动效果曾今，答应一个朋友写这么一个小功能。忽然，想起来，还是写一下。该功能，就是拖动View到指定的位置。其实，功能比较简单，就是iOS手势动画中的拖动。就不废话了，直接代码">
+<meta name="keywords" content="iOS">
 <meta property="og:type" content="article">
 <meta property="og:title" content="动画-拖动视图实现移动效果">
 <meta property="og:url" content="http://yoursite.com/2015/12/23/iOS动画-拖动视图移动效果实现/index.html">
@@ -48,7 +49,7 @@
 				<h1 class="site-name"><a href="/" title="Shemmy">Shemmy</a></h1>
 				<h2 class="blog-motto"></h2>
 			</div>
-			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
 			</a></div>
 			<nav class="animated">
 				<ul>
@@ -64,7 +65,7 @@
  					
 					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
 						<label>Search</label>
-						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
 						<input type="hidden" name="q" value="site:yoursite.com">
 					</form>
 					
@@ -87,23 +88,23 @@
 		<a href="/about" title="Shemmy" target="_blank" itemprop="author">Shemmy</a>
 		
   <p class="article-time">
-    <time datetime="2015-12-22T17:18:32.000Z" itemprop="datePublished"> 发表于 2015-12-23</time>
+    <time datetime="2015-12-22T17:18:32.000Z" itemprop="datePublished"> Published 2015-12-23</time>
     
   </p>
 </header>
 	<div class="article-content">
 		
 		<div id="toc" class="toc-article">
-			<strong class="toc-title">文章目录</strong>
+			<strong class="toc-title">Contents</strong>
 		
 			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#拖动视图实现移动效果"><span class="toc-number">1.</span> <span class="toc-text">拖动视图实现移动效果</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#注册拖动动画"><span class="toc-number">1.1.</span> <span class="toc-text">注册拖动动画</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#拖动处理函数"><span class="toc-number">1.2.</span> <span class="toc-text">拖动处理函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#注"><span class="toc-number">1.3.</span> <span class="toc-text">注:</span></a></li></ol></li></ol>
 		
 		</div>
 		
 		<h1 id="拖动视图实现移动效果"><a href="#拖动视图实现移动效果" class="headerlink" title="拖动视图实现移动效果"></a>拖动视图实现移动效果</h1><p>曾今，答应一个朋友写这么一个小功能。忽然，想起来，还是写一下。<br>该功能，就是拖动View到指定的位置。<br>其实，功能比较简单，就是iOS手势动画中的拖动。就不废话了，直接代码 <a id="more"></a></p>
-<h2 id="注册拖动动画"><a href="#注册拖动动画" class="headerlink" title="注册拖动动画"></a>注册拖动动画</h2><figure class="highlight mm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">UIPanGestureRecognizer</span> * panGestureRecognizer = [[<span class="built_in">UIPanGestureRecognizer</span> alloc] initWithTarget:<span class="keyword">self</span></span><br><span class="line">action:<span class="keyword">@selector</span>(doHandlePanAction:)];</span><br><span class="line">[<span class="keyword">self</span>.vLight addGestureRecognizer:panGestureRecognizer];</span><br></pre></td></tr></table></figure>
+<h2 id="注册拖动动画"><a href="#注册拖动动画" class="headerlink" title="注册拖动动画"></a>注册拖动动画</h2><figure class="highlight mm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">UIPanGestureRecognizer</span> * panGestureRecognizer = [[<span class="built_in">UIPanGestureRecognizer</span> alloc] initWithTarget:<span class="keyword">self</span></div><div class="line">action:<span class="keyword">@selector</span>(doHandlePanAction:)];</div><div class="line">[<span class="keyword">self</span>.vLight addGestureRecognizer:panGestureRecognizer];</div></pre></td></tr></table></figure>
 <p>注：vLight就是要加入拖动的View子类。</p>
-<h2 id="拖动处理函数"><a href="#拖动处理函数" class="headerlink" title="拖动处理函数"></a>拖动处理函数</h2><figure class="highlight mm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="keyword">void</span>) doHandlePanAction:(<span class="built_in">UIPanGestureRecognizer</span> *)paramSender&#123;</span><br><span class="line"></span><br><span class="line"><span class="built_in">CGPoint</span> point = [paramSender translationInView:<span class="keyword">self</span>.view];</span><br><span class="line"><span class="built_in">NSLog</span>(<span class="string">@"X:%f;Y:%f"</span>,point.x,point.y);</span><br><span class="line"></span><br><span class="line">paramSender.view.center = <span class="built_in">CGPointMake</span>(paramSender.view.center.x + point.x, paramSender.view.center.y + point.y);</span><br><span class="line">**[paramSender setTranslation:<span class="built_in">CGPointMake</span>(<span class="number">0</span>, <span class="number">0</span>) inView:<span class="keyword">self</span>.view];**</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="拖动处理函数"><a href="#拖动处理函数" class="headerlink" title="拖动处理函数"></a>拖动处理函数</h2><figure class="highlight mm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">- (<span class="keyword">void</span>) doHandlePanAction:(<span class="built_in">UIPanGestureRecognizer</span> *)paramSender&#123;</div><div class="line"></div><div class="line"><span class="built_in">CGPoint</span> point = [paramSender translationInView:<span class="keyword">self</span>.view];</div><div class="line"><span class="built_in">NSLog</span>(<span class="string">@"X:%f;Y:%f"</span>,point.x,point.y);</div><div class="line"></div><div class="line">paramSender.view.center = <span class="built_in">CGPointMake</span>(paramSender.view.center.x + point.x, paramSender.view.center.y + point.y);</div><div class="line">**[paramSender setTranslation:<span class="built_in">CGPointMake</span>(<span class="number">0</span>, <span class="number">0</span>) inView:<span class="keyword">self</span>.view];**</div><div class="line"></div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h2 id="注"><a href="#注" class="headerlink" title="注:"></a>注:</h2><p>B代码，为关键代码，因为拖动起来一直是在递增，所以每次都要用setTranslation:方法将每次触摸都设置为0位置，这样才不至于不受控制般滑动出视图。</p>
   
 	</div>
@@ -136,18 +137,18 @@
 <nav class="article-nav clearfix">
  
  <div class="prev" >
- <a href="/2015/12/24/iOS7中UIKit支持的动力行为之UIAttachmentBehavior/" title="iOS7中UIKit支持的动力行为之UIAttachmentBehavior">
+ <a href="/2015/12/21/Objective-C Runtime/" title="Objective-C Runtime">
   <strong>上一篇：</strong><br/>
   <span>
-  iOS7中UIKit支持的动力行为之UIAttachmentBehavior</span>
+  Objective-C Runtime</span>
 </a>
 </div>
 
 
 <div class="next">
-<a href="/2015/12/21/Objective-C Runtime/"  title="Objective-C Runtime">
+<a href="/2015/12/24/iOS7中UIKit支持的动力行为之UIAttachmentBehavior/"  title="iOS7中UIKit支持的动力行为之UIAttachmentBehavior">
  <strong>下一篇：</strong><br/> 
- <span>Objective-C Runtime
+ <span>iOS7中UIKit支持的动力行为之UIAttachmentBehavior
 </span>
 </a>
 </div>
@@ -161,17 +162,17 @@
 
 
 </div>  
-      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
 
   <div id="toc" class="toc-aside">
-  <strong class="toc-title">文章目录</strong>
+  <strong class="toc-title">Contents</strong>
  
  <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#拖动视图实现移动效果"><span class="toc-number">1.</span> <span class="toc-text">拖动视图实现移动效果</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#注册拖动动画"><span class="toc-number">1.1.</span> <span class="toc-text">注册拖动动画</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#拖动处理函数"><span class="toc-number">1.2.</span> <span class="toc-text">拖动处理函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#注"><span class="toc-number">1.3.</span> <span class="toc-text">注:</span></a></li></ol></li></ol>
  
   </div>
 
 <div id="asidepart">
-<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
 <aside class="clearfix">
 
   
@@ -181,7 +182,7 @@
 
   
 <div class="tagslist">
-	<p class="asidetitle">标签</p>
+	<p class="asidetitle">Tags</p>
 		<ul class="clearfix">
 		
 			
@@ -197,15 +198,7 @@
 			
 		
 			
-				<li><a href="/tags/iOS-UICollectionView/" title="iOS UICollectionView">iOS UICollectionView<sup>1</sup></a></li>
-			
-		
-			
 				<li><a href="/tags/RunTime/" title="RunTime">RunTime<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/iOS-CollectionViewCell-Obj-C/" title="iOS CollectionViewCell Obj-C">iOS CollectionViewCell Obj-C<sup>1</sup></a></li>
 			
 		
 			
@@ -213,11 +206,23 @@
 			
 		
 			
-				<li><a href="/tags/iOS-UITextField-转载/" title="iOS UITextField 转载">iOS UITextField 转载<sup>1</sup></a></li>
+				<li><a href="/tags/Swift3/" title="Swift3">Swift3<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/iOS-CollectionViewCell-Obj-C/" title="iOS CollectionViewCell Obj-C">iOS CollectionViewCell Obj-C<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/iOS-UICollectionView/" title="iOS UICollectionView">iOS UICollectionView<sup>1</sup></a></li>
 			
 		
 			
 				<li><a href="/tags/textfield-ios-oc-光标-offset/" title="textfield   ios   oc   光标   offset">textfield   ios   oc   光标   offset<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/iOS-UITextField-转载/" title="iOS UITextField 转载">iOS UITextField 转载<sup>1</sup></a></li>
 			
 		
 			
@@ -237,7 +242,7 @@
 
 
   <div class="linkslist">
-  <p class="asidetitle">友情链接</p>
+  <p class="asidetitle">Links</p>
     <ul>
         
           <li>
@@ -259,11 +264,11 @@
 
 
   <div class="rsspart">
-	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
+	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
 </div>
 
   <div class="weiboshow">
-  <p class="asidetitle">新浪微博</p>
+  <p class="asidetitle">Weibo</p>
     <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=null&verifier=b3593ceb&dpc=1"></iframe>
 </div>
 
@@ -302,7 +307,7 @@
 		
 
 		<p class="copyright">
-		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Shemmy</a> © 2016 
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Shemmy</a> © 2017 
 		
 		<a href="/about" target="_blank" title="Shemmy">Shemmy</a>
 		
@@ -502,7 +507,7 @@ var _hmt = _hmt || [];
 <!-- Totop Begin -->
 
 	<div id="totop">
-	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	<a title="Back to Top"><img src="/img/scrollup.png"/></a>
 	</div>
 	<script src="/js/totop.js"></script>
 

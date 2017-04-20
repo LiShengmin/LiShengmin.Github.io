@@ -12,6 +12,7 @@
 
     
     <meta name="description" content="UIAlertController 在iOS8以上的时候需要调用的方法，">
+<meta name="keywords">
 <meta property="og:type" content="article">
 <meta property="og:title" content="UIAlertController介绍">
 <meta property="og:url" content="http://yoursite.com/2016/09/21/UIAlertController介绍/index.html">
@@ -48,7 +49,7 @@
 				<h1 class="site-name"><a href="/" title="Shemmy">Shemmy</a></h1>
 				<h2 class="blog-motto"></h2>
 			</div>
-			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
 			</a></div>
 			<nav class="animated">
 				<ul>
@@ -64,7 +65,7 @@
  					
 					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
 						<label>Search</label>
-						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
 						<input type="hidden" name="q" value="site:yoursite.com">
 					</form>
 					
@@ -87,25 +88,25 @@
 		<a href="/about" title="Shemmy" target="_blank" itemprop="author">Shemmy</a>
 		
   <p class="article-time">
-    <time datetime="2016-09-21T03:46:35.000Z" itemprop="datePublished"> 发表于 2016-09-21</time>
+    <time datetime="2016-09-21T03:46:35.000Z" itemprop="datePublished"> Published 2016-09-21</time>
     
   </p>
 </header>
 	<div class="article-content">
 		
 		<div id="toc" class="toc-article">
-			<strong class="toc-title">文章目录</strong>
+			<strong class="toc-title">Contents</strong>
 		
 			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#但是有的时候会报错"><span class="toc-number">1.</span> <span class="toc-text">但是有的时候会报错</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#百度给出的翻译是"><span class="toc-number">2.</span> <span class="toc-text">百度给出的翻译是</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#原因就是"><span class="toc-number">3.</span> <span class="toc-text">原因就是</span></a></li></ol>
 		
 		</div>
 		
 		<p>UIAlertController 在iOS8以上的时候需要调用的方法， <a id="more"></a></p>
-<figure class="highlight mm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (IOS8) &#123;</span><br><span class="line"><span class="built_in">UIAlertController</span> * alertController = [<span class="built_in">UIAlertController</span> alertControllerWithTitle:<span class="string">@"获取照片"</span> message:<span class="literal">nil</span> preferredStyle:<span class="built_in">UIAlertControllerStyleActionSheet</span>];</span><br><span class="line"><span class="keyword">if</span> ([<span class="built_in">UIImagePickerController</span> isSourceTypeAvailable:<span class="built_in">UIImagePickerControllerSourceTypeCamera</span>]) &#123;</span><br><span class="line"><span class="built_in">UIAlertAction</span> * actionDefault = [<span class="built_in">UIAlertAction</span> actionWithTitle:<span class="string">@"相机拍摄"</span> style:<span class="built_in">UIAlertActionStyleDefault</span> handler:^(<span class="built_in">UIAlertAction</span> * _Nonnull action) &#123;</span><br><span class="line">_pickerVC = [[<span class="built_in">UIImagePickerController</span> alloc] init];</span><br><span class="line">_pickerVC.delegate = <span class="keyword">self</span>;</span><br><span class="line">_pickerVC.allowsEditing = <span class="literal">NO</span>;</span><br><span class="line">_pickerVC.sourceType = <span class="built_in">UIImagePickerControllerSourceTypeCamera</span>;</span><br><span class="line">_pickerVC.showsCameraControls = <span class="literal">NO</span>;</span><br><span class="line">_pickerVC.cameraOverlayView = <span class="keyword">self</span>.userImagePickerView;</span><br><span class="line">[<span class="keyword">self</span> presentViewController:_pickerVC animated:<span class="literal">YES</span> completion:^&#123;&#125;];</span><br><span class="line">&#125;];</span><br><span class="line">[alertController addAction:actionDefault];</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">UIAlertAction</span> * actionDefault = [<span class="built_in">UIAlertAction</span> actionWithTitle:<span class="string">@"从相册获取"</span> style:<span class="built_in">UIAlertActionStyleDefault</span> handler:^(<span class="built_in">UIAlertAction</span> * _Nonnull action) &#123;</span><br><span class="line">_pickerVC = [[<span class="built_in">UIImagePickerController</span> alloc] init];</span><br><span class="line">_pickerVC.delegate = <span class="keyword">self</span>;</span><br><span class="line">_pickerVC.allowsEditing = <span class="literal">YES</span>;</span><br><span class="line">_pickerVC.sourceType = <span class="built_in">UIImagePickerControllerSourceTypePhotoLibrary</span>;</span><br><span class="line">[<span class="keyword">self</span> presentViewController:_pickerVC animated:<span class="literal">YES</span> completion:^&#123;&#125;];</span><br><span class="line">&#125;];</span><br><span class="line">[alertController addAction:actionDefault];</span><br><span class="line"></span><br><span class="line"><span class="built_in">UIAlertAction</span> * actionCancel = [<span class="built_in">UIAlertAction</span> actionWithTitle:<span class="string">@"取消"</span> style:<span class="built_in">UIAlertActionStyleCancel</span> handler:^(<span class="built_in">UIAlertAction</span> * _Nonnull action) &#123;&#125;];</span><br><span class="line">[alertController addAction:actionCancel];</span><br><span class="line">[<span class="keyword">self</span> presentViewController:alertController animated: <span class="literal">YES</span> completion:^&#123;&#125;];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h1 id="但是有的时候会报错"><a href="#但是有的时候会报错" class="headerlink" title="但是有的时候会报错"></a>但是有的时候会报错</h1><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">*** Terminating app due to uncaught exception 'NSGenericException', reason: 'Your application has presented a UIAlertController (&lt;UIAlertController: 0x138d27780&gt;) of style UIAlertControllerStyleActionSheet. The modalPresentationStyle of a UIAlertController with this style is UIModalPresentationPopover. You must provide location information for this popover through the alert controller's popoverPresentationController. You must provide either a sourceView and sourceRect or a barButtonItem.  If this information is not known when you present the alert controller, you may provide it in the UIPopoverPresentationControllerDelegate method -prepareForPopoverPresentation.'</span><br><span class="line">*** First throw call stack:</span><br><span class="line">(0x182446db0 0x181aabf80 0x187eed268 0x187901fb0 0x1879000c8 0x1878530c8 0x187860a80 0x1875925a4 0x1823fc728 0x1823fa4cc 0x1823fa8fc 0x182324c50 0x183c0c088 0x18760a088 0x10005b0d4 0x181ec28b8)</span><br><span class="line">libc++abi.dylib: terminating with uncaught exception of type NSException</span><br></pre></td></tr></table></figure>
-<h1 id="百度给出的翻译是"><a href="#百度给出的翻译是" class="headerlink" title="百度给出的翻译是"></a>百度给出的翻译是</h1><figure class="highlight mm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">    终止应用程序由于未捕获的异常的nsgenericexception，原因：你的应用了<span class="built_in">UIAlertController</span>（&lt;&lt; uialertcontroller：<span class="number">0x138d27780</span> &gt;）风格uialertcontrollerstyleactionsheet。一个具有这种风格的modalpresentationstyle <span class="built_in">UIAlertController</span> <span class="built_in">UIModalPresentationPopover</span>。你必须通过报警控制器的popoverpresentationcontroller这个弹出提供位置信息。你必须提供一个sourceview和sourcerect或barbuttonitem。如果这个信息是不知道当你目前的警戒控制器，你可以在uipopoverpresentationcontrollerdelegate方法提供prepareforpopoverpresentation。”</span><br><span class="line">    第一次抛出调用堆栈：</span><br><span class="line">（<span class="number">0x182446db0</span> <span class="number">0x181aabf80</span> <span class="number">0x187eed268</span> <span class="number">0x187901fb0</span> <span class="number">0x1879000c8</span> <span class="number">0x1878530c8</span> <span class="number">0x187860a80</span> <span class="number">0x1875925a4</span> <span class="number">0x1823fc728</span> <span class="number">0x1823fa4cc</span> <span class="number">0x1823fa8fc</span> <span class="number">0x182324c50</span> <span class="number">0x183c0c088</span> <span class="number">0x18760a088</span> <span class="number">0x10005b0d4</span> <span class="number">0x181ec28b8</span>）</span><br><span class="line">libc + abi.dylib：同型nsexception未捕获的异常终止</span><br></pre></td></tr></table></figure>
+<figure class="highlight mm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> (IOS8) &#123;</div><div class="line"><span class="built_in">UIAlertController</span> * alertController = [<span class="built_in">UIAlertController</span> alertControllerWithTitle:<span class="string">@"获取照片"</span> message:<span class="literal">nil</span> preferredStyle:<span class="built_in">UIAlertControllerStyleActionSheet</span>];</div><div class="line"><span class="keyword">if</span> ([<span class="built_in">UIImagePickerController</span> isSourceTypeAvailable:<span class="built_in">UIImagePickerControllerSourceTypeCamera</span>]) &#123;</div><div class="line"><span class="built_in">UIAlertAction</span> * actionDefault = [<span class="built_in">UIAlertAction</span> actionWithTitle:<span class="string">@"相机拍摄"</span> style:<span class="built_in">UIAlertActionStyleDefault</span> handler:^(<span class="built_in">UIAlertAction</span> * _Nonnull action) &#123;</div><div class="line">_pickerVC = [[<span class="built_in">UIImagePickerController</span> alloc] init];</div><div class="line">_pickerVC.delegate = <span class="keyword">self</span>;</div><div class="line">_pickerVC.allowsEditing = <span class="literal">NO</span>;</div><div class="line">_pickerVC.sourceType = <span class="built_in">UIImagePickerControllerSourceTypeCamera</span>;</div><div class="line">_pickerVC.showsCameraControls = <span class="literal">NO</span>;</div><div class="line">_pickerVC.cameraOverlayView = <span class="keyword">self</span>.userImagePickerView;</div><div class="line">[<span class="keyword">self</span> presentViewController:_pickerVC animated:<span class="literal">YES</span> completion:^&#123;&#125;];</div><div class="line">&#125;];</div><div class="line">[alertController addAction:actionDefault];</div><div class="line">&#125;</div><div class="line"><span class="built_in">UIAlertAction</span> * actionDefault = [<span class="built_in">UIAlertAction</span> actionWithTitle:<span class="string">@"从相册获取"</span> style:<span class="built_in">UIAlertActionStyleDefault</span> handler:^(<span class="built_in">UIAlertAction</span> * _Nonnull action) &#123;</div><div class="line">_pickerVC = [[<span class="built_in">UIImagePickerController</span> alloc] init];</div><div class="line">_pickerVC.delegate = <span class="keyword">self</span>;</div><div class="line">_pickerVC.allowsEditing = <span class="literal">YES</span>;</div><div class="line">_pickerVC.sourceType = <span class="built_in">UIImagePickerControllerSourceTypePhotoLibrary</span>;</div><div class="line">[<span class="keyword">self</span> presentViewController:_pickerVC animated:<span class="literal">YES</span> completion:^&#123;&#125;];</div><div class="line">&#125;];</div><div class="line">[alertController addAction:actionDefault];</div><div class="line"></div><div class="line"><span class="built_in">UIAlertAction</span> * actionCancel = [<span class="built_in">UIAlertAction</span> actionWithTitle:<span class="string">@"取消"</span> style:<span class="built_in">UIAlertActionStyleCancel</span> handler:^(<span class="built_in">UIAlertAction</span> * _Nonnull action) &#123;&#125;];</div><div class="line">[alertController addAction:actionCancel];</div><div class="line">[<span class="keyword">self</span> presentViewController:alertController animated: <span class="literal">YES</span> completion:^&#123;&#125;];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="但是有的时候会报错"><a href="#但是有的时候会报错" class="headerlink" title="但是有的时候会报错"></a>但是有的时候会报错</h1><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">*** Terminating app due to uncaught exception 'NSGenericException', reason: 'Your application has presented a UIAlertController (&lt;UIAlertController: 0x138d27780&gt;) of style UIAlertControllerStyleActionSheet. The modalPresentationStyle of a UIAlertController with this style is UIModalPresentationPopover. You must provide location information for this popover through the alert controller's popoverPresentationController. You must provide either a sourceView and sourceRect or a barButtonItem.  If this information is not known when you present the alert controller, you may provide it in the UIPopoverPresentationControllerDelegate method -prepareForPopoverPresentation.'</div><div class="line">*** First throw call stack:</div><div class="line">(0x182446db0 0x181aabf80 0x187eed268 0x187901fb0 0x1879000c8 0x1878530c8 0x187860a80 0x1875925a4 0x1823fc728 0x1823fa4cc 0x1823fa8fc 0x182324c50 0x183c0c088 0x18760a088 0x10005b0d4 0x181ec28b8)</div><div class="line">libc++abi.dylib: terminating with uncaught exception of type NSException</div></pre></td></tr></table></figure>
+<h1 id="百度给出的翻译是"><a href="#百度给出的翻译是" class="headerlink" title="百度给出的翻译是"></a>百度给出的翻译是</h1><figure class="highlight mm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">    终止应用程序由于未捕获的异常的nsgenericexception，原因：你的应用了<span class="built_in">UIAlertController</span>（&lt;&lt; uialertcontroller：<span class="number">0x138d27780</span> &gt;）风格uialertcontrollerstyleactionsheet。一个具有这种风格的modalpresentationstyle <span class="built_in">UIAlertController</span> <span class="built_in">UIModalPresentationPopover</span>。你必须通过报警控制器的popoverpresentationcontroller这个弹出提供位置信息。你必须提供一个sourceview和sourcerect或barbuttonitem。如果这个信息是不知道当你目前的警戒控制器，你可以在uipopoverpresentationcontrollerdelegate方法提供prepareforpopoverpresentation。”</div><div class="line">    第一次抛出调用堆栈：</div><div class="line">（<span class="number">0x182446db0</span> <span class="number">0x181aabf80</span> <span class="number">0x187eed268</span> <span class="number">0x187901fb0</span> <span class="number">0x1879000c8</span> <span class="number">0x1878530c8</span> <span class="number">0x187860a80</span> <span class="number">0x1875925a4</span> <span class="number">0x1823fc728</span> <span class="number">0x1823fa4cc</span> <span class="number">0x1823fa8fc</span> <span class="number">0x182324c50</span> <span class="number">0x183c0c088</span> <span class="number">0x18760a088</span> <span class="number">0x10005b0d4</span> <span class="number">0x181ec28b8</span>）</div><div class="line">libc + abi.dylib：同型nsexception未捕获的异常终止</div></pre></td></tr></table></figure>
 <h1 id="原因就是"><a href="#原因就是" class="headerlink" title="原因就是"></a>原因就是</h1><pre><code>你没有给其添加源视图位置，也就是说，我们没有给视图添加一个位置用来显示。我们给其一个视图位置如下：
-</code></pre><figure class="highlight mm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">UIPopoverPresentationController</span> *popover = alertController.popoverPresentationController;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (popover) &#123;</span><br><span class="line"></span><br><span class="line">popover.sourceView = <span class="keyword">self</span>.view;</span><br><span class="line">popover.sourceRect = <span class="keyword">self</span>.view.bounds;</span><br><span class="line">popover.permittedArrowDirections = <span class="built_in">UIPopoverArrowDirectionAny</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</code></pre><figure class="highlight mm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">UIPopoverPresentationController</span> *popover = alertController.popoverPresentationController;</div><div class="line"></div><div class="line"><span class="keyword">if</span> (popover) &#123;</div><div class="line"></div><div class="line">popover.sourceView = <span class="keyword">self</span>.view;</div><div class="line">popover.sourceRect = <span class="keyword">self</span>.view.bounds;</div><div class="line">popover.permittedArrowDirections = <span class="built_in">UIPopoverArrowDirectionAny</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -132,18 +133,18 @@
 <nav class="article-nav clearfix">
  
  <div class="prev" >
- <a href="/2016/10/18/在iOS-8中使用UIAlertController/" title="在iOS 8中使用UIAlertController">
+ <a href="/2016/09/09/UITextField的光标操作扩展/" title="UITextField的光标操作扩展">
   <strong>上一篇：</strong><br/>
   <span>
-  在iOS 8中使用UIAlertController</span>
+  UITextField的光标操作扩展</span>
 </a>
 </div>
 
 
 <div class="next">
-<a href="/2016/09/09/UITextField的光标操作扩展/"  title="UITextField的光标操作扩展">
+<a href="/2016/10/18/在iOS-8中使用UIAlertController/"  title="在iOS 8中使用UIAlertController">
  <strong>下一篇：</strong><br/> 
- <span>UITextField的光标操作扩展
+ <span>在iOS 8中使用UIAlertController
 </span>
 </a>
 </div>
@@ -157,17 +158,17 @@
 
 
 </div>  
-      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
 
   <div id="toc" class="toc-aside">
-  <strong class="toc-title">文章目录</strong>
+  <strong class="toc-title">Contents</strong>
  
  <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#但是有的时候会报错"><span class="toc-number">1.</span> <span class="toc-text">但是有的时候会报错</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#百度给出的翻译是"><span class="toc-number">2.</span> <span class="toc-text">百度给出的翻译是</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#原因就是"><span class="toc-number">3.</span> <span class="toc-text">原因就是</span></a></li></ol>
  
   </div>
 
 <div id="asidepart">
-<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
 <aside class="clearfix">
 
   
@@ -177,7 +178,7 @@
 
   
 <div class="tagslist">
-	<p class="asidetitle">标签</p>
+	<p class="asidetitle">Tags</p>
 		<ul class="clearfix">
 		
 			
@@ -193,15 +194,7 @@
 			
 		
 			
-				<li><a href="/tags/iOS-UICollectionView/" title="iOS UICollectionView">iOS UICollectionView<sup>1</sup></a></li>
-			
-		
-			
 				<li><a href="/tags/RunTime/" title="RunTime">RunTime<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/iOS-CollectionViewCell-Obj-C/" title="iOS CollectionViewCell Obj-C">iOS CollectionViewCell Obj-C<sup>1</sup></a></li>
 			
 		
 			
@@ -209,11 +202,23 @@
 			
 		
 			
-				<li><a href="/tags/iOS-UITextField-转载/" title="iOS UITextField 转载">iOS UITextField 转载<sup>1</sup></a></li>
+				<li><a href="/tags/Swift3/" title="Swift3">Swift3<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/iOS-CollectionViewCell-Obj-C/" title="iOS CollectionViewCell Obj-C">iOS CollectionViewCell Obj-C<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/iOS-UICollectionView/" title="iOS UICollectionView">iOS UICollectionView<sup>1</sup></a></li>
 			
 		
 			
 				<li><a href="/tags/textfield-ios-oc-光标-offset/" title="textfield   ios   oc   光标   offset">textfield   ios   oc   光标   offset<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/iOS-UITextField-转载/" title="iOS UITextField 转载">iOS UITextField 转载<sup>1</sup></a></li>
 			
 		
 			
@@ -233,7 +238,7 @@
 
 
   <div class="linkslist">
-  <p class="asidetitle">友情链接</p>
+  <p class="asidetitle">Links</p>
     <ul>
         
           <li>
@@ -255,11 +260,11 @@
 
 
   <div class="rsspart">
-	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
+	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
 </div>
 
   <div class="weiboshow">
-  <p class="asidetitle">新浪微博</p>
+  <p class="asidetitle">Weibo</p>
     <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=null&verifier=b3593ceb&dpc=1"></iframe>
 </div>
 
@@ -298,7 +303,7 @@
 		
 
 		<p class="copyright">
-		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Shemmy</a> © 2016 
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Shemmy</a> © 2017 
 		
 		<a href="/about" target="_blank" title="Shemmy">Shemmy</a>
 		
@@ -498,7 +503,7 @@ var _hmt = _hmt || [];
 <!-- Totop Begin -->
 
 	<div id="totop">
-	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	<a title="Back to Top"><img src="/img/scrollup.png"/></a>
 	</div>
 	<script src="/js/totop.js"></script>
 

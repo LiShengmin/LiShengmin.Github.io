@@ -12,6 +12,7 @@
 
     
     <meta name="description" content="多线程：就是一些耗时的操作 需要用多线程按使用框架分类NSThread：线程 管理的麻烦 然后苹果就将这些东西封装成了队列NSOperationQueue ：队列GCD：grand 豪华的 Center 中心的 Dispath 分发 － 强大的中心队列调度">
+<meta name="keywords" content="iOS">
 <meta property="og:type" content="article">
 <meta property="og:title" content="多线程">
 <meta property="og:url" content="http://yoursite.com/2015/12/21/多线程/index.html">
@@ -48,7 +49,7 @@
 				<h1 class="site-name"><a href="/" title="Shemmy">Shemmy</a></h1>
 				<h2 class="blog-motto"></h2>
 			</div>
-			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
 			</a></div>
 			<nav class="animated">
 				<ul>
@@ -64,7 +65,7 @@
  					
 					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
 						<label>Search</label>
-						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
 						<input type="hidden" name="q" value="site:yoursite.com">
 					</form>
 					
@@ -87,14 +88,14 @@
 		<a href="/about" title="Shemmy" target="_blank" itemprop="author">Shemmy</a>
 		
   <p class="article-time">
-    <time datetime="2015-12-21T08:29:16.000Z" itemprop="datePublished"> 发表于 2015-12-21</time>
+    <time datetime="2015-12-21T08:29:16.000Z" itemprop="datePublished"> Published 2015-12-21</time>
     
   </p>
 </header>
 	<div class="article-content">
 		
 		<div id="toc" class="toc-article">
-			<strong class="toc-title">文章目录</strong>
+			<strong class="toc-title">Contents</strong>
 		
 			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#多线程：就是一些耗时的操作-需要用多线程"><span class="toc-number">1.</span> <span class="toc-text">多线程：就是一些耗时的操作 需要用多线程</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#按使用框架分类"><span class="toc-number">1.1.</span> <span class="toc-text">按使用框架分类</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#串行"><span class="toc-number">1.1.1.</span> <span class="toc-text">串行</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#全局对列-默认优先级"><span class="toc-number">1.1.2.</span> <span class="toc-text">全局对列 默认优先级</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#自定义队列语法"><span class="toc-number">1.1.3.</span> <span class="toc-text">自定义队列语法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#创建一个组-让想干的事放在一个组里面"><span class="toc-number">1.1.4.</span> <span class="toc-text">创建一个组 让想干的事放在一个组里面</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#多线程使用"><span class="toc-number">1.2.</span> <span class="toc-text">多线程使用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#设计模式单例"><span class="toc-number">1.2.1.</span> <span class="toc-text">设计模式单例</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#遍历"><span class="toc-number">1.2.2.</span> <span class="toc-text">遍历</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#延时执行"><span class="toc-number">1.2.3.</span> <span class="toc-text">延时执行</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#嘻嘻"><span class="toc-number">1.2.4.</span> <span class="toc-text">嘻嘻</span></a></li></ol></li></ol></li></ol>
 		
@@ -102,18 +103,18 @@
 		
 		<h1 id="多线程：就是一些耗时的操作-需要用多线程"><a href="#多线程：就是一些耗时的操作-需要用多线程" class="headerlink" title="多线程：就是一些耗时的操作 需要用多线程"></a>多线程：就是一些耗时的操作 需要用多线程</h1><h2 id="按使用框架分类"><a href="#按使用框架分类" class="headerlink" title="按使用框架分类"></a>按使用框架分类</h2><p>NSThread：线程 管理的麻烦 然后苹果就将这些东西封装成了队列<br>NSOperationQueue ：队列<br>GCD：grand 豪华的 Center 中心的 Dispath 分发 － 强大的中心队列调度 <a id="more"></a></p>
 <p>##按串并行方式分类：<br>串行：有顺序的<br>并行：没有顺序<br>同步：执行到这个东西，顺序执行新的操作<br>异步：执行到这个东西，开启新的线程，然后完成耗时的操作。</p>
-<h3 id="串行"><a href="#串行" class="headerlink" title="串行"></a>串行</h3><p>//调用主队列：运行在主线程的对列 －串行<br><figure class="highlight mm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">dispatch_queue_t</span> quueue = dispatch_get_main_queue（）；</span><br><span class="line"></span><br><span class="line"><span class="built_in">dispatch_async</span>（queue,^&#123;</span><br><span class="line">nslog(@“<span class="number">1</span>”);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">dispatch_async</span>（queue,^&#123;</span><br><span class="line">nslog(@“<span class="number">2</span>”);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">dispatch_async</span>（queue,^&#123;</span><br><span class="line">nslog(@“<span class="number">3</span>”);</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">dispatch_async</span>（queue,^&#123;</span><br><span class="line">nslog(@“<span class="number">4</span>”);</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">dispatch_async</span>（queue,^&#123;</span><br><span class="line">nslog(@“<span class="number">5</span>”);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="串行"><a href="#串行" class="headerlink" title="串行"></a>串行</h3><p>//调用主队列：运行在主线程的对列 －串行<br><figure class="highlight mm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">dispatch_queue_t</span> quueue = dispatch_get_main_queue（）；</div><div class="line"></div><div class="line"><span class="built_in">dispatch_async</span>（queue,^&#123;</div><div class="line">nslog(@“<span class="number">1</span>”);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="built_in">dispatch_async</span>（queue,^&#123;</div><div class="line">nslog(@“<span class="number">2</span>”);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="built_in">dispatch_async</span>（queue,^&#123;</div><div class="line">nslog(@“<span class="number">3</span>”);</div><div class="line">&#125;</div><div class="line"><span class="built_in">dispatch_async</span>（queue,^&#123;</div><div class="line">nslog(@“<span class="number">4</span>”);</div><div class="line">&#125;</div><div class="line"><span class="built_in">dispatch_async</span>（queue,^&#123;</div><div class="line">nslog(@“<span class="number">5</span>”);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>输出结果：<br>1,2,3,4,5</p>
-<h3 id="全局对列-默认优先级"><a href="#全局对列-默认优先级" class="headerlink" title="全局对列 默认优先级"></a>全局对列 默认优先级</h3><figure class="highlight mm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">dispatch_queue_t</span> queue = dispatch_get_global_queue (dispatch_queue_priority_defaut,<span class="number">0</span>);</span><br><span class="line"><span class="built_in">dispatch_async</span>（queue,^&#123;</span><br><span class="line">nslog(@“<span class="number">1</span>”);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">dispatch_async</span>（queue,^&#123;</span><br><span class="line">nslog(@“<span class="number">2</span>”);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">dispatch_async</span>（queue,^&#123;</span><br><span class="line">nslog(@“<span class="number">3</span>”);</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">dispatch_async</span>（queue,^&#123;</span><br><span class="line">nslog(@“<span class="number">4</span>”);</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">dispatch_async</span>（queue,^&#123;</span><br><span class="line">nslog(@“<span class="number">5</span>”);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="全局对列-默认优先级"><a href="#全局对列-默认优先级" class="headerlink" title="全局对列 默认优先级"></a>全局对列 默认优先级</h3><figure class="highlight mm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">dispatch_queue_t</span> queue = dispatch_get_global_queue (dispatch_queue_priority_defaut,<span class="number">0</span>);</div><div class="line"><span class="built_in">dispatch_async</span>（queue,^&#123;</div><div class="line">nslog(@“<span class="number">1</span>”);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="built_in">dispatch_async</span>（queue,^&#123;</div><div class="line">nslog(@“<span class="number">2</span>”);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="built_in">dispatch_async</span>（queue,^&#123;</div><div class="line">nslog(@“<span class="number">3</span>”);</div><div class="line">&#125;</div><div class="line"><span class="built_in">dispatch_async</span>（queue,^&#123;</div><div class="line">nslog(@“<span class="number">4</span>”);</div><div class="line">&#125;</div><div class="line"><span class="built_in">dispatch_async</span>（queue,^&#123;</div><div class="line">nslog(@“<span class="number">5</span>”);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>输出结果：<br>//1，2，3，4，5<br>//1,3,2,4,5<br>//3,2,1,5,4</p>
-<h3 id="自定义队列语法"><a href="#自定义队列语法" class="headerlink" title="自定义队列语法"></a>自定义队列语法</h3><figure class="highlight mm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">dispatch_queue_t</span>  queue = dispath_queue_create (<span class="keyword">const</span> <span class="keyword">char</span>* label,dispatch_queue_attr_t atrr)</span><br><span class="line"></span><br><span class="line"><span class="comment">//自定义队列</span></span><br><span class="line"><span class="built_in">dispatch_queue_t</span> queue = dispath_queue_create(“com.bjsxt.app”,dispatch_queue_concurrent);</span><br><span class="line"><span class="built_in">dispatch_async</span>（queue,^&#123;</span><br><span class="line">nslog(@“<span class="number">1</span>”);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">dispatch_async</span>（queue,^&#123;</span><br><span class="line">nslog(@“<span class="number">2</span>”);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">dispatch_async</span>（queue,^&#123;</span><br><span class="line">nslog(@“<span class="number">3</span>”);</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">dispatch_async</span>（queue,^&#123;</span><br><span class="line">nslog(@“<span class="number">4</span>”);</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">dispatch_async</span>（queue,^&#123;</span><br><span class="line">nslog(@“<span class="number">5</span>”);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="自定义队列语法"><a href="#自定义队列语法" class="headerlink" title="自定义队列语法"></a>自定义队列语法</h3><figure class="highlight mm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">dispatch_queue_t</span>  queue = dispath_queue_create (<span class="keyword">const</span> <span class="keyword">char</span>* label,dispatch_queue_attr_t atrr)</div><div class="line"></div><div class="line"><span class="comment">//自定义队列</span></div><div class="line"><span class="built_in">dispatch_queue_t</span> queue = dispath_queue_create(“com.bjsxt.app”,dispatch_queue_concurrent);</div><div class="line"><span class="built_in">dispatch_async</span>（queue,^&#123;</div><div class="line">nslog(@“<span class="number">1</span>”);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="built_in">dispatch_async</span>（queue,^&#123;</div><div class="line">nslog(@“<span class="number">2</span>”);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="built_in">dispatch_async</span>（queue,^&#123;</div><div class="line">nslog(@“<span class="number">3</span>”);</div><div class="line">&#125;</div><div class="line"><span class="built_in">dispatch_async</span>（queue,^&#123;</div><div class="line">nslog(@“<span class="number">4</span>”);</div><div class="line">&#125;</div><div class="line"><span class="built_in">dispatch_async</span>（queue,^&#123;</div><div class="line">nslog(@“<span class="number">5</span>”);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>输出结果：<br>//2，1，4，3，5</p>
-<h3 id="创建一个组-让想干的事放在一个组里面"><a href="#创建一个组-让想干的事放在一个组里面" class="headerlink" title="创建一个组 让想干的事放在一个组里面"></a>创建一个组 让想干的事放在一个组里面</h3><figure class="highlight mm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">dispath_group_t group = diapath_group_create()；</span><br><span class="line"><span class="built_in">dispatch_queue_t</span> queue = dispatch_get_global_queue(dispatch_queue_priority_default,<span class="number">0</span>);</span><br><span class="line">dispatch_group_async(group_ <span class="built_in">dispatch_queue_t</span> queue,^(<span class="keyword">void</span>)block);</span><br><span class="line">dispatch_group_async(group,queue,^&#123;</span><br><span class="line">nslog(@“<span class="number">1</span>”);</span><br><span class="line">&#125;);</span><br><span class="line">dispatch_group_async(group,queue,^&#123;</span><br><span class="line">nslog(@“<span class="number">2</span>”);</span><br><span class="line">&#125;);</span><br><span class="line">dispatch_group_async(group,queue,^&#123;</span><br><span class="line">nslog(@“<span class="number">3</span>”);</span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">//前面执行完成后 通知后面的组可以执行了，</span></span><br><span class="line">dispatch_group_notify(group,queue,^&#123;</span><br><span class="line">nslog(@“<span class="number">4</span>”);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h3 id="创建一个组-让想干的事放在一个组里面"><a href="#创建一个组-让想干的事放在一个组里面" class="headerlink" title="创建一个组 让想干的事放在一个组里面"></a>创建一个组 让想干的事放在一个组里面</h3><figure class="highlight mm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">dispath_group_t group = diapath_group_create()；</div><div class="line"><span class="built_in">dispatch_queue_t</span> queue = dispatch_get_global_queue(dispatch_queue_priority_default,<span class="number">0</span>);</div><div class="line">dispatch_group_async(group_ <span class="built_in">dispatch_queue_t</span> queue,^(<span class="keyword">void</span>)block);</div><div class="line">dispatch_group_async(group,queue,^&#123;</div><div class="line">nslog(@“<span class="number">1</span>”);</div><div class="line">&#125;);</div><div class="line">dispatch_group_async(group,queue,^&#123;</div><div class="line">nslog(@“<span class="number">2</span>”);</div><div class="line">&#125;);</div><div class="line">dispatch_group_async(group,queue,^&#123;</div><div class="line">nslog(@“<span class="number">3</span>”);</div><div class="line">&#125;);</div><div class="line"><span class="comment">//前面执行完成后 通知后面的组可以执行了，</span></div><div class="line">dispatch_group_notify(group,queue,^&#123;</div><div class="line">nslog(@“<span class="number">4</span>”);</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
 <p>输出结果：<br>//1,2,3,4<br>//1,3,2,4<br>//2,1,3,4</p>
-<h2 id="多线程使用"><a href="#多线程使用" class="headerlink" title="多线程使用"></a>多线程使用</h2><h3 id="设计模式单例"><a href="#设计模式单例" class="headerlink" title="设计模式单例"></a>设计模式单例</h3><figure class="highlight mm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span> <span class="built_in">dispatch_once_t</span> oncetoken;</span><br><span class="line"><span class="built_in">dispatch_once</span>(&amp;oncetoken,^&#123;</span><br><span class="line">nslog(@“onceToken”);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<h3 id="遍历"><a href="#遍历" class="headerlink" title="遍历"></a>遍历</h3><figure class="highlight mm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">dispatch_apply (size_titerations,diapatch_queue_t)</span><br><span class="line">diapath_apply(<span class="number">5</span>,dispatch_get_global_queue(<span class="number">0</span>,<span class="number">0</span>),^(size_t i)&#123;</span><br><span class="line">nslog(@“%lu”,i);</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i= <span class="number">0</span> ; i&lt;<span class="number">11</span>;<span class="number">1</span>++)  <span class="comment">//可以获取到索引值  速度最快的方式</span></span><br><span class="line"><span class="keyword">for</span>(type* object <span class="keyword">in</span> cull~)<span class="comment">//快速遍历</span></span><br><span class="line"></span><br><span class="line">[arr enumerateobjectsusingblock:^(<span class="keyword">id</span> _nonnull obj, nsinteger idx, <span class="keyword">bool</span>* _nonnull stop)&#123;</span><br><span class="line"></span><br><span class="line">&#125;];<span class="comment">//既有索引 还有乱七八糟的东西</span></span><br></pre></td></tr></table></figure>
-<h3 id="延时执行"><a href="#延时执行" class="headerlink" title="延时执行"></a>延时执行</h3><figure class="highlight mm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">dispatch_time_t time = dispatch_time(dispatch_time_t when,int64_t delta);</span><br><span class="line">dispatch_time_t time = dispatch_time(dispatch_time_now, <span class="number">2</span>*nsec_per_sec);<span class="comment">//延时方式</span></span><br><span class="line">dispatch_after(time,dispatch_get_global_queue(<span class="number">0</span>,<span class="number">0</span>),^&#123;</span><br><span class="line"><span class="built_in">NSLog</span>(@“dispatch_after”);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<h3 id="嘻嘻"><a href="#嘻嘻" class="headerlink" title="嘻嘻"></a>嘻嘻</h3><figure class="highlight mm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">diapatch_barrier_async(diapatch_queue~);</span><br></pre></td></tr></table></figure>  
+<h2 id="多线程使用"><a href="#多线程使用" class="headerlink" title="多线程使用"></a>多线程使用</h2><h3 id="设计模式单例"><a href="#设计模式单例" class="headerlink" title="设计模式单例"></a>设计模式单例</h3><figure class="highlight mm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">static</span> <span class="built_in">dispatch_once_t</span> oncetoken;</div><div class="line"><span class="built_in">dispatch_once</span>(&amp;oncetoken,^&#123;</div><div class="line">nslog(@“onceToken”);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<h3 id="遍历"><a href="#遍历" class="headerlink" title="遍历"></a>遍历</h3><figure class="highlight mm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">dispatch_apply (size_titerations,diapatch_queue_t)</div><div class="line">diapath_apply(<span class="number">5</span>,dispatch_get_global_queue(<span class="number">0</span>,<span class="number">0</span>),^(size_t i)&#123;</div><div class="line">nslog(@“%lu”,i);</div><div class="line">&#125;)</div><div class="line"></div><div class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i= <span class="number">0</span> ; i&lt;<span class="number">11</span>;<span class="number">1</span>++)  <span class="comment">//可以获取到索引值  速度最快的方式</span></div><div class="line"><span class="keyword">for</span>(type* object <span class="keyword">in</span> cull~)<span class="comment">//快速遍历</span></div><div class="line"></div><div class="line">[arr enumerateobjectsusingblock:^(<span class="keyword">id</span> _<span class="keyword">nonnull</span> obj, nsinteger idx, <span class="keyword">bool</span>* _<span class="keyword">nonnull</span> stop)&#123;</div><div class="line"></div><div class="line">&#125;];<span class="comment">//既有索引 还有乱七八糟的东西</span></div></pre></td></tr></table></figure>
+<h3 id="延时执行"><a href="#延时执行" class="headerlink" title="延时执行"></a>延时执行</h3><figure class="highlight mm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">dispatch_time_t time = dispatch_time(dispatch_time_t when,int64_t delta);</div><div class="line">dispatch_time_t time = dispatch_time(dispatch_time_now, <span class="number">2</span>*nsec_per_sec);<span class="comment">//延时方式</span></div><div class="line">dispatch_after(time,dispatch_get_global_queue(<span class="number">0</span>,<span class="number">0</span>),^&#123;</div><div class="line"><span class="built_in">NSLog</span>(@“dispatch_after”);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<h3 id="嘻嘻"><a href="#嘻嘻" class="headerlink" title="嘻嘻"></a>嘻嘻</h3><figure class="highlight mm"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">diapatch_barrier_async(diapatch_queue~);</div></pre></td></tr></table></figure>  
 	</div>
 		<footer class="article-footer clearfix">
 <div class="article-catetags">
@@ -144,18 +145,18 @@
 <nav class="article-nav clearfix">
  
  <div class="prev" >
- <a href="/2015/12/21/Objective-C Runtime/" title="Objective-C Runtime">
+ <a href="/2015/12/19/基于AFNetWorking 网络请求/" title="基于AFNetWorking 网络请求">
   <strong>上一篇：</strong><br/>
   <span>
-  Objective-C Runtime</span>
+  基于AFNetWorking 网络请求</span>
 </a>
 </div>
 
 
 <div class="next">
-<a href="/2015/12/19/基于AFNetWorking 网络请求/"  title="基于AFNetWorking 网络请求">
+<a href="/2015/12/21/Objective-C Runtime/"  title="Objective-C Runtime">
  <strong>下一篇：</strong><br/> 
- <span>基于AFNetWorking 网络请求
+ <span>Objective-C Runtime
 </span>
 </a>
 </div>
@@ -169,17 +170,17 @@
 
 
 </div>  
-      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
 
   <div id="toc" class="toc-aside">
-  <strong class="toc-title">文章目录</strong>
+  <strong class="toc-title">Contents</strong>
  
  <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#多线程：就是一些耗时的操作-需要用多线程"><span class="toc-number">1.</span> <span class="toc-text">多线程：就是一些耗时的操作 需要用多线程</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#按使用框架分类"><span class="toc-number">1.1.</span> <span class="toc-text">按使用框架分类</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#串行"><span class="toc-number">1.1.1.</span> <span class="toc-text">串行</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#全局对列-默认优先级"><span class="toc-number">1.1.2.</span> <span class="toc-text">全局对列 默认优先级</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#自定义队列语法"><span class="toc-number">1.1.3.</span> <span class="toc-text">自定义队列语法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#创建一个组-让想干的事放在一个组里面"><span class="toc-number">1.1.4.</span> <span class="toc-text">创建一个组 让想干的事放在一个组里面</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#多线程使用"><span class="toc-number">1.2.</span> <span class="toc-text">多线程使用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#设计模式单例"><span class="toc-number">1.2.1.</span> <span class="toc-text">设计模式单例</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#遍历"><span class="toc-number">1.2.2.</span> <span class="toc-text">遍历</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#延时执行"><span class="toc-number">1.2.3.</span> <span class="toc-text">延时执行</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#嘻嘻"><span class="toc-number">1.2.4.</span> <span class="toc-text">嘻嘻</span></a></li></ol></li></ol></li></ol>
  
   </div>
 
 <div id="asidepart">
-<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
 <aside class="clearfix">
 
   
@@ -189,7 +190,7 @@
 
   
 <div class="tagslist">
-	<p class="asidetitle">标签</p>
+	<p class="asidetitle">Tags</p>
 		<ul class="clearfix">
 		
 			
@@ -205,15 +206,7 @@
 			
 		
 			
-				<li><a href="/tags/iOS-UICollectionView/" title="iOS UICollectionView">iOS UICollectionView<sup>1</sup></a></li>
-			
-		
-			
 				<li><a href="/tags/RunTime/" title="RunTime">RunTime<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/iOS-CollectionViewCell-Obj-C/" title="iOS CollectionViewCell Obj-C">iOS CollectionViewCell Obj-C<sup>1</sup></a></li>
 			
 		
 			
@@ -221,11 +214,23 @@
 			
 		
 			
-				<li><a href="/tags/iOS-UITextField-转载/" title="iOS UITextField 转载">iOS UITextField 转载<sup>1</sup></a></li>
+				<li><a href="/tags/Swift3/" title="Swift3">Swift3<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/iOS-CollectionViewCell-Obj-C/" title="iOS CollectionViewCell Obj-C">iOS CollectionViewCell Obj-C<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/iOS-UICollectionView/" title="iOS UICollectionView">iOS UICollectionView<sup>1</sup></a></li>
 			
 		
 			
 				<li><a href="/tags/textfield-ios-oc-光标-offset/" title="textfield   ios   oc   光标   offset">textfield   ios   oc   光标   offset<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/iOS-UITextField-转载/" title="iOS UITextField 转载">iOS UITextField 转载<sup>1</sup></a></li>
 			
 		
 			
@@ -245,7 +250,7 @@
 
 
   <div class="linkslist">
-  <p class="asidetitle">友情链接</p>
+  <p class="asidetitle">Links</p>
     <ul>
         
           <li>
@@ -267,11 +272,11 @@
 
 
   <div class="rsspart">
-	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
+	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
 </div>
 
   <div class="weiboshow">
-  <p class="asidetitle">新浪微博</p>
+  <p class="asidetitle">Weibo</p>
     <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=null&verifier=b3593ceb&dpc=1"></iframe>
 </div>
 
@@ -310,7 +315,7 @@
 		
 
 		<p class="copyright">
-		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Shemmy</a> © 2016 
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Shemmy</a> © 2017 
 		
 		<a href="/about" target="_blank" title="Shemmy">Shemmy</a>
 		
@@ -510,7 +515,7 @@ var _hmt = _hmt || [];
 <!-- Totop Begin -->
 
 	<div id="totop">
-	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	<a title="Back to Top"><img src="/img/scrollup.png"/></a>
 	</div>
 	<script src="/js/totop.js"></script>
 

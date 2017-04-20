@@ -11,22 +11,17 @@
     
 
     
-    <meta name="description" content="在表现表格视图的.m文件中，引入MJRefresh1#import &quot;MJRefresh.h&quot;
-12345- (void)viewDidLoad &amp;#123;    [super viewDidLoad];//集成刷新控件[self setupRefresh];&amp;#125;
-实现集成刷新控件1234567891011121314- (void)setupRefresh&amp;#123;// 1.下拉刷">
+    <meta name="description" content="在表现表格视图的.m文件中，引入MJRefresh1#import &quot;MJRefresh.h&quot; 12345- (void)viewDidLoad &amp;#123;    [super viewDidLoad];//集成刷新控件[self setupRefresh];&amp;#125; 实现集成刷新控件1234567891011121314- (void)setupRefresh&amp;#123;// 1.下拉刷">
+<meta name="keywords" content="iOS 三方库">
 <meta property="og:type" content="article">
 <meta property="og:title" content="第三方库 MJRefresh">
 <meta property="og:url" content="http://yoursite.com/2015/10/05/MJRefresh/index.html">
 <meta property="og:site_name" content="Shemmy">
-<meta property="og:description" content="在表现表格视图的.m文件中，引入MJRefresh1#import &quot;MJRefresh.h&quot;
-12345- (void)viewDidLoad &amp;#123;    [super viewDidLoad];//集成刷新控件[self setupRefresh];&amp;#125;
-实现集成刷新控件1234567891011121314- (void)setupRefresh&amp;#123;// 1.下拉刷">
+<meta property="og:description" content="在表现表格视图的.m文件中，引入MJRefresh1#import &quot;MJRefresh.h&quot; 12345- (void)viewDidLoad &amp;#123;    [super viewDidLoad];//集成刷新控件[self setupRefresh];&amp;#125; 实现集成刷新控件1234567891011121314- (void)setupRefresh&amp;#123;// 1.下拉刷">
 <meta property="og:updated_time" content="2016-07-07T15:37:09.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="第三方库 MJRefresh">
-<meta name="twitter:description" content="在表现表格视图的.m文件中，引入MJRefresh1#import &quot;MJRefresh.h&quot;
-12345- (void)viewDidLoad &amp;#123;    [super viewDidLoad];//集成刷新控件[self setupRefresh];&amp;#125;
-实现集成刷新控件1234567891011121314- (void)setupRefresh&amp;#123;// 1.下拉刷">
+<meta name="twitter:description" content="在表现表格视图的.m文件中，引入MJRefresh1#import &quot;MJRefresh.h&quot; 12345- (void)viewDidLoad &amp;#123;    [super viewDidLoad];//集成刷新控件[self setupRefresh];&amp;#125; 实现集成刷新控件1234567891011121314- (void)setupRefresh&amp;#123;// 1.下拉刷">
 
     
     <link rel="alternative" href="/atom.xml" title="Shemmy" type="application/atom+xml">
@@ -54,7 +49,7 @@
 				<h1 class="site-name"><a href="/" title="Shemmy">Shemmy</a></h1>
 				<h2 class="blog-motto"></h2>
 			</div>
-			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
 			</a></div>
 			<nav class="animated">
 				<ul>
@@ -70,7 +65,7 @@
  					
 					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
 						<label>Search</label>
-						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
 						<input type="hidden" name="q" value="site:yoursite.com">
 					</form>
 					
@@ -93,24 +88,24 @@
 		<a href="/about" title="Shemmy" target="_blank" itemprop="author">Shemmy</a>
 		
   <p class="article-time">
-    <time datetime="2015-10-04T17:15:02.000Z" itemprop="datePublished"> 发表于 2015-10-05</time>
+    <time datetime="2015-10-04T17:15:02.000Z" itemprop="datePublished"> Published 2015-10-05</time>
     
   </p>
 </header>
 	<div class="article-content">
 		
 		<div id="toc" class="toc-article">
-			<strong class="toc-title">文章目录</strong>
+			<strong class="toc-title">Contents</strong>
 		
 			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#在表现表格视图的-m文件中，引入MJRefresh"><span class="toc-number">1.</span> <span class="toc-text">在表现表格视图的.m文件中，引入MJRefresh</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#实现"><span class="toc-number">2.</span> <span class="toc-text">实现</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#集成刷新控件"><span class="toc-number">2.1.</span> <span class="toc-text">集成刷新控件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#开始进入刷新状态"><span class="toc-number">2.2.</span> <span class="toc-text">开始进入刷新状态</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Error"><span class="toc-number">3.</span> <span class="toc-text">Error</span></a></li></ol>
 		
 		</div>
 		
 		<a id="more"></a>
-<h1 id="在表现表格视图的-m文件中，引入MJRefresh"><a href="#在表现表格视图的-m文件中，引入MJRefresh" class="headerlink" title="在表现表格视图的.m文件中，引入MJRefresh"></a>在表现表格视图的.m文件中，引入MJRefresh</h1><figure class="highlight mm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#import <span class="meta-string">"MJRefresh.h"</span></span></span><br></pre></td></tr></table></figure>
-<figure class="highlight mm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="keyword">void</span>)viewDidLoad &#123;    </span><br><span class="line">[<span class="keyword">super</span> viewDidLoad];</span><br><span class="line"><span class="comment">//集成刷新控件</span></span><br><span class="line">[<span class="keyword">self</span> setupRefresh];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h1 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h1><h2 id="集成刷新控件"><a href="#集成刷新控件" class="headerlink" title="集成刷新控件"></a>集成刷新控件</h2><figure class="highlight mm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="keyword">void</span>)setupRefresh&#123;</span><br><span class="line"><span class="comment">// 1.下拉刷新(进入刷新状态就会调用self的headerRereshing)    </span></span><br><span class="line">[<span class="keyword">self</span>.tableView addHeaderWithTarget:<span class="keyword">self</span> action:<span class="keyword">@selector</span>(headerRereshing)];</span><br><span class="line"><span class="meta">#warning 自动刷新(一进入程序就下拉刷新)    </span></span><br><span class="line">[<span class="keyword">self</span>.tableView headerBeginRefreshing];        </span><br><span class="line"><span class="comment">// 2.上拉加载更多(进入刷新状态就会调用self的footerRereshing)    </span></span><br><span class="line">[<span class="keyword">self</span>.tableView addFooterWithTarget:<span class="keyword">self</span> action:<span class="keyword">@selector</span>(footerRereshing)];        </span><br><span class="line"><span class="comment">// 设置文字(也可以不设置,默认的文字在MJRefreshConst中修改)    </span></span><br><span class="line"><span class="keyword">self</span>.tableView.headerPullToRefreshText = <span class="string">@"下拉可以刷新了"</span>;    </span><br><span class="line"><span class="keyword">self</span>.tableView.headerReleaseToRefreshText = <span class="string">@"松开马上刷新了"</span>;    </span><br><span class="line"><span class="keyword">self</span>.tableView.headerRefreshingText = <span class="string">@"MJ哥正在帮你刷新中,不客气"</span>;        </span><br><span class="line"><span class="keyword">self</span>.tableView.footerPullToRefreshText = <span class="string">@"上拉可以加载更多数据了"</span>;    </span><br><span class="line"><span class="keyword">self</span>.tableView.footerReleaseToRefreshText = <span class="string">@"松开马上加载更多数据了"</span>;    </span><br><span class="line"><span class="keyword">self</span>.tableView.footerRefreshingText = <span class="string">@"MJ哥正在帮你加载中,不客气"</span>;&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="开始进入刷新状态"><a href="#开始进入刷新状态" class="headerlink" title="开始进入刷新状态"></a>开始进入刷新状态</h2><figure class="highlight mm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="keyword">void</span>)headerRereshing&#123;       <span class="comment">// 1.添加假数据//    </span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i&lt;<span class="number">5</span>; i++) &#123;<span class="comment">//        </span></span><br><span class="line">[<span class="keyword">self</span>.fakeData insertObject:MJRandomData atIndex:<span class="number">0</span>];    </span><br><span class="line">&#125;        </span><br><span class="line"><span class="comment">// 2.2秒后刷新表格UI    </span></span><br><span class="line">dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(<span class="number">2.0</span> * <span class="built_in">NSEC_PER_SEC</span>)), dispatch_get_main_queue(), ^&#123;    <span class="comment">// 刷新表格        </span></span><br><span class="line">[<span class="keyword">self</span>.tableView reloadData];         <span class="comment">// (最好在刷新表格后调用)调用endRefreshing可以结束刷新状态       </span></span><br><span class="line">[<span class="keyword">self</span>.tableView headerEndRefreshing];</span><br><span class="line">&#125;);</span><br><span class="line">&#125;</span><br><span class="line">- (<span class="keyword">void</span>)footerRereshing&#123;      <span class="comment">// 1.添加假数据</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i&lt;<span class="number">5</span>; i++) &#123;        </span><br><span class="line">[<span class="keyword">self</span>.fakeData addObject:MJRandomData]; </span><br><span class="line">&#125;        </span><br><span class="line"><span class="comment">// 2.2秒后刷新表格UI    </span></span><br><span class="line">dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(<span class="number">2.0</span> * <span class="built_in">NSEC_PER_SEC</span>)), dispatch_get_main_queue(), ^&#123;        <span class="comment">// 刷新表格        </span></span><br><span class="line">[<span class="keyword">self</span>.tableView reloadData];                <span class="comment">// (最好在刷新表格后调用)调用endRefreshing可以结束刷新状态        </span></span><br><span class="line">[<span class="keyword">self</span>.tableView footerEndRefreshing];    </span><br><span class="line">&#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="在表现表格视图的-m文件中，引入MJRefresh"><a href="#在表现表格视图的-m文件中，引入MJRefresh" class="headerlink" title="在表现表格视图的.m文件中，引入MJRefresh"></a>在表现表格视图的.m文件中，引入MJRefresh</h1><figure class="highlight mm"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#import <span class="meta-string">"MJRefresh.h"</span></span></div></pre></td></tr></table></figure>
+<figure class="highlight mm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">- (<span class="keyword">void</span>)viewDidLoad &#123;    </div><div class="line">[<span class="keyword">super</span> viewDidLoad];</div><div class="line"><span class="comment">//集成刷新控件</span></div><div class="line">[<span class="keyword">self</span> setupRefresh];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h1><h2 id="集成刷新控件"><a href="#集成刷新控件" class="headerlink" title="集成刷新控件"></a>集成刷新控件</h2><figure class="highlight mm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">- (<span class="keyword">void</span>)setupRefresh&#123;</div><div class="line"><span class="comment">// 1.下拉刷新(进入刷新状态就会调用self的headerRereshing)    </span></div><div class="line">[<span class="keyword">self</span>.tableView addHeaderWithTarget:<span class="keyword">self</span> action:<span class="keyword">@selector</span>(headerRereshing)];</div><div class="line"><span class="meta">#warning 自动刷新(一进入程序就下拉刷新)    </span></div><div class="line">[<span class="keyword">self</span>.tableView headerBeginRefreshing];        </div><div class="line"><span class="comment">// 2.上拉加载更多(进入刷新状态就会调用self的footerRereshing)    </span></div><div class="line">[<span class="keyword">self</span>.tableView addFooterWithTarget:<span class="keyword">self</span> action:<span class="keyword">@selector</span>(footerRereshing)];        </div><div class="line"><span class="comment">// 设置文字(也可以不设置,默认的文字在MJRefreshConst中修改)    </span></div><div class="line"><span class="keyword">self</span>.tableView.headerPullToRefreshText = <span class="string">@"下拉可以刷新了"</span>;    </div><div class="line"><span class="keyword">self</span>.tableView.headerReleaseToRefreshText = <span class="string">@"松开马上刷新了"</span>;    </div><div class="line"><span class="keyword">self</span>.tableView.headerRefreshingText = <span class="string">@"MJ哥正在帮你刷新中,不客气"</span>;        </div><div class="line"><span class="keyword">self</span>.tableView.footerPullToRefreshText = <span class="string">@"上拉可以加载更多数据了"</span>;    </div><div class="line"><span class="keyword">self</span>.tableView.footerReleaseToRefreshText = <span class="string">@"松开马上加载更多数据了"</span>;    </div><div class="line"><span class="keyword">self</span>.tableView.footerRefreshingText = <span class="string">@"MJ哥正在帮你加载中,不客气"</span>;&#125;</div></pre></td></tr></table></figure>
+<h2 id="开始进入刷新状态"><a href="#开始进入刷新状态" class="headerlink" title="开始进入刷新状态"></a>开始进入刷新状态</h2><figure class="highlight mm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">- (<span class="keyword">void</span>)headerRereshing&#123;       <span class="comment">// 1.添加假数据//    </span></div><div class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i&lt;<span class="number">5</span>; i++) &#123;<span class="comment">//        </span></div><div class="line">[<span class="keyword">self</span>.fakeData insertObject:MJRandomData atIndex:<span class="number">0</span>];    </div><div class="line">&#125;        </div><div class="line"><span class="comment">// 2.2秒后刷新表格UI    </span></div><div class="line">dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(<span class="number">2.0</span> * <span class="built_in">NSEC_PER_SEC</span>)), dispatch_get_main_queue(), ^&#123;    <span class="comment">// 刷新表格        </span></div><div class="line">[<span class="keyword">self</span>.tableView reloadData];         <span class="comment">// (最好在刷新表格后调用)调用endRefreshing可以结束刷新状态       </span></div><div class="line">[<span class="keyword">self</span>.tableView headerEndRefreshing];</div><div class="line">&#125;);</div><div class="line">&#125;</div><div class="line">- (<span class="keyword">void</span>)footerRereshing&#123;      <span class="comment">// 1.添加假数据</span></div><div class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i&lt;<span class="number">5</span>; i++) &#123;        </div><div class="line">[<span class="keyword">self</span>.fakeData addObject:MJRandomData]; </div><div class="line">&#125;        </div><div class="line"><span class="comment">// 2.2秒后刷新表格UI    </span></div><div class="line">dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(<span class="number">2.0</span> * <span class="built_in">NSEC_PER_SEC</span>)), dispatch_get_main_queue(), ^&#123;        <span class="comment">// 刷新表格        </span></div><div class="line">[<span class="keyword">self</span>.tableView reloadData];                <span class="comment">// (最好在刷新表格后调用)调用endRefreshing可以结束刷新状态        </span></div><div class="line">[<span class="keyword">self</span>.tableView footerEndRefreshing];    </div><div class="line">&#125;);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h1 id="Error"><a href="#Error" class="headerlink" title="Error"></a>Error</h1><p>在运行时，会发现有 Too many arguments to function call, expected 0, have * 的错误，可以如下修改<br>选中项目<br>Project - Build Settings - ENABLE_STRICT_OBJC_MSGSEND 将其设置为 NO 即可</p>
   
 	</div>
@@ -143,18 +138,18 @@
 <nav class="article-nav clearfix">
  
  <div class="prev" >
- <a href="/2015/12/04/iOS 保存文件的方法/" title="iOS 保存文件的方法">
+ <a href="/2015/08/03/NSNumber的使用/" title="数字有关的类（int NSNumber...）">
   <strong>上一篇：</strong><br/>
   <span>
-  iOS 保存文件的方法</span>
+  数字有关的类（int NSNumber...）</span>
 </a>
 </div>
 
 
 <div class="next">
-<a href="/2015/08/03/NSNumber的使用/"  title="数字有关的类（int NSNumber...）">
+<a href="/2015/12/04/iOS 保存文件的方法/"  title="iOS 保存文件的方法">
  <strong>下一篇：</strong><br/> 
- <span>数字有关的类（int NSNumber...）
+ <span>iOS 保存文件的方法
 </span>
 </a>
 </div>
@@ -168,17 +163,17 @@
 
 
 </div>  
-      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
 
   <div id="toc" class="toc-aside">
-  <strong class="toc-title">文章目录</strong>
+  <strong class="toc-title">Contents</strong>
  
  <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#在表现表格视图的-m文件中，引入MJRefresh"><span class="toc-number">1.</span> <span class="toc-text">在表现表格视图的.m文件中，引入MJRefresh</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#实现"><span class="toc-number">2.</span> <span class="toc-text">实现</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#集成刷新控件"><span class="toc-number">2.1.</span> <span class="toc-text">集成刷新控件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#开始进入刷新状态"><span class="toc-number">2.2.</span> <span class="toc-text">开始进入刷新状态</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Error"><span class="toc-number">3.</span> <span class="toc-text">Error</span></a></li></ol>
  
   </div>
 
 <div id="asidepart">
-<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
 <aside class="clearfix">
 
   
@@ -188,7 +183,7 @@
 
   
 <div class="tagslist">
-	<p class="asidetitle">标签</p>
+	<p class="asidetitle">Tags</p>
 		<ul class="clearfix">
 		
 			
@@ -204,15 +199,7 @@
 			
 		
 			
-				<li><a href="/tags/iOS-UICollectionView/" title="iOS UICollectionView">iOS UICollectionView<sup>1</sup></a></li>
-			
-		
-			
 				<li><a href="/tags/RunTime/" title="RunTime">RunTime<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/iOS-CollectionViewCell-Obj-C/" title="iOS CollectionViewCell Obj-C">iOS CollectionViewCell Obj-C<sup>1</sup></a></li>
 			
 		
 			
@@ -220,11 +207,23 @@
 			
 		
 			
-				<li><a href="/tags/iOS-UITextField-转载/" title="iOS UITextField 转载">iOS UITextField 转载<sup>1</sup></a></li>
+				<li><a href="/tags/Swift3/" title="Swift3">Swift3<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/iOS-CollectionViewCell-Obj-C/" title="iOS CollectionViewCell Obj-C">iOS CollectionViewCell Obj-C<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/iOS-UICollectionView/" title="iOS UICollectionView">iOS UICollectionView<sup>1</sup></a></li>
 			
 		
 			
 				<li><a href="/tags/textfield-ios-oc-光标-offset/" title="textfield   ios   oc   光标   offset">textfield   ios   oc   光标   offset<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/iOS-UITextField-转载/" title="iOS UITextField 转载">iOS UITextField 转载<sup>1</sup></a></li>
 			
 		
 			
@@ -244,7 +243,7 @@
 
 
   <div class="linkslist">
-  <p class="asidetitle">友情链接</p>
+  <p class="asidetitle">Links</p>
     <ul>
         
           <li>
@@ -266,11 +265,11 @@
 
 
   <div class="rsspart">
-	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
+	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
 </div>
 
   <div class="weiboshow">
-  <p class="asidetitle">新浪微博</p>
+  <p class="asidetitle">Weibo</p>
     <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=null&verifier=b3593ceb&dpc=1"></iframe>
 </div>
 
@@ -309,7 +308,7 @@
 		
 
 		<p class="copyright">
-		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Shemmy</a> © 2016 
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Shemmy</a> © 2017 
 		
 		<a href="/about" target="_blank" title="Shemmy">Shemmy</a>
 		
@@ -509,7 +508,7 @@ var _hmt = _hmt || [];
 <!-- Totop Begin -->
 
 	<div id="totop">
-	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	<a title="Back to Top"><img src="/img/scrollup.png"/></a>
 	</div>
 	<script src="/js/totop.js"></script>
 

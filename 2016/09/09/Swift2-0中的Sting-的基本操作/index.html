@@ -11,19 +11,17 @@
     
 
     
-    <meta name="description" content="Swift中的字符串，第二篇，基本操作。其他的几篇传送门（GitHub打不开链接的同学请自行把地址github改成gitcafe，或者直接去归档里找:-P）：
-Swift2.0 中的String（一）：常用属性Swift2.0 中的String（二）：基本操作Swift2.0 中的String（三）：类型转换编码转换(TBD)我的练习源代码可以在这里看到">
+    <meta name="description" content="Swift中的字符串，第二篇，基本操作。其他的几篇传送门（GitHub打不开链接的同学请自行把地址github改成gitcafe，或者直接去归档里找:-P）： Swift2.0 中的String（一）：常用属性Swift2.0 中的String（二）：基本操作Swift2.0 中的String（三）：类型转换编码转换(TBD)我的练习源代码可以在这里看到">
+<meta name="keywords">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Swift2.0中的Sting 的基本操作">
 <meta property="og:url" content="http://yoursite.com/2016/09/09/Swift2-0中的Sting-的基本操作/index.html">
 <meta property="og:site_name" content="Shemmy">
-<meta property="og:description" content="Swift中的字符串，第二篇，基本操作。其他的几篇传送门（GitHub打不开链接的同学请自行把地址github改成gitcafe，或者直接去归档里找:-P）：
-Swift2.0 中的String（一）：常用属性Swift2.0 中的String（二）：基本操作Swift2.0 中的String（三）：类型转换编码转换(TBD)我的练习源代码可以在这里看到">
+<meta property="og:description" content="Swift中的字符串，第二篇，基本操作。其他的几篇传送门（GitHub打不开链接的同学请自行把地址github改成gitcafe，或者直接去归档里找:-P）： Swift2.0 中的String（一）：常用属性Swift2.0 中的String（二）：基本操作Swift2.0 中的String（三）：类型转换编码转换(TBD)我的练习源代码可以在这里看到">
 <meta property="og:updated_time" content="2016-09-09T01:38:51.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Swift2.0中的Sting 的基本操作">
-<meta name="twitter:description" content="Swift中的字符串，第二篇，基本操作。其他的几篇传送门（GitHub打不开链接的同学请自行把地址github改成gitcafe，或者直接去归档里找:-P）：
-Swift2.0 中的String（一）：常用属性Swift2.0 中的String（二）：基本操作Swift2.0 中的String（三）：类型转换编码转换(TBD)我的练习源代码可以在这里看到">
+<meta name="twitter:description" content="Swift中的字符串，第二篇，基本操作。其他的几篇传送门（GitHub打不开链接的同学请自行把地址github改成gitcafe，或者直接去归档里找:-P）： Swift2.0 中的String（一）：常用属性Swift2.0 中的String（二）：基本操作Swift2.0 中的String（三）：类型转换编码转换(TBD)我的练习源代码可以在这里看到">
 
     
     <link rel="alternative" href="/atom.xml" title="Shemmy" type="application/atom+xml">
@@ -51,7 +49,7 @@ Swift2.0 中的String（一）：常用属性Swift2.0 中的String（二）：�
 				<h1 class="site-name"><a href="/" title="Shemmy">Shemmy</a></h1>
 				<h2 class="blog-motto"></h2>
 			</div>
-			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
 			</a></div>
 			<nav class="animated">
 				<ul>
@@ -67,7 +65,7 @@ Swift2.0 中的String（一）：常用属性Swift2.0 中的String（二）：�
  					
 					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
 						<label>Search</label>
-						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
 						<input type="hidden" name="q" value="site:yoursite.com">
 					</form>
 					
@@ -90,33 +88,33 @@ Swift2.0 中的String（一）：常用属性Swift2.0 中的String（二）：�
 		<a href="/about" title="Shemmy" target="_blank" itemprop="author">Shemmy</a>
 		
   <p class="article-time">
-    <time datetime="2016-09-08T17:19:03.000Z" itemprop="datePublished"> 发表于 2016-09-09</time>
+    <time datetime="2016-09-08T17:19:03.000Z" itemprop="datePublished"> Published 2016-09-09</time>
     
   </p>
 </header>
 	<div class="article-content">
 		
 		<div id="toc" class="toc-article">
-			<strong class="toc-title">文章目录</strong>
+			<strong class="toc-title">Contents</strong>
 		
 			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#强制类型转换"><span class="toc-number">1.</span> <span class="toc-text">强制类型转换</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#内容反转"><span class="toc-number">2.</span> <span class="toc-text">内容反转</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#删除和部分删除"><span class="toc-number">3.</span> <span class="toc-text">删除和部分删除</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#获取固定位置的子串"><span class="toc-number">4.</span> <span class="toc-text">获取固定位置的子串</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#分割"><span class="toc-number">5.</span> <span class="toc-text">分割</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#过滤-查找替换"><span class="toc-number">6.</span> <span class="toc-text">过滤/查找替换</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#合并-拼接"><span class="toc-number">7.</span> <span class="toc-text">合并/拼接</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#插入"><span class="toc-number">8.</span> <span class="toc-text">插入</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#判断前缀或后缀"><span class="toc-number">9.</span> <span class="toc-text">判断前缀或后缀</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#比较字符串"><span class="toc-number">10.</span> <span class="toc-text">比较字符串</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#匹配字符串"><span class="toc-number">11.</span> <span class="toc-text">匹配字符串</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#固定位置的部分替换"><span class="toc-number">12.</span> <span class="toc-text">固定位置的部分替换</span></a></li></ol>
 		
 		</div>
 		
 		<p>Swift中的字符串，第二篇，基本操作。其他的几篇传送门（GitHub打不开链接的同学请自行把地址github改成gitcafe，或者直接去归档里找:-P）：</p>
-<p><a href="https://conanwhf.github.com/2015/12/03/Swift_String_1/" target="_blank" rel="external">Swift2.0 中的String（一）：常用属性</a><br><a href="https://conanwhf.github.com/2015/12/03/Swift_String_2/" target="_blank" rel="external">Swift2.0 中的String（二）：基本操作</a><br><a href="https://conanwhf.github.com/2015/12/03/Swift_String_3/" target="_blank" rel="external">Swift2.0 中的String（三）：类型转换</a><br>编码转换(TBD)<br>我的练习源代码可以在<a href="https://github.com/conanwhf/swiftplayground/tree/master/String.playground" target="_blank" rel="external">这里</a>看到<a id="more"></a><br>首先，我们要记得使用字符串最常用的两个参数：下标(Index)和范围(Range)，几乎所有API都要用到它们<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> offset = str.startIndex.advancedBy(<span class="number">2</span>)<span class="comment">// offset: 3rd char</span></span><br><span class="line"><span class="keyword">let</span> range  = <span class="type">Range</span>(start: str.startIndex.advancedBy(<span class="number">3</span>), end: str.endIndex.advancedBy(-<span class="number">2</span>))<span class="comment">// range: 3..&lt;6, "345"</span></span><br></pre></td></tr></table></figure></p>
-<h1 id="强制类型转换"><a href="#强制类型转换" class="headerlink" title="强制类型转换"></a>强制类型转换</h1><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> n      = <span class="type">Int</span>(str)!</span><br><span class="line"><span class="type">String</span>(<span class="string">"the number is \(n)"</span>)</span><br><span class="line"><span class="type">String</span>(format:<span class="string">"%.2f,  %i"</span>, <span class="number">9.1</span>, <span class="number">304</span>)</span><br></pre></td></tr></table></figure>
-<h1 id="内容反转"><a href="#内容反转" class="headerlink" title="内容反转"></a>内容反转</h1><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">String</span>(str.characters.<span class="built_in">reverse</span>())</span><br></pre></td></tr></table></figure>
-<h1 id="删除和部分删除"><a href="#删除和部分删除" class="headerlink" title="删除和部分删除"></a>删除和部分删除</h1><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">str.removeRange(range)</span><br><span class="line">str.removeAtIndex(offset)</span><br><span class="line"><span class="type">String</span>(str.characters.<span class="built_in">dropFirst</span>())</span><br><span class="line"><span class="type">String</span>(str.characters.<span class="built_in">dropFirst</span>(<span class="number">3</span>))</span><br><span class="line"><span class="type">String</span>(str.characters.<span class="built_in">dropLast</span>())</span><br><span class="line"><span class="type">String</span>(str.characters.<span class="built_in">dropLast</span>(<span class="number">3</span>))</span><br><span class="line"><span class="comment">//以上对character的操作不改变原来的值！</span></span><br><span class="line"><span class="comment">// 删除头尾空白字符</span></span><br><span class="line"><span class="string">"     I love you "</span>.stringByTrimmingCharactersInSet(<span class="type">NSCharacterSet</span>.whitespaceCharacterSet())</span><br><span class="line"><span class="comment">// 删除头尾字符集</span></span><br><span class="line"><span class="string">" I love you, too!"</span>.stringByTrimmingCharactersInSet(<span class="type">NSCharacterSet</span>(charactersInString: <span class="string">",. !"</span>))</span><br><span class="line"><span class="comment">//清空</span></span><br><span class="line">str.removeAll()</span><br></pre></td></tr></table></figure>
-<h1 id="获取固定位置的子串"><a href="#获取固定位置的子串" class="headerlink" title="获取固定位置的子串"></a>获取固定位置的子串</h1><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">str.substringToIndex(offset)</span><br><span class="line">str.substringFromIndex(offset)</span><br><span class="line">str.substringWithRange(range)</span><br><span class="line">str[range]</span><br></pre></td></tr></table></figure>
-<h1 id="分割"><a href="#分割" class="headerlink" title="分割"></a>分割</h1><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">st         = <span class="string">"&lt;123, test2,???&gt;   &lt;测试: 数据  .&gt;"</span></span><br><span class="line"><span class="comment">// 用固定字符分割</span></span><br><span class="line">str.componentsSeparatedByString(<span class="string">" "</span>)</span><br><span class="line"><span class="comment">// 用固定字符集分割</span></span><br><span class="line">str.componentsSeparatedByCharactersInSet(<span class="type">NSCharacterSet</span>(charactersInString: <span class="string">", ."</span>))</span><br></pre></td></tr></table></figure>
-<h1 id="过滤-查找替换"><a href="#过滤-查找替换" class="headerlink" title="过滤/查找替换"></a>过滤/查找替换</h1><p>使用替换字符串的API，让替换的目标字符串为空即为过滤<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 替换固定位置子串</span></span><br><span class="line">str.stringByReplacingCharactersInRange(range, withString: <span class="string">"!!!"</span>)</span><br><span class="line"><span class="comment">// 查找所有匹配并替换/过滤</span></span><br><span class="line">str.stringByReplacingOccurrencesOfString(<span class="string">"???"</span>, withString: <span class="string">"~"</span>)</span><br><span class="line">str.stringByReplacingOccurrencesOfString(<span class="string">" "</span>, withString: <span class="string">""</span>, options: <span class="type">NSStringCompareOptions</span>.<span class="type">LiteralSearch</span>, range: <span class="literal">nil</span>)</span><br><span class="line"><span class="comment">// 过滤字符集合(分割后合并)</span></span><br><span class="line"><span class="keyword">let</span> arr    = str.componentsSeparatedByCharactersInSet(<span class="type">NSCharacterSet</span>(charactersInString:<span class="string">"-&lt;&gt;"</span>))</span><br><span class="line">arr.joinWithSeparator(<span class="string">""</span>)</span><br></pre></td></tr></table></figure></p>
-<h1 id="合并-拼接"><a href="#合并-拼接" class="headerlink" title="合并/拼接"></a>合并/拼接</h1><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">s1 + s2 + s3</span><br><span class="line">str.appendContentsOf(<span class="string">"123"</span>)</span><br><span class="line">str.stringByAppendingString(<span class="string">"000"</span>)         <span class="comment">//不改变原值！</span></span><br><span class="line">str.stringByAppendingFormat(<span class="string">"- num %d "</span>, <span class="number">100</span>)      <span class="comment">//不改变原值！</span></span><br><span class="line"><span class="comment">// 以固定字符串为分隔符拼接</span></span><br><span class="line">[str, str, str].joinWithSeparator(<span class="string">"\n"</span>)</span><br></pre></td></tr></table></figure>
-<h1 id="插入"><a href="#插入" class="headerlink" title="插入"></a>插入</h1><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">str.insert(<span class="string">" "</span>, atIndex: offset)</span><br><span class="line">str.insertContentsOf(<span class="string">" hello"</span>.characters, at: offset)</span><br><span class="line">str.replaceRange(<span class="type">Range</span>( start:offset, end: offset ), with: <span class="string">"???OK!!!"</span>)</span><br></pre></td></tr></table></figure>
-<h1 id="判断前缀或后缀"><a href="#判断前缀或后缀" class="headerlink" title="判断前缀或后缀"></a>判断前缀或后缀</h1><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">str.hasPrefix(<span class="string">"01"</span>)</span><br><span class="line">str.hasSuffix(<span class="string">"567"</span>)</span><br></pre></td></tr></table></figure>
-<h1 id="比较字符串"><a href="#比较字符串" class="headerlink" title="比较字符串"></a>比较字符串</h1><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">s1.characters.elementsEqual(s2.characters)</span><br><span class="line">str.characters.elementsEqual(<span class="string">"01234567"</span>.characters)</span><br><span class="line">s1 == s2</span><br><span class="line"><span class="string">"111"</span> &lt; <span class="string">"222"</span></span><br></pre></td></tr></table></figure>
-<h1 id="匹配字符串"><a href="#匹配字符串" class="headerlink" title="匹配字符串"></a>匹配字符串</h1><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">str.rangeOfString(<span class="string">"efg"</span>)</span><br><span class="line">str.rangeOfString(<span class="string">"efg"</span>, options: <span class="type">NSStringCompareOptions</span>.<span class="type">CaseInsensitiveSearch</span>, range: <span class="literal">nil</span>)</span><br></pre></td></tr></table></figure>
-<h1 id="固定位置的部分替换"><a href="#固定位置的部分替换" class="headerlink" title="固定位置的部分替换"></a>固定位置的部分替换</h1><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">str.replaceRange(range, with: <span class="string">"test_for_replace"</span>)</span><br><span class="line">str.stringByReplacingCharactersInRange(range, withString: <span class="string">"哈哈:smile:Tes\nt"</span>)</span><br></pre></td></tr></table></figure>  
+<p><a href="https://conanwhf.github.com/2015/12/03/Swift_String_1/" target="_blank" rel="external">Swift2.0 中的String（一）：常用属性</a><br><a href="https://conanwhf.github.com/2015/12/03/Swift_String_2/" target="_blank" rel="external">Swift2.0 中的String（二）：基本操作</a><br><a href="https://conanwhf.github.com/2015/12/03/Swift_String_3/" target="_blank" rel="external">Swift2.0 中的String（三）：类型转换</a><br>编码转换(TBD)<br>我的练习源代码可以在<a href="https://github.com/conanwhf/swiftplayground/tree/master/String.playground" target="_blank" rel="external">这里</a>看到<a id="more"></a><br>首先，我们要记得使用字符串最常用的两个参数：下标(Index)和范围(Range)，几乎所有API都要用到它们<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> offset = str.startIndex.advancedBy(<span class="number">2</span>)<span class="comment">// offset: 3rd char</span></div><div class="line"><span class="keyword">let</span> range  = <span class="type">Range</span>(start: str.startIndex.advancedBy(<span class="number">3</span>), end: str.endIndex.advancedBy(-<span class="number">2</span>))<span class="comment">// range: 3..&lt;6, "345"</span></div></pre></td></tr></table></figure></p>
+<h1 id="强制类型转换"><a href="#强制类型转换" class="headerlink" title="强制类型转换"></a>强制类型转换</h1><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> n      = <span class="type">Int</span>(str)!</div><div class="line"><span class="type">String</span>(<span class="string">"the number is \(n)"</span>)</div><div class="line"><span class="type">String</span>(format:<span class="string">"%.2f,  %i"</span>, <span class="number">9.1</span>, <span class="number">304</span>)</div></pre></td></tr></table></figure>
+<h1 id="内容反转"><a href="#内容反转" class="headerlink" title="内容反转"></a>内容反转</h1><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="type">String</span>(str.characters.<span class="built_in">reverse</span>())</div></pre></td></tr></table></figure>
+<h1 id="删除和部分删除"><a href="#删除和部分删除" class="headerlink" title="删除和部分删除"></a>删除和部分删除</h1><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">str.removeRange(range)</div><div class="line">str.removeAtIndex(offset)</div><div class="line"><span class="type">String</span>(str.characters.<span class="built_in">dropFirst</span>())</div><div class="line"><span class="type">String</span>(str.characters.<span class="built_in">dropFirst</span>(<span class="number">3</span>))</div><div class="line"><span class="type">String</span>(str.characters.<span class="built_in">dropLast</span>())</div><div class="line"><span class="type">String</span>(str.characters.<span class="built_in">dropLast</span>(<span class="number">3</span>))</div><div class="line"><span class="comment">//以上对character的操作不改变原来的值！</span></div><div class="line"><span class="comment">// 删除头尾空白字符</span></div><div class="line"><span class="string">"     I love you "</span>.stringByTrimmingCharactersInSet(<span class="type">NSCharacterSet</span>.whitespaceCharacterSet())</div><div class="line"><span class="comment">// 删除头尾字符集</span></div><div class="line"><span class="string">" I love you, too!"</span>.stringByTrimmingCharactersInSet(<span class="type">NSCharacterSet</span>(charactersInString: <span class="string">",. !"</span>))</div><div class="line"><span class="comment">//清空</span></div><div class="line">str.removeAll()</div></pre></td></tr></table></figure>
+<h1 id="获取固定位置的子串"><a href="#获取固定位置的子串" class="headerlink" title="获取固定位置的子串"></a>获取固定位置的子串</h1><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">str.substringToIndex(offset)</div><div class="line">str.substringFromIndex(offset)</div><div class="line">str.substringWithRange(range)</div><div class="line">str[range]</div></pre></td></tr></table></figure>
+<h1 id="分割"><a href="#分割" class="headerlink" title="分割"></a>分割</h1><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">st         = <span class="string">"&lt;123, test2,???&gt;   &lt;测试: 数据  .&gt;"</span></div><div class="line"><span class="comment">// 用固定字符分割</span></div><div class="line">str.componentsSeparatedByString(<span class="string">" "</span>)</div><div class="line"><span class="comment">// 用固定字符集分割</span></div><div class="line">str.componentsSeparatedByCharactersInSet(<span class="type">NSCharacterSet</span>(charactersInString: <span class="string">", ."</span>))</div></pre></td></tr></table></figure>
+<h1 id="过滤-查找替换"><a href="#过滤-查找替换" class="headerlink" title="过滤/查找替换"></a>过滤/查找替换</h1><p>使用替换字符串的API，让替换的目标字符串为空即为过滤<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 替换固定位置子串</span></div><div class="line">str.stringByReplacingCharactersInRange(range, withString: <span class="string">"!!!"</span>)</div><div class="line"><span class="comment">// 查找所有匹配并替换/过滤</span></div><div class="line">str.stringByReplacingOccurrencesOfString(<span class="string">"???"</span>, withString: <span class="string">"~"</span>)</div><div class="line">str.stringByReplacingOccurrencesOfString(<span class="string">" "</span>, withString: <span class="string">""</span>, options: <span class="type">NSStringCompareOptions</span>.<span class="type">LiteralSearch</span>, range: <span class="literal">nil</span>)</div><div class="line"><span class="comment">// 过滤字符集合(分割后合并)</span></div><div class="line"><span class="keyword">let</span> arr    = str.componentsSeparatedByCharactersInSet(<span class="type">NSCharacterSet</span>(charactersInString:<span class="string">"-&lt;&gt;"</span>))</div><div class="line">arr.joinWithSeparator(<span class="string">""</span>)</div></pre></td></tr></table></figure></p>
+<h1 id="合并-拼接"><a href="#合并-拼接" class="headerlink" title="合并/拼接"></a>合并/拼接</h1><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">s1 + s2 + s3</div><div class="line">str.appendContentsOf(<span class="string">"123"</span>)</div><div class="line">str.stringByAppendingString(<span class="string">"000"</span>)         <span class="comment">//不改变原值！</span></div><div class="line">str.stringByAppendingFormat(<span class="string">"- num %d "</span>, <span class="number">100</span>)      <span class="comment">//不改变原值！</span></div><div class="line"><span class="comment">// 以固定字符串为分隔符拼接</span></div><div class="line">[str, str, str].joinWithSeparator(<span class="string">"\n"</span>)</div></pre></td></tr></table></figure>
+<h1 id="插入"><a href="#插入" class="headerlink" title="插入"></a>插入</h1><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">str.insert(<span class="string">" "</span>, atIndex: offset)</div><div class="line">str.insertContentsOf(<span class="string">" hello"</span>.characters, at: offset)</div><div class="line">str.replaceRange(<span class="type">Range</span>( start:offset, end: offset ), with: <span class="string">"???OK!!!"</span>)</div></pre></td></tr></table></figure>
+<h1 id="判断前缀或后缀"><a href="#判断前缀或后缀" class="headerlink" title="判断前缀或后缀"></a>判断前缀或后缀</h1><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">str.hasPrefix(<span class="string">"01"</span>)</div><div class="line">str.hasSuffix(<span class="string">"567"</span>)</div></pre></td></tr></table></figure>
+<h1 id="比较字符串"><a href="#比较字符串" class="headerlink" title="比较字符串"></a>比较字符串</h1><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">s1.characters.elementsEqual(s2.characters)</div><div class="line">str.characters.elementsEqual(<span class="string">"01234567"</span>.characters)</div><div class="line">s1 == s2</div><div class="line"><span class="string">"111"</span> &lt; <span class="string">"222"</span></div></pre></td></tr></table></figure>
+<h1 id="匹配字符串"><a href="#匹配字符串" class="headerlink" title="匹配字符串"></a>匹配字符串</h1><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">str.rangeOfString(<span class="string">"efg"</span>)</div><div class="line">str.rangeOfString(<span class="string">"efg"</span>, options: <span class="type">NSStringCompareOptions</span>.<span class="type">CaseInsensitiveSearch</span>, range: <span class="literal">nil</span>)</div></pre></td></tr></table></figure>
+<h1 id="固定位置的部分替换"><a href="#固定位置的部分替换" class="headerlink" title="固定位置的部分替换"></a>固定位置的部分替换</h1><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">str.replaceRange(range, with: <span class="string">"test_for_replace"</span>)</div><div class="line">str.stringByReplacingCharactersInRange(range, withString: <span class="string">"哈哈:smile:Tes\nt"</span>)</div></pre></td></tr></table></figure>  
 	</div>
 		<footer class="article-footer clearfix">
 <div class="article-catetags">
@@ -142,18 +140,18 @@ Swift2.0 中的String（一）：常用属性Swift2.0 中的String（二）：�
 <nav class="article-nav clearfix">
  
  <div class="prev" >
- <a href="/2016/09/09/UITextField的光标操作扩展/" title="UITextField的光标操作扩展">
+ <a href="/2016/09/07/NSString-Categary/" title="NSString+Categary">
   <strong>上一篇：</strong><br/>
   <span>
-  UITextField的光标操作扩展</span>
+  NSString+Categary</span>
 </a>
 </div>
 
 
 <div class="next">
-<a href="/2016/09/07/NSString-Categary/"  title="NSString+Categary">
+<a href="/2016/09/09/UITextField的光标操作扩展/"  title="UITextField的光标操作扩展">
  <strong>下一篇：</strong><br/> 
- <span>NSString+Categary
+ <span>UITextField的光标操作扩展
 </span>
 </a>
 </div>
@@ -167,17 +165,17 @@ Swift2.0 中的String（一）：常用属性Swift2.0 中的String（二）：�
 
 
 </div>  
-      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
 
   <div id="toc" class="toc-aside">
-  <strong class="toc-title">文章目录</strong>
+  <strong class="toc-title">Contents</strong>
  
  <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#强制类型转换"><span class="toc-number">1.</span> <span class="toc-text">强制类型转换</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#内容反转"><span class="toc-number">2.</span> <span class="toc-text">内容反转</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#删除和部分删除"><span class="toc-number">3.</span> <span class="toc-text">删除和部分删除</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#获取固定位置的子串"><span class="toc-number">4.</span> <span class="toc-text">获取固定位置的子串</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#分割"><span class="toc-number">5.</span> <span class="toc-text">分割</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#过滤-查找替换"><span class="toc-number">6.</span> <span class="toc-text">过滤/查找替换</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#合并-拼接"><span class="toc-number">7.</span> <span class="toc-text">合并/拼接</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#插入"><span class="toc-number">8.</span> <span class="toc-text">插入</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#判断前缀或后缀"><span class="toc-number">9.</span> <span class="toc-text">判断前缀或后缀</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#比较字符串"><span class="toc-number">10.</span> <span class="toc-text">比较字符串</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#匹配字符串"><span class="toc-number">11.</span> <span class="toc-text">匹配字符串</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#固定位置的部分替换"><span class="toc-number">12.</span> <span class="toc-text">固定位置的部分替换</span></a></li></ol>
  
   </div>
 
 <div id="asidepart">
-<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
 <aside class="clearfix">
 
   
@@ -187,7 +185,7 @@ Swift2.0 中的String（一）：常用属性Swift2.0 中的String（二）：�
 
   
 <div class="tagslist">
-	<p class="asidetitle">标签</p>
+	<p class="asidetitle">Tags</p>
 		<ul class="clearfix">
 		
 			
@@ -203,15 +201,7 @@ Swift2.0 中的String（一）：常用属性Swift2.0 中的String（二）：�
 			
 		
 			
-				<li><a href="/tags/iOS-UICollectionView/" title="iOS UICollectionView">iOS UICollectionView<sup>1</sup></a></li>
-			
-		
-			
 				<li><a href="/tags/RunTime/" title="RunTime">RunTime<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/iOS-CollectionViewCell-Obj-C/" title="iOS CollectionViewCell Obj-C">iOS CollectionViewCell Obj-C<sup>1</sup></a></li>
 			
 		
 			
@@ -219,11 +209,23 @@ Swift2.0 中的String（一）：常用属性Swift2.0 中的String（二）：�
 			
 		
 			
-				<li><a href="/tags/iOS-UITextField-转载/" title="iOS UITextField 转载">iOS UITextField 转载<sup>1</sup></a></li>
+				<li><a href="/tags/Swift3/" title="Swift3">Swift3<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/iOS-CollectionViewCell-Obj-C/" title="iOS CollectionViewCell Obj-C">iOS CollectionViewCell Obj-C<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/iOS-UICollectionView/" title="iOS UICollectionView">iOS UICollectionView<sup>1</sup></a></li>
 			
 		
 			
 				<li><a href="/tags/textfield-ios-oc-光标-offset/" title="textfield   ios   oc   光标   offset">textfield   ios   oc   光标   offset<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/iOS-UITextField-转载/" title="iOS UITextField 转载">iOS UITextField 转载<sup>1</sup></a></li>
 			
 		
 			
@@ -243,7 +245,7 @@ Swift2.0 中的String（一）：常用属性Swift2.0 中的String（二）：�
 
 
   <div class="linkslist">
-  <p class="asidetitle">友情链接</p>
+  <p class="asidetitle">Links</p>
     <ul>
         
           <li>
@@ -265,11 +267,11 @@ Swift2.0 中的String（一）：常用属性Swift2.0 中的String（二）：�
 
 
   <div class="rsspart">
-	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
+	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
 </div>
 
   <div class="weiboshow">
-  <p class="asidetitle">新浪微博</p>
+  <p class="asidetitle">Weibo</p>
     <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=null&verifier=b3593ceb&dpc=1"></iframe>
 </div>
 
@@ -308,7 +310,7 @@ Swift2.0 中的String（一）：常用属性Swift2.0 中的String（二）：�
 		
 
 		<p class="copyright">
-		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Shemmy</a> © 2016 
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Shemmy</a> © 2017 
 		
 		<a href="/about" target="_blank" title="Shemmy">Shemmy</a>
 		
@@ -508,7 +510,7 @@ var _hmt = _hmt || [];
 <!-- Totop Begin -->
 
 	<div id="totop">
-	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	<a title="Back to Top"><img src="/img/scrollup.png"/></a>
 	</div>
 	<script src="/js/totop.js"></script>
 

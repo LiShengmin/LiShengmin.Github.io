@@ -11,19 +11,17 @@
     
 
     
-    <meta name="description" content="MJExtension应用举例Plist → 模型数组控制器中引用#import “MJExtension.h”1模型数组 = [模型类名 objectArrayWithFilename:@&quot;文件名.plist&quot;];
-对NSLog的优化，解决 调试时，打印模型，只打印出内存地址的问题使用方法：在模型类的.m文件中，引用#import “MJExtension.h”在@implementation">
+    <meta name="description" content="MJExtension应用举例Plist → 模型数组控制器中引用#import “MJExtension.h”1模型数组 = [模型类名 objectArrayWithFilename:@&quot;文件名.plist&quot;]; 对NSLog的优化，解决 调试时，打印模型，只打印出内存地址的问题使用方法：在模型类的.m文件中，引用#import “MJExtension.h”在@implementation">
+<meta name="keywords" content="iOS 三方库">
 <meta property="og:type" content="article">
 <meta property="og:title" content="第三方库 MJExtension">
 <meta property="og:url" content="http://yoursite.com/2015/12/30/Json解析之MJExtension应用举例/index.html">
 <meta property="og:site_name" content="Shemmy">
-<meta property="og:description" content="MJExtension应用举例Plist → 模型数组控制器中引用#import “MJExtension.h”1模型数组 = [模型类名 objectArrayWithFilename:@&quot;文件名.plist&quot;];
-对NSLog的优化，解决 调试时，打印模型，只打印出内存地址的问题使用方法：在模型类的.m文件中，引用#import “MJExtension.h”在@implementation">
+<meta property="og:description" content="MJExtension应用举例Plist → 模型数组控制器中引用#import “MJExtension.h”1模型数组 = [模型类名 objectArrayWithFilename:@&quot;文件名.plist&quot;]; 对NSLog的优化，解决 调试时，打印模型，只打印出内存地址的问题使用方法：在模型类的.m文件中，引用#import “MJExtension.h”在@implementation">
 <meta property="og:updated_time" content="2016-07-07T15:43:39.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="第三方库 MJExtension">
-<meta name="twitter:description" content="MJExtension应用举例Plist → 模型数组控制器中引用#import “MJExtension.h”1模型数组 = [模型类名 objectArrayWithFilename:@&quot;文件名.plist&quot;];
-对NSLog的优化，解决 调试时，打印模型，只打印出内存地址的问题使用方法：在模型类的.m文件中，引用#import “MJExtension.h”在@implementation">
+<meta name="twitter:description" content="MJExtension应用举例Plist → 模型数组控制器中引用#import “MJExtension.h”1模型数组 = [模型类名 objectArrayWithFilename:@&quot;文件名.plist&quot;]; 对NSLog的优化，解决 调试时，打印模型，只打印出内存地址的问题使用方法：在模型类的.m文件中，引用#import “MJExtension.h”在@implementation">
 
     
     <link rel="alternative" href="/atom.xml" title="Shemmy" type="application/atom+xml">
@@ -51,7 +49,7 @@
 				<h1 class="site-name"><a href="/" title="Shemmy">Shemmy</a></h1>
 				<h2 class="blog-motto"></h2>
 			</div>
-			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
 			</a></div>
 			<nav class="animated">
 				<ul>
@@ -67,7 +65,7 @@
  					
 					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
 						<label>Search</label>
-						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
 						<input type="hidden" name="q" value="site:yoursite.com">
 					</form>
 					
@@ -90,28 +88,28 @@
 		<a href="/about" title="Shemmy" target="_blank" itemprop="author">Shemmy</a>
 		
   <p class="article-time">
-    <time datetime="2015-12-29T16:08:32.000Z" itemprop="datePublished"> 发表于 2015-12-30</time>
+    <time datetime="2015-12-29T16:08:32.000Z" itemprop="datePublished"> Published 2015-12-30</time>
     
   </p>
 </header>
 	<div class="article-content">
 		
 		<div id="toc" class="toc-article">
-			<strong class="toc-title">文章目录</strong>
+			<strong class="toc-title">Contents</strong>
 		
 			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#MJExtension应用举例"><span class="toc-number">1.</span> <span class="toc-text">MJExtension应用举例</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Plist-→-模型数组"><span class="toc-number">1.1.</span> <span class="toc-text">Plist → 模型数组</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#对NSLog的优化，解决-调试时，打印模型，只打印出内存地址的问题"><span class="toc-number">1.2.</span> <span class="toc-text">对NSLog的优化，解决 调试时，打印模型，只打印出内存地址的问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#对NSCoding的优化，不用再写繁琐的解档和归档方法了"><span class="toc-number">1.3.</span> <span class="toc-text">对NSCoding的优化，不用再写繁琐的解档和归档方法了</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#字典数组-→-模型数组"><span class="toc-number">2.</span> <span class="toc-text">字典数组 → 模型数组</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#场景一-字典1-字典2-字典3"><span class="toc-number">2.1.</span> <span class="toc-text">场景一  [字典1,字典2,字典3];</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#场景二-在场景一的基础上，每个字典里面，有数组-假设数组的key值是arrayName"><span class="toc-number">2.2.</span> <span class="toc-text">场景二  在场景一的基础上，每个字典里面，有数组(假设数组的key值是arrayName)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#如果-服务器传过来的-字典数组里的字典的Key，是OC里的关键字"><span class="toc-number">2.3.</span> <span class="toc-text">如果 服务器传过来的 字典数组里的字典的Key，是OC里的关键字</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#单个字典-→-单个模型"><span class="toc-number">2.4.</span> <span class="toc-text">单个字典 → 单个模型</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#load-更多"><span class="toc-number">3.</span> <span class="toc-text">+load 更多</span></a></li></ol>
 		
 		</div>
 		
-		<h1 id="MJExtension应用举例"><a href="#MJExtension应用举例" class="headerlink" title="MJExtension应用举例"></a>MJExtension应用举例</h1><h2 id="Plist-→-模型数组"><a href="#Plist-→-模型数组" class="headerlink" title="Plist → 模型数组"></a>Plist → 模型数组</h2><p>控制器中引用#import “MJExtension.h”<br><figure class="highlight mm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">模型数组 = [模型类名 objectArrayWithFilename:<span class="string">@"文件名.plist"</span>];</span><br></pre></td></tr></table></figure></p>
-<h2 id="对NSLog的优化，解决-调试时，打印模型，只打印出内存地址的问题"><a href="#对NSLog的优化，解决-调试时，打印模型，只打印出内存地址的问题" class="headerlink" title="对NSLog的优化，解决 调试时，打印模型，只打印出内存地址的问题"></a>对NSLog的优化，解决 调试时，打印模型，只打印出内存地址的问题</h2><p>使用方法：在模型类的.m文件中，引用#import “MJExtension.h”<br>在@implementation 和 @end之间，写上<br><figure class="highlight mm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">MJLogAllIvrs</span><br></pre></td></tr></table></figure></p>
+		<h1 id="MJExtension应用举例"><a href="#MJExtension应用举例" class="headerlink" title="MJExtension应用举例"></a>MJExtension应用举例</h1><h2 id="Plist-→-模型数组"><a href="#Plist-→-模型数组" class="headerlink" title="Plist → 模型数组"></a>Plist → 模型数组</h2><p>控制器中引用#import “MJExtension.h”<br><figure class="highlight mm"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">模型数组 = [模型类名 objectArrayWithFilename:<span class="string">@"文件名.plist"</span>];</div></pre></td></tr></table></figure></p>
+<h2 id="对NSLog的优化，解决-调试时，打印模型，只打印出内存地址的问题"><a href="#对NSLog的优化，解决-调试时，打印模型，只打印出内存地址的问题" class="headerlink" title="对NSLog的优化，解决 调试时，打印模型，只打印出内存地址的问题"></a>对NSLog的优化，解决 调试时，打印模型，只打印出内存地址的问题</h2><p>使用方法：在模型类的.m文件中，引用#import “MJExtension.h”<br>在@implementation 和 @end之间，写上<br><figure class="highlight mm"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">MJLogAllIvrs</div></pre></td></tr></table></figure></p>
 <a id="more"></a>
-<h2 id="对NSCoding的优化，不用再写繁琐的解档和归档方法了"><a href="#对NSCoding的优化，不用再写繁琐的解档和归档方法了" class="headerlink" title="对NSCoding的优化，不用再写繁琐的解档和归档方法了"></a>对NSCoding的优化，不用再写繁琐的解档和归档方法了</h2><p>使用方法：在模型类的.m文件中，引用#import “MJExtension.h”<br>在@implementation 和 @end之间，写上<br><figure class="highlight mm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">MJCodingImplementation</span><br></pre></td></tr></table></figure></p>
-<h1 id="字典数组-→-模型数组"><a href="#字典数组-→-模型数组" class="headerlink" title="字典数组 → 模型数组"></a>字典数组 → 模型数组</h1><h2 id="场景一-字典1-字典2-字典3"><a href="#场景一-字典1-字典2-字典3" class="headerlink" title="场景一  [字典1,字典2,字典3];"></a>场景一  [字典1,字典2,字典3];</h2><p>如果每个字典都是一个模型，可以用<br><figure class="highlight mm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">NSArray</span> *modelArray = [模型类名 objectArrayWithKeyValuesArray:字段数组];</span><br></pre></td></tr></table></figure></p>
-<h2 id="场景二-在场景一的基础上，每个字典里面，有数组-假设数组的key值是arrayName"><a href="#场景二-在场景一的基础上，每个字典里面，有数组-假设数组的key值是arrayName" class="headerlink" title="场景二  在场景一的基础上，每个字典里面，有数组(假设数组的key值是arrayName)"></a>场景二  在场景一的基础上，每个字典里面，有数组(假设数组的key值是arrayName)</h2><p>数组里面存放着若干个相同的模型,使用下面的方法<br>使用方法：<br>首先在模型类.m文件中，引入#import “MJExtension.h”<br>然后在 @implementation 和 @end之间 写上<br><figure class="highlight mm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="built_in">NSDictionary</span> *)objectClassInArray</span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">return</span> @&#123;<span class="string">@"arrayName"</span> : [模型类名 class]&#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h2 id="如果-服务器传过来的-字典数组里的字典的Key，是OC里的关键字"><a href="#如果-服务器传过来的-字典数组里的字典的Key，是OC里的关键字" class="headerlink" title="如果 服务器传过来的 字典数组里的字典的Key，是OC里的关键字"></a>如果 服务器传过来的 字典数组里的字典的Key，是OC里的关键字</h2><p>而使用MJExtention的前提是，模型里的属性名和数组的key一致才行（区分大小写），怎么办？<br>使用replacedKeyFromPropertyName<br>使用方法：1.在模型类.m文件引入”MJExtension.h”<br>　　　　2.实现方法<br><figure class="highlight mm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">+ (<span class="built_in">NSDictionary</span> *)replacedKeyFromPropertyName</span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">return</span> @&#123;@“非关键字的属性名” : @“数组的key”&#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h2 id="单个字典-→-单个模型"><a href="#单个字典-→-单个模型" class="headerlink" title="单个字典 → 单个模型"></a>单个字典 → 单个模型</h2><figure class="highlight mm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">+ (instancetype)objectWithKeyValues:(<span class="built_in">NSDictionary</span> *)keyValues</span><br></pre></td></tr></table></figure>
-<h1 id="load-更多"><a href="#load-更多" class="headerlink" title="+load 更多"></a>+load 更多</h1><figure class="highlight mm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line">+ (<span class="keyword">void</span>)load</span><br><span class="line">&#123;</span><br><span class="line"><span class="meta">#pragma mark 如果使用NSObject来调用这些方法，代表所有类都会生效</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#pragma mark User类的只有name、icon属性参与字典转模型</span></span><br><span class="line"><span class="comment">//    [User setupAllowedPropertyNames:^NSArray *&#123;</span></span><br><span class="line"><span class="comment">//        return @[@"name", @"icon"];</span></span><br><span class="line"><span class="comment">//    &#125;];</span></span><br><span class="line"><span class="comment">// 相当于在User.m中实现了+(NSArray *)allowedPropertyNames方法</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#pragma mark Bag类中的name属性不参与归档</span></span><br><span class="line">[Bag setupIgnoredCodingPropertyNames:^<span class="built_in">NSArray</span> *&#123;</span><br><span class="line"><span class="keyword">return</span> @[<span class="string">@"name"</span>];</span><br><span class="line">&#125;];</span><br><span class="line"><span class="comment">// 相当于在Bag.m中实现了+(NSArray *)ignoredCodingPropertyNames方法</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#pragma mark Bag类中只有price属性参与归档</span></span><br><span class="line"><span class="comment">//    [Bag setupAllowedCodingPropertyNames:^NSArray *&#123;</span></span><br><span class="line"><span class="comment">//        return @[@"price"];</span></span><br><span class="line"><span class="comment">//    &#125;];</span></span><br><span class="line"><span class="comment">// 相当于在Bag.m中实现了+(NSArray *)allowedCodingPropertyNames方法</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#pragma mark StatusResult类中的statuses数组中存放的是Status模型</span></span><br><span class="line"><span class="meta">#pragma mark StatusResult类中的ads数组中存放的是Ad模型</span></span><br><span class="line">[StatusResult setupObjectClassInArray:^<span class="built_in">NSDictionary</span> *&#123;</span><br><span class="line"><span class="keyword">return</span> @&#123;</span><br><span class="line"><span class="string">@"statuses"</span> : <span class="string">@"Status"</span>,</span><br><span class="line"><span class="comment">//                 @"statuses" : [Status class],</span></span><br><span class="line"><span class="string">@"ads"</span> : <span class="string">@"Ad"</span></span><br><span class="line"><span class="comment">//                 @"ads" : [Ad class]</span></span><br><span class="line">&#125;;</span><br><span class="line">&#125;];</span><br><span class="line"><span class="comment">// 相当于在StatusResult.m中实现了+(NSDictionary *)objectClassInArray方法</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#pragma mark Student中的ID属性对应着字典中的id</span></span><br><span class="line"><span class="meta">#pragma mark ....</span></span><br><span class="line">[Student setupReplacedKeyFromPropertyName:^<span class="built_in">NSDictionary</span> *&#123;</span><br><span class="line"><span class="keyword">return</span> @&#123;<span class="string">@"ID"</span> : <span class="string">@"id"</span>,</span><br><span class="line"><span class="string">@"desc"</span> : <span class="string">@"desciption"</span>,</span><br><span class="line"><span class="string">@"oldName"</span> : <span class="string">@"name.oldName"</span>,</span><br><span class="line"><span class="string">@"nowName"</span> : <span class="string">@"name.newName"</span>,</span><br><span class="line"><span class="string">@"otherName"</span> : @[<span class="string">@"otherName"</span>, <span class="string">@"name.newName"</span>, <span class="string">@"name.oldName"</span>],</span><br><span class="line"><span class="string">@"nameChangedTime"</span> : <span class="string">@"name.info[1].nameChangedTime"</span>,</span><br><span class="line"><span class="string">@"bag"</span> : <span class="string">@"other.bag"</span></span><br><span class="line">&#125;;</span><br><span class="line">&#125;];</span><br><span class="line"><span class="comment">// 相当于在Student.m中实现了+(NSDictionary *)replacedKeyFromPropertyName方法</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#pragma mark Dog的所有驼峰属性转成下划线key去字典中取值</span></span><br><span class="line">[Dog setupReplacedKeyFromPropertyName121:^<span class="built_in">NSString</span> *(<span class="built_in">NSString</span> *propertyName) &#123;</span><br><span class="line"><span class="keyword">return</span> [propertyName underlineFromCamel];</span><br><span class="line">&#125;];</span><br><span class="line"><span class="comment">// 相当于在Dog.m中实现了+(NSDictionary *)replacedKeyFromPropertyName121:方法</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#pragma mark Book的日期处理、字符串nil值处理</span></span><br><span class="line">[Book setupNewValueFromOldValue:^<span class="keyword">id</span>(<span class="keyword">id</span> object, <span class="keyword">id</span> oldValue, MJProperty *property) &#123;</span><br><span class="line"><span class="keyword">if</span> ([property.name isEqualToString:<span class="string">@"publisher"</span>]) &#123;</span><br><span class="line"><span class="keyword">if</span> (oldValue == <span class="literal">nil</span> || [oldValue isKindOfClass:[<span class="built_in">NSNull</span> class]]) <span class="keyword">return</span> <span class="string">@""</span>;</span><br><span class="line">&#125; <span class="keyword">else</span> <span class="keyword">if</span> (property.type.typeClass == [<span class="built_in">NSDate</span> class]) &#123;</span><br><span class="line"><span class="built_in">NSDateFormatter</span> *fmt = [[<span class="built_in">NSDateFormatter</span> alloc] init];</span><br><span class="line">fmt.dateFormat = <span class="string">@"yyyy-MM-dd"</span>;</span><br><span class="line"><span class="keyword">return</span> [fmt dateFromString:oldValue];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">return</span> oldValue;</span><br><span class="line">&#125;];</span><br><span class="line"><span class="comment">// 相当于在Book.中实现了- (id)newValueFromOldValue:property:方法</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>  
+<h2 id="对NSCoding的优化，不用再写繁琐的解档和归档方法了"><a href="#对NSCoding的优化，不用再写繁琐的解档和归档方法了" class="headerlink" title="对NSCoding的优化，不用再写繁琐的解档和归档方法了"></a>对NSCoding的优化，不用再写繁琐的解档和归档方法了</h2><p>使用方法：在模型类的.m文件中，引用#import “MJExtension.h”<br>在@implementation 和 @end之间，写上<br><figure class="highlight mm"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">MJCodingImplementation</div></pre></td></tr></table></figure></p>
+<h1 id="字典数组-→-模型数组"><a href="#字典数组-→-模型数组" class="headerlink" title="字典数组 → 模型数组"></a>字典数组 → 模型数组</h1><h2 id="场景一-字典1-字典2-字典3"><a href="#场景一-字典1-字典2-字典3" class="headerlink" title="场景一  [字典1,字典2,字典3];"></a>场景一  [字典1,字典2,字典3];</h2><p>如果每个字典都是一个模型，可以用<br><figure class="highlight mm"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">NSArray</span> *modelArray = [模型类名 objectArrayWithKeyValuesArray:字段数组];</div></pre></td></tr></table></figure></p>
+<h2 id="场景二-在场景一的基础上，每个字典里面，有数组-假设数组的key值是arrayName"><a href="#场景二-在场景一的基础上，每个字典里面，有数组-假设数组的key值是arrayName" class="headerlink" title="场景二  在场景一的基础上，每个字典里面，有数组(假设数组的key值是arrayName)"></a>场景二  在场景一的基础上，每个字典里面，有数组(假设数组的key值是arrayName)</h2><p>数组里面存放着若干个相同的模型,使用下面的方法<br>使用方法：<br>首先在模型类.m文件中，引入#import “MJExtension.h”<br>然后在 @implementation 和 @end之间 写上<br><figure class="highlight mm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">- (<span class="built_in">NSDictionary</span> *)objectClassInArray</div><div class="line">&#123;</div><div class="line"><span class="keyword">return</span> @&#123;<span class="string">@"arrayName"</span> : [模型类名 <span class="keyword">class</span>]&#125;;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="如果-服务器传过来的-字典数组里的字典的Key，是OC里的关键字"><a href="#如果-服务器传过来的-字典数组里的字典的Key，是OC里的关键字" class="headerlink" title="如果 服务器传过来的 字典数组里的字典的Key，是OC里的关键字"></a>如果 服务器传过来的 字典数组里的字典的Key，是OC里的关键字</h2><p>而使用MJExtention的前提是，模型里的属性名和数组的key一致才行（区分大小写），怎么办？<br>使用replacedKeyFromPropertyName<br>使用方法：1.在模型类.m文件引入”MJExtension.h”<br>　　　　2.实现方法<br><figure class="highlight mm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">+ (<span class="built_in">NSDictionary</span> *)replacedKeyFromPropertyName</div><div class="line">&#123;</div><div class="line"><span class="keyword">return</span> @&#123;@“非关键字的属性名” : @“数组的key”&#125;;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="单个字典-→-单个模型"><a href="#单个字典-→-单个模型" class="headerlink" title="单个字典 → 单个模型"></a>单个字典 → 单个模型</h2><figure class="highlight mm"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">+ (<span class="keyword">instancetype</span>)objectWithKeyValues:(<span class="built_in">NSDictionary</span> *)keyValues</div></pre></td></tr></table></figure>
+<h1 id="load-更多"><a href="#load-更多" class="headerlink" title="+load 更多"></a>+load 更多</h1><figure class="highlight mm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div></pre></td><td class="code"><pre><div class="line">+ (<span class="keyword">void</span>)load</div><div class="line">&#123;</div><div class="line"><span class="meta">#pragma mark 如果使用NSObject来调用这些方法，代表所有类都会生效</span></div><div class="line"></div><div class="line"><span class="meta">#pragma mark User类的只有name、icon属性参与字典转模型</span></div><div class="line"><span class="comment">//    [User setupAllowedPropertyNames:^NSArray *&#123;</span></div><div class="line"><span class="comment">//        return @[@"name", @"icon"];</span></div><div class="line"><span class="comment">//    &#125;];</span></div><div class="line"><span class="comment">// 相当于在User.m中实现了+(NSArray *)allowedPropertyNames方法</span></div><div class="line"></div><div class="line"><span class="meta">#pragma mark Bag类中的name属性不参与归档</span></div><div class="line">[Bag setupIgnoredCodingPropertyNames:^<span class="built_in">NSArray</span> *&#123;</div><div class="line"><span class="keyword">return</span> @[<span class="string">@"name"</span>];</div><div class="line">&#125;];</div><div class="line"><span class="comment">// 相当于在Bag.m中实现了+(NSArray *)ignoredCodingPropertyNames方法</span></div><div class="line"></div><div class="line"><span class="meta">#pragma mark Bag类中只有price属性参与归档</span></div><div class="line"><span class="comment">//    [Bag setupAllowedCodingPropertyNames:^NSArray *&#123;</span></div><div class="line"><span class="comment">//        return @[@"price"];</span></div><div class="line"><span class="comment">//    &#125;];</span></div><div class="line"><span class="comment">// 相当于在Bag.m中实现了+(NSArray *)allowedCodingPropertyNames方法</span></div><div class="line"></div><div class="line"><span class="meta">#pragma mark StatusResult类中的statuses数组中存放的是Status模型</span></div><div class="line"><span class="meta">#pragma mark StatusResult类中的ads数组中存放的是Ad模型</span></div><div class="line">[StatusResult setupObjectClassInArray:^<span class="built_in">NSDictionary</span> *&#123;</div><div class="line"><span class="keyword">return</span> @&#123;</div><div class="line"><span class="string">@"statuses"</span> : <span class="string">@"Status"</span>,</div><div class="line"><span class="comment">//                 @"statuses" : [Status class],</span></div><div class="line"><span class="string">@"ads"</span> : <span class="string">@"Ad"</span></div><div class="line"><span class="comment">//                 @"ads" : [Ad class]</span></div><div class="line">&#125;;</div><div class="line">&#125;];</div><div class="line"><span class="comment">// 相当于在StatusResult.m中实现了+(NSDictionary *)objectClassInArray方法</span></div><div class="line"></div><div class="line"><span class="meta">#pragma mark Student中的ID属性对应着字典中的id</span></div><div class="line"><span class="meta">#pragma mark ....</span></div><div class="line">[Student setupReplacedKeyFromPropertyName:^<span class="built_in">NSDictionary</span> *&#123;</div><div class="line"><span class="keyword">return</span> @&#123;<span class="string">@"ID"</span> : <span class="string">@"id"</span>,</div><div class="line"><span class="string">@"desc"</span> : <span class="string">@"desciption"</span>,</div><div class="line"><span class="string">@"oldName"</span> : <span class="string">@"name.oldName"</span>,</div><div class="line"><span class="string">@"nowName"</span> : <span class="string">@"name.newName"</span>,</div><div class="line"><span class="string">@"otherName"</span> : @[<span class="string">@"otherName"</span>, <span class="string">@"name.newName"</span>, <span class="string">@"name.oldName"</span>],</div><div class="line"><span class="string">@"nameChangedTime"</span> : <span class="string">@"name.info[1].nameChangedTime"</span>,</div><div class="line"><span class="string">@"bag"</span> : <span class="string">@"other.bag"</span></div><div class="line">&#125;;</div><div class="line">&#125;];</div><div class="line"><span class="comment">// 相当于在Student.m中实现了+(NSDictionary *)replacedKeyFromPropertyName方法</span></div><div class="line"></div><div class="line"><span class="meta">#pragma mark Dog的所有驼峰属性转成下划线key去字典中取值</span></div><div class="line">[Dog setupReplacedKeyFromPropertyName121:^<span class="built_in">NSString</span> *(<span class="built_in">NSString</span> *propertyName) &#123;</div><div class="line"><span class="keyword">return</span> [propertyName underlineFromCamel];</div><div class="line">&#125;];</div><div class="line"><span class="comment">// 相当于在Dog.m中实现了+(NSDictionary *)replacedKeyFromPropertyName121:方法</span></div><div class="line"></div><div class="line"><span class="meta">#pragma mark Book的日期处理、字符串nil值处理</span></div><div class="line">[Book setupNewValueFromOldValue:^<span class="keyword">id</span>(<span class="keyword">id</span> object, <span class="keyword">id</span> oldValue, MJProperty *property) &#123;</div><div class="line"><span class="keyword">if</span> ([property.name isEqualToString:<span class="string">@"publisher"</span>]) &#123;</div><div class="line"><span class="keyword">if</span> (oldValue == <span class="literal">nil</span> || [oldValue isKindOfClass:[<span class="built_in">NSNull</span> <span class="keyword">class</span>]]) <span class="keyword">return</span> <span class="string">@""</span>;</div><div class="line">&#125; <span class="keyword">else</span> <span class="keyword">if</span> (property.type.typeClass == [<span class="built_in">NSDate</span> <span class="keyword">class</span>]) &#123;</div><div class="line"><span class="built_in">NSDateFormatter</span> *fmt = [[<span class="built_in">NSDateFormatter</span> alloc] init];</div><div class="line">fmt.dateFormat = <span class="string">@"yyyy-MM-dd"</span>;</div><div class="line"><span class="keyword">return</span> [fmt dateFromString:oldValue];</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">return</span> oldValue;</div><div class="line">&#125;];</div><div class="line"><span class="comment">// 相当于在Book.中实现了- (id)newValueFromOldValue:property:方法</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>  
 	</div>
 		<footer class="article-footer clearfix">
 <div class="article-catetags">
@@ -142,18 +140,18 @@
 <nav class="article-nav clearfix">
  
  <div class="prev" >
- <a href="/2016/01/14/UITextField中文输入法时对字符长度的限制/" title="中文输入法时对字符长度的限制(UITextField)">
+ <a href="/2015/12/24/iOS7中UIKit支持的动力行为之UIAttachmentBehavior/" title="iOS7中UIKit支持的动力行为之UIAttachmentBehavior">
   <strong>上一篇：</strong><br/>
   <span>
-  中文输入法时对字符长度的限制(UITextField)</span>
+  iOS7中UIKit支持的动力行为之UIAttachmentBehavior</span>
 </a>
 </div>
 
 
 <div class="next">
-<a href="/2015/12/24/iOS7中UIKit支持的动力行为之UIAttachmentBehavior/"  title="iOS7中UIKit支持的动力行为之UIAttachmentBehavior">
+<a href="/2016/01/14/UITextField中文输入法时对字符长度的限制/"  title="中文输入法时对字符长度的限制(UITextField)">
  <strong>下一篇：</strong><br/> 
- <span>iOS7中UIKit支持的动力行为之UIAttachmentBehavior
+ <span>中文输入法时对字符长度的限制(UITextField)
 </span>
 </a>
 </div>
@@ -167,17 +165,17 @@
 
 
 </div>  
-      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
 
   <div id="toc" class="toc-aside">
-  <strong class="toc-title">文章目录</strong>
+  <strong class="toc-title">Contents</strong>
  
  <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#MJExtension应用举例"><span class="toc-number">1.</span> <span class="toc-text">MJExtension应用举例</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Plist-→-模型数组"><span class="toc-number">1.1.</span> <span class="toc-text">Plist → 模型数组</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#对NSLog的优化，解决-调试时，打印模型，只打印出内存地址的问题"><span class="toc-number">1.2.</span> <span class="toc-text">对NSLog的优化，解决 调试时，打印模型，只打印出内存地址的问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#对NSCoding的优化，不用再写繁琐的解档和归档方法了"><span class="toc-number">1.3.</span> <span class="toc-text">对NSCoding的优化，不用再写繁琐的解档和归档方法了</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#字典数组-→-模型数组"><span class="toc-number">2.</span> <span class="toc-text">字典数组 → 模型数组</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#场景一-字典1-字典2-字典3"><span class="toc-number">2.1.</span> <span class="toc-text">场景一  [字典1,字典2,字典3];</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#场景二-在场景一的基础上，每个字典里面，有数组-假设数组的key值是arrayName"><span class="toc-number">2.2.</span> <span class="toc-text">场景二  在场景一的基础上，每个字典里面，有数组(假设数组的key值是arrayName)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#如果-服务器传过来的-字典数组里的字典的Key，是OC里的关键字"><span class="toc-number">2.3.</span> <span class="toc-text">如果 服务器传过来的 字典数组里的字典的Key，是OC里的关键字</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#单个字典-→-单个模型"><span class="toc-number">2.4.</span> <span class="toc-text">单个字典 → 单个模型</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#load-更多"><span class="toc-number">3.</span> <span class="toc-text">+load 更多</span></a></li></ol>
  
   </div>
 
 <div id="asidepart">
-<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
 <aside class="clearfix">
 
   
@@ -187,7 +185,7 @@
 
   
 <div class="tagslist">
-	<p class="asidetitle">标签</p>
+	<p class="asidetitle">Tags</p>
 		<ul class="clearfix">
 		
 			
@@ -203,15 +201,7 @@
 			
 		
 			
-				<li><a href="/tags/iOS-UICollectionView/" title="iOS UICollectionView">iOS UICollectionView<sup>1</sup></a></li>
-			
-		
-			
 				<li><a href="/tags/RunTime/" title="RunTime">RunTime<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/iOS-CollectionViewCell-Obj-C/" title="iOS CollectionViewCell Obj-C">iOS CollectionViewCell Obj-C<sup>1</sup></a></li>
 			
 		
 			
@@ -219,11 +209,23 @@
 			
 		
 			
-				<li><a href="/tags/iOS-UITextField-转载/" title="iOS UITextField 转载">iOS UITextField 转载<sup>1</sup></a></li>
+				<li><a href="/tags/Swift3/" title="Swift3">Swift3<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/iOS-CollectionViewCell-Obj-C/" title="iOS CollectionViewCell Obj-C">iOS CollectionViewCell Obj-C<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/iOS-UICollectionView/" title="iOS UICollectionView">iOS UICollectionView<sup>1</sup></a></li>
 			
 		
 			
 				<li><a href="/tags/textfield-ios-oc-光标-offset/" title="textfield   ios   oc   光标   offset">textfield   ios   oc   光标   offset<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/iOS-UITextField-转载/" title="iOS UITextField 转载">iOS UITextField 转载<sup>1</sup></a></li>
 			
 		
 			
@@ -243,7 +245,7 @@
 
 
   <div class="linkslist">
-  <p class="asidetitle">友情链接</p>
+  <p class="asidetitle">Links</p>
     <ul>
         
           <li>
@@ -265,11 +267,11 @@
 
 
   <div class="rsspart">
-	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
+	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
 </div>
 
   <div class="weiboshow">
-  <p class="asidetitle">新浪微博</p>
+  <p class="asidetitle">Weibo</p>
     <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=null&verifier=b3593ceb&dpc=1"></iframe>
 </div>
 
@@ -308,7 +310,7 @@
 		
 
 		<p class="copyright">
-		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Shemmy</a> © 2016 
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Shemmy</a> © 2017 
 		
 		<a href="/about" target="_blank" title="Shemmy">Shemmy</a>
 		
@@ -508,7 +510,7 @@ var _hmt = _hmt || [];
 <!-- Totop Begin -->
 
 	<div id="totop">
-	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	<a title="Back to Top"><img src="/img/scrollup.png"/></a>
 	</div>
 	<script src="/js/totop.js"></script>
 
