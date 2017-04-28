@@ -4,24 +4,24 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>UIAlertController介绍 | Shemmy</title>
+    <title>Carthage使用 | Shemmy</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="Shemmy">
     
 
     
-    <meta name="description" content="UIAlertController 在iOS8以上的时候需要调用的方法，">
-<meta name="keywords">
+    <meta name="description" content="使用Carthage安装第三方Swift库今天有朋友在群里问“怎么使用Swift第三方库？”，对象是SwiftyJSON，正巧这段时间也要用，干脆折腾了下。在SwiftyJSON的GitHub上说，需要先安装Carthage这个包管理。github地址：https://github.com/Carthage/Carthage 安装Carthage首先到github上Download或者Clone">
+<meta name="keywords" content="第三方依赖库">
 <meta property="og:type" content="article">
-<meta property="og:title" content="UIAlertController介绍">
-<meta property="og:url" content="http://yoursite.com/2016/09/21/UIAlertController介绍/index.html">
+<meta property="og:title" content="Carthage使用">
+<meta property="og:url" content="http://yoursite.com/2017/04/28/Carthage使用/index.html">
 <meta property="og:site_name" content="Shemmy">
-<meta property="og:description" content="UIAlertController 在iOS8以上的时候需要调用的方法，">
-<meta property="og:updated_time" content="2016-09-21T05:48:34.000Z">
+<meta property="og:description" content="使用Carthage安装第三方Swift库今天有朋友在群里问“怎么使用Swift第三方库？”，对象是SwiftyJSON，正巧这段时间也要用，干脆折腾了下。在SwiftyJSON的GitHub上说，需要先安装Carthage这个包管理。github地址：https://github.com/Carthage/Carthage 安装Carthage首先到github上Download或者Clone">
+<meta property="og:updated_time" content="2017-04-28T10:50:39.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="UIAlertController介绍">
-<meta name="twitter:description" content="UIAlertController 在iOS8以上的时候需要调用的方法，">
+<meta name="twitter:title" content="Carthage使用">
+<meta name="twitter:description" content="使用Carthage安装第三方Swift库今天有朋友在群里问“怎么使用Swift第三方库？”，对象是SwiftyJSON，正巧这段时间也要用，干脆折腾了下。在SwiftyJSON的GitHub上说，需要先安装Carthage这个包管理。github地址：https://github.com/Carthage/Carthage 安装Carthage首先到github上Download或者Clone">
 
     
     <link rel="alternative" href="/atom.xml" title="Shemmy" type="application/atom+xml">
@@ -81,14 +81,14 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2016/09/21/UIAlertController介绍/" title="UIAlertController介绍" itemprop="url">UIAlertController介绍</a>
+      <a href="/2017/04/28/Carthage使用/" title="Carthage使用" itemprop="url">Carthage使用</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="Shemmy" target="_blank" itemprop="author">Shemmy</a>
 		
   <p class="article-time">
-    <time datetime="2016-09-21T03:46:35.000Z" itemprop="datePublished"> 發表於 2016-09-21</time>
+    <time datetime="2017-04-28T10:49:43.000Z" itemprop="datePublished"> 發表於 2017-04-28</time>
     
   </p>
 </header>
@@ -97,21 +97,31 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目錄</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#但是有的时候会报错"><span class="toc-number">1.</span> <span class="toc-text">但是有的时候会报错</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#百度给出的翻译是"><span class="toc-number">2.</span> <span class="toc-text">百度给出的翻译是</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#原因就是"><span class="toc-number">3.</span> <span class="toc-text">原因就是</span></a></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#使用Carthage安装第三方Swift库"><span class="toc-number">1.</span> <span class="toc-text">使用Carthage安装第三方Swift库</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#今天有朋友在群里问“怎么使用Swift第三方库？”，对象是SwiftyJSON，正巧这段时间也要用，干脆折腾了下。在SwiftyJSON的GitHub上说，需要先安装Carthage这个包管理。"><span class="toc-number">1.1.</span> <span class="toc-text">今天有朋友在群里问“怎么使用Swift第三方库？”，对象是SwiftyJSON，正巧这段时间也要用，干脆折腾了下。在SwiftyJSON的GitHub上说，需要先安装Carthage这个包管理。</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#github地址：https-github-com-Carthage-Carthage"><span class="toc-number">1.2.</span> <span class="toc-text">github地址：https://github.com/Carthage/Carthage</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#使用第三方库"><span class="toc-number">2.</span> <span class="toc-text">使用第三方库</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#失败了不可怕"><span class="toc-number">3.</span> <span class="toc-text">失败了不可怕</span></a></li></ol>
 		
 		</div>
 		
-		<p>UIAlertController 在iOS8以上的时候需要调用的方法， <a id="more"></a></p>
-<figure class="highlight mm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> (IOS8) &#123;</div><div class="line"><span class="built_in">UIAlertController</span> * alertController = [<span class="built_in">UIAlertController</span> alertControllerWithTitle:<span class="string">@"获取照片"</span> message:<span class="literal">nil</span> preferredStyle:<span class="built_in">UIAlertControllerStyleActionSheet</span>];</div><div class="line"><span class="keyword">if</span> ([<span class="built_in">UIImagePickerController</span> isSourceTypeAvailable:<span class="built_in">UIImagePickerControllerSourceTypeCamera</span>]) &#123;</div><div class="line"><span class="built_in">UIAlertAction</span> * actionDefault = [<span class="built_in">UIAlertAction</span> actionWithTitle:<span class="string">@"相机拍摄"</span> style:<span class="built_in">UIAlertActionStyleDefault</span> handler:^(<span class="built_in">UIAlertAction</span> * _Nonnull action) &#123;</div><div class="line">_pickerVC = [[<span class="built_in">UIImagePickerController</span> alloc] init];</div><div class="line">_pickerVC.delegate = <span class="keyword">self</span>;</div><div class="line">_pickerVC.allowsEditing = <span class="literal">NO</span>;</div><div class="line">_pickerVC.sourceType = <span class="built_in">UIImagePickerControllerSourceTypeCamera</span>;</div><div class="line">_pickerVC.showsCameraControls = <span class="literal">NO</span>;</div><div class="line">_pickerVC.cameraOverlayView = <span class="keyword">self</span>.userImagePickerView;</div><div class="line">[<span class="keyword">self</span> presentViewController:_pickerVC animated:<span class="literal">YES</span> completion:^&#123;&#125;];</div><div class="line">&#125;];</div><div class="line">[alertController addAction:actionDefault];</div><div class="line">&#125;</div><div class="line"><span class="built_in">UIAlertAction</span> * actionDefault = [<span class="built_in">UIAlertAction</span> actionWithTitle:<span class="string">@"从相册获取"</span> style:<span class="built_in">UIAlertActionStyleDefault</span> handler:^(<span class="built_in">UIAlertAction</span> * _Nonnull action) &#123;</div><div class="line">_pickerVC = [[<span class="built_in">UIImagePickerController</span> alloc] init];</div><div class="line">_pickerVC.delegate = <span class="keyword">self</span>;</div><div class="line">_pickerVC.allowsEditing = <span class="literal">YES</span>;</div><div class="line">_pickerVC.sourceType = <span class="built_in">UIImagePickerControllerSourceTypePhotoLibrary</span>;</div><div class="line">[<span class="keyword">self</span> presentViewController:_pickerVC animated:<span class="literal">YES</span> completion:^&#123;&#125;];</div><div class="line">&#125;];</div><div class="line">[alertController addAction:actionDefault];</div><div class="line"></div><div class="line"><span class="built_in">UIAlertAction</span> * actionCancel = [<span class="built_in">UIAlertAction</span> actionWithTitle:<span class="string">@"取消"</span> style:<span class="built_in">UIAlertActionStyleCancel</span> handler:^(<span class="built_in">UIAlertAction</span> * _Nonnull action) &#123;&#125;];</div><div class="line">[alertController addAction:actionCancel];</div><div class="line">[<span class="keyword">self</span> presentViewController:alertController animated: <span class="literal">YES</span> completion:^&#123;&#125;];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h1 id="但是有的时候会报错"><a href="#但是有的时候会报错" class="headerlink" title="但是有的时候会报错"></a>但是有的时候会报错</h1><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">*** Terminating app due to uncaught exception 'NSGenericException', reason: 'Your application has presented a UIAlertController (&lt;UIAlertController: 0x138d27780&gt;) of style UIAlertControllerStyleActionSheet. The modalPresentationStyle of a UIAlertController with this style is UIModalPresentationPopover. You must provide location information for this popover through the alert controller's popoverPresentationController. You must provide either a sourceView and sourceRect or a barButtonItem.  If this information is not known when you present the alert controller, you may provide it in the UIPopoverPresentationControllerDelegate method -prepareForPopoverPresentation.'</div><div class="line">*** First throw call stack:</div><div class="line">(0x182446db0 0x181aabf80 0x187eed268 0x187901fb0 0x1879000c8 0x1878530c8 0x187860a80 0x1875925a4 0x1823fc728 0x1823fa4cc 0x1823fa8fc 0x182324c50 0x183c0c088 0x18760a088 0x10005b0d4 0x181ec28b8)</div><div class="line">libc++abi.dylib: terminating with uncaught exception of type NSException</div></pre></td></tr></table></figure>
-<h1 id="百度给出的翻译是"><a href="#百度给出的翻译是" class="headerlink" title="百度给出的翻译是"></a>百度给出的翻译是</h1><figure class="highlight mm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">    终止应用程序由于未捕获的异常的nsgenericexception，原因：你的应用了<span class="built_in">UIAlertController</span>（&lt;&lt; uialertcontroller：<span class="number">0x138d27780</span> &gt;）风格uialertcontrollerstyleactionsheet。一个具有这种风格的modalpresentationstyle <span class="built_in">UIAlertController</span> <span class="built_in">UIModalPresentationPopover</span>。你必须通过报警控制器的popoverpresentationcontroller这个弹出提供位置信息。你必须提供一个sourceview和sourcerect或barbuttonitem。如果这个信息是不知道当你目前的警戒控制器，你可以在uipopoverpresentationcontrollerdelegate方法提供prepareforpopoverpresentation。”</div><div class="line">    第一次抛出调用堆栈：</div><div class="line">（<span class="number">0x182446db0</span> <span class="number">0x181aabf80</span> <span class="number">0x187eed268</span> <span class="number">0x187901fb0</span> <span class="number">0x1879000c8</span> <span class="number">0x1878530c8</span> <span class="number">0x187860a80</span> <span class="number">0x1875925a4</span> <span class="number">0x1823fc728</span> <span class="number">0x1823fa4cc</span> <span class="number">0x1823fa8fc</span> <span class="number">0x182324c50</span> <span class="number">0x183c0c088</span> <span class="number">0x18760a088</span> <span class="number">0x10005b0d4</span> <span class="number">0x181ec28b8</span>）</div><div class="line">libc + abi.dylib：同型nsexception未捕获的异常终止</div></pre></td></tr></table></figure>
-<h1 id="原因就是"><a href="#原因就是" class="headerlink" title="原因就是"></a>原因就是</h1><pre><code>你没有给其添加源视图位置，也就是说，我们没有给视图添加一个位置用来显示。我们给其一个视图位置如下：
-</code></pre><figure class="highlight mm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">UIPopoverPresentationController</span> *popover = alertController.popoverPresentationController;</div><div class="line"></div><div class="line"><span class="keyword">if</span> (popover) &#123;</div><div class="line"></div><div class="line">popover.sourceView = <span class="keyword">self</span>.view;</div><div class="line">popover.sourceRect = <span class="keyword">self</span>.view.bounds;</div><div class="line">popover.permittedArrowDirections = <span class="built_in">UIPopoverArrowDirectionAny</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+		<h1 id="使用Carthage安装第三方Swift库"><a href="#使用Carthage安装第三方Swift库" class="headerlink" title="使用Carthage安装第三方Swift库"></a>使用Carthage安装第三方Swift库</h1><h2 id="今天有朋友在群里问“怎么使用Swift第三方库？”，对象是SwiftyJSON，正巧这段时间也要用，干脆折腾了下。在SwiftyJSON的GitHub上说，需要先安装Carthage这个包管理。"><a href="#今天有朋友在群里问“怎么使用Swift第三方库？”，对象是SwiftyJSON，正巧这段时间也要用，干脆折腾了下。在SwiftyJSON的GitHub上说，需要先安装Carthage这个包管理。" class="headerlink" title="今天有朋友在群里问“怎么使用Swift第三方库？”，对象是SwiftyJSON，正巧这段时间也要用，干脆折腾了下。在SwiftyJSON的GitHub上说，需要先安装Carthage这个包管理。"></a>今天有朋友在群里问“怎么使用Swift第三方库？”，对象是SwiftyJSON，正巧这段时间也要用，干脆折腾了下。在SwiftyJSON的GitHub上说，需要先安装Carthage这个包管理。</h2><h2 id="github地址：https-github-com-Carthage-Carthage"><a href="#github地址：https-github-com-Carthage-Carthage" class="headerlink" title="github地址：https://github.com/Carthage/Carthage"></a>github地址：<a href="https://github.com/Carthage/Carthage" target="_blank" rel="external">https://github.com/Carthage/Carthage</a></h2><ol>
+<li>安装Carthage<br>首先到github上Download或者Clone Git 或者使用HomeBrew（我是用这个），安装好。<br><code>brew update</code>(先更新).<code>brew install carthage</code> (安装Carthage).  </li>
+<li>安装好以后在carthage的根目录<strong>创建一个Cartfile</strong>文件：<br><code>vim Cartfile</code>输入你想要编译成Framework的Swift第三方库，比如说SwiftyJSON和Alamofire，如下所示:</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">github &quot;Alamofire/Alamofire&quot; &amp;gt;= 1.1</div><div class="line">github &quot;SwiftyJSON/SwiftyJSON&quot; &amp;gt;= 2.1.2</div></pre></td></tr></table></figure>
+<p>github代表源，而后面的就是用户名和版本库的名字，而”&gt;=” 后面是Tag（本质上就是版本号）</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">carthage update</span></div></pre></td></tr></table></figure>
+<p>之后会发现在跟目录下多出了“Carthage”文件夹和“Cartfile.resolved”文件。<br>进入“Carthage/Checkouts”下可以看到刚刚得到的Alamofire和SwiftyJSON。</p>
+<h1 id="使用第三方库"><a href="#使用第三方库" class="headerlink" title="使用第三方库"></a>使用第三方库</h1><p>在你的应用程序target的“General”设置标签中的“Embedded Binaries”区域，将“Carthage/Build”目录下你想使用的第三方库文件夹拖进去即可，比如“Carthage/Build/SwiftyJSON”。</p>
+<h1 id="失败了不可怕"><a href="#失败了不可怕" class="headerlink" title="失败了不可怕"></a>失败了不可怕</h1><p>如果Build文件夹里是空的，说明刚刚在update的时候一定出现了错误。可以查看下刚刚执行的日志文件里说了什么，按部就班的解决就行。</p>
+<p>像我遇到的问题就是因为我没有为SwiftyJSON项目配置我的apple 开发者账号ID，99刀就可以解决问题！<br>解决完问题之后，因为之前执行update时，已经将github的内容抓取到了Checkout目录中，就不用再update抓取了，执行bootstrap就可以开始编译，节省时间。<br><a href="http://blog.crazyphper.com/?p=3661" target="_blank" rel="external">本文链接地址: 使用Carthage安装第三方Swift库</a><br><a href="http://www.isaced.com/post-265.html" target="_blank" rel="external">更加全面的文章在这里</a></p>
   
 	</div>
 		<footer class="article-footer clearfix">
 <div class="article-catetags">
 
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/第三方依赖库/">第三方依赖库</a>
+  </div>
 
 </div>
 
@@ -119,7 +129,7 @@
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="http://yoursite.com/2016/09/21/UIAlertController介绍/" data-title="UIAlertController介绍 | Shemmy" data-tsina="null" class="share clearfix">
+	  <div data-url="http://yoursite.com/2017/04/28/Carthage使用/" data-title="Carthage使用 | Shemmy" data-tsina="null" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -133,27 +143,19 @@
 <nav class="article-nav clearfix">
  
  <div class="prev" >
- <a href="/2016/09/09/UITextField的光标操作扩展/" title="UITextField的光标操作扩展">
+ <a href="/2016/11/18/ios-中请求主线程刷新UI/" title="ios 中请求主线程刷新UI">
   <strong>上一篇：</strong><br/>
   <span>
-  UITextField的光标操作扩展</span>
+  ios 中请求主线程刷新UI</span>
 </a>
 </div>
 
-
-<div class="next">
-<a href="/2016/10/18/在iOS-8中使用UIAlertController/"  title="在iOS 8中使用UIAlertController">
- <strong>下一篇：</strong><br/> 
- <span>在iOS 8中使用UIAlertController
-</span>
-</a>
-</div>
 
 </nav>
 
 	
 <section id="comments" class="comment">
-	<div class="ds-thread" data-thread-key="2016/09/21/UIAlertController介绍/" data-title="UIAlertController介绍" data-url="http://yoursite.com/2016/09/21/UIAlertController介绍/"></div>
+	<div class="ds-thread" data-thread-key="2017/04/28/Carthage使用/" data-title="Carthage使用" data-url="http://yoursite.com/2017/04/28/Carthage使用/"></div>
 </section>
 
 
@@ -163,7 +165,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目錄</strong>
  
- <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#但是有的时候会报错"><span class="toc-number">1.</span> <span class="toc-text">但是有的时候会报错</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#百度给出的翻译是"><span class="toc-number">2.</span> <span class="toc-text">百度给出的翻译是</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#原因就是"><span class="toc-number">3.</span> <span class="toc-text">原因就是</span></a></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#使用Carthage安装第三方Swift库"><span class="toc-number">1.</span> <span class="toc-text">使用Carthage安装第三方Swift库</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#今天有朋友在群里问“怎么使用Swift第三方库？”，对象是SwiftyJSON，正巧这段时间也要用，干脆折腾了下。在SwiftyJSON的GitHub上说，需要先安装Carthage这个包管理。"><span class="toc-number">1.1.</span> <span class="toc-text">今天有朋友在群里问“怎么使用Swift第三方库？”，对象是SwiftyJSON，正巧这段时间也要用，干脆折腾了下。在SwiftyJSON的GitHub上说，需要先安装Carthage这个包管理。</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#github地址：https-github-com-Carthage-Carthage"><span class="toc-number">1.2.</span> <span class="toc-text">github地址：https://github.com/Carthage/Carthage</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#使用第三方库"><span class="toc-number">2.</span> <span class="toc-text">使用第三方库</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#失败了不可怕"><span class="toc-number">3.</span> <span class="toc-text">失败了不可怕</span></a></li></ol>
  
   </div>
 

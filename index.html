@@ -44,7 +44,7 @@
 				<h1 class="site-name"><a href="/" title="Shemmy">Shemmy</a></h1>
 				<h2 class="blog-motto"></h2>
 			</div>
-			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜單">
 			</a></div>
 			<nav class="animated">
 				<ul>
@@ -78,6 +78,74 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
+      <a href="/2017/04/28/Carthage使用/" title="Carthage使用" itemprop="url">Carthage使用</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Shemmy" target="_blank" itemprop="author">Shemmy</a>
+		
+  <p class="article-time">
+    <time datetime="2017-04-28T10:49:43.000Z" itemprop="datePublished"> 發表於 2017-04-28</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h1 id="使用Carthage安装第三方Swift库"><a href="#使用Carthage安装第三方Swift库" class="headerlink" title="使用Carthage安装第三方Swift库"></a>使用Carthage安装第三方Swift库</h1><h2 id="今天有朋友在群里问“怎么使用Swift第三方库？”，对象是SwiftyJSON，正巧这段时间也要用，干脆折腾了下。在SwiftyJSON的GitHub上说，需要先安装Carthage这个包管理。"><a href="#今天有朋友在群里问“怎么使用Swift第三方库？”，对象是SwiftyJSON，正巧这段时间也要用，干脆折腾了下。在SwiftyJSON的GitHub上说，需要先安装Carthage这个包管理。" class="headerlink" title="今天有朋友在群里问“怎么使用Swift第三方库？”，对象是SwiftyJSON，正巧这段时间也要用，干脆折腾了下。在SwiftyJSON的GitHub上说，需要先安装Carthage这个包管理。"></a>今天有朋友在群里问“怎么使用Swift第三方库？”，对象是SwiftyJSON，正巧这段时间也要用，干脆折腾了下。在SwiftyJSON的GitHub上说，需要先安装Carthage这个包管理。</h2><h2 id="github地址：https-github-com-Carthage-Carthage"><a href="#github地址：https-github-com-Carthage-Carthage" class="headerlink" title="github地址：https://github.com/Carthage/Carthage"></a>github地址：<a href="https://github.com/Carthage/Carthage" target="_blank" rel="external">https://github.com/Carthage/Carthage</a></h2><ol>
+<li>安装Carthage<br>首先到github上Download或者Clone Git 或者使用HomeBrew（我是用这个），安装好。<br><code>brew update</code>(先更新).<code>brew install carthage</code> (安装Carthage).  </li>
+<li>安装好以后在carthage的根目录<strong>创建一个Cartfile</strong>文件：<br><code>vim Cartfile</code>输入你想要编译成Framework的Swift第三方库，比如说SwiftyJSON和Alamofire，如下所示:</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">github &quot;Alamofire/Alamofire&quot; &amp;gt;= 1.1</div><div class="line">github &quot;SwiftyJSON/SwiftyJSON&quot; &amp;gt;= 2.1.2</div></pre></td></tr></table></figure>
+<p>github代表源，而后面的就是用户名和版本库的名字，而”&gt;=” 后面是Tag（本质上就是版本号）</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">carthage update</span></div></pre></td></tr></table></figure>
+<p>之后会发现在跟目录下多出了“Carthage”文件夹和“Cartfile.resolved”文件。<br>进入“Carthage/Checkouts”下可以看到刚刚得到的Alamofire和SwiftyJSON。</p>
+<h1 id="使用第三方库"><a href="#使用第三方库" class="headerlink" title="使用第三方库"></a>使用第三方库</h1><p>在你的应用程序target的“General”设置标签中的“Embedded Binaries”区域，将“Carthage/Build”目录下你想使用的第三方库文件夹拖进去即可，比如“Carthage/Build/SwiftyJSON”。</p>
+<h1 id="失败了不可怕"><a href="#失败了不可怕" class="headerlink" title="失败了不可怕"></a>失败了不可怕</h1><p>如果Build文件夹里是空的，说明刚刚在update的时候一定出现了错误。可以查看下刚刚执行的日志文件里说了什么，按部就班的解决就行。</p>
+<p>像我遇到的问题就是因为我没有为SwiftyJSON项目配置我的apple 开发者账号ID，99刀就可以解决问题！<br>解决完问题之后，因为之前执行update时，已经将github的内容抓取到了Checkout目录中，就不用再update抓取了，执行bootstrap就可以开始编译，节省时间。<br><a href="http://blog.crazyphper.com/?p=3661" target="_blank" rel="external">本文链接地址: 使用Carthage安装第三方Swift库</a><br><a href="http://www.isaced.com/post-265.html" target="_blank" rel="external">更加全面的文章在这里</a></p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/第三方依赖库/">第三方依赖库</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/2017/04/28/Carthage使用/#comments" class="ds-thread-count comments-count-link" data-thread-key="2017/04/28/Carthage使用/" data-count-type="comments">&nbsp;</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
       <a href="/2016/11/18/ios-中请求主线程刷新UI/" title="ios 中请求主线程刷新UI" itemprop="url">ios 中请求主线程刷新UI</a>
   </h1>
   <p class="article-author">By
@@ -85,7 +153,7 @@
 		<a href="/about" title="Shemmy" target="_blank" itemprop="author">Shemmy</a>
 		
   <p class="article-time">
-    <time datetime="2016-11-18T08:07:57.000Z" itemprop="datePublished"> 发表于 2016-11-18</time>
+    <time datetime="2016-11-18T08:07:57.000Z" itemprop="datePublished"> 發表於 2016-11-18</time>
     
   </p>
 </header>
@@ -139,7 +207,7 @@
 		<a href="/about" title="Shemmy" target="_blank" itemprop="author">Shemmy</a>
 		
   <p class="article-time">
-    <time datetime="2016-11-14T05:34:50.000Z" itemprop="datePublished"> 发表于 2016-11-14</time>
+    <time datetime="2016-11-14T05:34:50.000Z" itemprop="datePublished"> 發表於 2016-11-14</time>
     
   </p>
 </header>
@@ -204,7 +272,7 @@
 		<a href="/about" title="Shemmy" target="_blank" itemprop="author">Shemmy</a>
 		
   <p class="article-time">
-    <time datetime="2016-11-11T02:58:09.000Z" itemprop="datePublished"> 发表于 2016-11-11</time>
+    <time datetime="2016-11-11T02:58:09.000Z" itemprop="datePublished"> 發表於 2016-11-11</time>
     
   </p>
 </header>
@@ -263,7 +331,7 @@
 		<a href="/about" title="Shemmy" target="_blank" itemprop="author">Shemmy</a>
 		
   <p class="article-time">
-    <time datetime="2016-11-04T09:46:11.000Z" itemprop="datePublished"> 发表于 2016-11-04</time>
+    <time datetime="2016-11-04T09:46:11.000Z" itemprop="datePublished"> 發表於 2016-11-04</time>
     
   </p>
 </header>
@@ -321,7 +389,7 @@
 		<a href="/about" title="Shemmy" target="_blank" itemprop="author">Shemmy</a>
 		
   <p class="article-time">
-    <time datetime="2016-11-01T02:46:24.000Z" itemprop="datePublished"> 发表于 2016-11-01</time>
+    <time datetime="2016-11-01T02:46:24.000Z" itemprop="datePublished"> 發表於 2016-11-01</time>
     
   </p>
 </header>
@@ -380,7 +448,7 @@
 		<a href="/about" title="Shemmy" target="_blank" itemprop="author">Shemmy</a>
 		
   <p class="article-time">
-    <time datetime="2016-10-18T06:51:30.000Z" itemprop="datePublished"> 发表于 2016-10-18</time>
+    <time datetime="2016-10-18T06:51:30.000Z" itemprop="datePublished"> 發表於 2016-10-18</time>
     
   </p>
 </header>
@@ -434,7 +502,7 @@
 		<a href="/about" title="Shemmy" target="_blank" itemprop="author">Shemmy</a>
 		
   <p class="article-time">
-    <time datetime="2016-09-21T03:46:35.000Z" itemprop="datePublished"> 发表于 2016-09-21</time>
+    <time datetime="2016-09-21T03:46:35.000Z" itemprop="datePublished"> 發表於 2016-09-21</time>
     
   </p>
 </header>
@@ -488,7 +556,7 @@
 		<a href="/about" title="Shemmy" target="_blank" itemprop="author">Shemmy</a>
 		
   <p class="article-time">
-    <time datetime="2016-09-09T05:38:26.000Z" itemprop="datePublished"> 发表于 2016-09-09</time>
+    <time datetime="2016-09-09T05:38:26.000Z" itemprop="datePublished"> 發表於 2016-09-09</time>
     
   </p>
 </header>
@@ -547,7 +615,7 @@
 		<a href="/about" title="Shemmy" target="_blank" itemprop="author">Shemmy</a>
 		
   <p class="article-time">
-    <time datetime="2016-09-08T17:19:03.000Z" itemprop="datePublished"> 发表于 2016-09-09</time>
+    <time datetime="2016-09-08T17:19:03.000Z" itemprop="datePublished"> 發表於 2016-09-09</time>
     
   </p>
 </header>
@@ -589,70 +657,16 @@
 
 
 
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2016/09/07/NSString-Categary/" title="NSString+Categary" itemprop="url">NSString+Categary</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="Shemmy" target="_blank" itemprop="author">Shemmy</a>
-		
-  <p class="article-time">
-    <time datetime="2016-09-07T07:37:14.000Z" itemprop="datePublished"> 发表于 2016-09-07</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <p>主要写了一些项目中常用的方法，使用的是OC语言，后续会陆续补充Swift中的写法。<br>
-        
-        
-        <p class="article-more-link">
-          
-            <a href="/2016/09/07/NSString-Categary/#more">Read More</a>
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-	  	<span></span>
-		<a href="/2016/09/07/NSString-Categary/#comments" class="ds-thread-count comments-count-link" data-thread-key="2016/09/07/NSString-Categary/" data-count-type="comments">&nbsp;</a>
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
 
   <nav id="page-nav" class="clearfix">
     <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/">Next<span></span></a>
   </nav>
 
 </div>
-      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+      <div class="openaside"><a class="navbutton" href="#" title="顯示側邊欄"></a></div>
 
 <div id="asidepart">
-<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<div class="closeaside"><a class="closebutton" href="#" title="隱藏側邊欄"></a></div>
 <aside class="clearfix">
 
   
@@ -662,7 +676,7 @@
 
   
 <div class="tagslist">
-	<p class="asidetitle">标签</p>
+	<p class="asidetitle">標簽</p>
 		<ul class="clearfix">
 		
 			
@@ -678,11 +692,15 @@
 			
 		
 			
-				<li><a href="/tags/RunTime/" title="RunTime">RunTime<sup>1</sup></a></li>
+				<li><a href="/tags/第三方依赖库/" title="第三方依赖库">第三方依赖库<sup>1</sup></a></li>
 			
 		
 			
 				<li><a href="/tags/C-C-iOS/" title="C C++ iOS">C C++ iOS<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/RunTime/" title="RunTime">RunTime<sup>1</sup></a></li>
 			
 		
 			
@@ -694,15 +712,7 @@
 			
 		
 			
-				<li><a href="/tags/textfield-ios-oc-光标-offset/" title="textfield   ios   oc   光标   offset">textfield   ios   oc   光标   offset<sup>1</sup></a></li>
-			
-		
-			
 				<li><a href="/tags/iOS-UICollectionView/" title="iOS UICollectionView">iOS UICollectionView<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/iOS-UITextField-转载/" title="iOS UITextField 转载">iOS UITextField 转载<sup>1</sup></a></li>
 			
 		
 			
@@ -714,6 +724,14 @@
 			
 		
 			
+				<li><a href="/tags/iOS-UITextField-转载/" title="iOS UITextField 转载">iOS UITextField 转载<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/textfield-ios-oc-光标-offset/" title="textfield   ios   oc   光标   offset">textfield   ios   oc   光标   offset<sup>1</sup></a></li>
+			
+		
+			
 				<li><a href="/tags/Net/" title="Net">Net<sup>1</sup></a></li>
 			
 		
@@ -722,7 +740,7 @@
 
 
   <div class="linkslist">
-  <p class="asidetitle">友情链接</p>
+  <p class="asidetitle">友情鏈接</p>
     <ul>
         
           <li>
@@ -756,7 +774,7 @@
 
 
   <div class="rsspart">
-	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
+	<a href="/atom.xml" target="_blank" title="rss">RSS 訂閱</a>
 </div>
 
   <div class="weiboshow">
@@ -910,7 +928,7 @@ var _hmt = _hmt || [];
 <!-- Totop Begin -->
 
 	<div id="totop">
-	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	<a title="返回頂部"><img src="/img/scrollup.png"/></a>
 	</div>
 	<script src="/js/totop.js"></script>
 
