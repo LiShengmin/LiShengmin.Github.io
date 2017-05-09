@@ -11,17 +11,17 @@
     
 
     
-    <meta name="description" content="使用Carthage安装第三方Swift库 今天有朋友在群里问“怎么使用Swift第三方库？”，对象是SwiftyJSON，正巧这段时间也要用，干脆折腾了下。在SwiftyJSON的GitHub上说，需要先安装Carthage这个包管理。">
-<meta name="keywords" content="第三方依赖库">
+    <meta name="description" content="今天有朋友在群里问“怎么使用Swift第三方库？”，对象是SwiftyJSON，正巧这段时间也要用，干脆折腾了下。在SwiftyJSON的GitHub上说，需要先安装Carthage这个包管理。">
+<meta name="keywords" content="架构">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Carthage使用">
 <meta property="og:url" content="http://yoursite.com/2017/04/28/Carthage使用/index.html">
 <meta property="og:site_name" content="Shemmy">
-<meta property="og:description" content="使用Carthage安装第三方Swift库 今天有朋友在群里问“怎么使用Swift第三方库？”，对象是SwiftyJSON，正巧这段时间也要用，干脆折腾了下。在SwiftyJSON的GitHub上说，需要先安装Carthage这个包管理。">
-<meta property="og:updated_time" content="2017-04-28T10:55:23.000Z">
+<meta property="og:description" content="今天有朋友在群里问“怎么使用Swift第三方库？”，对象是SwiftyJSON，正巧这段时间也要用，干脆折腾了下。在SwiftyJSON的GitHub上说，需要先安装Carthage这个包管理。">
+<meta property="og:updated_time" content="2017-05-08T09:44:43.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Carthage使用">
-<meta name="twitter:description" content="使用Carthage安装第三方Swift库 今天有朋友在群里问“怎么使用Swift第三方库？”，对象是SwiftyJSON，正巧这段时间也要用，干脆折腾了下。在SwiftyJSON的GitHub上说，需要先安装Carthage这个包管理。">
+<meta name="twitter:description" content="今天有朋友在群里问“怎么使用Swift第三方库？”，对象是SwiftyJSON，正巧这段时间也要用，干脆折腾了下。在SwiftyJSON的GitHub上说，需要先安装Carthage这个包管理。">
 
     
     <link rel="alternative" href="/atom.xml" title="Shemmy" type="application/atom+xml">
@@ -49,7 +49,7 @@
 				<h1 class="site-name"><a href="/" title="Shemmy">Shemmy</a></h1>
 				<h2 class="blog-motto"></h2>
 			</div>
-			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
 			</a></div>
 			<nav class="animated">
 				<ul>
@@ -65,7 +65,7 @@
  					
 					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
 						<label>Search</label>
-						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
 						<input type="hidden" name="q" value="site:yoursite.com">
 					</form>
 					
@@ -88,20 +88,20 @@
 		<a href="/about" title="Shemmy" target="_blank" itemprop="author">Shemmy</a>
 		
   <p class="article-time">
-    <time datetime="2017-04-28T10:49:43.000Z" itemprop="datePublished"> Published 2017-04-28</time>
+    <time datetime="2017-04-28T10:49:43.000Z" itemprop="datePublished"> 发表于 2017-04-28</time>
     
   </p>
 </header>
 	<div class="article-content">
 		
 		<div id="toc" class="toc-article">
-			<strong class="toc-title">Contents</strong>
+			<strong class="toc-title">文章目录</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#使用Carthage安装第三方Swift库"><span class="toc-number">1.</span> <span class="toc-text">使用Carthage安装第三方Swift库</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#使用第三方库"><span class="toc-number">2.</span> <span class="toc-text">使用第三方库</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#失败了不可怕"><span class="toc-number">3.</span> <span class="toc-text">失败了不可怕</span></a></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#使用第三方库"><span class="toc-number">1.</span> <span class="toc-text">使用第三方库</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#失败了不可怕"><span class="toc-number">2.</span> <span class="toc-text">失败了不可怕</span></a></li></ol>
 		
 		</div>
 		
-		<h1 id="使用Carthage安装第三方Swift库"><a href="#使用Carthage安装第三方Swift库" class="headerlink" title="使用Carthage安装第三方Swift库"></a>使用Carthage安装第三方Swift库</h1><p> 今天有朋友在群里问“怎么使用Swift第三方库？”，对象是SwiftyJSON，正巧这段时间也要用，干脆折腾了下。在SwiftyJSON的GitHub上说，需要先安装Carthage这个包管理。 <a id="more"></a></p>
+		<p> 今天有朋友在群里问“怎么使用Swift第三方库？”，对象是SwiftyJSON，正巧这段时间也要用，干脆折腾了下。在SwiftyJSON的GitHub上说，需要先安装Carthage这个包管理。 <a id="more"></a></p>
 <p>github地址：<a href="https://github.com/Carthage/Carthage" target="_blank" rel="external">https://github.com/Carthage/Carthage</a></p>
 <ol>
 <li>安装Carthage<br>首先到github上Download或者Clone Git 或者使用HomeBrew（我是用这个），安装好。<br><code>brew update</code>(先更新).<code>brew install carthage</code> (安装Carthage).  </li>
@@ -122,7 +122,7 @@
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/第三方依赖库/">第三方依赖库</a>
+  <span></span> <a href="/tags/架构/">架构</a>
   </div>
 
 </div>
@@ -145,13 +145,21 @@
 <nav class="article-nav clearfix">
  
  <div class="prev" >
- <a href="/2016/11/18/ios-中请求主线程刷新UI/" title="ios 中请求主线程刷新UI">
+ <a href="/2016/11/18/iOS-请求主线程刷新UI/" title="iOS中 请求主线程刷新UI">
   <strong>上一篇：</strong><br/>
   <span>
-  ios 中请求主线程刷新UI</span>
+  iOS中 请求主线程刷新UI</span>
 </a>
 </div>
 
+
+<div class="next">
+<a href="/2017/05/09/aaaa/"  title="aaaa">
+ <strong>下一篇：</strong><br/> 
+ <span>aaaa
+</span>
+</a>
+</div>
 
 </nav>
 
@@ -162,17 +170,17 @@
 
 
 </div>  
-      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
 
   <div id="toc" class="toc-aside">
-  <strong class="toc-title">Contents</strong>
+  <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#使用Carthage安装第三方Swift库"><span class="toc-number">1.</span> <span class="toc-text">使用Carthage安装第三方Swift库</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#使用第三方库"><span class="toc-number">2.</span> <span class="toc-text">使用第三方库</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#失败了不可怕"><span class="toc-number">3.</span> <span class="toc-text">失败了不可怕</span></a></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#使用第三方库"><span class="toc-number">1.</span> <span class="toc-text">使用第三方库</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#失败了不可怕"><span class="toc-number">2.</span> <span class="toc-text">失败了不可怕</span></a></li></ol>
  
   </div>
 
 <div id="asidepart">
-<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
 <aside class="clearfix">
 
   
@@ -182,23 +190,19 @@
 
   
 <div class="tagslist">
-	<p class="asidetitle">Tags</p>
+	<p class="asidetitle">标签</p>
 		<ul class="clearfix">
 		
 			
-				<li><a href="/tags/iOS/" title="iOS">iOS<sup>8</sup></a></li>
+				<li><a href="/tags/iOS/" title="iOS">iOS<sup>24</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/iOS-三方库/" title="iOS 三方库">iOS 三方库<sup>4</sup></a></li>
+				<li><a href="/tags/架构/" title="架构">架构<sup>2</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/iOS-UIBezierPath/" title="iOS UIBezierPath">iOS UIBezierPath<sup>2</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/第三方依赖库/" title="第三方依赖库">第三方依赖库<sup>1</sup></a></li>
+				<li><a href="/tags/MacOS/" title="MacOS">MacOS<sup>1</sup></a></li>
 			
 		
 			
@@ -206,15 +210,7 @@
 			
 		
 			
-				<li><a href="/tags/RunTime/" title="RunTime">RunTime<sup>1</sup></a></li>
-			
-		
-			
 				<li><a href="/tags/Swift3/" title="Swift3">Swift3<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/iOS-CollectionViewCell-Obj-C/" title="iOS CollectionViewCell Obj-C">iOS CollectionViewCell Obj-C<sup>1</sup></a></li>
 			
 		
 			
@@ -222,11 +218,11 @@
 			
 		
 			
-				<li><a href="/tags/iOS-UITableViewCell/" title="iOS UITableViewCell">iOS UITableViewCell<sup>1</sup></a></li>
+				<li><a href="/tags/RunTime/" title="RunTime">RunTime<sup>1</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/MacOS/" title="MacOS">MacOS<sup>1</sup></a></li>
+				<li><a href="/tags/iOS-三方库/" title="iOS 三方库">iOS 三方库<sup>1</sup></a></li>
 			
 		
 			
@@ -237,16 +233,12 @@
 				<li><a href="/tags/textfield-ios-oc-光标-offset/" title="textfield   ios   oc   光标   offset">textfield   ios   oc   光标   offset<sup>1</sup></a></li>
 			
 		
-			
-				<li><a href="/tags/Net/" title="Net">Net<sup>1</sup></a></li>
-			
-		
 		</ul>
 </div>
 
 
   <div class="linkslist">
-  <p class="asidetitle">Links</p>
+  <p class="asidetitle">友情链接</p>
     <ul>
         
           <li>
@@ -280,11 +272,11 @@
 
 
   <div class="rsspart">
-	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
+	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
 </div>
 
   <div class="weiboshow">
-  <p class="asidetitle">Weibo</p>
+  <p class="asidetitle">新浪微博</p>
     <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=null&verifier=b3593ceb&dpc=1"></iframe>
 </div>
 
@@ -523,7 +515,7 @@ var _hmt = _hmt || [];
 <!-- Totop Begin -->
 
 	<div id="totop">
-	<a title="Back to Top"><img src="/img/scrollup.png"/></a>
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
 	</div>
 	<script src="/js/totop.js"></script>
 

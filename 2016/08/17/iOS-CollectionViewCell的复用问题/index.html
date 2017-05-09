@@ -1,0 +1,560 @@
+
+ <!DOCTYPE HTML>
+<html >
+<head>
+  <meta charset="UTF-8">
+  
+    <title>iOS-CollectionViewCell的复用问题 | Shemmy</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="Shemmy">
+    
+
+    
+    <meta name="description" content="需求：需要的Button 的个数不一定 Button上显示的字符串的长度不一定，Button上显示的字符串和Button的个数全部从服务器下发 ，当Button的个数在屏幕上展示不下的时候要可以左右滑动 以展示更多的Button 方案：综合以上因素 我选择利用CollectionView实现此功能. 其中遇到几个问题：首先说明： cell中有一个Label 属性12345678910111213-">
+<meta name="keywords" content="iOS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iOS-CollectionViewCell的复用问题">
+<meta property="og:url" content="http://yoursite.com/2016/08/17/iOS-CollectionViewCell的复用问题/index.html">
+<meta property="og:site_name" content="Shemmy">
+<meta property="og:description" content="需求：需要的Button 的个数不一定 Button上显示的字符串的长度不一定，Button上显示的字符串和Button的个数全部从服务器下发 ，当Button的个数在屏幕上展示不下的时候要可以左右滑动 以展示更多的Button 方案：综合以上因素 我选择利用CollectionView实现此功能. 其中遇到几个问题：首先说明： cell中有一个Label 属性12345678910111213-">
+<meta property="og:updated_time" content="2017-05-08T09:48:34.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="iOS-CollectionViewCell的复用问题">
+<meta name="twitter:description" content="需求：需要的Button 的个数不一定 Button上显示的字符串的长度不一定，Button上显示的字符串和Button的个数全部从服务器下发 ，当Button的个数在屏幕上展示不下的时候要可以左右滑动 以展示更多的Button 方案：综合以上因素 我选择利用CollectionView实现此功能. 其中遇到几个问题：首先说明： cell中有一个Label 属性12345678910111213-">
+
+    
+    <link rel="alternative" href="/atom.xml" title="Shemmy" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="Shemmy" title="Shemmy"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="Shemmy">Shemmy</a></h1>
+				<h2 class="blog-motto"></h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/about">About</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="hidden" name="q" value="site:yoursite.com">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2016/08/17/iOS-CollectionViewCell的复用问题/" title="iOS-CollectionViewCell的复用问题" itemprop="url">iOS-CollectionViewCell的复用问题</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Shemmy" target="_blank" itemprop="author">Shemmy</a>
+		
+  <p class="article-time">
+    <time datetime="2016-08-17T06:27:03.000Z" itemprop="datePublished"> 发表于 2016-08-17</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#需求："><span class="toc-number">1.</span> <span class="toc-text">需求：</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#方案："><span class="toc-number">2.</span> <span class="toc-text">方案：</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#问题1："><span class="toc-number">3.</span> <span class="toc-text">问题1：</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#具体实现如下："><span class="toc-number">3.1.</span> <span class="toc-text">具体实现如下：</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#问题二："><span class="toc-number">4.</span> <span class="toc-text">问题二：</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#解决方法："><span class="toc-number">4.1.</span> <span class="toc-text">解决方法：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#注意："><span class="toc-number">4.2.</span> <span class="toc-text">注意：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#具体是这样的"><span class="toc-number">4.3.</span> <span class="toc-text">具体是这样的</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#问题三："><span class="toc-number">5.</span> <span class="toc-text">问题三：</span></a></li></ol>
+		
+		</div>
+		
+		<h1 id="需求："><a href="#需求：" class="headerlink" title="需求："></a>需求：</h1><p>需要的Button 的个数不一定 Button上显示的字符串的长度不一定，Button上显示的字符串和Button的个数全部从服务器下发 ，当Button的个数在屏幕上展示不下的时候要可以左右滑动 以展示更多的Button</p>
+<h1 id="方案："><a href="#方案：" class="headerlink" title="方案："></a>方案：</h1><p>综合以上因素 我选择利用CollectionView实现此功能.</p>
+<p>其中遇到几个问题：<br>首先说明： cell中有一个Label 属性<br><figure class="highlight mm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">- (<span class="built_in">UILabel</span> *)textLabel&#123;</div><div class="line"><span class="keyword">if</span> (!_textLabel) &#123;</div><div class="line">_textLabel = [[<span class="built_in">UILabel</span> alloc]initWithFrame:<span class="keyword">self</span>.contentView.frame];</div><div class="line">_textLabel.layer.borderWidth = <span class="number">1</span>;</div><div class="line">_textLabel.layer.borderColor = [<span class="built_in">UIColor</span> lightGrayColor].CGColor;</div><div class="line">_textLabel.font = [<span class="built_in">UIFont</span> systemFontOfSize:<span class="number">13</span>];</div><div class="line">_textLabel.textAlignment = <span class="built_in">NSTextAlignmentCenter</span>;</div><div class="line">_textLabel.textColor = [<span class="built_in">UIColor</span> blackColor];</div><div class="line">[<span class="keyword">self</span>.contentView addSubview:_textLabel];</div><div class="line">&#125;</div><div class="line">_textLabel.frame = <span class="built_in">CGRectMake</span>(<span class="built_in">CGRectGetMinX</span>(<span class="keyword">self</span>.contentView.frame), <span class="built_in">CGRectGetMinY</span>(<span class="keyword">self</span>.contentView.frame), <span class="keyword">self</span>.frame.size.width, <span class="keyword">self</span>.frame.size.height);</div><div class="line"><span class="keyword">return</span> _textLabel;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h1 id="问题1："><a href="#问题1：" class="headerlink" title="问题1："></a>问题1：</h1><pre><code>因为选中cell时 cell的字和边框要变成红色 ，当再点击其他Item时此item要变为原来的样子
+</code></pre><p>这个功能主要在collectionView的两个代理方法中实现<br><figure class="highlight mm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">- (<span class="keyword">void</span>)collectionView:(<span class="built_in">UICollectionView</span> *)collectionView didSelectItemAtIndexPath:(<span class="built_in">NSIndexPath</span> *)indexPath;</div><div class="line">- (<span class="keyword">void</span>)collectionView:(<span class="built_in">UICollectionView</span> *)collectionView didDeselectItemAtIndexPath:(<span class="built_in">NSIndexPath</span> *)indexPath;;</div></pre></td></tr></table></figure></p>
+<h2 id="具体实现如下："><a href="#具体实现如下：" class="headerlink" title="具体实现如下："></a>具体实现如下：</h2><figure class="highlight mm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line">*  当点击item时会调用此方法 在此方法中把点击的item的textLabel属性的字体颜色和边框改变颜色</div><div class="line">*</div><div class="line">*/</div><div class="line">- (<span class="keyword">void</span>)collectionView:(<span class="built_in">UICollectionView</span> *)collectionView didSelectItemAtIndexPath:(<span class="built_in">NSIndexPath</span> *)indexPath&#123;</div><div class="line">JWCCollectionViewCell *cell = (JWCCollectionViewCell *)[collectionView cellForItemAtIndexPath:indexPath];</div><div class="line">cell.textLabel.textColor = [<span class="built_in">UIColor</span> redColor];</div><div class="line">cell.textLabel.layer.borderColor = [<span class="built_in">UIColor</span> redColor].CGColor;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line">*  当点击其他cell时调用此方法 比如点击第一个cell的时候调用上面的方法，当点击第二个的时候先调用此方法，然后再调用上面的方法</div><div class="line">在此方法中获取第一次点击的cell 即</div><div class="line">JWCCollectionViewCell *cell = (JWCCollectionViewCell *)[collectionView cellForItemAtIndexPath:indexPath];</div><div class="line">把此cell 的textLabel属性变回原来的样子 然后系统会调用上面的代理方法把点击的第二个cell的textLabel属性的字体颜色和边框改变颜色</div><div class="line">这样就实现了 点击此cell改变颜色 再点击其他的cell是时 上一个点击的cell恢复到原来的样子</div><div class="line">*</div><div class="line">*/</div><div class="line">- (<span class="keyword">void</span>)collectionView:(<span class="built_in">UICollectionView</span> *)collectionView didDeselectItemAtIndexPath:(<span class="built_in">NSIndexPath</span> *)indexPath&#123;</div><div class="line">JWCCollectionViewCell *cell = (JWCCollectionViewCell *)[collectionView cellForItemAtIndexPath:indexPath];</div><div class="line">cell.textLabel.textColor = [<span class="built_in">UIColor</span> blackColor];</div><div class="line">cell.textLabel.layer.borderColor = [<span class="built_in">UIColor</span> lightGrayColor].CGColor;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="问题二："><a href="#问题二：" class="headerlink" title="问题二："></a>问题二：</h1><pre><code>假如cell的个数太多的话肯定会发生复用的问题：
+比如：屏幕的宽度只能显示3个cell 但是现在有四个需要显示，那么当点击第一个cell 向左滑动时会显示第四个 这个时候第四个item就是从复用队列中取出一个cell ，那么这个cell可能还保留这上一个的属性 比如说字体是红色的 其宽度可能会很大，不适合当前的string的宽度 ，左右滑动的时候cell 之间的间隔也会发生错乱 这绝不是想要的结果 。出现这个原因主要是cell的复用产生的。
+</code></pre><h2 id="解决方法："><a href="#解决方法：" class="headerlink" title="解决方法："></a>解决方法：</h2><p>在cell复用之前把cell恢复到初始化状态，那么这就要重写 - (void)prepareForReuse方法</p>
+<p>具体做法如下：<br><figure class="highlight mm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">- (<span class="keyword">void</span>)prepareForReuse&#123;</div><div class="line">[<span class="keyword">super</span> prepareForReuse];</div><div class="line">_textLabel.frame = <span class="keyword">self</span>.contentView.frame;</div><div class="line">_textLabel.layer.borderWidth = <span class="number">1</span>;</div><div class="line">_textLabel.textColor = [<span class="built_in">UIColor</span> blackColor];</div><div class="line">_textLabel.layer.borderColor = [<span class="built_in">UIColor</span> lightGrayColor].CGColor;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>这样就解决了颜色问题</p>
+<h2 id="注意："><a href="#注意：" class="headerlink" title="注意："></a>注意：</h2><pre><code>prepareForReuse这个方法是CollectionViewCell的方法
+</code></pre><p>但是错乱问题仍然没有解决：这主要是因为在定义_textLabel 时它的frame设置问题 应该在添加一句<br><figure class="highlight mm"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">_textLabel.frame = <span class="built_in">CGRectMake</span>(<span class="built_in">CGRectGetMinX</span>(<span class="keyword">self</span>.contentView.frame), <span class="built_in">CGRectGetMinY</span>(<span class="keyword">self</span>.contentView.frame), <span class="keyword">self</span>.frame.size.width, <span class="keyword">self</span>.frame.size.height);</div></pre></td></tr></table></figure></p>
+<h2 id="具体是这样的"><a href="#具体是这样的" class="headerlink" title="具体是这样的"></a>具体是这样的</h2><figure class="highlight mm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">- (<span class="built_in">UILabel</span> *)textLabel&#123;</div><div class="line"><span class="keyword">if</span> (!_textLabel) &#123;</div><div class="line">_textLabel = [[<span class="built_in">UILabel</span> alloc]initWithFrame:<span class="keyword">self</span>.contentView.frame];</div><div class="line">_textLabel.layer.borderWidth = <span class="number">1</span>;</div><div class="line">_textLabel.layer.borderColor = [<span class="built_in">UIColor</span> lightGrayColor].CGColor;</div><div class="line">_textLabel.font = [<span class="built_in">UIFont</span> systemFontOfSize:<span class="number">13</span>];</div><div class="line">_textLabel.textAlignment = <span class="built_in">NSTextAlignmentCenter</span>;</div><div class="line">_textLabel.textColor = [<span class="built_in">UIColor</span> blackColor];</div><div class="line">[<span class="keyword">self</span>.contentView addSubview:_textLabel];</div><div class="line">&#125;</div><div class="line">_textLabel.frame = <span class="built_in">CGRectMake</span>(<span class="built_in">CGRectGetMinX</span>(<span class="keyword">self</span>.contentView.frame), <span class="built_in">CGRectGetMinY</span>(<span class="keyword">self</span>.contentView.frame), <span class="keyword">self</span>.frame.size.width, <span class="keyword">self</span>.frame.size.height);</div><div class="line"><span class="keyword">return</span> _textLabel;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="问题三："><a href="#问题三：" class="headerlink" title="问题三："></a>问题三：</h1><p>比如说 当点击第一个cell 后 向左滑动让第一个消失在界面中，当再滑出界面时你会发现它的选中状态消失了，而你并没有选中其他的cell ，这是为什么？？？因为上一问题的解决方法导致了这一步。那么该怎么样解决才能不至于解决上面的问题引出下面的问题呢？？方法如下：<br>1，  定义一个全局变量：<br>@property (nonatomic ,assign)NSInteger selectIndex; </p>
+<p>2 这个先给它赋一个永远也不可能达到的值<br>self.selectIndex = MAXFLOAT;至于为什么赋这么大下面说<br>3，在 - (void)collectionView:(UICollectionView <em>)collectionView didSelectItemAtIndexPath:(NSIndexPath </em>)indexPath;这个代理方法中把 indexPath.row 值赋值给 self.selectIndex如下<br>self.selectIndex = indexPath.row; 这就记住了所选择的item的位置<br>4，在 - (UICollectionViewCell <em>)collectionView:(UICollectionView </em>)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath;这个方法中可能会从复用队列中去处cell 产生复用 但在复用之前会调用- (void)prepareForReuse方法 又会恢复原样使选中状态消失，这个时候要判断一下，判断这个方法中的 indexPath.row 是否等于 self.selectIndex 如果等于 使其变为选中的状态，具体代码如下：</p>
+<ul>
+<li>(UICollectionViewCell <em>)collectionView:(UICollectionView </em>)collectionView cellForItemAtIndexPath:(NSIndexPath <em>)indexPath {<br>JWCCollectionViewCell </em>cell = [collectionView dequeueReusableCellWithReuseIdentifier:@”cellID” forIndexPath:indexPath ];<br>if (indexPath.row == _selectIndex ) {<br>cell.textLabel.textColor = [UIColor redColor];<br>cell.textLabel.layer.borderColor = [UIColor redColor].CGColor;<br>}<br>cell.textLabel.text = [self.dataSourceArr objectAtIndex:indexPath.item];<br>NSLog(@”%@”,cell.textLabel.text);<br>return cell;<br>}<br>这样即使选中的cell 消失在界面中在出现的时候也不会改变选中状态。</li>
+</ul>
+<p>为什么要把self.selectIndex = MAXFLOAT<br>如果不这样赋值  假如赋的值为0 那么每次打开时第一个cell就是选中状态，但是你并没有点击第一个。这主要是在cell生成的代理方法中的这一句代码引起的<br>if (indexPath.row == _selectIndex ) {<br>cell.textLabel.textColor = [UIColor redColor];<br>cell.textLabel.layer.borderColor = [UIColor redColor].CGColor;<br>}<br>所以把self.selectIndex 赋值为 MAXFLOAT 这样就不会有当一启动APP的时候就有cell被选中的状态 </p>
+<p>问题四：</p>
+<p>根据string的宽度不同来生成的cell的宽度也不同的功能是在</p>
+<ul>
+<li>(CGSize)collectionView:(UICollectionView <em>)collectionView layout:(UICollectionViewLayout</em>)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath;<br>实在这个方法中返回不通的CGSize 来改变每一个cell的宽度。<br>在此可以计算字符串的宽度：<br>具体的方法如下：</li>
+</ul>
+<p>#pragma mark - UICollectionViewFlowLayoutDelegate</p>
+<ul>
+<li>(CGSize)collectionView:(UICollectionView <em>)collectionView layout:(UICollectionViewLayout </em>)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath <em>)indexPath{<br>NSString </em>str =  [self.dataSourceArr objectAtIndex:indexPath.item];<br>CGRect rect = [self getStringRect:str withFont:13];<br>return CGSizeMake(rect.size.width, 30);<br>}</li>
+</ul>
+<p>/**</p>
+<ul>
+<li>计算字符串的宽度的方法<br>*/</li>
+</ul>
+<ul>
+<li>(CGRect)getStringRect:(NSString*)aString withFont :(CGFloat)font<br>{<br>CGRect rect;<br>if(aString){<br>CGRect rect = [aString boundingRectWithSize:CGSizeMake(MAXFLOAT, 30) options:NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading attributes:@{NSFontAttributeName : [UIFont systemFontOfSize:font]} context:nil];<br>return  rect;<br>}<br>return rect;<br>}</li>
+</ul>
+<p>注意注意：!!!!<br><figure class="highlight mm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">- (<span class="built_in">CGRect</span>)getStringRect:(<span class="built_in">NSString</span>*)aString withFont :(<span class="built_in">CGFloat</span>)font 在这个方法中需要传入字体的大小。</div><div class="line">这个大小一定要和 textLabel初始化时的字体大小一样 比如本例中在初始化的时候是<span class="number">13</span> 那么在计算字符串的宽度的时候一定要是<span class="number">13</span> 不然计算出的字符串的宽度比实际的要长 ：会出现的问题是当左右滑动时会出现各个cell之间的间隔会出现改变 也许会两个cell会出现重叠！！</div><div class="line">_textLabel.font = [<span class="built_in">UIFont</span> systemFontOfSize:<span class="number">13</span>];</div></pre></td></tr></table></figure></p>
+<p>版权声明：本文为GodBlessMyParents原创文章，未经博主允许不得转载。<a href="http://blog.csdn.net/godblessmyparents/article/details/50675263" target="_blank" rel="external">原文地址</a><br>声明：本人未经博主允许转载了文章，纯粹自我学习与使用，如有侵权，请博主联系本人手机:18646926678</p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/iOS/">iOS</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://yoursite.com/2016/08/17/iOS-CollectionViewCell的复用问题/" data-title="iOS-CollectionViewCell的复用问题 | Shemmy" data-tsina="null" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2016/07/19/RunTime1/" title="RunTime1">
+  <strong>上一篇：</strong><br/>
+  <span>
+  RunTime1</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2016/09/01/iOS-UITableViewCell点击时子视图背景透明的解决办法/"  title="iOS-UITableViewCell点击时子视图背景透明的解决办法">
+ <strong>下一篇：</strong><br/> 
+ <span>iOS-UITableViewCell点击时子视图背景透明的解决办法
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+<section id="comments" class="comment">
+	<div class="ds-thread" data-thread-key="2016/08/17/iOS-CollectionViewCell的复用问题/" data-title="iOS-CollectionViewCell的复用问题" data-url="http://yoursite.com/2016/08/17/iOS-CollectionViewCell的复用问题/"></div>
+</section>
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#需求："><span class="toc-number">1.</span> <span class="toc-text">需求：</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#方案："><span class="toc-number">2.</span> <span class="toc-text">方案：</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#问题1："><span class="toc-number">3.</span> <span class="toc-text">问题1：</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#具体实现如下："><span class="toc-number">3.1.</span> <span class="toc-text">具体实现如下：</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#问题二："><span class="toc-number">4.</span> <span class="toc-text">问题二：</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#解决方法："><span class="toc-number">4.1.</span> <span class="toc-text">解决方法：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#注意："><span class="toc-number">4.2.</span> <span class="toc-text">注意：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#具体是这样的"><span class="toc-number">4.3.</span> <span class="toc-text">具体是这样的</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#问题三："><span class="toc-number">5.</span> <span class="toc-text">问题三：</span></a></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+
+
+  
+
+  
+<div class="tagslist">
+	<p class="asidetitle">标签</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/iOS/" title="iOS">iOS<sup>24</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/架构/" title="架构">架构<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/MacOS/" title="MacOS">MacOS<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/C-C-iOS/" title="C C++ iOS">C C++ iOS<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Swift3/" title="Swift3">Swift3<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/iOS-UICollectionView/" title="iOS UICollectionView">iOS UICollectionView<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/RunTime/" title="RunTime">RunTime<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/iOS-三方库/" title="iOS 三方库">iOS 三方库<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/iOS-UITextField-转载/" title="iOS UITextField 转载">iOS UITextField 转载<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/textfield-ios-oc-光标-offset/" title="textfield   ios   oc   光标   offset">textfield   ios   oc   光标   offset<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">友情链接</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="https://www.github.com/lishengmin" target="_blank" title="Shemmy&#39;s GitHub">Shemmy&#39;s GitHub</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="https://blog.cnbluebox.com" target="_blank" title="刘坤的技术博客">刘坤的技术博客</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="https://casatwy.com/iosying-yong-jia-gou-tan-viewceng-de-zu-zhi-he-diao-yong-fang-an.html" target="_blank" title="casa&#39;s Blog">casa&#39;s Blog</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://blog.robotframework.cn" target="_blank" title="齐道长的博客">齐道长的博客</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
+</div>
+
+  <div class="weiboshow">
+  <p class="asidetitle">新浪微博</p>
+    <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=null&verifier=b3593ceb&dpc=1"></iframe>
+</div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> Hello ,I&#39;m Sheemy Page in GitHub. <br/>
+			This is my blog,believe it or not.</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		<a href="http://weibo.com/2176287895" target="_blank" class="icon-weibo" title="微博"></a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Shemmy</a> © 2017 
+		
+		<a href="/about" target="_blank" title="Shemmy">Shemmy</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"https://lcvem.duoshuo.com"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script> 
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?e6d1f421bbc9962127a50488f9ed37d1";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>

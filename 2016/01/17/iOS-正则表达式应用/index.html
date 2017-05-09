@@ -1,0 +1,539 @@
+
+ <!DOCTYPE HTML>
+<html >
+<head>
+  <meta charset="UTF-8">
+  
+    <title>iOS正则表达式应用 | Shemmy</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="Shemmy">
+    
+
+    
+    <meta name="description" content="正则表达式 正则表达式在IOS开发中的应用正则表达式在字符串查找，替换，检测中的应用非常广泛，正则表达式是什么，有怎样的语法，我的另一篇博客中有详细的介绍。这里只简单说一下其概念 ，正则表达式是一种语法小巧简单的语言，用来约束一些过滤字符串条的条件。很多开发工具都有支持正则表达式的内容，IOS也不例外，在IOS中NSRegularExpression类就是一个专门来处理正则表达式的类。">
+<meta name="keywords" content="iOS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iOS正则表达式应用">
+<meta property="og:url" content="http://yoursite.com/2016/01/17/iOS-正则表达式应用/index.html">
+<meta property="og:site_name" content="Shemmy">
+<meta property="og:description" content="正则表达式 正则表达式在IOS开发中的应用正则表达式在字符串查找，替换，检测中的应用非常广泛，正则表达式是什么，有怎样的语法，我的另一篇博客中有详细的介绍。这里只简单说一下其概念 ，正则表达式是一种语法小巧简单的语言，用来约束一些过滤字符串条的条件。很多开发工具都有支持正则表达式的内容，IOS也不例外，在IOS中NSRegularExpression类就是一个专门来处理正则表达式的类。">
+<meta property="og:updated_time" content="2017-05-08T09:47:56.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="iOS正则表达式应用">
+<meta name="twitter:description" content="正则表达式 正则表达式在IOS开发中的应用正则表达式在字符串查找，替换，检测中的应用非常广泛，正则表达式是什么，有怎样的语法，我的另一篇博客中有详细的介绍。这里只简单说一下其概念 ，正则表达式是一种语法小巧简单的语言，用来约束一些过滤字符串条的条件。很多开发工具都有支持正则表达式的内容，IOS也不例外，在IOS中NSRegularExpression类就是一个专门来处理正则表达式的类。">
+
+    
+    <link rel="alternative" href="/atom.xml" title="Shemmy" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="Shemmy" title="Shemmy"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="Shemmy">Shemmy</a></h1>
+				<h2 class="blog-motto"></h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/about">About</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="hidden" name="q" value="site:yoursite.com">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2016/01/17/iOS-正则表达式应用/" title="iOS正则表达式应用" itemprop="url">iOS正则表达式应用</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Shemmy" target="_blank" itemprop="author">Shemmy</a>
+		
+  <p class="article-time">
+    <time datetime="2016-01-17T08:29:16.000Z" itemprop="datePublished"> 发表于 2016-01-17</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#正则表达式在IOS开发中的应用"><span class="toc-number">1.</span> <span class="toc-text">正则表达式在IOS开发中的应用</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#初始化方法"><span class="toc-number">1.1.</span> <span class="toc-text">初始化方法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#初始化NSRegularExpression的方法"><span class="toc-number">1.1.1.</span> <span class="toc-text">初始化NSRegularExpression的方法:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#注意"><span class="toc-number">1.1.2.</span> <span class="toc-text">注意:</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#获取查询结果"><span class="toc-number">1.2.</span> <span class="toc-text">获取查询结果</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#正则表达式的查询"><span class="toc-number">1.2.1.</span> <span class="toc-text">正则表达式的查询</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#带block模式的方法："><span class="toc-number">1.2.1.1.</span> <span class="toc-text">带block模式的方法：</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#使用举例："><span class="toc-number">1.2.1.1.1.</span> <span class="toc-text">使用举例：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#注意："><span class="toc-number">1.2.1.1.2.</span> <span class="toc-text">注意：</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#非block的方法"><span class="toc-number">1.2.1.2.</span> <span class="toc-text">非block的方法</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#辅助方法"><span class="toc-number">1.3.</span> <span class="toc-text">辅助方法</span></a></li></ol></li></ol>
+		
+		</div>
+		
+		<p>正则表达式</p>
+<h1 id="正则表达式在IOS开发中的应用"><a href="#正则表达式在IOS开发中的应用" class="headerlink" title="正则表达式在IOS开发中的应用"></a>正则表达式在IOS开发中的应用</h1><p>正则表达式在字符串查找，替换，检测中的应用非常广泛，正则表达式是什么，有怎样的语法，我的另一篇博客中有详细的介绍。这里只简单说一下其概念 ，正则表达式是一种语法小巧简单的语言，用来约束一些过滤字符串条的条件。很多开发工具都有支持正则表达式的内容，IOS也不例外，在IOS中NSRegularExpression类就是一个专门来处理正则表达式的类。<a id="more"></a></p>
+<h2 id="初始化方法"><a href="#初始化方法" class="headerlink" title="初始化方法"></a>初始化方法</h2><h3 id="初始化NSRegularExpression的方法"><a href="#初始化NSRegularExpression的方法" class="headerlink" title="初始化NSRegularExpression的方法:"></a>初始化NSRegularExpression的方法:</h3><p>初始化有两种，一个init方法和一个类方法。其作用基本是一样的<br><figure class="highlight mm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">+ (<span class="built_in">NSRegularExpression</span> *)regularExpressionWithPattern:(<span class="built_in">NSString</span> *)pattern options:(<span class="built_in">NSRegularExpressionOptions</span>)options error:(<span class="built_in">NSError</span> **)error;</div><div class="line"></div><div class="line">- (<span class="keyword">instancetype</span>)initWithPattern:(<span class="built_in">NSString</span> *)pattern options:(<span class="built_in">NSRegularExpressionOptions</span>)options error:(<span class="built_in">NSError</span> **)error</div></pre></td></tr></table></figure></p>
+<p>其中，pattern是正则表达式，options是参数。对于option参数，它是一个枚举，表示正则模式的设置，如下：<br><figure class="highlight mm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">typedef</span> <span class="built_in">NS_OPTIONS</span>(<span class="built_in">NSUInteger</span>, <span class="built_in">NSRegularExpressionOptions</span>) &#123;</div><div class="line"><span class="built_in">NSRegularExpressionCaseInsensitive</span>             = <span class="number">1</span> &lt;&lt; <span class="number">0</span>, <span class="comment">//不区分字母大小写的模式</span></div><div class="line"><span class="built_in">NSRegularExpressionAllowCommentsAndWhitespace</span>  = <span class="number">1</span> &lt;&lt; <span class="number">1</span>, <span class="comment">//忽略掉正则表达式中的空格和#号之后的字符</span></div><div class="line"><span class="built_in">NSRegularExpressionIgnoreMetacharacters</span>        = <span class="number">1</span> &lt;&lt; <span class="number">2</span>, <span class="comment">//将正则表达式整体作为字符串处理</span></div><div class="line"><span class="built_in">NSRegularExpressionDotMatchesLineSeparators</span>    = <span class="number">1</span> &lt;&lt; <span class="number">3</span>, <span class="comment">//允许.匹配任何字符，包括换行符  </span></div><div class="line"><span class="built_in">NSRegularExpressionAnchorsMatchLines</span>           = <span class="number">1</span> &lt;&lt; <span class="number">4</span>, <span class="comment">//允许^和$符号匹配行的开头和结尾</span></div><div class="line"><span class="built_in">NSRegularExpressionUseUnixLineSeparators</span>       = <span class="number">1</span> &lt;&lt; <span class="number">5</span>, <span class="comment">//设置\n为唯一的行分隔符，否则所有的都有效。</span></div><div class="line"><span class="built_in">NSRegularExpressionUseUnicodeWordBoundaries</span>    = <span class="number">1</span> &lt;&lt; <span class="number">6</span> <span class="comment">//使用Unicode TR#29标准作为词的边界，否则所有传统正则表达式的词边界都有效</span></div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<h3 id="注意"><a href="#注意" class="headerlink" title="注意:"></a>注意:</h3><p>1、NSRegularExpressionCaseInsensitive模式下正则表达式 aBc 会匹配到abc.<br>2、NSRegularExpressionIgnoreMetacharacters模式下正则表达式a b c 会匹配到abc，正则表达式ab#c会匹配到ab。<br>3、NSRegularExpressionAllowCommentsAndWhitespace模式下正则表达式[a-z]，会匹配到[a-z]。</p>
+<h2 id="获取查询结果"><a href="#获取查询结果" class="headerlink" title="获取查询结果"></a>获取查询结果</h2><h3 id="正则表达式的查询"><a href="#正则表达式的查询" class="headerlink" title="正则表达式的查询"></a>正则表达式的查询</h3><p>初始化完毕正则表达式的处理类后，我们需要进行正则表达式的查询，IOS官方提供了两种模式：</p>
+<h4 id="带block模式的方法："><a href="#带block模式的方法：" class="headerlink" title="带block模式的方法："></a>带block模式的方法：</h4><figure class="highlight mm"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">- (<span class="keyword">void</span>)enumerateMatchesInString:(<span class="built_in">NSString</span> *)string options:(<span class="built_in">NSMatchingOptions</span>)options range:(<span class="built_in">NSRange</span>)range usingBlock:(<span class="keyword">void</span> (^)(<span class="built_in">NSTextCheckingResult</span> *result, <span class="built_in">NSMatchingFlags</span> flags, <span class="built_in">BOOL</span> *stop))block;</div></pre></td></tr></table></figure>
+<h5 id="使用举例："><a href="#使用举例：" class="headerlink" title="使用举例："></a>使用举例：</h5><figure class="highlight mm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">NSRegularExpression</span> * regex = [[<span class="built_in">NSRegularExpression</span> alloc]initWithPattern:<span class="string">@"[a-z]"</span> options:<span class="built_in">NSRegularExpressionCaseInsensitive</span> error:<span class="literal">nil</span>];</div><div class="line">[regex enumerateMatchesInString:<span class="string">@"124a"</span> options:<span class="built_in">NSMatchingReportProgress</span> range:<span class="built_in">NSMakeRange</span>(<span class="number">0</span>, <span class="number">4</span>) usingBlock:^(<span class="built_in">NSTextCheckingResult</span> *result, <span class="built_in">NSMatchingFlags</span> flags, <span class="built_in">BOOL</span> *stop) &#123;</div><div class="line"><span class="built_in">NSLog</span>(<span class="string">@"%@"</span>,result);</div><div class="line">&#125; ];</div></pre></td></tr></table></figure>
+<h5 id="注意："><a href="#注意：" class="headerlink" title="注意："></a>注意：</h5><p>1、这个函数的一个参数options是一个枚举，设置回调的方式，如下：<br><figure class="highlight mm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">typedef</span> <span class="built_in">NS_OPTIONS</span>(<span class="built_in">NSUInteger</span>, <span class="built_in">NSMatchingOptions</span>) &#123;</div><div class="line"><span class="built_in">NSMatchingReportProgress</span>         = <span class="number">1</span> &lt;&lt; <span class="number">0</span>, <span class="comment">//找到最长的匹配字符串后调用block回调</span></div><div class="line"><span class="built_in">NSMatchingReportCompletion</span>       = <span class="number">1</span> &lt;&lt; <span class="number">1</span>, <span class="comment">//找到任何一个匹配串后都回调一次block</span></div><div class="line"><span class="built_in">NSMatchingAnchored</span>               = <span class="number">1</span> &lt;&lt; <span class="number">2</span>, <span class="comment">//从匹配范围的开始出进行极限匹配</span></div><div class="line"><span class="built_in">NSMatchingWithTransparentBounds</span>  = <span class="number">1</span> &lt;&lt; <span class="number">3</span>, <span class="comment">//允许匹配的范围超出设置的范围</span></div><div class="line"><span class="built_in">NSMatchingWithoutAnchoringBounds</span> = <span class="number">1</span> &lt;&lt; <span class="number">4</span>  <span class="comment">//禁止^和$自动匹配行还是和结束</span></div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<p>2、block回调中的flags枚举对应如下：<br><figure class="highlight mm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">typedef</span> <span class="built_in">NS_OPTIONS</span>(<span class="built_in">NSUInteger</span>, <span class="built_in">NSMatchingFlags</span>) &#123;</div><div class="line"><span class="built_in">NSMatchingProgress</span>               = <span class="number">1</span> &lt;&lt; <span class="number">0</span>, <span class="comment">//匹配到最长串是被设置     </span></div><div class="line"><span class="built_in">NSMatchingCompleted</span>              = <span class="number">1</span> &lt;&lt; <span class="number">1</span>, <span class="comment">//全部分配完成后被设置    </span></div><div class="line"><span class="built_in">NSMatchingHitEnd</span>                 = <span class="number">1</span> &lt;&lt; <span class="number">2</span>, <span class="comment">//匹配到设置范围的末尾时被设置   </span></div><div class="line"><span class="built_in">NSMatchingRequiredEnd</span>            = <span class="number">1</span> &lt;&lt; <span class="number">3</span>, <span class="comment">//当前匹配到的字符串在匹配范围的末尾时被设置     </span></div><div class="line"><span class="built_in">NSMatchingInternalError</span>          = <span class="number">1</span> &lt;&lt; <span class="number">4</span>  <span class="comment">//由于错误导致的匹配失败时被设置   </span></div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<p>3、还有一点需要注意，就是那个bool值stop，我们可以在block块中设置它为YES，之后便会停止查找。</p>
+<h4 id="非block的方法"><a href="#非block的方法" class="headerlink" title="非block的方法"></a>非block的方法</h4><p>这个方法会返回一个结果数组，将所有匹配的结果返回<br><figure class="highlight mm"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">- (<span class="built_in">NSArray</span> *)matchesInString:(<span class="built_in">NSString</span> *)string options:(<span class="built_in">NSMatchingOptions</span>)options range:(<span class="built_in">NSRange</span>)range;</div></pre></td></tr></table></figure></p>
+<p>这个方法会返回匹配到得字符串的个数<br><figure class="highlight mm"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">- (<span class="built_in">NSUInteger</span>)numberOfMatchesInString:(<span class="built_in">NSString</span> *)string options:(<span class="built_in">NSMatchingOptions</span>)options range:(<span class="built_in">NSRange</span>)range;</div></pre></td></tr></table></figure></p>
+<p>这个方法会返回第一个查询到得结果，这个NSTextCheckingResult对象中有一个range属性，可以得到匹配到的字符串的范围。<br><figure class="highlight mm"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">- (<span class="built_in">NSTextCheckingResult</span> *)firstMatchInString:(<span class="built_in">NSString</span> *)string options:(<span class="built_in">NSMatchingOptions</span>)options range:(<span class="built_in">NSRange</span>)range;</div></pre></td></tr></table></figure></p>
+<p>这个方法直接返回匹配到得范围，NSRange。<br><figure class="highlight mm"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">- (<span class="built_in">NSRange</span>)rangeOfFirstMatchInString:(<span class="built_in">NSString</span> *)string options:(<span class="built_in">NSMatchingOptions</span>)options range:(<span class="built_in">NSRange</span>)range;</div></pre></td></tr></table></figure></p>
+<h2 id="辅助方法"><a href="#辅助方法" class="headerlink" title="辅助方法"></a>辅助方法</h2><p>在NSRegularExpression类中还提供了一个辅助方法：<br><figure class="highlight mm"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">+ (<span class="built_in">NSString</span> *)escapedPatternForString:(<span class="built_in">NSString</span> *)string;</div></pre></td></tr></table></figure></p>
+<p>它可以帮助我们将正则表达式加上”\”进行保护，将元字符转化成字面值。<br>到此，在IOS中正则表达式的基本用法就介绍完了，希望正则表达式的应用，能为你的项目节省更多时间。<br>疏漏之处 欢迎指正<br>学习使用 欢迎转载</p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/iOS/">iOS</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://yoursite.com/2016/01/17/iOS-正则表达式应用/" data-title="iOS正则表达式应用 | Shemmy" data-tsina="null" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2016/01/14/UITextField中文输入法时对字符长度的限制/" title="中文输入法时对字符长度的限制(UITextField)">
+  <strong>上一篇：</strong><br/>
+  <span>
+  中文输入法时对字符长度的限制(UITextField)</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2016/02/14/iOS-UIBezierPath实现果冻效果/"  title="iOS-果冻效果 (UIBezierPath)">
+ <strong>下一篇：</strong><br/> 
+ <span>iOS-果冻效果 (UIBezierPath)
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+<section id="comments" class="comment">
+	<div class="ds-thread" data-thread-key="2016/01/17/iOS-正则表达式应用/" data-title="iOS正则表达式应用" data-url="http://yoursite.com/2016/01/17/iOS-正则表达式应用/"></div>
+</section>
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#正则表达式在IOS开发中的应用"><span class="toc-number">1.</span> <span class="toc-text">正则表达式在IOS开发中的应用</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#初始化方法"><span class="toc-number">1.1.</span> <span class="toc-text">初始化方法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#初始化NSRegularExpression的方法"><span class="toc-number">1.1.1.</span> <span class="toc-text">初始化NSRegularExpression的方法:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#注意"><span class="toc-number">1.1.2.</span> <span class="toc-text">注意:</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#获取查询结果"><span class="toc-number">1.2.</span> <span class="toc-text">获取查询结果</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#正则表达式的查询"><span class="toc-number">1.2.1.</span> <span class="toc-text">正则表达式的查询</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#带block模式的方法："><span class="toc-number">1.2.1.1.</span> <span class="toc-text">带block模式的方法：</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#使用举例："><span class="toc-number">1.2.1.1.1.</span> <span class="toc-text">使用举例：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#注意："><span class="toc-number">1.2.1.1.2.</span> <span class="toc-text">注意：</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#非block的方法"><span class="toc-number">1.2.1.2.</span> <span class="toc-text">非block的方法</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#辅助方法"><span class="toc-number">1.3.</span> <span class="toc-text">辅助方法</span></a></li></ol></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+
+
+  
+
+  
+<div class="tagslist">
+	<p class="asidetitle">标签</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/iOS/" title="iOS">iOS<sup>24</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/架构/" title="架构">架构<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/MacOS/" title="MacOS">MacOS<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/C-C-iOS/" title="C C++ iOS">C C++ iOS<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Swift3/" title="Swift3">Swift3<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/iOS-UICollectionView/" title="iOS UICollectionView">iOS UICollectionView<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/RunTime/" title="RunTime">RunTime<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/iOS-三方库/" title="iOS 三方库">iOS 三方库<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/iOS-UITextField-转载/" title="iOS UITextField 转载">iOS UITextField 转载<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/textfield-ios-oc-光标-offset/" title="textfield   ios   oc   光标   offset">textfield   ios   oc   光标   offset<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">友情链接</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="https://www.github.com/lishengmin" target="_blank" title="Shemmy&#39;s GitHub">Shemmy&#39;s GitHub</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="https://blog.cnbluebox.com" target="_blank" title="刘坤的技术博客">刘坤的技术博客</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="https://casatwy.com/iosying-yong-jia-gou-tan-viewceng-de-zu-zhi-he-diao-yong-fang-an.html" target="_blank" title="casa&#39;s Blog">casa&#39;s Blog</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://blog.robotframework.cn" target="_blank" title="齐道长的博客">齐道长的博客</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
+</div>
+
+  <div class="weiboshow">
+  <p class="asidetitle">新浪微博</p>
+    <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=null&verifier=b3593ceb&dpc=1"></iframe>
+</div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> Hello ,I&#39;m Sheemy Page in GitHub. <br/>
+			This is my blog,believe it or not.</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		<a href="http://weibo.com/2176287895" target="_blank" class="icon-weibo" title="微博"></a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Shemmy</a> © 2017 
+		
+		<a href="/about" target="_blank" title="Shemmy">Shemmy</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"https://lcvem.duoshuo.com"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script> 
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?e6d1f421bbc9962127a50488f9ed37d1";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>

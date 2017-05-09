@@ -1,0 +1,531 @@
+
+ <!DOCTYPE HTML>
+<html >
+<head>
+  <meta charset="UTF-8">
+  
+    <title>iOS-果冻效果 (UIBezierPath) | Shemmy</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="Shemmy">
+    
+
+    
+    <meta name="description" content="效果iOSUIBezierPath果冻最近在网上看到一个很酷的下拉刷新效果。自己试着实现了一下其中的果冻回弹效果。 DEMO由于文笔不太好-.- ，建议先下载demo,再结合下面的分析，会好理解点。地址逻辑下图p1,蓝色部分图形是一个CAShapeLayer,他的形状由UIBezierPath的路径组成的。这个路径是由r1,r2,r3,r4,r5这5个红点确定的。其中r1,r2,r3,r4都是不动">
+<meta name="keywords" content="iOS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iOS-果冻效果 (UIBezierPath)">
+<meta property="og:url" content="http://yoursite.com/2016/02/14/iOS-UIBezierPath实现果冻效果/index.html">
+<meta property="og:site_name" content="Shemmy">
+<meta property="og:description" content="效果iOSUIBezierPath果冻最近在网上看到一个很酷的下拉刷新效果。自己试着实现了一下其中的果冻回弹效果。 DEMO由于文笔不太好-.- ，建议先下载demo,再结合下面的分析，会好理解点。地址逻辑下图p1,蓝色部分图形是一个CAShapeLayer,他的形状由UIBezierPath的路径组成的。这个路径是由r1,r2,r3,r4,r5这5个红点确定的。其中r1,r2,r3,r4都是不动">
+<meta property="og:updated_time" content="2017-05-08T09:53:26.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="iOS-果冻效果 (UIBezierPath)">
+<meta name="twitter:description" content="效果iOSUIBezierPath果冻最近在网上看到一个很酷的下拉刷新效果。自己试着实现了一下其中的果冻回弹效果。 DEMO由于文笔不太好-.- ，建议先下载demo,再结合下面的分析，会好理解点。地址逻辑下图p1,蓝色部分图形是一个CAShapeLayer,他的形状由UIBezierPath的路径组成的。这个路径是由r1,r2,r3,r4,r5这5个红点确定的。其中r1,r2,r3,r4都是不动">
+
+    
+    <link rel="alternative" href="/atom.xml" title="Shemmy" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="Shemmy" title="Shemmy"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="Shemmy">Shemmy</a></h1>
+				<h2 class="blog-motto"></h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/about">About</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="hidden" name="q" value="site:yoursite.com">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2016/02/14/iOS-UIBezierPath实现果冻效果/" title="iOS-果冻效果 (UIBezierPath)" itemprop="url">iOS-果冻效果 (UIBezierPath)</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Shemmy" target="_blank" itemprop="author">Shemmy</a>
+		
+  <p class="article-time">
+    <time datetime="2016-02-13T18:05:11.000Z" itemprop="datePublished"> 发表于 2016-02-14</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#效果iOSUIBezierPath果冻"><span class="toc-number">1.</span> <span class="toc-text">效果iOSUIBezierPath果冻</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#DEMO"><span class="toc-number">1.1.</span> <span class="toc-text">DEMO</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#实现"><span class="toc-number">1.2.</span> <span class="toc-text">实现</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#初始化CAShapeLayer"><span class="toc-number">1.2.1.</span> <span class="toc-text">初始化CAShapeLayer</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#初始化r5点"><span class="toc-number">1.2.2.</span> <span class="toc-text">初始化r5点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#添加移动手势-amp-CADisplayLink"><span class="toc-number">1.2.3.</span> <span class="toc-text">添加移动手势&CADisplayLink</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#手势解析"><span class="toc-number">1.2.4.</span> <span class="toc-text">手势解析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#根据r5的位置-更新-shapeLayer形状"><span class="toc-number">1.2.5.</span> <span class="toc-text">根据r5的位置,更新_shapeLayer形状</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#计算弹簧效果坐标"><span class="toc-number">1.2.6.</span> <span class="toc-text">计算弹簧效果坐标</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#写在最后"><span class="toc-number">2.</span> <span class="toc-text">写在最后</span></a></li></ol>
+		
+		</div>
+		
+		<h1 id="效果iOSUIBezierPath果冻"><a href="#效果iOSUIBezierPath果冻" class="headerlink" title="效果iOSUIBezierPath果冻"></a>效果iOSUIBezierPath果冻</h1><p>最近在网上看到一个很酷的下拉刷新效果。自己试着实现了一下其中的果冻回弹效果。</p>
+<h2 id="DEMO"><a href="#DEMO" class="headerlink" title="DEMO"></a>DEMO</h2><p>由于文笔不太好-.- ，建议先下载demo,再结合下面的分析，会好理解点。地址<br>逻辑<br>下图p1,蓝色部分图形是一个CAShapeLayer,他的形状由UIBezierPath的路径组成的。<br>这个路径是由r1,r2,r3,r4,r5这5个红点确定的。其中r1,r2,r3,r4都是不动点，唯一可以动的是r5点。<br>根据上面的动态图可以看出,CAShapeLayer的形状是随着r5红点的移动而相应变化的，所以只要获得r5的坐标变化就可以用UIBezierPath做出相应的路径，然后就可以形成相应的形状。<a id="more"></a></p>
+<h2 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h2><h3 id="初始化CAShapeLayer"><a href="#初始化CAShapeLayer" class="headerlink" title="初始化CAShapeLayer"></a>初始化CAShapeLayer</h3><figure class="highlight mm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">- (<span class="keyword">void</span>)configShapeLayer</div><div class="line">&#123; </div><div class="line">_shapeLayer = [<span class="built_in">CAShapeLayer</span> layer];</div><div class="line">_shapeLayer.fillColor = [<span class="built_in">UIColor</span> colorWithRed:<span class="number">57</span>/<span class="number">255.0</span> green:<span class="number">67</span>/<span class="number">255.0</span> blue:<span class="number">89</span>/<span class="number">255.0</span> alpha:<span class="number">1.0</span>].CGColor;</div><div class="line">[<span class="keyword">self</span>.layer addSublayer:_shapeLayer];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="初始化r5点"><a href="#初始化r5点" class="headerlink" title="初始化r5点"></a>初始化r5点</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">- (void)configCurveView</div><div class="line">&#123;</div><div class="line">// _curveView就是r5点</div><div class="line">_curveX = SYS_DEVICE_WIDTH/2.0;       // r5点x坐标</div><div class="line">_curveY = MIN_HEIGHT;                 // r5点y坐标</div><div class="line">_curveView = [[UIView alloc] initWithFrame:CGRectMake(_curveX, _curveY, 3, 3)];</div><div class="line">_curveView.backgroundColor = [UIColor redColor];</div><div class="line">[self addSubview:_curveView];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="添加移动手势-amp-CADisplayLink"><a href="#添加移动手势-amp-CADisplayLink" class="headerlink" title="添加移动手势&amp;CADisplayLink"></a>添加移动手势&amp;CADisplayLink</h3><figure class="highlight m"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">- (void)configAction</div><div class="line">&#123;</div><div class="line">_mHeight <span class="built_in">=</span> <span class="number">100</span>;                       // 手势移动时相对高度</div><div class="line">_isAnimating <span class="built_in">=</span> NO;                    // 是否处于动效状态</div><div class="line"></div><div class="line">// 手势</div><div class="line">UIPanGestureRecognizer *pan <span class="built_in">=</span> [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePanAction:)];</div><div class="line">self.userInteractionEnabled <span class="built_in">=</span> YES;</div><div class="line">[self addGestureRecognizer:pan];</div><div class="line"></div><div class="line">// calculatePath方法是算出在运行期间_curveView的坐标，从而确定_shapeLayer的形状</div><div class="line">_displayLink <span class="built_in">=</span> [CADisplayLink displayLinkWithTarget:self selector:@selector(calculatePath)];</div><div class="line">[_displayLink addToRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];</div><div class="line">// 在手势结束的时候才调用calculatePath方法，所以一开始是暂停的</div><div class="line">_displayLink.paused <span class="built_in">=</span> YES;    </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="手势解析"><a href="#手势解析" class="headerlink" title="手势解析"></a>手势解析</h3><p>手势移动时，r5红点跟着手势移动，_shapeLayer则根据r5的坐标来扩大自己的区域<br>手势结束时，r5红点通过UIView的动画方法来改变r5的坐标,同时_shapeLayer根据r5的坐标缩小自己的区域并最终返回原形。<br><figure class="highlight mm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div></pre></td><td class="code"><pre><div class="line">- (<span class="keyword">void</span>)handlePanAction:(<span class="built_in">UIPanGestureRecognizer</span> *)pan</div><div class="line">&#123;</div><div class="line"><span class="keyword">if</span>(!_isAnimating)</div><div class="line">&#123;</div><div class="line"><span class="keyword">if</span>(pan.state == <span class="built_in">UIGestureRecognizerStateChanged</span>)</div><div class="line">&#123;</div><div class="line"><span class="comment">// 手势移动时，_shapeLayer跟着手势向下扩大区域</span></div><div class="line"><span class="built_in">CGPoint</span> point = [pan translationInView:<span class="keyword">self</span>];</div><div class="line"></div><div class="line"><span class="comment">// 这部分代码使r5红点跟着手势走</span></div><div class="line">_mHeight = point.y*<span class="number">0.7</span> + MIN_HEIGHT;</div><div class="line">_curveX = SYS_DEVICE_WIDTH/<span class="number">2.0</span> + point.x;</div><div class="line">_curveY = _mHeight &gt; MIN_HEIGHT ? _mHeight : MIN_HEIGHT;</div><div class="line">_curveView.frame = <span class="built_in">CGRectMake</span>(_curveX,</div><div class="line">_curveY,</div><div class="line">_curveView.frame.size.width,</div><div class="line">_curveView.frame.size.height);</div><div class="line"></div><div class="line"><span class="comment">// 根据r5坐标,更新_shapeLayer形状</span></div><div class="line">[<span class="keyword">self</span> updateShapeLayerPath];</div><div class="line"></div><div class="line">&#125;</div><div class="line"><span class="keyword">else</span> <span class="keyword">if</span> (pan.state == <span class="built_in">UIGestureRecognizerStateCancelled</span> ||</div><div class="line">pan.state == <span class="built_in">UIGestureRecognizerStateEnded</span> ||</div><div class="line">pan.state == <span class="built_in">UIGestureRecognizerStateFailed</span>)</div><div class="line">&#123;</div><div class="line"><span class="comment">// 手势结束时,_shapeLayer返回原状并产生弹簧动效</span></div><div class="line">_isAnimating = <span class="literal">YES</span>;</div><div class="line">_displayLink.paused = <span class="literal">NO</span>;           <span class="comment">//开启displaylink,会执行方法calculatePath.</span></div><div class="line"></div><div class="line"><span class="comment">// 弹簧动效</span></div><div class="line">[<span class="built_in">UIView</span> animateWithDuration:<span class="number">1.0</span></div><div class="line">delay:<span class="number">0.0</span></div><div class="line">usingSpringWithDamping:<span class="number">0.5</span></div><div class="line">initialSpringVelocity:<span class="number">0</span></div><div class="line">options:<span class="built_in">UIViewAnimationOptionCurveEaseInOut</span></div><div class="line">animations:^&#123;</div><div class="line"></div><div class="line"><span class="comment">// 曲线点(r5点)是一个view.所以在block中有弹簧效果.然后根据他的动效路径,在calculatePath中计算弹性图形的形状</span></div><div class="line">_curveView.frame = <span class="built_in">CGRectMake</span>(SYS_DEVICE_WIDTH/<span class="number">2.0</span>, MIN_HEIGHT, <span class="number">3</span>, <span class="number">3</span>);</div><div class="line"></div><div class="line">&#125; completion:^(<span class="built_in">BOOL</span> finished) &#123;</div><div class="line"></div><div class="line"><span class="keyword">if</span>(finished)</div><div class="line">&#123;</div><div class="line">_displayLink.paused = <span class="literal">YES</span>;</div><div class="line">_isAnimating = <span class="literal">NO</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line">&#125;];</div><div class="line">&#125;</div><div class="line">&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="根据r5的位置-更新-shapeLayer形状"><a href="#根据r5的位置-更新-shapeLayer形状" class="headerlink" title="根据r5的位置,更新_shapeLayer形状"></a>根据r5的位置,更新_shapeLayer形状</h3><figure class="highlight mm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">- (<span class="keyword">void</span>)updateShapeLayerPath</div><div class="line">&#123;</div><div class="line"><span class="comment">// 更新_shapeLayer形状</span></div><div class="line"><span class="built_in">UIBezierPath</span> *tPath = [<span class="built_in">UIBezierPath</span> bezierPath];</div><div class="line">[tPath moveToPoint:<span class="built_in">CGPointMake</span>(<span class="number">0</span>, <span class="number">0</span>)];  <span class="comment">//r1点</span></div><div class="line">[tPath addLineToPoint:<span class="built_in">CGPointMake</span>(SYS_DEVICE_WIDTH, <span class="number">0</span>)];<span class="comment">// r2点</span></div><div class="line">[tPath addLineToPoint:<span class="built_in">CGPointMake</span>(SYS_DEVICE_WIDTH,  MIN_HEIGHT)]; <span class="comment">//r4点</span></div><div class="line">[tPath addQuadCurveToPoint:<span class="built_in">CGPointMake</span>(<span class="number">0</span>, MIN_HEIGHT)</div><div class="line">controlPoint:<span class="built_in">CGPointMake</span>(_curveX, _curveY)]; <span class="comment">// r3,r4,r5确定的一个弧线</span></div><div class="line">[tPath closePath];</div><div class="line">_shapeLayer.path = tPath.CGPath;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="计算弹簧效果坐标"><a href="#计算弹簧效果坐标" class="headerlink" title="计算弹簧效果坐标"></a>计算弹簧效果坐标</h3><figure class="highlight mm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">- (<span class="keyword">void</span>)calculatePath</div><div class="line">&#123;</div><div class="line"><span class="comment">// 由于手势结束时,r5执行了一个UIView的弹簧动画,把这个过程的坐标记录下来,并相应的画出_shapeLayer形状</span></div><div class="line"><span class="built_in">CALayer</span> *layer = _curveView.layer.presentationLayer;</div><div class="line">_curveX = layer.position.x;</div><div class="line">_curveY = layer.position.y;</div><div class="line">[<span class="keyword">self</span> updateShapeLayerPath];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="写在最后"><a href="#写在最后" class="headerlink" title="写在最后"></a>写在最后</h1><p>r5点的作用非常重要，因为直接对CAShapeLayer实现动效不太好实现。所以通过对r5点实现弹簧动效，记录r5点的坐标，再用UIBezierPath形成路径，最后赋予CAShapeLayer，间接的完成了CAShapeLayer的弹簧动效。<br>如果你有疑问或者发现错误请留言给我。3Q~~</p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/iOS/">iOS</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://yoursite.com/2016/02/14/iOS-UIBezierPath实现果冻效果/" data-title="iOS-果冻效果 (UIBezierPath) | Shemmy" data-tsina="null" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2016/01/17/iOS-正则表达式应用/" title="iOS正则表达式应用">
+  <strong>上一篇：</strong><br/>
+  <span>
+  iOS正则表达式应用</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2016/02/19/iOS中使用Block传值来实现定位/"  title="iOS中使用Block传值来实现定位">
+ <strong>下一篇：</strong><br/> 
+ <span>iOS中使用Block传值来实现定位
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+<section id="comments" class="comment">
+	<div class="ds-thread" data-thread-key="2016/02/14/iOS-UIBezierPath实现果冻效果/" data-title="iOS-果冻效果 (UIBezierPath)" data-url="http://yoursite.com/2016/02/14/iOS-UIBezierPath实现果冻效果/"></div>
+</section>
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#效果iOSUIBezierPath果冻"><span class="toc-number">1.</span> <span class="toc-text">效果iOSUIBezierPath果冻</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#DEMO"><span class="toc-number">1.1.</span> <span class="toc-text">DEMO</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#实现"><span class="toc-number">1.2.</span> <span class="toc-text">实现</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#初始化CAShapeLayer"><span class="toc-number">1.2.1.</span> <span class="toc-text">初始化CAShapeLayer</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#初始化r5点"><span class="toc-number">1.2.2.</span> <span class="toc-text">初始化r5点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#添加移动手势-amp-CADisplayLink"><span class="toc-number">1.2.3.</span> <span class="toc-text">添加移动手势&CADisplayLink</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#手势解析"><span class="toc-number">1.2.4.</span> <span class="toc-text">手势解析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#根据r5的位置-更新-shapeLayer形状"><span class="toc-number">1.2.5.</span> <span class="toc-text">根据r5的位置,更新_shapeLayer形状</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#计算弹簧效果坐标"><span class="toc-number">1.2.6.</span> <span class="toc-text">计算弹簧效果坐标</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#写在最后"><span class="toc-number">2.</span> <span class="toc-text">写在最后</span></a></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+
+
+  
+
+  
+<div class="tagslist">
+	<p class="asidetitle">标签</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/iOS/" title="iOS">iOS<sup>24</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/架构/" title="架构">架构<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/MacOS/" title="MacOS">MacOS<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/C-C-iOS/" title="C C++ iOS">C C++ iOS<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Swift3/" title="Swift3">Swift3<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/iOS-UICollectionView/" title="iOS UICollectionView">iOS UICollectionView<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/RunTime/" title="RunTime">RunTime<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/iOS-三方库/" title="iOS 三方库">iOS 三方库<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/iOS-UITextField-转载/" title="iOS UITextField 转载">iOS UITextField 转载<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/textfield-ios-oc-光标-offset/" title="textfield   ios   oc   光标   offset">textfield   ios   oc   光标   offset<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">友情链接</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="https://www.github.com/lishengmin" target="_blank" title="Shemmy&#39;s GitHub">Shemmy&#39;s GitHub</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="https://blog.cnbluebox.com" target="_blank" title="刘坤的技术博客">刘坤的技术博客</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="https://casatwy.com/iosying-yong-jia-gou-tan-viewceng-de-zu-zhi-he-diao-yong-fang-an.html" target="_blank" title="casa&#39;s Blog">casa&#39;s Blog</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://blog.robotframework.cn" target="_blank" title="齐道长的博客">齐道长的博客</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
+</div>
+
+  <div class="weiboshow">
+  <p class="asidetitle">新浪微博</p>
+    <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=null&verifier=b3593ceb&dpc=1"></iframe>
+</div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> Hello ,I&#39;m Sheemy Page in GitHub. <br/>
+			This is my blog,believe it or not.</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		<a href="http://weibo.com/2176287895" target="_blank" class="icon-weibo" title="微博"></a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Shemmy</a> © 2017 
+		
+		<a href="/about" target="_blank" title="Shemmy">Shemmy</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"https://lcvem.duoshuo.com"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script> 
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?e6d1f421bbc9962127a50488f9ed37d1";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>

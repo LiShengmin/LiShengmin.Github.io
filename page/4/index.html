@@ -44,7 +44,7 @@
 				<h1 class="site-name"><a href="/" title="Shemmy">Shemmy</a></h1>
 				<h2 class="blog-motto"></h2>
 			</div>
-			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
 			</a></div>
 			<nav class="animated">
 				<ul>
@@ -60,7 +60,7 @@
  					
 					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
 						<label>Search</label>
-						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
 						<input type="hidden" name="q" value="site:yoursite.com">
 					</form>
 					
@@ -78,32 +78,36 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2015/12/04/iOS 保存文件的方法/" title="iOS 保存文件的方法" itemprop="url">iOS 保存文件的方法</a>
+      <a href="/2015/12/08/启动引导界面和启动界面设置/" title="引导界面和启动界面设置" itemprop="url">引导界面和启动界面设置</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="Shemmy" target="_blank" itemprop="author">Shemmy</a>
 		
   <p class="article-time">
-    <time datetime="2015-12-04T03:29:34.000Z" itemprop="datePublished"> Published 2015-12-04</time>
+    <time datetime="2015-12-08T04:27:39.000Z" itemprop="datePublished"> 发表于 2015-12-08</time>
     
   </p>
 </header>
     <div class="article-content">
         
-        <h1 id="iOS-保存文件的方法"><a href="#iOS-保存文件的方法" class="headerlink" title="iOS 保存文件的方法"></a>iOS 保存文件的方法</h1><h2 id="Plist文件的使用"><a href="#Plist文件的使用" class="headerlink" title="Plist文件的使用"></a>Plist文件的使用</h2><figure class="highlight mm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="number">1.</span><span class="built_in">NSString</span> *path = [[<span class="built_in">NSBundle</span> mainBundle] pathForResource:<span class="string">@"文件名"</span> ofType:<span class="string">@"plist"</span>];</div><div class="line"><span class="comment">// 文件数据类型是array </span></div><div class="line"><span class="built_in">NSArray</span> *array=[<span class="built_in">NSArray</span> arrayWithContentsOfFile:path];</div><div class="line"><span class="comment">//文件数据类型是*dictionary</span></div><div class="line"><span class="built_in">NSDictionary</span> *dictionary = [<span class="built_in">NSDictionary</span> dictionaryWithContentsOfFile:path];</div></pre></td></tr></table></figure>
-<h3 id="创建一个plist文件"><a href="#创建一个plist文件" class="headerlink" title="创建一个plist文件"></a>创建一个plist文件
+        <p>APP下载安装第一次使用一般会显示一个首次启动引导界面然后进入主界面，非首次开启APP也通常会显示一个启动界面然后进入主界面。<br>1、本例首次启动显示FirstUseViewController，添加一个button，点击进入LaunchViewController<br>2、非首次LaunchViewController，显示2s后进入主界面ViewController<br>3、主界面ViewController<br>4、不深究细节，一般启动引导都会有动画，图片之类的，非本次练习重点，所以没有设置，只有简单地标志作界面区分<br>（效果图在文末）
         
         
         <p class="article-more-link">
           
-            <a href="/2015/12/04/iOS 保存文件的方法/#more">Read More</a>
+            <a href="/2015/12/08/启动引导界面和启动界面设置/#more">Read More</a>
           
        </p>
     </div>
     <footer class="article-footer clearfix">
 <div class="article-catetags">
 
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/iOS/">iOS</a>
+  </div>
 
 </div>
 
@@ -113,7 +117,7 @@
 <div class="comments-count">
 	
 	  	<span></span>
-		<a href="/2015/12/04/iOS 保存文件的方法/#comments" class="ds-thread-count comments-count-link" data-thread-key="2015/12/04/iOS 保存文件的方法/" data-count-type="comments">&nbsp;</a>
+		<a href="/2015/12/08/启动引导界面和启动界面设置/#comments" class="ds-thread-count comments-count-link" data-thread-key="2015/12/08/启动引导界面和启动界面设置/" data-count-type="comments">&nbsp;</a>
 	
 </div>
 
@@ -133,14 +137,74 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2015/10/05/MJRefresh/" title="第三方库 MJRefresh" itemprop="url">第三方库 MJRefresh</a>
+      <a href="/2015/12/04/iOS-保存文件到本地的方法/" title="iOS-保存文件到本地的方法" itemprop="url">iOS-保存文件到本地的方法</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="Shemmy" target="_blank" itemprop="author">Shemmy</a>
 		
   <p class="article-time">
-    <time datetime="2015-10-04T17:15:02.000Z" itemprop="datePublished"> Published 2015-10-05</time>
+    <time datetime="2015-12-04T03:29:34.000Z" itemprop="datePublished"> 发表于 2015-12-04</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h1 id="iOS-保存文件的方法"><a href="#iOS-保存文件的方法" class="headerlink" title="iOS 保存文件的方法"></a>iOS 保存文件的方法</h1><h2 id="Plist文件的使用"><a href="#Plist文件的使用" class="headerlink" title="Plist文件的使用"></a>Plist文件的使用</h2><figure class="highlight mm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="number">1.</span><span class="built_in">NSString</span> *path = [[<span class="built_in">NSBundle</span> mainBundle] pathForResource:<span class="string">@"文件名"</span> ofType:<span class="string">@"plist"</span>];</div><div class="line"><span class="comment">// 文件数据类型是array </span></div><div class="line"><span class="built_in">NSArray</span> *array=[<span class="built_in">NSArray</span> arrayWithContentsOfFile:path];</div><div class="line"><span class="comment">//文件数据类型是*dictionary</span></div><div class="line"><span class="built_in">NSDictionary</span> *dictionary = [<span class="built_in">NSDictionary</span> dictionaryWithContentsOfFile:path];</div></pre></td></tr></table></figure>
+<h3 id="创建一个plist文件"><a href="#创建一个plist文件" class="headerlink" title="创建一个plist文件"></a>创建一个plist文件
+        
+        
+        <p class="article-more-link">
+          
+            <a href="/2015/12/04/iOS-保存文件到本地的方法/#more">Read More</a>
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/iOS/">iOS</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/2015/12/04/iOS-保存文件到本地的方法/#comments" class="ds-thread-count comments-count-link" data-thread-key="2015/12/04/iOS-保存文件到本地的方法/" data-count-type="comments">&nbsp;</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2015/10/05/3rd-MJRefresh/" title="iOS-MJRefresh" itemprop="url">iOS-MJRefresh</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Shemmy" target="_blank" itemprop="author">Shemmy</a>
+		
+  <p class="article-time">
+    <time datetime="2015-10-04T17:15:02.000Z" itemprop="datePublished"> 发表于 2015-10-05</time>
     
   </p>
 </header>
@@ -165,7 +229,7 @@
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/iOS-三方库/">iOS 三方库</a>
+  <span></span> <a href="/tags/iOS/">iOS</a>
   </div>
 
 </div>
@@ -176,7 +240,7 @@
 <div class="comments-count">
 	
 	  	<span></span>
-		<a href="/2015/10/05/MJRefresh/#comments" class="ds-thread-count comments-count-link" data-thread-key="2015/10/05/MJRefresh/" data-count-type="comments">&nbsp;</a>
+		<a href="/2015/10/05/3rd-MJRefresh/#comments" class="ds-thread-count comments-count-link" data-thread-key="2015/10/05/3rd-MJRefresh/" data-count-type="comments">&nbsp;</a>
 	
 </div>
 
@@ -203,7 +267,7 @@
 		<a href="/about" title="Shemmy" target="_blank" itemprop="author">Shemmy</a>
 		
   <p class="article-time">
-    <time datetime="2015-08-03T14:05:12.000Z" itemprop="datePublished"> Published 2015-08-03</time>
+    <time datetime="2015-08-03T14:05:12.000Z" itemprop="datePublished"> 发表于 2015-08-03</time>
     
   </p>
 </header>
@@ -262,7 +326,7 @@
 		<a href="/about" title="Shemmy" target="_blank" itemprop="author">Shemmy</a>
 		
   <p class="article-time">
-    <time datetime="2015-06-03T14:05:12.000Z" itemprop="datePublished"> Published 2015-06-03</time>
+    <time datetime="2015-06-03T14:05:12.000Z" itemprop="datePublished"> 发表于 2015-06-03</time>
     
   </p>
 </header>
@@ -322,7 +386,7 @@
 		<a href="/about" title="Shemmy" target="_blank" itemprop="author">Shemmy</a>
 		
   <p class="article-time">
-    <time datetime="2015-03-02T14:05:11.000Z" itemprop="datePublished"> Published 2015-03-02</time>
+    <time datetime="2015-03-02T14:05:11.000Z" itemprop="datePublished"> 发表于 2015-03-02</time>
     
   </p>
 </header>
@@ -381,7 +445,7 @@
 		<a href="/about" title="Shemmy" target="_blank" itemprop="author">Shemmy</a>
 		
   <p class="article-time">
-    <time datetime="2015-02-13T18:05:11.000Z" itemprop="datePublished"> Published 2015-02-14</time>
+    <time datetime="2015-02-13T18:05:11.000Z" itemprop="datePublished"> 发表于 2015-02-14</time>
     
   </p>
 </header>
@@ -433,10 +497,10 @@
   </nav>
 
 </div>
-      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
 
 <div id="asidepart">
-<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
 <aside class="clearfix">
 
   
@@ -446,23 +510,19 @@
 
   
 <div class="tagslist">
-	<p class="asidetitle">Tags</p>
+	<p class="asidetitle">标签</p>
 		<ul class="clearfix">
 		
 			
-				<li><a href="/tags/iOS/" title="iOS">iOS<sup>8</sup></a></li>
+				<li><a href="/tags/iOS/" title="iOS">iOS<sup>24</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/iOS-三方库/" title="iOS 三方库">iOS 三方库<sup>4</sup></a></li>
+				<li><a href="/tags/架构/" title="架构">架构<sup>2</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/iOS-UIBezierPath/" title="iOS UIBezierPath">iOS UIBezierPath<sup>2</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/第三方依赖库/" title="第三方依赖库">第三方依赖库<sup>1</sup></a></li>
+				<li><a href="/tags/MacOS/" title="MacOS">MacOS<sup>1</sup></a></li>
 			
 		
 			
@@ -470,15 +530,7 @@
 			
 		
 			
-				<li><a href="/tags/RunTime/" title="RunTime">RunTime<sup>1</sup></a></li>
-			
-		
-			
 				<li><a href="/tags/Swift3/" title="Swift3">Swift3<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/iOS-CollectionViewCell-Obj-C/" title="iOS CollectionViewCell Obj-C">iOS CollectionViewCell Obj-C<sup>1</sup></a></li>
 			
 		
 			
@@ -486,11 +538,11 @@
 			
 		
 			
-				<li><a href="/tags/iOS-UITableViewCell/" title="iOS UITableViewCell">iOS UITableViewCell<sup>1</sup></a></li>
+				<li><a href="/tags/RunTime/" title="RunTime">RunTime<sup>1</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/MacOS/" title="MacOS">MacOS<sup>1</sup></a></li>
+				<li><a href="/tags/iOS-三方库/" title="iOS 三方库">iOS 三方库<sup>1</sup></a></li>
 			
 		
 			
@@ -501,16 +553,12 @@
 				<li><a href="/tags/textfield-ios-oc-光标-offset/" title="textfield   ios   oc   光标   offset">textfield   ios   oc   光标   offset<sup>1</sup></a></li>
 			
 		
-			
-				<li><a href="/tags/Net/" title="Net">Net<sup>1</sup></a></li>
-			
-		
 		</ul>
 </div>
 
 
   <div class="linkslist">
-  <p class="asidetitle">Links</p>
+  <p class="asidetitle">友情链接</p>
     <ul>
         
           <li>
@@ -544,11 +592,11 @@
 
 
   <div class="rsspart">
-	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
+	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
 </div>
 
   <div class="weiboshow">
-  <p class="asidetitle">Weibo</p>
+  <p class="asidetitle">新浪微博</p>
     <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=null&verifier=b3593ceb&dpc=1"></iframe>
 </div>
 
@@ -698,7 +746,7 @@ var _hmt = _hmt || [];
 <!-- Totop Begin -->
 
 	<div id="totop">
-	<a title="Back to Top"><img src="/img/scrollup.png"/></a>
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
 	</div>
 	<script src="/js/totop.js"></script>
 
