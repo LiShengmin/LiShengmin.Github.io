@@ -11,17 +11,24 @@
     
 
     
-    <meta name="description" content="使用XCode进行iOS无线调试首先这种方法是对你的系统，Xcode版本，对iOS版本有要求的！MacOS：10.13XCode：9iOS：11 下面是操作步骤 手机连接Xcode中，选择菜单上的Window,-&amp;gt;Device and Simulators。 找到连接设备，把Connect viaNetWork选项勾选。 等待。。 断开和iPad/iPhone的有线连接。 左侧选择刚才的设备">
+    <meta name="description" content="使用XCode进行iOS无线调试首先这种方法是对你的系统，Xcode版本，对iOS版本有要求的！MacOS：10.13XCode：9iOS：11">
 <meta name="keywords" content="iOS">
 <meta property="og:type" content="article">
 <meta property="og:title" content="iOS-iOS11无线调试">
 <meta property="og:url" content="http://yoursite.com/2017/06/12/iOS-iOS11无线调试/index.html">
 <meta property="og:site_name" content="Shemmy">
-<meta property="og:description" content="使用XCode进行iOS无线调试首先这种方法是对你的系统，Xcode版本，对iOS版本有要求的！MacOS：10.13XCode：9iOS：11 下面是操作步骤 手机连接Xcode中，选择菜单上的Window,-&amp;gt;Device and Simulators。 找到连接设备，把Connect viaNetWork选项勾选。 等待。。 断开和iPad/iPhone的有线连接。 左侧选择刚才的设备">
-<meta property="og:updated_time" content="2017-06-12T14:49:43.053Z">
+<meta property="og:description" content="使用XCode进行iOS无线调试首先这种方法是对你的系统，Xcode版本，对iOS版本有要求的！MacOS：10.13XCode：9iOS：11">
+<meta property="og:image" content="http://yoursite.com/image/Window-Device.png">
+<meta property="og:image" content="http://yoursite.com/image/d6058bdd9f50010037191a0ed1f1111f.png">
+<meta property="og:image" content="http://yoursite.com/image/200ee9e43bc886462d3928a72193d58d.png">
+<meta property="og:image" content="http://yoursite.com/image/0505eb003339651a107b33fa8477836d.png">
+<meta property="og:image" content="http://yoursite.com/image/c3eee091de2599f5c38ff0a6ce0f37b5.png">
+<meta property="og:image" content="http://yoursite.com/image/1402206e1bbcc33f16f442b62ea0d6fd.png">
+<meta property="og:updated_time" content="2017-06-12T15:33:59.347Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS-iOS11无线调试">
-<meta name="twitter:description" content="使用XCode进行iOS无线调试首先这种方法是对你的系统，Xcode版本，对iOS版本有要求的！MacOS：10.13XCode：9iOS：11 下面是操作步骤 手机连接Xcode中，选择菜单上的Window,-&amp;gt;Device and Simulators。 找到连接设备，把Connect viaNetWork选项勾选。 等待。。 断开和iPad/iPhone的有线连接。 左侧选择刚才的设备">
+<meta name="twitter:description" content="使用XCode进行iOS无线调试首先这种方法是对你的系统，Xcode版本，对iOS版本有要求的！MacOS：10.13XCode：9iOS：11">
+<meta name="twitter:image" content="http://yoursite.com/image/Window-Device.png">
 
     
     <link rel="alternative" href="/atom.xml" title="Shemmy" type="application/atom+xml">
@@ -49,7 +56,7 @@
 				<h1 class="site-name"><a href="/" title="Shemmy">Shemmy</a></h1>
 				<h2 class="blog-motto"></h2>
 			</div>
-			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
 			</a></div>
 			<nav class="animated">
 				<ul>
@@ -65,7 +72,7 @@
  					
 					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
 						<label>Search</label>
-						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
 						<input type="hidden" name="q" value="site:yoursite.com">
 					</form>
 					
@@ -88,34 +95,36 @@
 		<a href="/about" title="Shemmy" target="_blank" itemprop="author">Shemmy</a>
 		
   <p class="article-time">
-    <time datetime="2017-06-12T09:17:04.000Z" itemprop="datePublished"> 发表于 2017-06-12</time>
+    <time datetime="2017-06-12T09:17:04.000Z" itemprop="datePublished"> Published 2017-06-12</time>
     
   </p>
 </header>
 	<div class="article-content">
 		
 		<div id="toc" class="toc-article">
-			<strong class="toc-title">文章目录</strong>
+			<strong class="toc-title">Contents</strong>
 		
 			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#使用XCode进行iOS无线调试"><span class="toc-number">1.</span> <span class="toc-text">使用XCode进行iOS无线调试</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#下面是操作步骤"><span class="toc-number">2.</span> <span class="toc-text">下面是操作步骤</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Operation-procedure"><span class="toc-number">3.</span> <span class="toc-text">Operation procedure</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#thanks-to-read"><span class="toc-number">4.</span> <span class="toc-text">thanks to read</span></a></li></ol>
 		
 		</div>
 		
-		<h1 id="使用XCode进行iOS无线调试"><a href="#使用XCode进行iOS无线调试" class="headerlink" title="使用XCode进行iOS无线调试"></a>使用XCode进行iOS无线调试</h1><p>首先这种方法是对你的系统，Xcode版本，对iOS版本有要求的！<br>MacOS：10.13<br>XCode：9<br>iOS：11</p>
+		<h1 id="使用XCode进行iOS无线调试"><a href="#使用XCode进行iOS无线调试" class="headerlink" title="使用XCode进行iOS无线调试"></a>使用XCode进行iOS无线调试</h1><p>首先这种方法是对你的系统，Xcode版本，对iOS版本有要求的！<br>MacOS：10.13<br>XCode：9<br>iOS：11<br><a id="more"></a></p>
 <h1 id="下面是操作步骤"><a href="#下面是操作步骤" class="headerlink" title="下面是操作步骤"></a>下面是操作步骤</h1><ul>
-<li>手机连接Xcode中，选择菜单上的<code>Window</code>,-&gt;<code>Device and Simulators</code>。</li>
-<li>找到连接设备，把Connect viaNetWork选项勾选。</li>
+<li>手机连接Xcode中，选择菜单上的<code>Window</code>,-&gt;<code>Device and Simulators</code>。<br><img src="\image\Window-Device.png" alt=""></li>
+<li>找到连接设备，把Connect viaNetWork选项勾选。<br><img src="\image\d6058bdd9f50010037191a0ed1f1111f.png" alt=""></li>
 <li>等待。。</li>
 <li>断开和iPad/iPhone的有线连接。</li>
-<li>左侧选择刚才的设备，右键，选择<code>Connect via IP Address...</code></li>
-<li>直接运行就好了</li>
+<li>左侧选择刚才的设备，右键，选择<code>Connect via IP Address...</code><br><img src="\image\200ee9e43bc886462d3928a72193d58d.png" alt=""><br><img src="\image\0505eb003339651a107b33fa8477836d.png" alt=""></li>
+<li>添加设备局域网IP<br><img src="\image\c3eee091de2599f5c38ff0a6ce0f37b5.png" alt=""></li>
+<li>直接运行就好了<br><img src="\image\1402206e1bbcc33f16f442b62ea0d6fd.png" alt=""></li>
 </ul>
 <h1 id="Operation-procedure"><a href="#Operation-procedure" class="headerlink" title="Operation procedure"></a>Operation procedure</h1><ul>
 <li>iPhone/iPad Client Mac, In Xcode menu bar select Window re select Device and Simulators.</li>
 <li>In left menu find your Device, Check Connect viaNetWork</li>
 <li>Wait for success.</li>
 <li>Disconnect your iPad/iPhone to Mac. </li>
-<li>Re select your Device, right Click, select<code>Connect via IP Address</code>..And you can’t find it, you must disconnect with iPad to Mac Client</li>
+<li>Re select your Device, right Click, select <code>Connect via IP Address</code>..And you can’t find it, you must disconnect with iPad to Mac Client</li>
+<li>Please write you iPad/iPhone’s IP address.</li>
 <li>you can run your app to iPad with wireless, is very cool.</li>
 <li>successful.</li>
 </ul>
@@ -167,17 +176,17 @@
 
 
 </div>  
-      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
 
   <div id="toc" class="toc-aside">
-  <strong class="toc-title">文章目录</strong>
+  <strong class="toc-title">Contents</strong>
  
  <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#使用XCode进行iOS无线调试"><span class="toc-number">1.</span> <span class="toc-text">使用XCode进行iOS无线调试</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#下面是操作步骤"><span class="toc-number">2.</span> <span class="toc-text">下面是操作步骤</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Operation-procedure"><span class="toc-number">3.</span> <span class="toc-text">Operation procedure</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#thanks-to-read"><span class="toc-number">4.</span> <span class="toc-text">thanks to read</span></a></li></ol>
  
   </div>
 
 <div id="asidepart">
-<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
 <aside class="clearfix">
 
   
@@ -187,7 +196,7 @@
 
   
 <div class="tagslist">
-	<p class="asidetitle">标签</p>
+	<p class="asidetitle">Tags</p>
 		<ul class="clearfix">
 		
 			
@@ -235,7 +244,7 @@
 
 
   <div class="linkslist">
-  <p class="asidetitle">友情链接</p>
+  <p class="asidetitle">Links</p>
     <ul>
         
           <li>
@@ -275,11 +284,11 @@
 
 
   <div class="rsspart">
-	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
+	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
 </div>
 
   <div class="weiboshow">
-  <p class="asidetitle">新浪微博</p>
+  <p class="asidetitle">Weibo</p>
     <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=null&verifier=b3593ceb&dpc=1"></iframe>
 </div>
 
@@ -518,7 +527,7 @@ var _hmt = _hmt || [];
 <!-- Totop Begin -->
 
 	<div id="totop">
-	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	<a title="Back to Top"><img src="/img/scrollup.png"/></a>
 	</div>
 	<script src="/js/totop.js"></script>
 
