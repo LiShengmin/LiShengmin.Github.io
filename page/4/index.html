@@ -72,19 +72,403 @@
     <div id="container">
       <div id="main">
 
-  
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2015/12/08/启动引导界面和启动界面设置/" title="引导界面和启动界面设置" itemprop="url">引导界面和启动界面设置</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Shemmy" target="_blank" itemprop="author">Shemmy</a>
+		
+  <p class="article-time">
+    <time datetime="2015-12-08T04:27:39.000Z" itemprop="datePublished"> Published 2015-12-08</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <p>APP下载安装第一次使用一般会显示一个首次启动引导界面然后进入主界面，非首次开启APP也通常会显示一个启动界面然后进入主界面。<br>1、本例首次启动显示FirstUseViewController，添加一个button，点击进入LaunchViewController<br>2、非首次LaunchViewController，显示2s后进入主界面ViewController<br>3、主界面ViewController<br>4、不深究细节，一般启动引导都会有动画，图片之类的，非本次练习重点，所以没有设置，只有简单地标志作界面区分<br>（效果图在文末）
+        
+        
+        <p class="article-more-link">
+          
+            <a href="/2015/12/08/启动引导界面和启动界面设置/#more">Read More</a>
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
 
-  
 
+  <div class="article-tags">
   
+  <span></span> <a href="/tags/iOS/">iOS</a>
+  </div>
 
-  
+</div>
 
-  
 
-  
 
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+        
+        
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2015/12/04/iOS-保存文件到本地的方法/" title="iOS-保存文件到本地的方法" itemprop="url">iOS-保存文件到本地的方法</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Shemmy" target="_blank" itemprop="author">Shemmy</a>
+		
+  <p class="article-time">
+    <time datetime="2015-12-04T03:29:34.000Z" itemprop="datePublished"> Published 2015-12-04</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h1 id="iOS-保存文件的方法"><a href="#iOS-保存文件的方法" class="headerlink" title="iOS 保存文件的方法"></a>iOS 保存文件的方法</h1><h2 id="Plist文件的使用"><a href="#Plist文件的使用" class="headerlink" title="Plist文件的使用"></a>Plist文件的使用</h2><figure class="highlight mm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="number">1.</span><span class="built_in">NSString</span> *path = [[<span class="built_in">NSBundle</span> mainBundle] pathForResource:<span class="string">@"文件名"</span> ofType:<span class="string">@"plist"</span>];</div><div class="line"><span class="comment">// 文件数据类型是array </span></div><div class="line"><span class="built_in">NSArray</span> *array=[<span class="built_in">NSArray</span> arrayWithContentsOfFile:path];</div><div class="line"><span class="comment">//文件数据类型是*dictionary</span></div><div class="line"><span class="built_in">NSDictionary</span> *dictionary = [<span class="built_in">NSDictionary</span> dictionaryWithContentsOfFile:path];</div></pre></td></tr></table></figure>
+<h3 id="创建一个plist文件"><a href="#创建一个plist文件" class="headerlink" title="创建一个plist文件"></a>创建一个plist文件
+        
+        
+        <p class="article-more-link">
+          
+            <a href="/2015/12/04/iOS-保存文件到本地的方法/#more">Read More</a>
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
   
+  <span></span> <a href="/tags/iOS/">iOS</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+        
+        
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2015/10/05/3rd-MJRefresh/" title="iOS-MJRefresh" itemprop="url">iOS-MJRefresh</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Shemmy" target="_blank" itemprop="author">Shemmy</a>
+		
+  <p class="article-time">
+    <time datetime="2015-10-04T17:15:02.000Z" itemprop="datePublished"> Published 2015-10-05</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <a id="more"></a>
+<h1 id="在表现表格视图的-m文件中，引入MJRefresh"><a href="#在表现表格视图的-m文件中，引入MJRefresh" class="headerlink" title="在表现表格视图的.m文件中，引入MJRefresh"></a>在表现表格视图的.m文件中，引入MJRefresh</h1><figure class="highlight mm"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#import <span class="meta-string">"MJRefresh.h"</span></span></div></pre></td></tr></table></figure>
+<figure class="highlight mm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">- (<span class="keyword">void</span>)viewDidLoad &#123;    </div><div class="line">[<span class="keyword">super</span> viewDidLoad];</div><div class="line"><span class="comment">//集成刷新控件</span></div><div class="line">[<span class="keyword">self</span> setupRefresh];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h1><h2 id="集成刷新控件"><a href="#集成刷新控件" class="headerlink" title="集成刷新控件"></a>集成刷新控件</h2><figure class="highlight mm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">- (<span class="keyword">void</span>)setupRefresh&#123;</div><div class="line"><span class="comment">// 1.下拉刷新(进入刷新状态就会调用self的headerRereshing)    </span></div><div class="line">[<span class="keyword">self</span>.tableView addHeaderWithTarget:<span class="keyword">self</span> action:<span class="keyword">@selector</span>(headerRereshing)];</div><div class="line"><span class="meta">#warning 自动刷新(一进入程序就下拉刷新)    </span></div><div class="line">[<span class="keyword">self</span>.tableView headerBeginRefreshing];        </div><div class="line"><span class="comment">// 2.上拉加载更多(进入刷新状态就会调用self的footerRereshing)    </span></div><div class="line">[<span class="keyword">self</span>.tableView addFooterWithTarget:<span class="keyword">self</span> action:<span class="keyword">@selector</span>(footerRereshing)];        </div><div class="line"><span class="comment">// 设置文字(也可以不设置,默认的文字在MJRefreshConst中修改)    </span></div><div class="line"><span class="keyword">self</span>.tableView.headerPullToRefreshText = <span class="string">@"下拉可以刷新了"</span>;    </div><div class="line"><span class="keyword">self</span>.tableView.headerReleaseToRefreshText = <span class="string">@"松开马上刷新了"</span>;    </div><div class="line"><span class="keyword">self</span>.tableView.headerRefreshingText = <span class="string">@"MJ哥正在帮你刷新中,不客气"</span>;        </div><div class="line"><span class="keyword">self</span>.tableView.footerPullToRefreshText = <span class="string">@"上拉可以加载更多数据了"</span>;    </div><div class="line"><span class="keyword">self</span>.tableView.footerReleaseToRefreshText = <span class="string">@"松开马上加载更多数据了"</span>;    </div><div class="line"><span class="keyword">self</span>.tableView.footerRefreshingText = <span class="string">@"MJ哥正在帮你加载中,不客气"</span>;&#125;</div></pre></td></tr></table></figure>
+<h2 id="开始进入刷新状态"><a href="#开始进入刷新状态" class="headerlink" title="开始进入刷新状态"></a>开始进入刷新状态</h2><figure class="highlight mm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">- (<span class="keyword">void</span>)headerRereshing&#123;       <span class="comment">// 1.添加假数据//    </span></div><div class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i&lt;<span class="number">5</span>; i++) &#123;<span class="comment">//        </span></div><div class="line">[<span class="keyword">self</span>.fakeData insertObject:MJRandomData atIndex:<span class="number">0</span>];    </div><div class="line">&#125;        </div><div class="line"><span class="comment">// 2.2秒后刷新表格UI    </span></div><div class="line">dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(<span class="number">2.0</span> * <span class="built_in">NSEC_PER_SEC</span>)), dispatch_get_main_queue(), ^&#123;    <span class="comment">// 刷新表格        </span></div><div class="line">[<span class="keyword">self</span>.tableView reloadData];         <span class="comment">// (最好在刷新表格后调用)调用endRefreshing可以结束刷新状态       </span></div><div class="line">[<span class="keyword">self</span>.tableView headerEndRefreshing];</div><div class="line">&#125;);</div><div class="line">&#125;</div><div class="line">- (<span class="keyword">void</span>)footerRereshing&#123;      <span class="comment">// 1.添加假数据</span></div><div class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i&lt;<span class="number">5</span>; i++) &#123;        </div><div class="line">[<span class="keyword">self</span>.fakeData addObject:MJRandomData]; </div><div class="line">&#125;        </div><div class="line"><span class="comment">// 2.2秒后刷新表格UI    </span></div><div class="line">dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(<span class="number">2.0</span> * <span class="built_in">NSEC_PER_SEC</span>)), dispatch_get_main_queue(), ^&#123;        <span class="comment">// 刷新表格        </span></div><div class="line">[<span class="keyword">self</span>.tableView reloadData];                <span class="comment">// (最好在刷新表格后调用)调用endRefreshing可以结束刷新状态        </span></div><div class="line">[<span class="keyword">self</span>.tableView footerEndRefreshing];    </div><div class="line">&#125;);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="Error"><a href="#Error" class="headerlink" title="Error"></a>Error</h1><p>在运行时，会发现有 Too many arguments to function call, expected 0, have * 的错误，可以如下修改<br>选中项目<br>Project - Build Settings - ENABLE_STRICT_OBJC_MSGSEND 将其设置为 NO 即可</p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/iOS/">iOS</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+        
+        
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2015/08/03/NSNumber的使用/" title="数字有关的类（int NSNumber...）" itemprop="url">数字有关的类（int NSNumber...）</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Shemmy" target="_blank" itemprop="author">Shemmy</a>
+		
+  <p class="article-time">
+    <time datetime="2015-08-03T14:05:12.000Z" itemprop="datePublished"> Published 2015-08-03</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <p>iOS开发之int,NSInteger,NSUInteger,NSNumber的使用<br>1、首先先了解下NSNumber类型：<br>苹果官方文档地址：<a href="https://developer.apple.com/library/ios/documentation/Cocoa/Reference/Foundation/Classes/NSNumber_Class/Reference/Reference.html">https://developer.apple.com/library/ios/documentation/Cocoa/Reference/Foundation/Classes/NSNumber_Class/Reference/Reference.html</a><br>NSNumber是NSValue的一个子类，它是一个对象来存储数字值包括bool型，它提供了一系列的方法来存储char a signed or unsigned char, short int, int, long int, long long int, float, or double or as a BOOL，它提供了一个compare：方法来决定两个NSNumber对象的排序；
+        
+        
+        <p class="article-more-link">
+          
+            <a href="/2015/08/03/NSNumber的使用/#more">Read More</a>
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/iOS/">iOS</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+        
+        
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2015/06/03/NSUserDefaults/" title="自定义对象存储 （NSUserDefaults）" itemprop="url">自定义对象存储 （NSUserDefaults）</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Shemmy" target="_blank" itemprop="author">Shemmy</a>
+		
+  <p class="article-time">
+    <time datetime="2015-06-03T14:05:12.000Z" itemprop="datePublished"> Published 2015-06-03</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h1 id="NSUserDefaults-简介，使用-NSUserDefaults-存储自定义对象"><a href="#NSUserDefaults-简介，使用-NSUserDefaults-存储自定义对象" class="headerlink" title="NSUserDefaults 简介，使用 NSUserDefaults 存储自定义对象"></a>NSUserDefaults 简介，使用 NSUserDefaults 存储自定义对象</h1><h2 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h2><p>NSUserDefaults适合存储轻量级的本地数据，一些简单的数据（NSString类型的）例如密码，网址等，NSUserDefaults肯定是首选，但是如果我们自定义了一个对象，对象保存的是一些信息，这时候就不能直接存储到NSUserDefaults了</p>
+<h2 id="了解NSUserDefaults以及它可以直接存储的类型"><a href="#了解NSUserDefaults以及它可以直接存储的类型" class="headerlink" title="了解NSUserDefaults以及它可以直接存储的类型"></a>了解NSUserDefaults以及它可以直接存储的类型</h2><p>NSUserDefaults是一个<a href="">单例</a>，在整个程序中只有<a href="">一个实例对象</a>，他可以用于数据的永久保存，而且简单实用，这是它可以让数据自由传递的一个前提，也是大家喜欢用它保存简单数据的一个主要原因。<br>使用 NSUserDefaults 存储自定义对象的最初，我们必须认识NSUserDefaults可以存储哪一些类型的数据，下面一一列出：<br>NSUserDefaults支持的数据类型有：NSNumber（NSInteger、float、double），NSString，NSDate，NSArray，NSDictionary，BOOL.
+        
+        
+        <p class="article-more-link">
+          
+            <a href="/2015/06/03/NSUserDefaults/#more">Read More</a>
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/iOS/">iOS</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+        
+        
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2015/03/02/SDWebImage的使用/" title="第三方库 SDWebImage" itemprop="url">第三方库 SDWebImage</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Shemmy" target="_blank" itemprop="author">Shemmy</a>
+		
+  <p class="article-time">
+    <time datetime="2015-03-02T14:05:11.000Z" itemprop="datePublished"> Published 2015-03-02</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <p>最新版SDWebImage的使用<br>我之前写过一篇博客，介绍缓存处理的三种方式，其中最难，最麻烦，最占内存资源的还是图片缓存，最近做的项目有大量的图片处理，还是采用了SDWebImage来处理，但是发现之前封装好的代码报错了。研究发现，是我用了新版的SDWebImage，好多方法都变了。<br>现在把代码贴出来，供大家参考。尤其是新手，看完这篇博客，图片缓存so easy。最后有demo供大家下载，先学习。
+        
+        
+        <p class="article-more-link">
+          
+            <a href="/2015/03/02/SDWebImage的使用/#more">Read More</a>
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/iOS-三方库/">iOS 三方库</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+        
+        
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2015/02/14/Static Const 详解/" title="Static Const" itemprop="url">Static Const</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Shemmy" target="_blank" itemprop="author">Shemmy</a>
+		
+  <p class="article-time">
+    <time datetime="2015-02-13T18:05:11.000Z" itemprop="datePublished"> Published 2015-02-14</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h1 id="Static-Const-说明"><a href="#Static-Const-说明" class="headerlink" title="Static Const 说明"></a>Static Const 说明</h1><p>对于C/C++语言来讲<br>const就是只读的意思,只在声明中使用;<br>static一般有2个作用,规定作用域和存储方式.对于局部变量,static规定其为静态存储方式,每次调用的初始值为上一次调用的值,调用结束后存储空间不释放;<br>对于全局变量,如果以文件划分作用域的话,此变量只在当前文件可见;对于static函数也是在当前模块内函数可见.
+        
+        
+        <p class="article-more-link">
+          
+            <a href="/2015/02/14/Static Const 详解/#more">Read More</a>
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/C-C-iOS/">C C++ iOS</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+        
+        
+
 
 
   <nav id="page-nav" class="clearfix">
