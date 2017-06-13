@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>Shemmy</title>
-  
+  <subtitle>iOS, 架构， Python, AI, go</subtitle>
   <link href="/atom.xml" rel="self"/>
   
-  <link href="http://yoursite.com/"/>
+  <link href="https://github.com/LiShengmin/"/>
   <updated>2017-06-12T15:59:45.157Z</updated>
-  <id>http://yoursite.com/</id>
+  <id>https://github.com/LiShengmin/</id>
   
   <author>
     <name>Shemmy</name>
@@ -17,8 +17,8 @@
   
   <entry>
     <title>iOS-iOS11无线调试</title>
-    <link href="http://yoursite.com/2017/06/12/iOS-iOS11%E6%97%A0%E7%BA%BF%E8%B0%83%E8%AF%95/"/>
-    <id>http://yoursite.com/2017/06/12/iOS-iOS11无线调试/</id>
+    <link href="https://github.com/LiShengmin/2017/06/12/iOS-iOS11%E6%97%A0%E7%BA%BF%E8%B0%83%E8%AF%95/"/>
+    <id>https://github.com/LiShengmin/2017/06/12/iOS-iOS11无线调试/</id>
     <published>2017-06-12T09:17:04.000Z</published>
     <updated>2017-06-12T15:59:45.157Z</updated>
     
@@ -51,14 +51,14 @@
     </summary>
     
     
-      <category term="iOS" scheme="http://yoursite.com/tags/iOS/"/>
+      <category term="iOS" scheme="https://github.com/LiShengmin/tags/iOS/"/>
     
   </entry>
   
   <entry>
     <title>Carthage使用</title>
-    <link href="http://yoursite.com/2017/04/28/Carthage%E4%BD%BF%E7%94%A8/"/>
-    <id>http://yoursite.com/2017/04/28/Carthage使用/</id>
+    <link href="https://github.com/LiShengmin/2017/04/28/Carthage%E4%BD%BF%E7%94%A8/"/>
+    <id>https://github.com/LiShengmin/2017/04/28/Carthage使用/</id>
     <published>2017-04-28T10:49:43.000Z</published>
     <updated>2017-05-08T09:44:43.000Z</updated>
     
@@ -84,14 +84,14 @@
     </summary>
     
     
-      <category term="架构" scheme="http://yoursite.com/tags/%E6%9E%B6%E6%9E%84/"/>
+      <category term="架构" scheme="https://github.com/LiShengmin/tags/%E6%9E%B6%E6%9E%84/"/>
     
   </entry>
   
   <entry>
     <title>iOS中 请求主线程刷新UI</title>
-    <link href="http://yoursite.com/2016/11/18/iOS-%E8%AF%B7%E6%B1%82%E4%B8%BB%E7%BA%BF%E7%A8%8B%E5%88%B7%E6%96%B0UI/"/>
-    <id>http://yoursite.com/2016/11/18/iOS-请求主线程刷新UI/</id>
+    <link href="https://github.com/LiShengmin/2016/11/18/iOS-%E8%AF%B7%E6%B1%82%E4%B8%BB%E7%BA%BF%E7%A8%8B%E5%88%B7%E6%96%B0UI/"/>
+    <id>https://github.com/LiShengmin/2016/11/18/iOS-请求主线程刷新UI/</id>
     <published>2016-11-18T08:07:57.000Z</published>
     <updated>2017-05-08T09:45:25.000Z</updated>
     
@@ -107,14 +107,14 @@
     </summary>
     
     
-      <category term="iOS" scheme="http://yoursite.com/tags/iOS/"/>
+      <category term="iOS" scheme="https://github.com/LiShengmin/tags/iOS/"/>
     
   </entry>
   
   <entry>
     <title>Swift2.3 to Swift3.0 迁移</title>
-    <link href="http://yoursite.com/2016/11/14/Swift2-3-to-Swift3-0-%E8%BF%81%E7%A7%BB/"/>
-    <id>http://yoursite.com/2016/11/14/Swift2-3-to-Swift3-0-迁移/</id>
+    <link href="https://github.com/LiShengmin/2016/11/14/Swift2-3-to-Swift3-0-%E8%BF%81%E7%A7%BB/"/>
+    <id>https://github.com/LiShengmin/2016/11/14/Swift2-3-to-Swift3-0-迁移/</id>
     <published>2016-11-14T05:34:50.000Z</published>
     <updated>2016-11-14T11:10:27.000Z</updated>
     
@@ -136,14 +136,14 @@
     </summary>
     
     
-      <category term="Swift3" scheme="http://yoursite.com/tags/Swift3/"/>
+      <category term="Swift3" scheme="https://github.com/LiShengmin/tags/Swift3/"/>
     
   </entry>
   
   <entry>
     <title>客户端 HTTP请求的Header信息</title>
-    <link href="http://yoursite.com/2016/11/11/%E5%AE%A2%E6%88%B7%E7%AB%AF-HTTP%E8%AF%B7%E6%B1%82%E7%9A%84Header%E4%BF%A1%E6%81%AF/"/>
-    <id>http://yoursite.com/2016/11/11/客户端-HTTP请求的Header信息/</id>
+    <link href="https://github.com/LiShengmin/2016/11/11/%E5%AE%A2%E6%88%B7%E7%AB%AF-HTTP%E8%AF%B7%E6%B1%82%E7%9A%84Header%E4%BF%A1%E6%81%AF/"/>
+    <id>https://github.com/LiShengmin/2016/11/11/客户端-HTTP请求的Header信息/</id>
     <published>2016-11-11T02:58:09.000Z</published>
     <updated>2017-05-08T09:43:41.000Z</updated>
     
@@ -534,14 +534,14 @@
     </summary>
     
     
-      <category term="架构" scheme="http://yoursite.com/tags/%E6%9E%B6%E6%9E%84/"/>
+      <category term="架构" scheme="https://github.com/LiShengmin/tags/%E6%9E%B6%E6%9E%84/"/>
     
   </entry>
   
   <entry>
     <title>UICollectionView reloadData无法更新视图问题</title>
-    <link href="http://yoursite.com/2016/11/04/UICollectionView-reloadData%E6%97%A0%E6%B3%95%E6%9B%B4%E6%96%B0%E7%9A%84%E5%A5%87%E6%80%AA%E9%97%AE%E9%A2%98/"/>
-    <id>http://yoursite.com/2016/11/04/UICollectionView-reloadData无法更新的奇怪问题/</id>
+    <link href="https://github.com/LiShengmin/2016/11/04/UICollectionView-reloadData%E6%97%A0%E6%B3%95%E6%9B%B4%E6%96%B0%E7%9A%84%E5%A5%87%E6%80%AA%E9%97%AE%E9%A2%98/"/>
+    <id>https://github.com/LiShengmin/2016/11/04/UICollectionView-reloadData无法更新的奇怪问题/</id>
     <published>2016-11-04T09:46:11.000Z</published>
     <updated>2016-11-04T09:51:56.000Z</updated>
     
@@ -555,14 +555,14 @@
     </summary>
     
     
-      <category term="iOS UICollectionView" scheme="http://yoursite.com/tags/iOS-UICollectionView/"/>
+      <category term="iOS UICollectionView" scheme="https://github.com/LiShengmin/tags/iOS-UICollectionView/"/>
     
   </entry>
   
   <entry>
     <title>MacOS-Sierra注册机无法运行的解决办法</title>
-    <link href="http://yoursite.com/2016/11/01/MacOS-Sierra%E6%B3%A8%E5%86%8C%E6%9C%BA%E6%97%A0%E6%B3%95%E8%BF%90%E8%A1%8C%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/"/>
-    <id>http://yoursite.com/2016/11/01/MacOS-Sierra注册机无法运行的解决办法/</id>
+    <link href="https://github.com/LiShengmin/2016/11/01/MacOS-Sierra%E6%B3%A8%E5%86%8C%E6%9C%BA%E6%97%A0%E6%B3%95%E8%BF%90%E8%A1%8C%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/"/>
+    <id>https://github.com/LiShengmin/2016/11/01/MacOS-Sierra注册机无法运行的解决办法/</id>
     <published>2016-11-01T02:46:24.000Z</published>
     <updated>2017-05-08T09:54:09.000Z</updated>
     
@@ -577,14 +577,14 @@
     </summary>
     
     
-      <category term="MacOS" scheme="http://yoursite.com/tags/MacOS/"/>
+      <category term="MacOS" scheme="https://github.com/LiShengmin/tags/MacOS/"/>
     
   </entry>
   
   <entry>
     <title>iOS8中使用UIAlertController</title>
-    <link href="http://yoursite.com/2016/10/18/iOS8%E4%B8%AD%E4%BD%BF%E7%94%A8UIAlertController/"/>
-    <id>http://yoursite.com/2016/10/18/iOS8中使用UIAlertController/</id>
+    <link href="https://github.com/LiShengmin/2016/10/18/iOS8%E4%B8%AD%E4%BD%BF%E7%94%A8UIAlertController/"/>
+    <id>https://github.com/LiShengmin/2016/10/18/iOS8中使用UIAlertController/</id>
     <published>2016-10-18T06:51:30.000Z</published>
     <updated>2017-05-08T09:47:38.000Z</updated>
     
@@ -598,14 +598,14 @@
     </summary>
     
     
-      <category term="iOS" scheme="http://yoursite.com/tags/iOS/"/>
+      <category term="iOS" scheme="https://github.com/LiShengmin/tags/iOS/"/>
     
   </entry>
   
   <entry>
     <title>UIAlertController介绍</title>
-    <link href="http://yoursite.com/2016/09/21/iOS-UIAlertController%E4%BB%8B%E7%BB%8D/"/>
-    <id>http://yoursite.com/2016/09/21/iOS-UIAlertController介绍/</id>
+    <link href="https://github.com/LiShengmin/2016/09/21/iOS-UIAlertController%E4%BB%8B%E7%BB%8D/"/>
+    <id>https://github.com/LiShengmin/2016/09/21/iOS-UIAlertController介绍/</id>
     <published>2016-09-21T03:46:35.000Z</published>
     <updated>2017-05-08T09:52:54.000Z</updated>
     
@@ -624,14 +624,14 @@
     </summary>
     
     
-      <category term="iOS" scheme="http://yoursite.com/tags/iOS/"/>
+      <category term="iOS" scheme="https://github.com/LiShengmin/tags/iOS/"/>
     
   </entry>
   
   <entry>
     <title>UITextField的光标操作扩展</title>
-    <link href="http://yoursite.com/2016/09/09/UITextField%E7%9A%84%E5%85%89%E6%A0%87%E6%93%8D%E4%BD%9C%E6%89%A9%E5%B1%95/"/>
-    <id>http://yoursite.com/2016/09/09/UITextField的光标操作扩展/</id>
+    <link href="https://github.com/LiShengmin/2016/09/09/UITextField%E7%9A%84%E5%85%89%E6%A0%87%E6%93%8D%E4%BD%9C%E6%89%A9%E5%B1%95/"/>
+    <id>https://github.com/LiShengmin/2016/09/09/UITextField的光标操作扩展/</id>
     <published>2016-09-09T05:38:26.000Z</published>
     <updated>2016-09-09T05:50:36.000Z</updated>
     
@@ -656,14 +656,14 @@
     </summary>
     
     
-      <category term="textfield   ios   oc   光标   offset" scheme="http://yoursite.com/tags/textfield-ios-oc-%E5%85%89%E6%A0%87-offset/"/>
+      <category term="textfield   ios   oc   光标   offset" scheme="https://github.com/LiShengmin/tags/textfield-ios-oc-%E5%85%89%E6%A0%87-offset/"/>
     
   </entry>
   
   <entry>
     <title>Swift2.0中的Sting 的基本操作</title>
-    <link href="http://yoursite.com/2016/09/09/Swift2-0%E4%B8%AD%E7%9A%84Sting-%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/"/>
-    <id>http://yoursite.com/2016/09/09/Swift2-0中的Sting-的基本操作/</id>
+    <link href="https://github.com/LiShengmin/2016/09/09/Swift2-0%E4%B8%AD%E7%9A%84Sting-%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/"/>
+    <id>https://github.com/LiShengmin/2016/09/09/Swift2-0中的Sting-的基本操作/</id>
     <published>2016-09-08T17:19:03.000Z</published>
     <updated>2016-09-09T01:38:51.000Z</updated>
     
@@ -694,8 +694,8 @@
   
   <entry>
     <title>NSString+Categary</title>
-    <link href="http://yoursite.com/2016/09/07/NSString-Categary/"/>
-    <id>http://yoursite.com/2016/09/07/NSString-Categary/</id>
+    <link href="https://github.com/LiShengmin/2016/09/07/NSString-Categary/"/>
+    <id>https://github.com/LiShengmin/2016/09/07/NSString-Categary/</id>
     <published>2016-09-07T07:37:14.000Z</published>
     <updated>2017-04-19T18:05:24.000Z</updated>
     
@@ -729,8 +729,8 @@
   
   <entry>
     <title>iOS[利用Application Loader]App打包上架流程&#39;</title>
-    <link href="http://yoursite.com/2016/09/06/iOS-%E5%88%A9%E7%94%A8Application-Loader-App%E6%89%93%E5%8C%85%E4%B8%8A%E6%9E%B6%E6%B5%81%E7%A8%8B/"/>
-    <id>http://yoursite.com/2016/09/06/iOS-利用Application-Loader-App打包上架流程/</id>
+    <link href="https://github.com/LiShengmin/2016/09/06/iOS-%E5%88%A9%E7%94%A8Application-Loader-App%E6%89%93%E5%8C%85%E4%B8%8A%E6%9E%B6%E6%B5%81%E7%A8%8B/"/>
+    <id>https://github.com/LiShengmin/2016/09/06/iOS-利用Application-Loader-App打包上架流程/</id>
     <published>2016-09-05T17:58:16.000Z</published>
     <updated>2017-05-08T09:46:52.000Z</updated>
     
@@ -744,14 +744,14 @@
     </summary>
     
     
-      <category term="iOS" scheme="http://yoursite.com/tags/iOS/"/>
+      <category term="iOS" scheme="https://github.com/LiShengmin/tags/iOS/"/>
     
   </entry>
   
   <entry>
     <title>iOS-UITableViewCell点击时子视图背景透明的解决办法</title>
-    <link href="http://yoursite.com/2016/09/01/iOS-UITableViewCell%E7%82%B9%E5%87%BB%E6%97%B6%E5%AD%90%E8%A7%86%E5%9B%BE%E8%83%8C%E6%99%AF%E9%80%8F%E6%98%8E%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/"/>
-    <id>http://yoursite.com/2016/09/01/iOS-UITableViewCell点击时子视图背景透明的解决办法/</id>
+    <link href="https://github.com/LiShengmin/2016/09/01/iOS-UITableViewCell%E7%82%B9%E5%87%BB%E6%97%B6%E5%AD%90%E8%A7%86%E5%9B%BE%E8%83%8C%E6%99%AF%E9%80%8F%E6%98%8E%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/"/>
+    <id>https://github.com/LiShengmin/2016/09/01/iOS-UITableViewCell点击时子视图背景透明的解决办法/</id>
     <published>2016-09-01T02:57:46.000Z</published>
     <updated>2017-05-08T09:51:42.000Z</updated>
     
@@ -770,14 +770,14 @@
     </summary>
     
     
-      <category term="iOS" scheme="http://yoursite.com/tags/iOS/"/>
+      <category term="iOS" scheme="https://github.com/LiShengmin/tags/iOS/"/>
     
   </entry>
   
   <entry>
     <title>iOS-CollectionViewCell的复用问题</title>
-    <link href="http://yoursite.com/2016/08/17/iOS-CollectionViewCell%E7%9A%84%E5%A4%8D%E7%94%A8%E9%97%AE%E9%A2%98/"/>
-    <id>http://yoursite.com/2016/08/17/iOS-CollectionViewCell的复用问题/</id>
+    <link href="https://github.com/LiShengmin/2016/08/17/iOS-CollectionViewCell%E7%9A%84%E5%A4%8D%E7%94%A8%E9%97%AE%E9%A2%98/"/>
+    <id>https://github.com/LiShengmin/2016/08/17/iOS-CollectionViewCell的复用问题/</id>
     <published>2016-08-17T06:27:03.000Z</published>
     <updated>2017-05-08T09:48:34.000Z</updated>
     
@@ -828,14 +828,14 @@
     </summary>
     
     
-      <category term="iOS" scheme="http://yoursite.com/tags/iOS/"/>
+      <category term="iOS" scheme="https://github.com/LiShengmin/tags/iOS/"/>
     
   </entry>
   
   <entry>
     <title>RunTime1</title>
-    <link href="http://yoursite.com/2016/07/19/RunTime1/"/>
-    <id>http://yoursite.com/2016/07/19/RunTime1/</id>
+    <link href="https://github.com/LiShengmin/2016/07/19/RunTime1/"/>
+    <id>https://github.com/LiShengmin/2016/07/19/RunTime1/</id>
     <published>2016-07-19T06:59:12.000Z</published>
     <updated>2016-07-19T08:15:08.000Z</updated>
     
@@ -867,14 +867,14 @@
     </summary>
     
     
-      <category term="RunTime" scheme="http://yoursite.com/tags/RunTime/"/>
+      <category term="RunTime" scheme="https://github.com/LiShengmin/tags/RunTime/"/>
     
   </entry>
   
   <entry>
     <title>iOS-获取网卡地址和IP地址</title>
-    <link href="http://yoursite.com/2016/07/13/iOS-%E8%8E%B7%E5%8F%96%E7%BD%91%E5%8D%A1%E5%9C%B0%E5%9D%80%E5%92%8CIP%E5%9C%B0%E5%9D%80/"/>
-    <id>http://yoursite.com/2016/07/13/iOS-获取网卡地址和IP地址/</id>
+    <link href="https://github.com/LiShengmin/2016/07/13/iOS-%E8%8E%B7%E5%8F%96%E7%BD%91%E5%8D%A1%E5%9C%B0%E5%9D%80%E5%92%8CIP%E5%9C%B0%E5%9D%80/"/>
+    <id>https://github.com/LiShengmin/2016/07/13/iOS-获取网卡地址和IP地址/</id>
     <published>2016-07-13T08:25:27.000Z</published>
     <updated>2017-05-08T09:50:31.000Z</updated>
     
@@ -897,14 +897,14 @@
     </summary>
     
     
-      <category term="iOS" scheme="http://yoursite.com/tags/iOS/"/>
+      <category term="iOS" scheme="https://github.com/LiShengmin/tags/iOS/"/>
     
   </entry>
   
   <entry>
     <title>优化自动布局</title>
-    <link href="http://yoursite.com/2016/07/03/%E4%BC%98%E5%8C%96%E8%87%AA%E5%8A%A8%E5%B8%83%E5%B1%80/"/>
-    <id>http://yoursite.com/2016/07/03/优化自动布局/</id>
+    <link href="https://github.com/LiShengmin/2016/07/03/%E4%BC%98%E5%8C%96%E8%87%AA%E5%8A%A8%E5%B8%83%E5%B1%80/"/>
+    <id>https://github.com/LiShengmin/2016/07/03/优化自动布局/</id>
     <published>2016-07-03T04:31:02.000Z</published>
     <updated>2017-05-08T09:48:01.000Z</updated>
     
@@ -940,14 +940,14 @@
     </summary>
     
     
-      <category term="iOS" scheme="http://yoursite.com/tags/iOS/"/>
+      <category term="iOS" scheme="https://github.com/LiShengmin/tags/iOS/"/>
     
   </entry>
   
   <entry>
     <title>iOS-状态栏(UIStatusBar)颜色</title>
-    <link href="http://yoursite.com/2016/04/29/iOS-%E7%8A%B6%E6%80%81%E6%A0%8F-UIStatusBar-%E9%A2%9C%E8%89%B2/"/>
-    <id>http://yoursite.com/2016/04/29/iOS-状态栏-UIStatusBar-颜色/</id>
+    <link href="https://github.com/LiShengmin/2016/04/29/iOS-%E7%8A%B6%E6%80%81%E6%A0%8F-UIStatusBar-%E9%A2%9C%E8%89%B2/"/>
+    <id>https://github.com/LiShengmin/2016/04/29/iOS-状态栏-UIStatusBar-颜色/</id>
     <published>2016-04-29T08:06:19.000Z</published>
     <updated>2017-05-08T09:48:16.000Z</updated>
     
@@ -988,14 +988,14 @@
     </summary>
     
     
-      <category term="iOS" scheme="http://yoursite.com/tags/iOS/"/>
+      <category term="iOS" scheme="https://github.com/LiShengmin/tags/iOS/"/>
     
   </entry>
   
   <entry>
     <title>iOS-Masonry使用心得</title>
-    <link href="http://yoursite.com/2016/03/04/iOS-Masonry%E4%BD%BF%E7%94%A8%E5%BF%83%E5%BE%97/"/>
-    <id>http://yoursite.com/2016/03/04/iOS-Masonry使用心得/</id>
+    <link href="https://github.com/LiShengmin/2016/03/04/iOS-Masonry%E4%BD%BF%E7%94%A8%E5%BF%83%E5%BE%97/"/>
+    <id>https://github.com/LiShengmin/2016/03/04/iOS-Masonry使用心得/</id>
     <published>2016-03-03T16:10:32.000Z</published>
     <updated>2017-05-08T09:51:56.000Z</updated>
     
@@ -1028,7 +1028,7 @@
     </summary>
     
     
-      <category term="iOS" scheme="http://yoursite.com/tags/iOS/"/>
+      <category term="iOS" scheme="https://github.com/LiShengmin/tags/iOS/"/>
     
   </entry>
   
