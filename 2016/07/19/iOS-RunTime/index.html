@@ -1,0 +1,523 @@
+
+ <!DOCTYPE HTML>
+<html >
+<head>
+  <meta charset="UTF-8">
+  
+    <title>iOS-RunTime | Shemmy</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="Shemmy">
+    
+
+    
+    <meta name="description" content="Objective-C中的分类允许我们通过给一个类添加方法来扩充它（但是通过category不能添加新的实例变量），并且我们不需要访问类中的代码就可以做到。 Objective-C中的协议是普遍存在的接口定义方式，即在一个类中通过@protocol定义接口，在另外类中实现接口，这种接口定义方式也成为“delegation”模式，@protocol声明了可以呗其他任何方法类实现的方法，协议仅仅是定义">
+<meta name="keywords" content="iOS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iOS-RunTime">
+<meta property="og:url" content="https://github.com/LiShengmin/2016/07/19/iOS-RunTime/index.html">
+<meta property="og:site_name" content="Shemmy">
+<meta property="og:description" content="Objective-C中的分类允许我们通过给一个类添加方法来扩充它（但是通过category不能添加新的实例变量），并且我们不需要访问类中的代码就可以做到。 Objective-C中的协议是普遍存在的接口定义方式，即在一个类中通过@protocol定义接口，在另外类中实现接口，这种接口定义方式也成为“delegation”模式，@protocol声明了可以呗其他任何方法类实现的方法，协议仅仅是定义">
+<meta property="og:image" content="http://cdn.cocimg.com/cms/uploads/allimg/141105/4196_141105101156_1.jpg">
+<meta property="og:updated_time" content="2017-06-19T16:42:44.622Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="iOS-RunTime">
+<meta name="twitter:description" content="Objective-C中的分类允许我们通过给一个类添加方法来扩充它（但是通过category不能添加新的实例变量），并且我们不需要访问类中的代码就可以做到。 Objective-C中的协议是普遍存在的接口定义方式，即在一个类中通过@protocol定义接口，在另外类中实现接口，这种接口定义方式也成为“delegation”模式，@protocol声明了可以呗其他任何方法类实现的方法，协议仅仅是定义">
+<meta name="twitter:image" content="http://cdn.cocimg.com/cms/uploads/allimg/141105/4196_141105101156_1.jpg">
+
+    
+    <link rel="alternative" href="/atom.xml" title="Shemmy" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="Shemmy" title="Shemmy"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="Shemmy">Shemmy</a></h1>
+				<h2 class="blog-motto">iOS, 架构， Python, AI, go</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/about">About</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="hidden" name="q" value="site:github.com/LiShengmin">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2016/07/19/iOS-RunTime/" title="iOS-RunTime" itemprop="url">iOS-RunTime</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Shemmy" target="_blank" itemprop="author">Shemmy</a>
+		
+  <p class="article-time">
+    <time datetime="2016-07-19T06:59:12.000Z" itemprop="datePublished"> 发表于 2016-07-19</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#基础数据类型"><span class="toc-number">1.</span> <span class="toc-text">基础数据类型</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Category"><span class="toc-number">1.1.</span> <span class="toc-text">Category</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Protocol"><span class="toc-number">1.2.</span> <span class="toc-text">Protocol</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#操作函数"><span class="toc-number">2.</span> <span class="toc-text">操作函数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#其输出是："><span class="toc-number">2.0.1.</span> <span class="toc-text">其输出是：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#而对于Protocol，runtime提供了一系列函数来对其进行操作，这些函数包括："><span class="toc-number">2.1.</span> <span class="toc-text">而对于Protocol，runtime提供了一系列函数来对其进行操作，这些函数包括：</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#小结"><span class="toc-number">3.</span> <span class="toc-text">小结</span></a></li></ol>
+		
+		</div>
+		
+		<p><img src="http://cdn.cocimg.com/cms/uploads/allimg/141105/4196_141105101156_1.jpg" alt="image1"><br>Objective<br>-C中的分类允许我们通过给一个类添加方法来扩充它（但是通过category不能添加新的实例变量），并且我们不需要访问类中的代码就可以做到。</p>
+<p>Objective-C中的协议是普遍存在的接口定义方式，即在一个类中通过@protocol定义接口，在另外类中实现接口，这种接口定义方式也成为“delegation”模式，@protocol声明了可以呗其他任何方法类实现的方法，协议仅仅是定义一个接口，而由其他的类去负责实现。<a id="more"></a></p>
+<p>在本章中，我们来看看runtime对分类与协议的支持。</p>
+<h1 id="基础数据类型"><a href="#基础数据类型" class="headerlink" title="基础数据类型"></a>基础数据类型</h1><h2 id="Category"><a href="#Category" class="headerlink" title="Category"></a>Category</h2><p>Category是表示一个指向分类的结构体的指针，其定义如下：</p>
+<figure class="highlight mm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> objc_category *Category;</div><div class="line"></div><div class="line"><span class="keyword">struct</span> objc_category &#123;</div><div class="line"><span class="keyword">char</span> *category_name                          OBJC2_UNAVAILABLE; <span class="comment">// 分类名</span></div><div class="line"><span class="keyword">char</span> *class_name                             OBJC2_UNAVAILABLE; <span class="comment">// 分类所属的类名</span></div><div class="line"><span class="keyword">struct</span> objc_method_list *instance_methods    OBJC2_UNAVAILABLE; <span class="comment">// 实例方法列表</span></div><div class="line"><span class="keyword">struct</span> objc_method_list *class_methods       OBJC2_UNAVAILABLE; <span class="comment">// 类方法列表</span></div><div class="line"><span class="keyword">struct</span> objc_protocol_list *protocols         OBJC2_UNAVAILABLE; <span class="comment">// 分类所实现的协议列表</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这个结构体主要包含了分类定义的实例方法与类方法，其中instance_methods列表是objc_class中方法列表的一个子集，而class_methods列表是元类方法列表的一个子集。</p>
+<h2 id="Protocol"><a href="#Protocol" class="headerlink" title="Protocol"></a>Protocol</h2><p>Protocol的定义如下：<br><figure class="highlight mm"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> objc_object Protocol;</div></pre></td></tr></table></figure></p>
+<p>我们可以看到，Protocol其中实就是一个对象结构体。</p>
+<h1 id="操作函数"><a href="#操作函数" class="headerlink" title="操作函数"></a>操作函数</h1><p>Runtime并没有在<objc runtime.h="">头文件中提供针对分类的操作函数。因为这些分类中的信息都包含在objc_class中，我们可以通过针对objc_class的操作函数来获取分类的信息。如下例所示：<br><figure class="highlight mm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">RuntimeCategoryClass</span> : <span class="title">NSObject</span></span></div><div class="line">- (<span class="keyword">void</span>)method1;</div><div class="line"><span class="keyword">@end</span></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">RuntimeCategoryClass</span> (<span class="title">Category</span>)</span></div><div class="line">- (<span class="keyword">void</span>)method2;</div><div class="line"><span class="keyword">@end</span></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">RuntimeCategoryClass</span></span></div><div class="line"></div><div class="line">- (<span class="keyword">void</span>)method1 &#123;</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">@end</span></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">RuntimeCategoryClass</span> (<span class="title">Category</span>)</span></div><div class="line"></div><div class="line">- (<span class="keyword">void</span>)method2 &#123;</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">@end</span></div><div class="line"></div><div class="line"><span class="meta">#pragma mark -</span></div><div class="line"></div><div class="line"><span class="built_in">NSLog</span>(<span class="string">@"测试objc_class中的方法列表是否包含分类中的方法"</span>);</div><div class="line"><span class="keyword">unsigned</span> <span class="keyword">int</span> outCount = <span class="number">0</span>;</div><div class="line">Method *methodList = class_copyMethodList(RuntimeCategoryClass.class, &amp;outCount);</div><div class="line"></div><div class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; outCount; i++) &#123;</div><div class="line">Method method = methodList[i];</div><div class="line"></div><div class="line"><span class="keyword">const</span> <span class="keyword">char</span> *name = sel_getName(method_getName(method));</div><div class="line"></div><div class="line"><span class="built_in">NSLog</span>(<span class="string">@"RuntimeCategoryClass's method: %s"</span>, name);</div><div class="line"></div><div class="line"><span class="keyword">if</span> (strcmp(name, sel_getName(<span class="keyword">@selector</span>(method2)))) &#123;</div><div class="line"><span class="built_in">NSLog</span>(<span class="string">@"分类方法method2在objc_class的方法列表中"</span>);</div><div class="line">&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></objc></p>
+<h3 id="其输出是："><a href="#其输出是：" class="headerlink" title="其输出是："></a>其输出是：</h3><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">2014-11-08 10:36:39.213 [561:151847] 测试objc_class中的方法列表是否包含分类中的方法</div><div class="line">2014-11-08 10:36:39.215 [561:151847] RuntimeCategoryClass's method: method2</div><div class="line">2014-11-08 10:36:39.215 [561:151847] RuntimeCategoryClass's method: method1</div><div class="line">2014-11-08 10:36:39.215 [561:151847] 分类方法method2在objc_class的方法列表中</div></pre></td></tr></table></figure>
+<h2 id="而对于Protocol，runtime提供了一系列函数来对其进行操作，这些函数包括："><a href="#而对于Protocol，runtime提供了一系列函数来对其进行操作，这些函数包括：" class="headerlink" title="而对于Protocol，runtime提供了一系列函数来对其进行操作，这些函数包括："></a>而对于Protocol，runtime提供了一系列函数来对其进行操作，这些函数包括：</h2><figure class="highlight mm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 返回指定的协议</span></div><div class="line">Protocol * objc_getProtocol ( <span class="keyword">const</span> <span class="keyword">char</span> *name );</div><div class="line"></div><div class="line"><span class="comment">// 获取运行时所知道的所有协议的数组</span></div><div class="line">Protocol ** objc_copyProtocolList ( <span class="keyword">unsigned</span> <span class="keyword">int</span> *outCount );</div><div class="line"></div><div class="line"><span class="comment">// 创建新的协议实例</span></div><div class="line">Protocol * objc_allocateProtocol ( <span class="keyword">const</span> <span class="keyword">char</span> *name );</div><div class="line"></div><div class="line"><span class="comment">// 在运行时中注册新创建的协议</span></div><div class="line"><span class="keyword">void</span> objc_registerProtocol ( Protocol *proto );</div><div class="line"></div><div class="line"><span class="comment">// 为协议添加方法</span></div><div class="line"><span class="keyword">void</span> protocol_addMethodDescription ( Protocol *proto, SEL name, <span class="keyword">const</span> <span class="keyword">char</span> *types, <span class="built_in">BOOL</span> isRequiredMethod, <span class="built_in">BOOL</span> isInstanceMethod );</div><div class="line"></div><div class="line"><span class="comment">// 添加一个已注册的协议到协议中</span></div><div class="line"><span class="keyword">void</span> protocol_addProtocol ( Protocol *proto, Protocol *addition );</div><div class="line"></div><div class="line"><span class="comment">// 为协议添加属性</span></div><div class="line"><span class="keyword">void</span> protocol_addProperty ( Protocol *proto, <span class="keyword">const</span> <span class="keyword">char</span> *name, <span class="keyword">const</span> objc_property_attribute_t *attributes, <span class="keyword">unsigned</span> <span class="keyword">int</span> attributeCount, <span class="built_in">BOOL</span> isRequiredProperty, <span class="built_in">BOOL</span> isInstanceProperty );</div><div class="line"></div><div class="line"><span class="comment">// 返回协议名</span></div><div class="line"><span class="keyword">const</span> <span class="keyword">char</span> * protocol_getName ( Protocol *p );</div><div class="line"></div><div class="line"><span class="comment">// 测试两个协议是否相等</span></div><div class="line"><span class="built_in">BOOL</span> protocol_isEqual ( Protocol *proto, Protocol *other );</div><div class="line"></div><div class="line"><span class="comment">// 获取协议中指定条件的方法的方法描述数组</span></div><div class="line"><span class="keyword">struct</span> objc_method_description * protocol_copyMethodDescriptionList ( Protocol *p, <span class="built_in">BOOL</span> isRequiredMethod, <span class="built_in">BOOL</span> isInstanceMethod, <span class="keyword">unsigned</span> <span class="keyword">int</span> *outCount );</div><div class="line"></div><div class="line"><span class="comment">// 获取协议中指定方法的方法描述</span></div><div class="line"><span class="keyword">struct</span> objc_method_description protocol_getMethodDescription ( Protocol *p, SEL aSel, <span class="built_in">BOOL</span> isRequiredMethod, <span class="built_in">BOOL</span> isInstanceMethod );</div><div class="line"></div><div class="line"><span class="comment">// 获取协议中的属性列表</span></div><div class="line">objc_property_t * protocol_copyPropertyList ( Protocol *proto, <span class="keyword">unsigned</span> <span class="keyword">int</span> *outCount );</div><div class="line"></div><div class="line"><span class="comment">// 获取协议的指定属性</span></div><div class="line">objc_property_t protocol_getProperty ( Protocol *proto, <span class="keyword">const</span> <span class="keyword">char</span> *name, <span class="built_in">BOOL</span> isRequiredProperty, <span class="built_in">BOOL</span> isInstanceProperty );</div><div class="line"></div><div class="line"><span class="comment">// 获取协议采用的协议</span></div><div class="line">Protocol ** protocol_copyProtocolList ( Protocol *proto, <span class="keyword">unsigned</span> <span class="keyword">int</span> *outCount );</div><div class="line"></div><div class="line"><span class="comment">// 查看协议是否采用了另一个协议</span></div><div class="line"><span class="built_in">BOOL</span> protocol_conformsToProtocol ( Protocol *proto, Protocol *other );</div></pre></td></tr></table></figure>
+<p>objc_getProtocol函数，需要注意的是如果仅仅是声明了一个协议，而未在任何类中实现这个协议，则该函数返回的是nil。</p>
+<p>● objc_copyProtocolList函数，获取到的数组需要使用free来释放</p>
+<p>● objc_allocateProtocol函数，如果同名的协议已经存在，则返回nil</p>
+<p>● objc_registerProtocol函数，创建一个新的协议后，必须调用该函数以在运行时中注册新的协议。协议注册后便可以使用，但不能再做修改，即注册完后不能再向协议添加方法或协议</p>
+<p>需要强调的是，协议一旦注册后就不可再修改，即无法再通过调用protocol_addMethodDescription、protocol_addProtocol和protocol_addProperty往协议中添加方法等。</p>
+<h1 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h1><p>Runtime并没有提供过多的函数来处理分类。对于协议，我们可以动态地创建协议，并向其添加方法、属性及继承的协议，并在运行时动态地获取这些信息。</p>
+<p><a href="http://www.cocoachina.com/ios/20141031/10105.html" target="_blank" rel="external">Objective-C Runtime 运行时之一：类与对象</a><br><a href="http://www.cocoachina.com/ios/20141105/10134.html" target="_blank" rel="external">Objective-C Runtime 运行时之二：成员变量与属性</a><br><a href="http://www.cocoachina.com/ios/20141106/10150.html" target="_blank" rel="external">Objective-C Runtime 运行时之三：方法与消息</a><br><a href="http://www.cocoachina.com/ios/20140225/7880.html" target="_blank" rel="external">Objective-C Runtime 运行时之四：Method Swizzling</a></p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/iOS/">iOS</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="https://github.com/LiShengmin/2016/07/19/iOS-RunTime/" data-title="iOS-RunTime | Shemmy" data-tsina="null" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2016/07/13/iOS-获取网卡地址和IP地址/" title="iOS-获取网卡地址和IP地址">
+  <strong>上一篇：</strong><br/>
+  <span>
+  iOS-获取网卡地址和IP地址</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2016/08/17/iOS-CollectionViewCell的复用问题/"  title="iOS-CollectionViewCell的复用问题">
+ <strong>下一篇：</strong><br/> 
+ <span>iOS-CollectionViewCell的复用问题
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#基础数据类型"><span class="toc-number">1.</span> <span class="toc-text">基础数据类型</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Category"><span class="toc-number">1.1.</span> <span class="toc-text">Category</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Protocol"><span class="toc-number">1.2.</span> <span class="toc-text">Protocol</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#操作函数"><span class="toc-number">2.</span> <span class="toc-text">操作函数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#其输出是："><span class="toc-number">2.0.1.</span> <span class="toc-text">其输出是：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#而对于Protocol，runtime提供了一系列函数来对其进行操作，这些函数包括："><span class="toc-number">2.1.</span> <span class="toc-text">而对于Protocol，runtime提供了一系列函数来对其进行操作，这些函数包括：</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#小结"><span class="toc-number">3.</span> <span class="toc-text">小结</span></a></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+<div class="github-card">
+<p class="asidetitle">Github 名片</p>
+<div class="github-card" data-github="lishengmin" data-width="220" data-height="119" data-theme="medium">
+<script type="text/javascript" src="//cdn.jsdelivr.net/github-cards/latest/widget.js" ></script>
+</div>
+  </div>
+
+
+
+  
+
+  
+<div class="tagslist">
+	<p class="asidetitle">标签</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/iOS/" title="iOS">iOS<sup>32</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/架构/" title="架构">架构<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/C/" title="C">C<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/MacOS/" title="MacOS">MacOS<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/iOS-机器学习/" title="iOS, 机器学习">iOS, 机器学习<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">友情链接</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="https://www.github.com/lishengmin" target="_blank" title="Shemmy&#39;s GitHub">Shemmy&#39;s GitHub</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="https://blog.cnbluebox.com" target="_blank" title="刘坤的技术博客">刘坤的技术博客</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="https://casatwy.com/iosying-yong-jia-gou-tan-viewceng-de-zu-zhi-he-diao-yong-fang-an.html" target="_blank" title="casa&#39;s Blog">casa&#39;s Blog</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://blog.robotframework.cn" target="_blank" title="齐道长的博客">齐道长的博客</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="https://icocos.github.io" target="_blank" title="iCocos@曹理鹏">iCocos@曹理鹏</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
+</div>
+
+  <div class="weiboshow">
+  <p class="asidetitle">新浪微博</p>
+    <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=null&verifier=b3593ceb&dpc=1"></iframe>
+</div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> Hello ,I&#39;m Sheemy Page in GitHub. <br/>
+			This is my blog,believe it or not.</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		<a href="http://weibo.com/2176287895" target="_blank" class="icon-weibo" title="微博"></a>
+		
+		
+		<a href="https://github.com/lishengmin" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		<a href="mailto:lishengminbj@gmail.com" target="_blank" class="icon-email" title="Email Me"></a>
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Shemmy</a> © 2017 
+		
+		<a href="/about" target="_blank" title="Shemmy">Shemmy</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?e6d1f421bbc9962127a50488f9ed37d1";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>

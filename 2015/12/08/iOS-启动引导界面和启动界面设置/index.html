@@ -1,0 +1,508 @@
+
+ <!DOCTYPE HTML>
+<html >
+<head>
+  <meta charset="UTF-8">
+  
+    <title>iOS-引导界面和启动界面设置 | Shemmy</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="Shemmy">
+    
+
+    
+    <meta name="description" content="APP下载安装第一次使用一般会显示一个首次启动引导界面然后进入主界面，非首次开启APP也通常会显示一个启动界面然后进入主界面。1、本例首次启动显示FirstUseViewController，添加一个button，点击进入LaunchViewController2、非首次LaunchViewController，显示2s后进入主界面ViewController3、主界面ViewController">
+<meta name="keywords" content="iOS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iOS-引导界面和启动界面设置">
+<meta property="og:url" content="https://github.com/LiShengmin/2015/12/08/iOS-启动引导界面和启动界面设置/index.html">
+<meta property="og:site_name" content="Shemmy">
+<meta property="og:description" content="APP下载安装第一次使用一般会显示一个首次启动引导界面然后进入主界面，非首次开启APP也通常会显示一个启动界面然后进入主界面。1、本例首次启动显示FirstUseViewController，添加一个button，点击进入LaunchViewController2、非首次LaunchViewController，显示2s后进入主界面ViewController3、主界面ViewController">
+<meta property="og:updated_time" content="2017-06-19T16:37:38.397Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="iOS-引导界面和启动界面设置">
+<meta name="twitter:description" content="APP下载安装第一次使用一般会显示一个首次启动引导界面然后进入主界面，非首次开启APP也通常会显示一个启动界面然后进入主界面。1、本例首次启动显示FirstUseViewController，添加一个button，点击进入LaunchViewController2、非首次LaunchViewController，显示2s后进入主界面ViewController3、主界面ViewController">
+
+    
+    <link rel="alternative" href="/atom.xml" title="Shemmy" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="Shemmy" title="Shemmy"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="Shemmy">Shemmy</a></h1>
+				<h2 class="blog-motto">iOS, 架构， Python, AI, go</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/about">About</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="hidden" name="q" value="site:github.com/LiShengmin">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2015/12/08/iOS-启动引导界面和启动界面设置/" title="iOS-引导界面和启动界面设置" itemprop="url">iOS-引导界面和启动界面设置</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Shemmy" target="_blank" itemprop="author">Shemmy</a>
+		
+  <p class="article-time">
+    <time datetime="2015-12-08T04:27:39.000Z" itemprop="datePublished"> 发表于 2015-12-08</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		
+			
+		
+		</div>
+		
+		<p>APP下载安装第一次使用一般会显示一个首次启动引导界面然后进入主界面，非首次开启APP也通常会显示一个启动界面然后进入主界面。<br>1、本例首次启动显示FirstUseViewController，添加一个button，点击进入LaunchViewController<br>2、非首次LaunchViewController，显示2s后进入主界面ViewController<br>3、主界面ViewController<br>4、不深究细节，一般启动引导都会有动画，图片之类的，非本次练习重点，所以没有设置，只有简单地标志作界面区分<br>（效果图在文末）<a id="more"></a><br>FirstUseViewController.m<br><figure class="highlight mm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">- (<span class="keyword">void</span>)viewDidLoad &#123; </div><div class="line">[<span class="keyword">super</span> viewDidLoad];</div><div class="line"><span class="keyword">self</span>.view.backgroundColor = [<span class="built_in">UIColor</span> greenColor];</div><div class="line"></div><div class="line"><span class="built_in">UIButton</span> *button = [[<span class="built_in">UIButton</span> alloc] initWithFrame:<span class="built_in">CGRectMake</span>(<span class="number">0</span>, <span class="number">0</span>, <span class="number">100</span>, <span class="number">100</span>)];</div><div class="line">button.center = <span class="keyword">self</span>.view.center;</div><div class="line">[button setTitle:<span class="string">@"Welcome"</span> forState:<span class="built_in">UIControlStateNormal</span>];</div><div class="line">[button addTarget:<span class="keyword">self</span> action:<span class="keyword">@selector</span>(btnAction:) forControlEvents:<span class="built_in">UIControlEventTouchUpInside</span>];</div><div class="line">[<span class="keyword">self</span>.view addSubview:button];</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//点击button切换到下一个界面</span></div><div class="line">- (<span class="keyword">void</span>)btnAction:(<span class="built_in">UIButton</span> *)btn &#123;</div><div class="line">LaunchViewController *vc = [[LaunchViewController alloc] init];</div><div class="line"><span class="keyword">self</span>.view.window.rootViewController = vc;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>LaunchViewController.m<br><figure class="highlight mm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line">- (<span class="keyword">void</span>)viewDidLoad &#123;</div><div class="line"></div><div class="line">[<span class="keyword">super</span> viewDidLoad];</div><div class="line"></div><div class="line"><span class="keyword">self</span>.view.backgroundColor = [<span class="built_in">UIColor</span> blueColor];</div><div class="line"><span class="built_in">UILabel</span> *label = [[<span class="built_in">UILabel</span> alloc] initWithFrame:<span class="built_in">CGRectMake</span>(<span class="number">0</span>, <span class="number">0</span>, <span class="number">200</span>, <span class="number">50</span>)];</div><div class="line">label.center = <span class="keyword">self</span>.view.center;</div><div class="line">[label setFont:[<span class="built_in">UIFont</span> systemFontOfSize:<span class="number">30</span>]];</div><div class="line">label.text = <span class="string">@"启动页面"</span>;</div><div class="line">[<span class="keyword">self</span>.view addSubview:label];</div><div class="line"></div><div class="line"><span class="comment">//    延迟2s调用，一般启动页面会停留，或者有些动画什么的，本例只简述思路，不深究细节</span></div><div class="line">[<span class="keyword">self</span> performSelector:<span class="keyword">@selector</span>(changeView) withObject:<span class="keyword">self</span> afterDelay:<span class="number">2</span>];</div><div class="line"><span class="comment">// Do any additional setup after loading the view.</span></div><div class="line">&#125;	</div><div class="line"></div><div class="line"><span class="comment">//切换到下一个界面</span></div><div class="line">- (<span class="keyword">void</span>)changeView &#123;</div><div class="line"><span class="built_in">UIWindow</span> *window = <span class="keyword">self</span>.view.window;</div><div class="line">ViewController *main = [[ViewController alloc] init];</div><div class="line"></div><div class="line"><span class="comment">//添加一个缩放效果</span></div><div class="line">main.view.transform = <span class="built_in">CGAffineTransformMakeScale</span>(<span class="number">0.2</span>, <span class="number">0.2</span>);</div><div class="line">[<span class="built_in">UIView</span> animateWithDuration:<span class="number">0.1</span> animations:^&#123;</div><div class="line">main.view.transform = <span class="built_in">CGAffineTransformIdentity</span>;</div><div class="line">&#125;];</div><div class="line"></div><div class="line">window.rootViewController = main;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>ViewController.m<br><figure class="highlight mm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">- (<span class="keyword">void</span>)viewDidLoad &#123;</div><div class="line">[<span class="keyword">super</span> viewDidLoad];</div><div class="line"></div><div class="line"><span class="keyword">self</span>.view.backgroundColor = [<span class="built_in">UIColor</span> grayColor];</div><div class="line"><span class="built_in">UILabel</span> *label = [[<span class="built_in">UILabel</span> alloc] initWithFrame:<span class="built_in">CGRectMake</span>(<span class="number">0</span>, <span class="number">0</span>, <span class="number">100</span>, <span class="number">50</span>)];</div><div class="line">label.center = <span class="keyword">self</span>.view.center;</div><div class="line">[label setFont:[<span class="built_in">UIFont</span> systemFontOfSize:<span class="number">30</span>]];</div><div class="line">label.text = <span class="string">@"主界面"</span>;</div><div class="line">[<span class="keyword">self</span>.view addSubview:label];</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>AppDelegate.m设置，两种方法。个人觉得第二种利用NSUserDefaults实现更方便<br><figure class="highlight mm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line">- (<span class="built_in">BOOL</span>)application:(<span class="built_in">UIApplication</span> *)application didFinishLaunchingWithOptions:(<span class="built_in">NSDictionary</span> *)launchOptions &#123;</div><div class="line"><span class="keyword">self</span>.window = [[<span class="built_in">UIWindow</span> alloc] initWithFrame:[<span class="built_in">UIScreen</span> mainScreen].bounds];</div><div class="line"><span class="keyword">self</span>.window.backgroundColor = [<span class="built_in">UIColor</span> whiteColor];</div><div class="line">[<span class="keyword">self</span>.window makeKeyAndVisible];</div><div class="line"></div><div class="line"><span class="comment">////    利用文件操作判断是否为第一次使用此APP</span></div><div class="line"><span class="comment">//    NSString *filePath = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/firstUse.plist"];    //第一次启动，没有此文件，会自动创建</span></div><div class="line"><span class="comment">//    NSDictionary *dic = [NSDictionary dictionaryWithContentsOfFile:filePath];</span></div><div class="line"><span class="comment">//    </span></div><div class="line"><span class="comment">//    BOOL notFirstUse = YES;</span></div><div class="line"><span class="comment">//    notFirstUse = [dic[@"notFirstUse"] boolValue];</span></div><div class="line"><span class="comment">//    if (!notFirstUse) &#123;</span></div><div class="line"><span class="comment">//        NSDictionary *dic = @&#123;@"notFirstUse" : @YES &#125;;</span></div><div class="line"><span class="comment">//        [dic writeToFile:filePath atomically:YES];</span></div><div class="line"><span class="comment">//        FirstUseViewController *vc = [[FirstUseViewController alloc] init];</span></div><div class="line"><span class="comment">//        self.window.rootViewController = vc;</span></div><div class="line"><span class="comment">//    &#125;else &#123;</span></div><div class="line"><span class="comment">//        LaunchViewController *vc = [[LaunchViewController alloc] init];</span></div><div class="line"><span class="comment">//        self.window.rootViewController = vc;</span></div><div class="line"><span class="comment">//    &#125;</span></div><div class="line"><span class="comment">//</span></div><div class="line"></div><div class="line"><span class="comment">//    利用NSUserDefaults实现</span></div><div class="line"><span class="keyword">if</span>(![[<span class="built_in">NSUserDefaults</span> standardUserDefaults] boolForKey:<span class="string">@"firstLaunch"</span>]) &#123;</div><div class="line">[[<span class="built_in">NSUserDefaults</span> standardUserDefaults] setBool:<span class="literal">YES</span> forKey:<span class="string">@"firstLaunch"</span>];</div><div class="line"><span class="built_in">NSLog</span>(<span class="string">@"首次启动"</span>);</div><div class="line">FirstUseViewController *vc = [[FirstUseViewController alloc] init];</div><div class="line"><span class="keyword">self</span>.window.rootViewController = vc;</div><div class="line">&#125;<span class="keyword">else</span> &#123;</div><div class="line"><span class="built_in">NSLog</span>(<span class="string">@"非首次启动"</span>);</div><div class="line">LaunchViewController *vc = [[LaunchViewController alloc] init];</div><div class="line"><span class="keyword">self</span>.window.rootViewController = vc;</div><div class="line">&#125;</div><div class="line"><span class="keyword">return</span> <span class="literal">YES</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>版权声明：本文为博主原创文章，未经博主允许不得转载。</p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/iOS/">iOS</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="https://github.com/LiShengmin/2015/12/08/iOS-启动引导界面和启动界面设置/" data-title="iOS-引导界面和启动界面设置 | Shemmy" data-tsina="null" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2015/12/04/iOS-保存文件到本地的方法/" title="iOS-保存文件到本地的方法">
+  <strong>上一篇：</strong><br/>
+  <span>
+  iOS-保存文件到本地的方法</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2015/12/19/iOS-基于AFNetWorking 网络请求/"  title="iOS-基于AFNetWorking 网络请求">
+ <strong>下一篇：</strong><br/> 
+ <span>iOS-基于AFNetWorking 网络请求
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+ 
+ 
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+<div class="github-card">
+<p class="asidetitle">Github 名片</p>
+<div class="github-card" data-github="lishengmin" data-width="220" data-height="119" data-theme="medium">
+<script type="text/javascript" src="//cdn.jsdelivr.net/github-cards/latest/widget.js" ></script>
+</div>
+  </div>
+
+
+
+  
+
+  
+<div class="tagslist">
+	<p class="asidetitle">标签</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/iOS/" title="iOS">iOS<sup>32</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/架构/" title="架构">架构<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/C/" title="C">C<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/MacOS/" title="MacOS">MacOS<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/iOS-机器学习/" title="iOS, 机器学习">iOS, 机器学习<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">友情链接</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="https://www.github.com/lishengmin" target="_blank" title="Shemmy&#39;s GitHub">Shemmy&#39;s GitHub</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="https://blog.cnbluebox.com" target="_blank" title="刘坤的技术博客">刘坤的技术博客</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="https://casatwy.com/iosying-yong-jia-gou-tan-viewceng-de-zu-zhi-he-diao-yong-fang-an.html" target="_blank" title="casa&#39;s Blog">casa&#39;s Blog</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://blog.robotframework.cn" target="_blank" title="齐道长的博客">齐道长的博客</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="https://icocos.github.io" target="_blank" title="iCocos@曹理鹏">iCocos@曹理鹏</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
+</div>
+
+  <div class="weiboshow">
+  <p class="asidetitle">新浪微博</p>
+    <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=null&verifier=b3593ceb&dpc=1"></iframe>
+</div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> Hello ,I&#39;m Sheemy Page in GitHub. <br/>
+			This is my blog,believe it or not.</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		<a href="http://weibo.com/2176287895" target="_blank" class="icon-weibo" title="微博"></a>
+		
+		
+		<a href="https://github.com/lishengmin" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		<a href="mailto:lishengminbj@gmail.com" target="_blank" class="icon-email" title="Email Me"></a>
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Shemmy</a> © 2017 
+		
+		<a href="/about" target="_blank" title="Shemmy">Shemmy</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?e6d1f421bbc9962127a50488f9ed37d1";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>

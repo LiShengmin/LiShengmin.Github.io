@@ -1,0 +1,511 @@
+
+ <!DOCTYPE HTML>
+<html >
+<head>
+  <meta charset="UTF-8">
+  
+    <title>iOS-IdtentifyLookUp身份查询 | Shemmy</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="Shemmy">
+    
+
+    
+    <meta name="description" content="文章翻译于苹果官方文档 SDK：iOS 11.0+ Beta 框架IdtentifyLookUp创建可以识别和过滤不需要的短信和彩信的应用程序扩展，并保留用户隐私。概览当收到来自未知发件人的SMS或MMS消息时，Messages应用程序可以询问您的应用程序扩展以确定消息是否需要过滤。您的应用程序扩展可以通过使用自己的内置数据和逻辑或通过延迟关联的服务器进行的分析来做出这一决定。123**注意**身">
+<meta name="keywords" content="iOS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iOS-IdtentifyLookUp身份查询">
+<meta property="og:url" content="https://github.com/LiShengmin/2017/06/17/iOS-IdtentifyLookUp身份查询/index.html">
+<meta property="og:site_name" content="Shemmy">
+<meta property="og:description" content="文章翻译于苹果官方文档 SDK：iOS 11.0+ Beta 框架IdtentifyLookUp创建可以识别和过滤不需要的短信和彩信的应用程序扩展，并保留用户隐私。概览当收到来自未知发件人的SMS或MMS消息时，Messages应用程序可以询问您的应用程序扩展以确定消息是否需要过滤。您的应用程序扩展可以通过使用自己的内置数据和逻辑或通过延迟关联的服务器进行的分析来做出这一决定。123**注意**身">
+<meta property="og:updated_time" content="2017-06-19T15:04:05.281Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="iOS-IdtentifyLookUp身份查询">
+<meta name="twitter:description" content="文章翻译于苹果官方文档 SDK：iOS 11.0+ Beta 框架IdtentifyLookUp创建可以识别和过滤不需要的短信和彩信的应用程序扩展，并保留用户隐私。概览当收到来自未知发件人的SMS或MMS消息时，Messages应用程序可以询问您的应用程序扩展以确定消息是否需要过滤。您的应用程序扩展可以通过使用自己的内置数据和逻辑或通过延迟关联的服务器进行的分析来做出这一决定。123**注意**身">
+
+    
+    <link rel="alternative" href="/atom.xml" title="Shemmy" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="Shemmy" title="Shemmy"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="Shemmy">Shemmy</a></h1>
+				<h2 class="blog-motto">iOS, 架构， Python, AI, go</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/about">About</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="hidden" name="q" value="site:github.com/LiShengmin">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2017/06/17/iOS-IdtentifyLookUp身份查询/" title="iOS-IdtentifyLookUp身份查询" itemprop="url">iOS-IdtentifyLookUp身份查询</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Shemmy" target="_blank" itemprop="author">Shemmy</a>
+		
+  <p class="article-time">
+    <time datetime="2017-06-17T13:03:30.000Z" itemprop="datePublished"> 发表于 2017-06-17</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#框架"><span class="toc-number">1.</span> <span class="toc-text">框架</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#IdtentifyLookUp"><span class="toc-number"></span> <span class="toc-text">IdtentifyLookUp</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#创建可以识别和过滤不需要的短信和彩信的应用程序扩展，并保留用户隐私。"><span class="toc-number">1.</span> <span class="toc-text">创建可以识别和过滤不需要的短信和彩信的应用程序扩展，并保留用户隐私。</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#概览"><span class="toc-number">2.</span> <span class="toc-text">概览</span></a></li></ol>
+		
+		</div>
+		
+		<p>文章翻译于<a href="https://developer.apple.com/documentation/identitylookup" target="_blank" rel="external">苹果官方文档</a></p>
+<p>SDK：iOS 11.0+ Beta</p>
+<h2 id="框架"><a href="#框架" class="headerlink" title="框架"></a>框架</h2><h1 id="IdtentifyLookUp"><a href="#IdtentifyLookUp" class="headerlink" title="IdtentifyLookUp"></a>IdtentifyLookUp</h1><h2 id="创建可以识别和过滤不需要的短信和彩信的应用程序扩展，并保留用户隐私。"><a href="#创建可以识别和过滤不需要的短信和彩信的应用程序扩展，并保留用户隐私。" class="headerlink" title="创建可以识别和过滤不需要的短信和彩信的应用程序扩展，并保留用户隐私。"></a>创建可以识别和过滤不需要的短信和彩信的应用程序扩展，并保留用户隐私。</h2><h2 id="概览"><a href="#概览" class="headerlink" title="概览"></a>概览</h2><p>当收到来自未知发件人的SMS或MMS消息时，Messages应用程序可以询问您的应用程序扩展以确定消息是否需要过滤。您的应用程序扩展可以通过使用自己的内置数据和逻辑或通过延迟关联的服务器进行的分析来做出这一决定。<br><figure class="highlight abnf"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">**注意**</div><div class="line">身份查询仅适用于来自未知发件人的短信和彩信<span class="comment">; </span></div><div class="line">不适用于用户的联系人中的发件人的消息或来自任何来源的iMessage消息。</div></pre></td></tr></table></figure></p>
+<p>要查看来自未知发件人的邮件是否需要过滤，“信息”应用将启动当前启用的邮件过滤器应用并进行查询，如图1所示。<br><img src="" alt="图1"><br>将查询传递给消息过滤器应用程序扩展以获取消息的状态</p>
+<p>“信息”应用将使用一个对象，将有关该消息的信息传递到您的消息过滤器应用程序扩展。如果您的应用程序扩展可以确定消息不需要，它会将其决定返回给对象中的消息。<br>ILMessageFilterQueryRequest<br>ILMessageFilterQueryResponse<br>如果您的应用扩展程序本身无法做出这一决定，则会告知消息将有关该消息的信息发送到与您的应用相关联的服务器。您的服务器会检查邮件信息，并发送回邮件，该邮件将响应传递给您的应用程序扩展。应用程序扩展解析服务器的响应，并给出对象中消息的最终决定，如图2所示。<br>ILMessageFilterQueryResponse<br>图2<br>将查询传递给应用程序的关联服务器以获取消息的状态</p>
+<p>注意</p>
+<p>出于隐私的原因，系统处理与您的关联服务器的所有通信; 您的邮件过滤器应用程序扩展名无法直接访问网络。<br>另外，出于隐私的原因，您的应用扩展程序无法将数据写入与包含的应用程序共享的容器。<br>主题<br>第一步</p>
+<p>创建消息过滤器应用程序扩展<br>创建一个可以识别不需要的邮件的应用程序扩展。<br>应用程式扩充功能<br>class ILMessageFilterExtensionContext<br>消息过滤应用程序扩展的扩展上下文。<br>class ILMessageFilterExtension<br>消息过滤器应用程序扩展的主要类的抽象基类。<br>查询<br>class ILMessageFilterQueryRequest<br>请求消息过滤应用程序扩展，以确定从未知发件人接收的消息的状态。<br>protocol ILMessageFilterQueryHandling<br>一组通过消息过滤应用程序扩展来处理查询请求的方法。<br>回应<br>class ILMessageFilterQueryResponse<br>对消息过滤器查询请求的响应。<br>class ILNetworkResponse<br>响应HTTPS代理消息过滤器应用程序扩展执行的HTTPS网络请求。<br>enum ILMessageFilterAction<br>采取响应收到的消息的动作。<br>错误<br>struct ILMessageFilterError<br>let ILMessageFilterErrorDomain: String<br>enum ILMessageFilterError.Code</p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/iOS/">iOS</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="https://github.com/LiShengmin/2017/06/17/iOS-IdtentifyLookUp身份查询/" data-title="iOS-IdtentifyLookUp身份查询 | Shemmy" data-tsina="null" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2017/06/17/iOS-Block内存管理/" title="iOS-Block内存管理">
+  <strong>上一篇：</strong><br/>
+  <span>
+  iOS-Block内存管理</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2017/06/20/iOS-CoreML/"  title="iOS-CoreML">
+ <strong>下一篇：</strong><br/> 
+ <span>iOS-CoreML
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#框架"><span class="toc-number">1.</span> <span class="toc-text">框架</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#IdtentifyLookUp"><span class="toc-number"></span> <span class="toc-text">IdtentifyLookUp</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#创建可以识别和过滤不需要的短信和彩信的应用程序扩展，并保留用户隐私。"><span class="toc-number">1.</span> <span class="toc-text">创建可以识别和过滤不需要的短信和彩信的应用程序扩展，并保留用户隐私。</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#概览"><span class="toc-number">2.</span> <span class="toc-text">概览</span></a></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+<div class="github-card">
+<p class="asidetitle">Github 名片</p>
+<div class="github-card" data-github="lishengmin" data-width="220" data-height="119" data-theme="medium">
+<script type="text/javascript" src="//cdn.jsdelivr.net/github-cards/latest/widget.js" ></script>
+</div>
+  </div>
+
+
+
+  
+
+  
+<div class="tagslist">
+	<p class="asidetitle">标签</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/iOS/" title="iOS">iOS<sup>32</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/架构/" title="架构">架构<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/C/" title="C">C<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/MacOS/" title="MacOS">MacOS<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/iOS-机器学习/" title="iOS, 机器学习">iOS, 机器学习<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">友情链接</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="https://www.github.com/lishengmin" target="_blank" title="Shemmy&#39;s GitHub">Shemmy&#39;s GitHub</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="https://blog.cnbluebox.com" target="_blank" title="刘坤的技术博客">刘坤的技术博客</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="https://casatwy.com/iosying-yong-jia-gou-tan-viewceng-de-zu-zhi-he-diao-yong-fang-an.html" target="_blank" title="casa&#39;s Blog">casa&#39;s Blog</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://blog.robotframework.cn" target="_blank" title="齐道长的博客">齐道长的博客</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="https://icocos.github.io" target="_blank" title="iCocos@曹理鹏">iCocos@曹理鹏</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
+</div>
+
+  <div class="weiboshow">
+  <p class="asidetitle">新浪微博</p>
+    <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=null&verifier=b3593ceb&dpc=1"></iframe>
+</div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> Hello ,I&#39;m Sheemy Page in GitHub. <br/>
+			This is my blog,believe it or not.</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		<a href="http://weibo.com/2176287895" target="_blank" class="icon-weibo" title="微博"></a>
+		
+		
+		<a href="https://github.com/lishengmin" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		<a href="mailto:lishengminbj@gmail.com" target="_blank" class="icon-email" title="Email Me"></a>
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Shemmy</a> © 2017 
+		
+		<a href="/about" target="_blank" title="Shemmy">Shemmy</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?e6d1f421bbc9962127a50488f9ed37d1";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>

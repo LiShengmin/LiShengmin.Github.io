@@ -1,0 +1,578 @@
+
+ <!DOCTYPE HTML>
+<html >
+<head>
+  <meta charset="UTF-8">
+  
+    <title>架构-架构漫谈 | Shemmy</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="Shemmy">
+    
+
+    
+    <meta name="description" content="架构非常感谢Casa的分享！这篇文章主要参考了Casa的分享和博客。还有个人的一些理解，希望通过这些阶段性的总结和思考，来让大家成为更好架构师，和理解架构师在做什么。 #ios #架构#  什么是架构 提供完整具备唯一性的解决方案 通过设计能力减少工程的开发成本 规避工程实施中可能存在的技术问题&amp;amp;&amp;amp;非技术问题规避： 避免腐蚀架构避免团队脱节     架构是审美与权衡在我的认知种架构">
+<meta name="keywords" content="架构">
+<meta property="og:type" content="article">
+<meta property="og:title" content="架构-架构漫谈">
+<meta property="og:url" content="https://github.com/LiShengmin/2017/06/20/架构-架构漫谈/index.html">
+<meta property="og:site_name" content="Shemmy">
+<meta property="og:description" content="架构非常感谢Casa的分享！这篇文章主要参考了Casa的分享和博客。还有个人的一些理解，希望通过这些阶段性的总结和思考，来让大家成为更好架构师，和理解架构师在做什么。 #ios #架构#  什么是架构 提供完整具备唯一性的解决方案 通过设计能力减少工程的开发成本 规避工程实施中可能存在的技术问题&amp;amp;&amp;amp;非技术问题规避： 避免腐蚀架构避免团队脱节     架构是审美与权衡在我的认知种架构">
+<meta property="og:updated_time" content="2017-06-19T17:16:01.838Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="架构-架构漫谈">
+<meta name="twitter:description" content="架构非常感谢Casa的分享！这篇文章主要参考了Casa的分享和博客。还有个人的一些理解，希望通过这些阶段性的总结和思考，来让大家成为更好架构师，和理解架构师在做什么。 #ios #架构#  什么是架构 提供完整具备唯一性的解决方案 通过设计能力减少工程的开发成本 规避工程实施中可能存在的技术问题&amp;amp;&amp;amp;非技术问题规避： 避免腐蚀架构避免团队脱节     架构是审美与权衡在我的认知种架构">
+
+    
+    <link rel="alternative" href="/atom.xml" title="Shemmy" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="Shemmy" title="Shemmy"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="Shemmy">Shemmy</a></h1>
+				<h2 class="blog-motto">iOS, 架构， Python, AI, go</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/about">About</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="hidden" name="q" value="site:github.com/LiShengmin">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2017/06/20/架构-架构漫谈/" title="架构-架构漫谈" itemprop="url">架构-架构漫谈</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Shemmy" target="_blank" itemprop="author">Shemmy</a>
+		
+  <p class="article-time">
+    <time datetime="2017-06-19T17:15:49.000Z" itemprop="datePublished"> 发表于 2017-06-20</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#架构"><span class="toc-number">1.</span> <span class="toc-text">架构</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#什么是架构"><span class="toc-number">1.1.</span> <span class="toc-text">什么是架构</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#架构是审美与权衡"><span class="toc-number">2.</span> <span class="toc-text">架构是审美与权衡</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#权衡"><span class="toc-number">2.1.</span> <span class="toc-text">权衡</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#逻辑"><span class="toc-number">2.2.</span> <span class="toc-text">逻辑</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#追求简约和极致"><span class="toc-number">2.3.</span> <span class="toc-text">追求简约和极致</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#架构是会演化的"><span class="toc-number">3.</span> <span class="toc-text">架构是会演化的</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#如何给大模块做架构"><span class="toc-number">3.1.</span> <span class="toc-text">如何给大模块做架构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#接手新项目时，如何做架构调整"><span class="toc-number">3.2.</span> <span class="toc-text">接手新项目时，如何做架构调整</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#架构中的对称性"><span class="toc-number">3.3.</span> <span class="toc-text">架构中的对称性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#辩证的对待架构的灵活和限制"><span class="toc-number">3.4.</span> <span class="toc-text">辩证的对待架构的灵活和限制</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#辨证对待多和少"><span class="toc-number">3.5.</span> <span class="toc-text">辨证对待多和少</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#几个问题"><span class="toc-number">3.6.</span> <span class="toc-text">几个问题</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Q-amp-A"><span class="toc-number">4.</span> <span class="toc-text">Q&A</span></a></li></ol>
+		
+		</div>
+		
+		<h1 id="架构"><a href="#架构" class="headerlink" title="架构"></a>架构</h1><p>非常感谢Casa的分享！这篇文章主要参考了Casa的分享和博客。还有个人的一些理解，希望通过这些阶段性的总结和思考，来让大家成为更好架构师，和理解架构师在做什么。</p>
+<p>#ios #架构# </p>
+<h2 id="什么是架构"><a href="#什么是架构" class="headerlink" title="什么是架构"></a>什么是架构</h2><ul>
+<li>提供完整具备唯一性的解决方案</li>
+<li>通过设计能力减少工程的开发成本</li>
+<li>规避工程实施中可能存在的技术问题&amp;&amp;非技术问题规避：<blockquote>
+<p>避免腐蚀架构<br>避免团队脱节</p>
+</blockquote>
+</li>
+</ul>
+<hr>
+<h1 id="架构是审美与权衡"><a href="#架构是审美与权衡" class="headerlink" title="架构是审美与权衡"></a>架构是审美与权衡</h1><p>在我的认知种架构就是在做如下3件事：</p>
+<ol>
+<li>权衡（大一统&amp;&amp;去中心化）</li>
+<li>决策</li>
+<li>追求简约和极致<br>在下面我会详细的解释上面3点都表达了什么。<h2 id="权衡"><a href="#权衡" class="headerlink" title="权衡"></a>权衡</h2>说到权衡</li>
+</ol>
+<ul>
+<li>不要因小失大（架构师总是在过渡设计和满足需求之间徘徊）<br>当架构师不能控制代码的走向，架构就失败了。 继承？</li>
+<li>不必循规蹈矩（不必为了使用技术而使用技术，一切都是自然而然的）<br>在项目做某个模块的时候，选型为：MVC，MVVM，VIPER？其实都是可以的，没有什么高下，要看业务具体需求。</li>
+<li>要用发展的眼光看待架构。<br>如一开始我们使用了继承基础类的方式来做，感觉非常棒，直接调用，函数什么的用着也方便，但是当工程越来越大，基础类中的东西越来越庞杂，越来越无法分离，慢慢的就会产生很多问题。<br>还有就是有人说我们可以制定一个规范，但是从以往的经验来看，规范一般都是落实在纸上（规范的可行性不会很好）。</li>
+<li>别人事情归别人做，自己的事情就自己做，（你不要去做别人的事）<br>当我们规定了VC做的只是做调度（摆放控件），控件之间通讯由被下发的下一个层级来做，或者由专门的ViewModel来做，就避免了VC做了太多的事情。</li>
+</ul>
+<h2 id="逻辑"><a href="#逻辑" class="headerlink" title="逻辑"></a>逻辑</h2><p>说到逻辑，就不得不说大家在处理逻辑上的一些误区，在这里我就只为大家提供了一些常见的误区。并附赠了一个小例子作为参考。</p>
+<ul>
+<li>画蛇添足：设计了一个并没有解决任何问题的机制<br>这个就是典型的过渡设计的范畴，我见过一个iOS开发工程师，使用连续集成VC来达到扩展VC的目的，然后大概的就是:<br>Base1VC&lt;-Base2VC&lt;-Base3VC&lt;-VC,其中Base1VC还没有想好写的什么就先空着。</li>
+<li>隔靴搔痒：解决了周边问题，并没有解决核心问题<br>因为App的crash率很高，项目组决定从OC迁移到Swift，而不是解决为什么慢。<br>因为界面加载慢，就拍脑袋降低了View的层次；而不是具体分析下为什么加载缓慢的原因。</li>
+<li>顾此失彼：解决主要问题，引入了更多问题；<br>本来要解决照片怎么存储的问题，引入了FMDB，又对其进行了封装，还对其做了状态机，最后其实引入了FileManager就可以实现目的。</li>
+<li>南辕北辙：条件和结果不匹配<br>用一个本来就和结论不相匹配的条件，来作为依据。／条件推倒不出来结果。</li>
+<li>本末倒置：因为作为后果，后果最为前因<br>比如别人通常问我能不能看看你的文件目录，想通过文件结构推到出我的架构模式。其实这是不对的，是先有了架构，才有文件结构。而不是，新建了3个文件夹Model、VIew、Contorller就是MVC了。其实一切都是要按照业务去拆分，不是用文件夹来拆分为架构。</li>
+</ul>
+<h2 id="追求简约和极致"><a href="#追求简约和极致" class="headerlink" title="追求简约和极致"></a>追求简约和极致</h2><p>在这里，首先送给大家的一句话：勤快没有用，需要思考；<br>因为勤快这里指的可不是起的早，而是没有思考下的动手能力。<br>可能大家对这点都是深有感悟，但是这里依然有很多人注意的点是偏离或者只在我以下的所说的某一点上有建树，希望大家有所收获和批评指正。</p>
+<blockquote>
+<p>对业务工程师要做最少的假设；</p>
+<pre><code>* 和你配合的业务工程师，可能对你的架构没有任何的了解，
+* 对你的架构没有任何了解，（直接Crash）；coreData
+</code></pre><p>使用流程不简化Eg；<br>API：设备信息，IP，坐标等，没有必要</p>
+<ul>
+<li>尽可能利用原生框架提供的手段，不要重复发明轮子<br>好的工程就应该1句注释都没有</li>
+</ul>
+</blockquote>
+<hr>
+<h1 id="架构是会演化的"><a href="#架构是会演化的" class="headerlink" title="架构是会演化的"></a>架构是会演化的</h1><p>极致和扩展性不矛盾<br>会随着业务发展，模块会发生演进／引入层的概念。<br>Demo-&gt;VC+模块-&gt;VC+触摸层／应用层等</p>
+<h2 id="如何给大模块做架构"><a href="#如何给大模块做架构" class="headerlink" title="如何给大模块做架构"></a>如何给大模块做架构</h2><p>不是一上来就很精细的，一开始也就是做一个小模块，多个小模块拼接起来，就成了大模块的架构。</p>
+<ul>
+<li>是否要套用现有的方法论？</li>
+<li>具体要怎么做<br>熟悉:做好的东西组装起来。<br>不熟悉：从Demo开始做<h2 id="接手新项目时，如何做架构调整"><a href="#接手新项目时，如何做架构调整" class="headerlink" title="接手新项目时，如何做架构调整"></a>接手新项目时，如何做架构调整</h2></li>
+<li>先找问题，再动手<br>不要直接改，可能团队不会很好接受，找有问题的点切入</li>
+<li>揣测现有架构的设计思路，新方案尽量不要动的很大<br>如果2种方案，都可以，改动的话会很大<br>如果之前没问题，尽量就不要动，顺着思路做就可以了</li>
+<li>找到过度方案<br>先2种方案并存，后一点一点改进<br>如果没有好的过渡方案就尽量不要动</li>
+<li>提供自动化工具<br>创建APIManager的脚本等，以降低业务工程师成本为目的。<br>方便工程师工作<h2 id="架构中的对称性"><a href="#架构中的对称性" class="headerlink" title="架构中的对称性"></a>架构中的对称性</h2>就是思维考虑的对称。</li>
+<li>有if 就要有else<br>（思考问题的方式）</li>
+<li>有大有小，有集约有离散<br>整体架构是胖Model，那要思考瘦Model是否有好处，意义。</li>
+<li>能删就能增，有来有去<br>哪里能增的哪里就应该能删。<h2 id="辩证的对待架构的灵活和限制"><a href="#辩证的对待架构的灵活和限制" class="headerlink" title="辩证的对待架构的灵活和限制"></a>辩证的对待架构的灵活和限制</h2>灵活：是引入混乱的根源。(不是越灵活越好)<br>限制：使用的时候不要把不应该这么使用的时候不让其这么使用<br>  限制也有时候会限制业务的发展（不应该）<br>  在某种方案下只有1种解决的方法。</li>
+</ul>
+<p>在架构改变的场景下保持灵活，在方案实现的场景下保持限制，（架构是会演化的）</p>
+<h2 id="辨证对待多和少"><a href="#辨证对待多和少" class="headerlink" title="辨证对待多和少"></a>辨证对待多和少</h2><p>复杂的问题，对应复杂的方案。<br>简单的问题，对应简单的方案。</p>
+<p>多不怕，怕的是乱，因为多会导致管理跟不上。<br>组件话只是把不同的代码放在不同的文件里。</p>
+<p>类爆炸，可能会导致功能维护上问题。关键还是因为多了后不能很好管理。<br>组件化，不是为了减少编译时间，目的是分治。解决的问是事隔离和便于维护。<br>尽可能少的传递数据，<br>一股脑的把数据都丢改你，然后你需要什么就自己挑。非常不好维护，非常容易的做拆分。<br>传递最少的参数：<br>e.g.：搜索列表：只传递个searchStr；numPage等交给APIManager处理。</p>
+<p>一开始给的少，不要紧，以后想要的话可以加。（以后需要的话的话，可以以后加，（➕的方式不一定就是现在这个样子了））</p>
+<h2 id="几个问题"><a href="#几个问题" class="headerlink" title="几个问题"></a>几个问题</h2><ul>
+<li>如何看待设计模式<br>只是方便架构师之间做交流的。<br>不是百宝箱，你的方案正好是这个设计模式，而方便交流。</li>
+<li>所有的方案都是自然<br>你有一套统一的价值观的话，或者进一步细化后，方案应该是唯一的。<br>反对大一统（我要用MVVM，reecticCocoa），不同的问题，就应该给其最适合的方案。</li>
+<li>架构师是如何看待技术的<br>新的技术是一种证明，是一种可行的方案而已。不是新的就是好的。<br>例如：响应式能给所有的问题给了很好的方案，但是不是你提供的解决方案就是最优的解决方案。<br>不存在一种技术能完美解决所有问题，挑选合适的技术解决合适的问题。<br>没必要去追风，重要的是要知道其是怎么回事。<br>没有最全面的技术，只有最适合的技术。<br>响应式和命令式，<br>命令：必须找到响应者然后另其做事，delegate可做更精细的控制<br>响应式:一声吼，监听的人就去做事。不需要知道响应着。可以非常方便的完成问题。但也没办法对监听的人做更精细的控制。<br>IO和动画应该才会影响效率，而不是对象的交互方式。<h1 id="Q-amp-A"><a href="#Q-amp-A" class="headerlink" title="Q&amp;A"></a>Q&amp;A</h1>架构师是唯物，讲究点证据。<br>只要看到API，看到类名，等就能知道这个东西是啥，怎么用<br>第三方适用于你的项目？不是看第三方代码量多少，而是看是否适应你的需求<br>API可以是一个单独工程来管理。Coil。。<br>Q：review；<ol>
+<li>避免单点问题。</li>
+<li>Review Code是否符合规范</li>
+<li>避免你搞乱七八糟的东西<br>Q：Delegate,Block更喜欢哪个；</li>
+<li>看需求吧<br>Q：继承缺点</li>
+<li>可能会引入跟你无关的代码。<br>Q：架构师角色</li>
+<li>不是老大的角色，而是backup帮助大家解决问题。<br>Q：组件都是很大的么？</li>
+<li>不是看东西很大，而是看是不是需要被复用。<br>Q：单元测试怎么推行？</li>
+<li>少写代码，多做测试。</li>
+<li>单独抽出成为工程，方便调试。</li>
+<li>单元测试会很少。<br>Q：平时面试问的什么？</li>
+<li>比简历问的深些。<br>Q：如何帮助初级开发者提高？</li>
+<li>帮助其CodeReview，给其写commit<br>Q：不加班领导同意么？工作能完成么？</li>
+<li>不同意，工作能完成，离职了了。。。<br>Q：如何提高逻辑思维能力</li>
+<li>读：批判性思维</li>
+<li>做：GRE作文第二题</li>
+<li>讨论：跟逻辑能力强的人讨论问题</li>
+</ol>
+</li>
+</ul>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/架构/">架构</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="https://github.com/LiShengmin/2017/06/20/架构-架构漫谈/" data-title="架构-架构漫谈 | Shemmy" data-tsina="null" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2017/06/20/iOS-CoreML/" title="iOS-CoreML">
+  <strong>上一篇：</strong><br/>
+  <span>
+  iOS-CoreML</span>
+</a>
+</div>
+
+
+</nav>
+
+	
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#架构"><span class="toc-number">1.</span> <span class="toc-text">架构</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#什么是架构"><span class="toc-number">1.1.</span> <span class="toc-text">什么是架构</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#架构是审美与权衡"><span class="toc-number">2.</span> <span class="toc-text">架构是审美与权衡</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#权衡"><span class="toc-number">2.1.</span> <span class="toc-text">权衡</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#逻辑"><span class="toc-number">2.2.</span> <span class="toc-text">逻辑</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#追求简约和极致"><span class="toc-number">2.3.</span> <span class="toc-text">追求简约和极致</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#架构是会演化的"><span class="toc-number">3.</span> <span class="toc-text">架构是会演化的</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#如何给大模块做架构"><span class="toc-number">3.1.</span> <span class="toc-text">如何给大模块做架构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#接手新项目时，如何做架构调整"><span class="toc-number">3.2.</span> <span class="toc-text">接手新项目时，如何做架构调整</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#架构中的对称性"><span class="toc-number">3.3.</span> <span class="toc-text">架构中的对称性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#辩证的对待架构的灵活和限制"><span class="toc-number">3.4.</span> <span class="toc-text">辩证的对待架构的灵活和限制</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#辨证对待多和少"><span class="toc-number">3.5.</span> <span class="toc-text">辨证对待多和少</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#几个问题"><span class="toc-number">3.6.</span> <span class="toc-text">几个问题</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Q-amp-A"><span class="toc-number">4.</span> <span class="toc-text">Q&A</span></a></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+<div class="github-card">
+<p class="asidetitle">Github 名片</p>
+<div class="github-card" data-github="lishengmin" data-width="220" data-height="119" data-theme="medium">
+<script type="text/javascript" src="//cdn.jsdelivr.net/github-cards/latest/widget.js" ></script>
+</div>
+  </div>
+
+
+
+  
+
+  
+<div class="tagslist">
+	<p class="asidetitle">标签</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/iOS/" title="iOS">iOS<sup>32</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/架构/" title="架构">架构<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/C/" title="C">C<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/MacOS/" title="MacOS">MacOS<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/iOS-机器学习/" title="iOS, 机器学习">iOS, 机器学习<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">友情链接</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="https://www.github.com/lishengmin" target="_blank" title="Shemmy&#39;s GitHub">Shemmy&#39;s GitHub</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="https://blog.cnbluebox.com" target="_blank" title="刘坤的技术博客">刘坤的技术博客</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="https://casatwy.com/iosying-yong-jia-gou-tan-viewceng-de-zu-zhi-he-diao-yong-fang-an.html" target="_blank" title="casa&#39;s Blog">casa&#39;s Blog</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://blog.robotframework.cn" target="_blank" title="齐道长的博客">齐道长的博客</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="https://icocos.github.io" target="_blank" title="iCocos@曹理鹏">iCocos@曹理鹏</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
+</div>
+
+  <div class="weiboshow">
+  <p class="asidetitle">新浪微博</p>
+    <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=null&verifier=b3593ceb&dpc=1"></iframe>
+</div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> Hello ,I&#39;m Sheemy Page in GitHub. <br/>
+			This is my blog,believe it or not.</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		<a href="http://weibo.com/2176287895" target="_blank" class="icon-weibo" title="微博"></a>
+		
+		
+		<a href="https://github.com/lishengmin" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		<a href="mailto:lishengminbj@gmail.com" target="_blank" class="icon-email" title="Email Me"></a>
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Shemmy</a> © 2017 
+		
+		<a href="/about" target="_blank" title="Shemmy">Shemmy</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?e6d1f421bbc9962127a50488f9ed37d1";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>

@@ -1,0 +1,509 @@
+
+ <!DOCTYPE HTML>
+<html >
+<head>
+  <meta charset="UTF-8">
+  
+    <title>iOS-MJRefresh | Shemmy</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="Shemmy">
+    
+
+    
+    <meta name="description" content="在表现表格视图的.m文件中，引入MJRefresh1#import &quot;MJRefresh.h&quot; 12345- (void)viewDidLoad &amp;#123;    [super viewDidLoad];//集成刷新控件[self setupRefresh];&amp;#125; 实现集成刷新控件1234567891011121314- (void)setupRefresh&amp;#123;// 1.下拉刷">
+<meta name="keywords" content="iOS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iOS-MJRefresh">
+<meta property="og:url" content="https://github.com/LiShengmin/2015/10/05/iOS-3rd-MJRefresh/index.html">
+<meta property="og:site_name" content="Shemmy">
+<meta property="og:description" content="在表现表格视图的.m文件中，引入MJRefresh1#import &quot;MJRefresh.h&quot; 12345- (void)viewDidLoad &amp;#123;    [super viewDidLoad];//集成刷新控件[self setupRefresh];&amp;#125; 实现集成刷新控件1234567891011121314- (void)setupRefresh&amp;#123;// 1.下拉刷">
+<meta property="og:updated_time" content="2017-05-08T09:52:11.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="iOS-MJRefresh">
+<meta name="twitter:description" content="在表现表格视图的.m文件中，引入MJRefresh1#import &quot;MJRefresh.h&quot; 12345- (void)viewDidLoad &amp;#123;    [super viewDidLoad];//集成刷新控件[self setupRefresh];&amp;#125; 实现集成刷新控件1234567891011121314- (void)setupRefresh&amp;#123;// 1.下拉刷">
+
+    
+    <link rel="alternative" href="/atom.xml" title="Shemmy" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="Shemmy" title="Shemmy"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="Shemmy">Shemmy</a></h1>
+				<h2 class="blog-motto">iOS, 架构， Python, AI, go</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/about">About</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="hidden" name="q" value="site:github.com/LiShengmin">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2015/10/05/iOS-3rd-MJRefresh/" title="iOS-MJRefresh" itemprop="url">iOS-MJRefresh</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Shemmy" target="_blank" itemprop="author">Shemmy</a>
+		
+  <p class="article-time">
+    <time datetime="2015-10-04T17:15:02.000Z" itemprop="datePublished"> 发表于 2015-10-05</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#在表现表格视图的-m文件中，引入MJRefresh"><span class="toc-number">1.</span> <span class="toc-text">在表现表格视图的.m文件中，引入MJRefresh</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#实现"><span class="toc-number">2.</span> <span class="toc-text">实现</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#集成刷新控件"><span class="toc-number">2.1.</span> <span class="toc-text">集成刷新控件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#开始进入刷新状态"><span class="toc-number">2.2.</span> <span class="toc-text">开始进入刷新状态</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Error"><span class="toc-number">3.</span> <span class="toc-text">Error</span></a></li></ol>
+		
+		</div>
+		
+		<a id="more"></a>
+<h1 id="在表现表格视图的-m文件中，引入MJRefresh"><a href="#在表现表格视图的-m文件中，引入MJRefresh" class="headerlink" title="在表现表格视图的.m文件中，引入MJRefresh"></a>在表现表格视图的.m文件中，引入MJRefresh</h1><figure class="highlight mm"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#import <span class="meta-string">"MJRefresh.h"</span></span></div></pre></td></tr></table></figure>
+<figure class="highlight mm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">- (<span class="keyword">void</span>)viewDidLoad &#123;    </div><div class="line">[<span class="keyword">super</span> viewDidLoad];</div><div class="line"><span class="comment">//集成刷新控件</span></div><div class="line">[<span class="keyword">self</span> setupRefresh];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h1><h2 id="集成刷新控件"><a href="#集成刷新控件" class="headerlink" title="集成刷新控件"></a>集成刷新控件</h2><figure class="highlight mm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">- (<span class="keyword">void</span>)setupRefresh&#123;</div><div class="line"><span class="comment">// 1.下拉刷新(进入刷新状态就会调用self的headerRereshing)    </span></div><div class="line">[<span class="keyword">self</span>.tableView addHeaderWithTarget:<span class="keyword">self</span> action:<span class="keyword">@selector</span>(headerRereshing)];</div><div class="line"><span class="meta">#warning 自动刷新(一进入程序就下拉刷新)    </span></div><div class="line">[<span class="keyword">self</span>.tableView headerBeginRefreshing];        </div><div class="line"><span class="comment">// 2.上拉加载更多(进入刷新状态就会调用self的footerRereshing)    </span></div><div class="line">[<span class="keyword">self</span>.tableView addFooterWithTarget:<span class="keyword">self</span> action:<span class="keyword">@selector</span>(footerRereshing)];        </div><div class="line"><span class="comment">// 设置文字(也可以不设置,默认的文字在MJRefreshConst中修改)    </span></div><div class="line"><span class="keyword">self</span>.tableView.headerPullToRefreshText = <span class="string">@"下拉可以刷新了"</span>;    </div><div class="line"><span class="keyword">self</span>.tableView.headerReleaseToRefreshText = <span class="string">@"松开马上刷新了"</span>;    </div><div class="line"><span class="keyword">self</span>.tableView.headerRefreshingText = <span class="string">@"MJ哥正在帮你刷新中,不客气"</span>;        </div><div class="line"><span class="keyword">self</span>.tableView.footerPullToRefreshText = <span class="string">@"上拉可以加载更多数据了"</span>;    </div><div class="line"><span class="keyword">self</span>.tableView.footerReleaseToRefreshText = <span class="string">@"松开马上加载更多数据了"</span>;    </div><div class="line"><span class="keyword">self</span>.tableView.footerRefreshingText = <span class="string">@"MJ哥正在帮你加载中,不客气"</span>;&#125;</div></pre></td></tr></table></figure>
+<h2 id="开始进入刷新状态"><a href="#开始进入刷新状态" class="headerlink" title="开始进入刷新状态"></a>开始进入刷新状态</h2><figure class="highlight mm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">- (<span class="keyword">void</span>)headerRereshing&#123;       <span class="comment">// 1.添加假数据//    </span></div><div class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i&lt;<span class="number">5</span>; i++) &#123;<span class="comment">//        </span></div><div class="line">[<span class="keyword">self</span>.fakeData insertObject:MJRandomData atIndex:<span class="number">0</span>];    </div><div class="line">&#125;        </div><div class="line"><span class="comment">// 2.2秒后刷新表格UI    </span></div><div class="line">dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(<span class="number">2.0</span> * <span class="built_in">NSEC_PER_SEC</span>)), dispatch_get_main_queue(), ^&#123;    <span class="comment">// 刷新表格        </span></div><div class="line">[<span class="keyword">self</span>.tableView reloadData];         <span class="comment">// (最好在刷新表格后调用)调用endRefreshing可以结束刷新状态       </span></div><div class="line">[<span class="keyword">self</span>.tableView headerEndRefreshing];</div><div class="line">&#125;);</div><div class="line">&#125;</div><div class="line">- (<span class="keyword">void</span>)footerRereshing&#123;      <span class="comment">// 1.添加假数据</span></div><div class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i&lt;<span class="number">5</span>; i++) &#123;        </div><div class="line">[<span class="keyword">self</span>.fakeData addObject:MJRandomData]; </div><div class="line">&#125;        </div><div class="line"><span class="comment">// 2.2秒后刷新表格UI    </span></div><div class="line">dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(<span class="number">2.0</span> * <span class="built_in">NSEC_PER_SEC</span>)), dispatch_get_main_queue(), ^&#123;        <span class="comment">// 刷新表格        </span></div><div class="line">[<span class="keyword">self</span>.tableView reloadData];                <span class="comment">// (最好在刷新表格后调用)调用endRefreshing可以结束刷新状态        </span></div><div class="line">[<span class="keyword">self</span>.tableView footerEndRefreshing];    </div><div class="line">&#125;);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="Error"><a href="#Error" class="headerlink" title="Error"></a>Error</h1><p>在运行时，会发现有 Too many arguments to function call, expected 0, have * 的错误，可以如下修改<br>选中项目<br>Project - Build Settings - ENABLE_STRICT_OBJC_MSGSEND 将其设置为 NO 即可</p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/iOS/">iOS</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="https://github.com/LiShengmin/2015/10/05/iOS-3rd-MJRefresh/" data-title="iOS-MJRefresh | Shemmy" data-tsina="null" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2015/08/03/iOS-数字有关的类/" title="iOS-数字有关的类（int NSNumber...）">
+  <strong>上一篇：</strong><br/>
+  <span>
+  iOS-数字有关的类（int NSNumber...）</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2015/12/04/iOS-保存文件到本地的方法/"  title="iOS-保存文件到本地的方法">
+ <strong>下一篇：</strong><br/> 
+ <span>iOS-保存文件到本地的方法
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#在表现表格视图的-m文件中，引入MJRefresh"><span class="toc-number">1.</span> <span class="toc-text">在表现表格视图的.m文件中，引入MJRefresh</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#实现"><span class="toc-number">2.</span> <span class="toc-text">实现</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#集成刷新控件"><span class="toc-number">2.1.</span> <span class="toc-text">集成刷新控件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#开始进入刷新状态"><span class="toc-number">2.2.</span> <span class="toc-text">开始进入刷新状态</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Error"><span class="toc-number">3.</span> <span class="toc-text">Error</span></a></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+<div class="github-card">
+<p class="asidetitle">Github 名片</p>
+<div class="github-card" data-github="lishengmin" data-width="220" data-height="119" data-theme="medium">
+<script type="text/javascript" src="//cdn.jsdelivr.net/github-cards/latest/widget.js" ></script>
+</div>
+  </div>
+
+
+
+  
+
+  
+<div class="tagslist">
+	<p class="asidetitle">标签</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/iOS/" title="iOS">iOS<sup>32</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/架构/" title="架构">架构<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/C/" title="C">C<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/MacOS/" title="MacOS">MacOS<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/iOS-机器学习/" title="iOS, 机器学习">iOS, 机器学习<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">友情链接</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="https://www.github.com/lishengmin" target="_blank" title="Shemmy&#39;s GitHub">Shemmy&#39;s GitHub</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="https://blog.cnbluebox.com" target="_blank" title="刘坤的技术博客">刘坤的技术博客</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="https://casatwy.com/iosying-yong-jia-gou-tan-viewceng-de-zu-zhi-he-diao-yong-fang-an.html" target="_blank" title="casa&#39;s Blog">casa&#39;s Blog</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://blog.robotframework.cn" target="_blank" title="齐道长的博客">齐道长的博客</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="https://icocos.github.io" target="_blank" title="iCocos@曹理鹏">iCocos@曹理鹏</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
+</div>
+
+  <div class="weiboshow">
+  <p class="asidetitle">新浪微博</p>
+    <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=null&verifier=b3593ceb&dpc=1"></iframe>
+</div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> Hello ,I&#39;m Sheemy Page in GitHub. <br/>
+			This is my blog,believe it or not.</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		<a href="http://weibo.com/2176287895" target="_blank" class="icon-weibo" title="微博"></a>
+		
+		
+		<a href="https://github.com/lishengmin" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		<a href="mailto:lishengminbj@gmail.com" target="_blank" class="icon-email" title="Email Me"></a>
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Shemmy</a> © 2017 
+		
+		<a href="/about" target="_blank" title="Shemmy">Shemmy</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?e6d1f421bbc9962127a50488f9ed37d1";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>

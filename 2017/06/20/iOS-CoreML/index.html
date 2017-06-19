@@ -1,0 +1,512 @@
+
+ <!DOCTYPE HTML>
+<html >
+<head>
+  <meta charset="UTF-8">
+  
+    <title>iOS-CoreML | Shemmy</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="Shemmy">
+    
+
+    
+    <meta name="description" content="iOS-Core ML之前为了在iOS中使用AI的部分功能，我们自己搞了很多，包括使用tensorflow或者Theano来作为引擎，但是因为iPhone资源所限，我们只能把训练部分放在服务器上跑，然后把训练好的数据再在iOS中使用，其实TF在我们采样率调低的时候，我们会发现训练包可以下降至5M以内，非常不错，但是，但是，但是，iOS中代码繁琐，并且只能使用CPU，不能使用GPU，就更别提什么TP">
+<meta name="keywords" content="iOS, 机器学习">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iOS-CoreML">
+<meta property="og:url" content="https://github.com/LiShengmin/2017/06/20/iOS-CoreML/index.html">
+<meta property="og:site_name" content="Shemmy">
+<meta property="og:description" content="iOS-Core ML之前为了在iOS中使用AI的部分功能，我们自己搞了很多，包括使用tensorflow或者Theano来作为引擎，但是因为iPhone资源所限，我们只能把训练部分放在服务器上跑，然后把训练好的数据再在iOS中使用，其实TF在我们采样率调低的时候，我们会发现训练包可以下降至5M以内，非常不错，但是，但是，但是，iOS中代码繁琐，并且只能使用CPU，不能使用GPU，就更别提什么TP">
+<meta property="og:updated_time" content="2017-06-19T16:35:51.552Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="iOS-CoreML">
+<meta name="twitter:description" content="iOS-Core ML之前为了在iOS中使用AI的部分功能，我们自己搞了很多，包括使用tensorflow或者Theano来作为引擎，但是因为iPhone资源所限，我们只能把训练部分放在服务器上跑，然后把训练好的数据再在iOS中使用，其实TF在我们采样率调低的时候，我们会发现训练包可以下降至5M以内，非常不错，但是，但是，但是，iOS中代码繁琐，并且只能使用CPU，不能使用GPU，就更别提什么TP">
+
+    
+    <link rel="alternative" href="/atom.xml" title="Shemmy" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="Shemmy" title="Shemmy"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="Shemmy">Shemmy</a></h1>
+				<h2 class="blog-motto">iOS, 架构， Python, AI, go</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/about">About</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="hidden" name="q" value="site:github.com/LiShengmin">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2017/06/20/iOS-CoreML/" title="iOS-CoreML" itemprop="url">iOS-CoreML</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Shemmy" target="_blank" itemprop="author">Shemmy</a>
+		
+  <p class="article-time">
+    <time datetime="2017-06-19T16:34:32.000Z" itemprop="datePublished"> 发表于 2017-06-20</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#iOS-Core-ML"><span class="toc-number">1.</span> <span class="toc-text">iOS-Core ML</span></a></li></ol>
+		
+		</div>
+		
+		<h1 id="iOS-Core-ML"><a href="#iOS-Core-ML" class="headerlink" title="iOS-Core ML"></a>iOS-Core ML</h1><p>之前为了在iOS中使用AI的部分功能，我们自己搞了很多，包括使用tensorflow或者Theano来作为引擎，但是因为iPhone资源所限，我们只能把训练部分放在服务器上跑，然后把训练好的数据再在iOS中使用，其实TF在我们采样率调低的时候，我们会发现训练包可以下降至5M以内，非常不错，但是，但是，但是，iOS中代码繁琐，并且只能使用CPU，不能使用GPU，就更别提什么TPU（好像苹果就没有这个东西），导致运算缓慢，以至于只能在7上勉强能跑动。</p>
+<p>废话不多说，我们看下苹果自家的CoreML</p>
+<p>这是苹果自家的描述：<br>在大多数情况下，您仅与模型的动态生成界面进行交互，当您将Xcode项目添加到模型时，Xcode将自动创建。在需要支持自定义工作流或高级用例的情况下，您可以直接使用Core ML API。例如，如果需要在将输入数据异步收集到自定义结构中时进行预测，则可以使用该结构(MLFeatureProvider)通过采用协议为模型提供输入特征。</p>
+<p>首先我们要知道的是：<br>模型：代表着内部的所含有的信息，如一个模型包含学费，姓名，分数。集合起来就是模型。（先简单的这么理解）<br>训练模型：要做机器学习必然是要先做一个模型，然后使用一个机器，让这个模型不断进步，这个就是训练。<br>训练好的模型理论上就可以直接使用了Core使用的是“*.Mlmodel”文件作为训练后的模型。</p>
+<p>苹果简化大部分工作后的人工智能，就是我们暂时不关心内部操作（黑盒），只关心输入数据和输出数据。<br>黑盒过程是使用模型进行预测。（至于什么rnn、cnn、gans，暂时和CoreML没有什么关系。）</p>
+<p>我们先看怎么初始化模型：<br>我们先看苹果给的官方文档中怎么描述的：</p>
+<p>Xcode还使用有关模型输入和输出的信息来自动生成模型的自定义编程接口，您可以在代码中与模型进行交互。对于，Xcode生成接口来表示model（），model的inputs（）和model的output（）。MarsHabitatPricer.mlmodel<br>MarsHabitatPricer<br>MarsHabitatPricerInput<br>MarsHabitatPricerOutput<br>使用生成的类的初始化器来创建模型：MarsHabitatPricer<br>let model = MarsHabitatPricer()</p>
+<p>这个就是我们的苹果给的文档。。好吧暂时不吐槽他，这里说的非常明白，我们使用<br>let model = MarsHabitatPricer()来创建模型。非常直观。<br>然后通过MarsHabitatPricerInput来使程序获得输入用于计算的值<br>最后通过MarsHabitatPricerOutput来输出最后的结果。<br>在这之中我们不需要关心里面到底做了什么，</p>
+<p>下面文件是我在苹果的事例代码中找到的：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> CoreML <span class="comment">//引入头文件</span></div><div class="line"></div><div class="line"><span class="comment">/*</span></div><div class="line">	MarsHabitatPricerInput： 这里应该是自己声明的类，不是系统提供的类</div><div class="line">*/</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">MarsHabitatPricerInput</span> : <span class="title">MLFeatureProvider</span> </span>&#123;<span class="comment">//这里就是MarsHabitatPricerInput</span></div><div class="line">    <span class="keyword">var</span> solarPanels: <span class="type">Double</span> 	<span class="comment">//模型中的属性</span></div><div class="line">    <span class="keyword">var</span> greenhouses: <span class="type">Double</span>	<span class="comment">//模型中的属性</span></div><div class="line">    <span class="keyword">var</span> size: <span class="type">Double</span>			<span class="comment">//模型中的属性</span></div><div class="line">    </div><div class="line">    <span class="keyword">var</span> featureNames: <span class="type">Set</span>&lt;<span class="type">String</span>&gt; &#123;</div><div class="line">        <span class="keyword">get</span> &#123;</div><div class="line">            <span class="keyword">return</span> [<span class="string">"solarPanels"</span>, <span class="string">"greenhouses"</span>, <span class="string">"size"</span>]</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="comment">/*</span></div><div class="line">    	featureName：一组有效的功能名称</div><div class="line">    	MLFeatureValue： 访问命名要素的值</div><div class="line">    	</div><div class="line">    	其实也可以使用</div><div class="line">    	MLDictionaryFeatureProvider：使用字典来包装</div><div class="line">    	MLFeatureValue：表示特征类型和值的不可变实例</div><div class="line">    	MLFeatureDescription：描述</div><div class="line">    	MLMultiArray：用作模型的输入或输出的多维数组</div><div class="line">    	</div><div class="line">var inputDescriptionsByName: [String : MLFeatureDescription]</div><div class="line">		通过功能名称描述模型中的各种输入。</div><div class="line">var outputDescriptionsByName: [String : MLFeatureDescription]</div><div class="line">		通过功能名称描述模型的各种输出。</div><div class="line">    */</div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">featureValue</span><span class="params">(<span class="keyword">for</span> featureName: String)</span></span> -&gt; <span class="type">MLFeatureValue</span>? &#123;</div><div class="line">        <span class="keyword">if</span> (featureName == <span class="string">"solarPanels"</span>) &#123;</div><div class="line">            <span class="keyword">return</span> <span class="type">MLFeatureValue</span>(double: solarPanels)</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span> (featureName == <span class="string">"greenhouses"</span>) &#123;</div><div class="line">            <span class="keyword">return</span> <span class="type">MLFeatureValue</span>(double: greenhouses)</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span> (featureName == <span class="string">"size"</span>) &#123;</div><div class="line">            <span class="keyword">return</span> <span class="type">MLFeatureValue</span>(double: size)</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> <span class="literal">nil</span></div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="comment">//构建方法</span></div><div class="line">    <span class="keyword">init</span>(solarPanels: <span class="type">Double</span>, greenhouses: <span class="type">Double</span>, size: <span class="type">Double</span>) &#123;</div><div class="line">        <span class="keyword">self</span>.solarPanels = solarPanels</div><div class="line">        <span class="keyword">self</span>.greenhouses = greenhouses</div><div class="line">        <span class="keyword">self</span>.size = size</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line"><span class="comment">/*</span></div><div class="line">	MarsHabitatPricerOutput：和上面同样无法推测出这个是系统提供的还是自己推测出来的。</div><div class="line">	但是可以推测出来</div><div class="line">		MLFeatureProvider：是特征值，用来表示某种特征，如输入的某种特征，输出的某种特征。</div><div class="line">	这样我们就以推测出来MarsHabitatPricerOutput，MarsHabitatPricerInput，就是将特征值在进行一个分类的抽象，抽象成为输入和输出两个部分，方便查找和调用。</div><div class="line">	同样我们可以认为苹果希望我们把输入和输出分开进行书写。但是我同样可以认为可以写在一起（没试过）</div><div class="line">*/</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">MarsHabitatPricerOutput</span> : <span class="title">MLFeatureProvider</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="keyword">let</span> price: <span class="type">Double</span> <span class="comment">//声明一个价格属性</span></div><div class="line"> </div><div class="line">    <span class="keyword">var</span> featureNames: <span class="type">Set</span>&lt;<span class="type">String</span>&gt; &#123;</div><div class="line">        <span class="keyword">get</span> &#123;</div><div class="line">            <span class="keyword">return</span> [<span class="string">"price"</span>]</div><div class="line">        &#125;</div><div class="line">    &#125;<span class="comment">//这个是一个MLFeatureProvider中提供的属性。</span></div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">featureValue</span><span class="params">(<span class="keyword">for</span> featureName: String)</span></span> -&gt; <span class="type">MLFeatureValue</span>? &#123;</div><div class="line">        <span class="keyword">if</span> (featureName == <span class="string">"price"</span>) &#123;</div><div class="line">            <span class="keyword">return</span> <span class="type">MLFeatureValue</span>(double: price)</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> <span class="literal">nil</span></div><div class="line">    &#125;<span class="comment">//同样与之配套的函数，用来给特征起个名字，并且确定被命名要素的值</span></div><div class="line">    </div><div class="line">    <span class="comment">//构造方法不多说了</span></div><div class="line">    <span class="keyword">init</span>(price: <span class="type">Double</span>) &#123;</div><div class="line">        <span class="keyword">self</span>.price = price</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//下面这个我认为应该是自己写的。不是系统的。。</span></div><div class="line"><span class="meta">@objc</span> <span class="class"><span class="keyword">class</span> <span class="title">MarsHabitatPricer</span>:<span class="title">NSObject</span> </span>&#123;</div><div class="line">    <span class="keyword">var</span> model: <span class="type">MLModel</span></div><div class="line">    <span class="comment">// 有关MLModel</span></div><div class="line">    <span class="comment">/*</span></div><div class="line">    当使用MLModel的时候，可以使用prediction(from:)方法来预测值</div><div class="line">    func prediction(from input: MLFeatureProvider) throws -&gt; MLFeatureProvider</div><div class="line">		参数：input-模型需要进行预测的所有特征值。</div><div class="line"></div><div class="line">	init(contentsOf: URL)</div><div class="line">			创建一个核心ML模型，仅在不使用Xcode自动生成界面时使用。</div><div class="line">		convenience init(contentsOf url: URL) throws</div><div class="line">		contentsOf:填写你的.mlmodelc文件地址</div><div class="line">		建议您使用Xcode处理您的Core ML（.mlmodelc）文件并使用动态创建的对象。如果您需要动态创建具体的MLModel,可通过名为model的属性来暴露底层，而不应该直接创建MLModel对象。</div><div class="line"></div><div class="line">    */</div><div class="line">    </div><div class="line">    </div><div class="line">    <span class="keyword">init</span>(contentsOf url: <span class="type">URL</span>) <span class="keyword">throws</span> &#123;</div><div class="line">        <span class="keyword">self</span>.model = <span class="keyword">try</span> <span class="type">MLModel</span>(contentsOf: url)</div><div class="line">    &#125;<span class="comment">//创建一个CoreML模型，仅在没有使用Xcode自动生成界面时使用。</span></div><div class="line">    </div><div class="line">    </div><div class="line">    <span class="keyword">convenience</span> <span class="keyword">override</span> <span class="keyword">init</span>() &#123;</div><div class="line">        <span class="keyword">let</span> bundle = <span class="type">Bundle</span>(<span class="keyword">for</span>: <span class="type">MarsHabitatPricer</span>.<span class="keyword">self</span>)</div><div class="line">        <span class="keyword">let</span> assetPath = bundle.url(forResource: <span class="string">"MarsHabitatPricer"</span>, withExtension:<span class="string">"mlmodelc"</span>)</div><div class="line">        <span class="keyword">try</span>! <span class="keyword">self</span>.<span class="keyword">init</span>(contentsOf: assetPath!)</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="comment">/*</span></div><div class="line">    使用给定的特征值，对输出值进行预测。</div><div class="line">    */</div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">prediction</span><span class="params">(input: MarsHabitatPricerInput)</span></span> <span class="keyword">throws</span> -&gt; <span class="type">MarsHabitatPricerOutput</span> &#123;</div><div class="line">        <span class="keyword">let</span> outFeatures = <span class="keyword">try</span> model.prediction(from: input)</div><div class="line">        </div><div class="line">        <span class="keyword">let</span> result = <span class="type">MarsHabitatPricerOutput</span>(price: outFeatures.featureValue(<span class="keyword">for</span>: <span class="string">"price"</span>)!.doubleValue)</div><div class="line">        <span class="keyword">return</span> result</div><div class="line">    &#125;</div><div class="line">    <span class="comment">/*</span></div><div class="line">    这是一个便捷方法，输入3个因变量，然后通过MarsHabitatPricerOutput来返回其中的Price</div><div class="line">    */</div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">prediction</span><span class="params">(solarPanels: Double, greenhouses: Double, size: Double)</span></span> <span class="keyword">throws</span> -&gt; <span class="type">MarsHabitatPricerOutput</span> &#123;</div><div class="line">        <span class="keyword">let</span> input_ = <span class="type">MarsHabitatPricerInput</span>(solarPanels: solarPanels, greenhouses: greenhouses, size: size)</div><div class="line">        <span class="keyword">return</span> <span class="keyword">try</span> <span class="keyword">self</span>.prediction(input: input_)</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/iOS-机器学习/">iOS, 机器学习</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="https://github.com/LiShengmin/2017/06/20/iOS-CoreML/" data-title="iOS-CoreML | Shemmy" data-tsina="null" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2017/06/17/iOS-IdtentifyLookUp身份查询/" title="iOS-IdtentifyLookUp身份查询">
+  <strong>上一篇：</strong><br/>
+  <span>
+  iOS-IdtentifyLookUp身份查询</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2017/06/20/架构-架构漫谈/"  title="架构-架构漫谈">
+ <strong>下一篇：</strong><br/> 
+ <span>架构-架构漫谈
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#iOS-Core-ML"><span class="toc-number">1.</span> <span class="toc-text">iOS-Core ML</span></a></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+<div class="github-card">
+<p class="asidetitle">Github 名片</p>
+<div class="github-card" data-github="lishengmin" data-width="220" data-height="119" data-theme="medium">
+<script type="text/javascript" src="//cdn.jsdelivr.net/github-cards/latest/widget.js" ></script>
+</div>
+  </div>
+
+
+
+  
+
+  
+<div class="tagslist">
+	<p class="asidetitle">标签</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/iOS/" title="iOS">iOS<sup>32</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/架构/" title="架构">架构<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/C/" title="C">C<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/MacOS/" title="MacOS">MacOS<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/iOS-机器学习/" title="iOS, 机器学习">iOS, 机器学习<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">友情链接</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="https://www.github.com/lishengmin" target="_blank" title="Shemmy&#39;s GitHub">Shemmy&#39;s GitHub</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="https://blog.cnbluebox.com" target="_blank" title="刘坤的技术博客">刘坤的技术博客</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="https://casatwy.com/iosying-yong-jia-gou-tan-viewceng-de-zu-zhi-he-diao-yong-fang-an.html" target="_blank" title="casa&#39;s Blog">casa&#39;s Blog</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://blog.robotframework.cn" target="_blank" title="齐道长的博客">齐道长的博客</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="https://icocos.github.io" target="_blank" title="iCocos@曹理鹏">iCocos@曹理鹏</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
+</div>
+
+  <div class="weiboshow">
+  <p class="asidetitle">新浪微博</p>
+    <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=null&verifier=b3593ceb&dpc=1"></iframe>
+</div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> Hello ,I&#39;m Sheemy Page in GitHub. <br/>
+			This is my blog,believe it or not.</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		<a href="http://weibo.com/2176287895" target="_blank" class="icon-weibo" title="微博"></a>
+		
+		
+		<a href="https://github.com/lishengmin" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		<a href="mailto:lishengminbj@gmail.com" target="_blank" class="icon-email" title="Email Me"></a>
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Shemmy</a> © 2017 
+		
+		<a href="/about" target="_blank" title="Shemmy">Shemmy</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?e6d1f421bbc9962127a50488f9ed37d1";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>

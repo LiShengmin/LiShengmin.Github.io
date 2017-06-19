@@ -4,6 +4,327 @@
 
     
   <url>
+    <loc>https://github.com/LiShengmin/2017/06/20/%E6%9E%B6%E6%9E%84-%E6%9E%B6%E6%9E%84%E6%BC%AB%E8%B0%88/</loc>
+    <lastmod>2017-06-19T17:16:01.838Z</lastmod>
+    <data>
+        <display>
+        <title>架构-架构漫谈</title>
+        <pubTime>2017-06-19T17:15:49.000Z</pubTime>
+        
+        <tag>架构</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://github.com/LiShengmin/2017/04/28/%E6%9E%B6%E6%9E%84-Carthage%E4%BD%BF%E7%94%A8/</loc>
+    <lastmod>2017-06-19T17:13:17.483Z</lastmod>
+    <data>
+        <display>
+        <title>架构-Carthage使用</title>
+        <pubTime>2017-04-28T10:49:43.000Z</pubTime>
+        
+        <tag>架构</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://github.com/LiShengmin/2016/01/14/iOS-UITextField%E4%B8%AD%E6%96%87%E8%BE%93%E5%85%A5%E6%B3%95%E6%97%B6%E5%AF%B9%E5%AD%97%E7%AC%A6%E9%95%BF%E5%BA%A6%E7%9A%84%E9%99%90%E5%88%B6/</loc>
+    <lastmod>2017-06-19T17:11:25.566Z</lastmod>
+    <data>
+        <display>
+        <title>iOS-中文输入法时对字符长度的限制(UITextField)</title>
+        <pubTime>2016-01-14T04:05:01.000Z</pubTime>
+        
+        <tag>iOS</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://github.com/LiShengmin/2016/09/09/iOS-TextField%E7%9A%84%E5%85%89%E6%A0%87%E6%93%8D%E4%BD%9C/</loc>
+    <lastmod>2017-06-19T17:10:41.033Z</lastmod>
+    <data>
+        <display>
+        <title>iOS-UITextField的光标操作扩展</title>
+        <pubTime>2016-09-09T05:38:26.000Z</pubTime>
+        
+        <tag>iOS</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://github.com/LiShengmin/2016/11/04/iOS-Bug-UICollectionView-reloadData%E6%97%A0%E6%B3%95%E6%9B%B4%E6%96%B0%E7%9A%84%E5%A5%87%E6%80%AA%E9%97%AE%E9%A2%98/</loc>
+    <lastmod>2017-06-19T16:46:07.716Z</lastmod>
+    <data>
+        <display>
+        <title>iOS-UICollectionView reloadData无法更新视图问题</title>
+        <pubTime>2016-11-04T09:46:11.000Z</pubTime>
+        
+        <tag>iOS</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://github.com/LiShengmin/2015/12/21/Objective-C%20Runtime/</loc>
+    <lastmod>2017-06-19T16:45:52.690Z</lastmod>
+    <data>
+        <display>
+        <title>Objective-C Runtime</title>
+        <pubTime>2015-12-21T12:05:12.000Z</pubTime>
+        
+        <tag>iOS</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://github.com/LiShengmin/2015/02/14/C-Static:Const%20%E8%AF%A6%E8%A7%A3/</loc>
+    <lastmod>2017-06-19T16:45:24.736Z</lastmod>
+    <data>
+        <display>
+        <title>Static Const</title>
+        <pubTime>2015-02-13T18:05:11.000Z</pubTime>
+        
+        <tag>C</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://github.com/LiShengmin/2016/09/09/iOS-Sting/</loc>
+    <lastmod>2017-06-19T16:44:56.501Z</lastmod>
+    <data>
+        <display>
+        <title>Swift2.0中的Sting 的基本操作</title>
+        <pubTime>2016-09-08T17:19:03.000Z</pubTime>
+        
+        <tag>iOS</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://github.com/LiShengmin/2015/03/02/iOS-3rd-SDWebImage%E7%9A%84%E4%BD%BF%E7%94%A8/</loc>
+    <lastmod>2017-06-19T16:43:13.713Z</lastmod>
+    <data>
+        <display>
+        <title>第三方库 SDWebImage</title>
+        <pubTime>2015-03-02T14:05:11.000Z</pubTime>
+        
+        <tag>iOS</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://github.com/LiShengmin/2016/07/19/iOS-RunTime/</loc>
+    <lastmod>2017-06-19T16:42:44.622Z</lastmod>
+    <data>
+        <display>
+        <title>iOS-RunTime</title>
+        <pubTime>2016-07-19T06:59:12.000Z</pubTime>
+        
+        <tag>iOS</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://github.com/LiShengmin/2015/06/03/iOS-NSUserDefaults/</loc>
+    <lastmod>2017-06-19T16:42:12.694Z</lastmod>
+    <data>
+        <display>
+        <title>iOS-自定义对象存储 （NSUserDefaults）</title>
+        <pubTime>2015-06-03T14:05:12.000Z</pubTime>
+        
+        <tag>iOS</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://github.com/LiShengmin/2015/08/03/iOS-%E6%95%B0%E5%AD%97%E6%9C%89%E5%85%B3%E7%9A%84%E7%B1%BB/</loc>
+    <lastmod>2017-06-19T16:39:23.658Z</lastmod>
+    <data>
+        <display>
+        <title>iOS-数字有关的类（int NSNumber...）</title>
+        <pubTime>2015-08-03T14:05:12.000Z</pubTime>
+        
+        <tag>iOS</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://github.com/LiShengmin/2015/12/21/iOS-%E5%A4%9A%E7%BA%BF%E7%A8%8B/</loc>
+    <lastmod>2017-06-19T16:38:48.593Z</lastmod>
+    <data>
+        <display>
+        <title>iOS-多线程</title>
+        <pubTime>2015-12-21T08:29:16.000Z</pubTime>
+        
+        <tag>iOS</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://github.com/LiShengmin/2016/11/11/%E6%9E%B6%E6%9E%84-%E7%BD%91%E7%BB%9C-HTTP%E8%AF%B7%E6%B1%82%E7%9A%84Header%E4%BF%A1%E6%81%AF/</loc>
+    <lastmod>2017-06-19T16:38:35.364Z</lastmod>
+    <data>
+        <display>
+        <title>架构-网络- 客户端HTTP请求的Header信息</title>
+        <pubTime>2016-11-11T02:58:09.000Z</pubTime>
+        
+        <tag>架构</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://github.com/LiShengmin/2015/12/08/iOS-%E5%90%AF%E5%8A%A8%E5%BC%95%E5%AF%BC%E7%95%8C%E9%9D%A2%E5%92%8C%E5%90%AF%E5%8A%A8%E7%95%8C%E9%9D%A2%E8%AE%BE%E7%BD%AE/</loc>
+    <lastmod>2017-06-19T16:37:38.397Z</lastmod>
+    <data>
+        <display>
+        <title>iOS-引导界面和启动界面设置</title>
+        <pubTime>2015-12-08T04:27:39.000Z</pubTime>
+        
+        <tag>iOS</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://github.com/LiShengmin/2016/07/03/iOS-%E4%BC%98%E5%8C%96%E8%87%AA%E5%8A%A8%E5%B8%83%E5%B1%80/</loc>
+    <lastmod>2017-06-19T16:36:56.643Z</lastmod>
+    <data>
+        <display>
+        <title>iOS-优化自动布局</title>
+        <pubTime>2016-07-03T04:31:02.000Z</pubTime>
+        
+        <tag>iOS</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://github.com/LiShengmin/2017/06/20/iOS-CoreML/</loc>
+    <lastmod>2017-06-19T16:35:51.552Z</lastmod>
+    <data>
+        <display>
+        <title>iOS-CoreML</title>
+        <pubTime>2017-06-19T16:34:32.000Z</pubTime>
+        
+        <tag>iOS, 机器学习</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://github.com/LiShengmin/2017/06/17/iOS-IdtentifyLookUp%E8%BA%AB%E4%BB%BD%E6%9F%A5%E8%AF%A2/</loc>
+    <lastmod>2017-06-19T15:04:05.281Z</lastmod>
+    <data>
+        <display>
+        <title>iOS-IdtentifyLookUp身份查询</title>
+        <pubTime>2017-06-17T13:03:30.000Z</pubTime>
+        
+        <tag>iOS</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://github.com/LiShengmin/2017/06/17/iOS-Block%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/</loc>
+    <lastmod>2017-06-19T15:03:10.622Z</lastmod>
+    <data>
+        <display>
+        <title>iOS-Block内存管理</title>
+        <pubTime>2017-06-17T07:19:12.000Z</pubTime>
+        
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://github.com/LiShengmin/2017/06/12/iOS-iOS11%E6%97%A0%E7%BA%BF%E8%B0%83%E8%AF%95/</loc>
     <lastmod>2017-06-12T15:59:45.157Z</lastmod>
     <data>
@@ -21,7 +342,7 @@
 
     
   <url>
-    <loc>https://github.com/LiShengmin/2015/12/30/3rd-Json%E8%A7%A3%E6%9E%90%E4%B9%8BMJExtension%E5%BA%94%E7%94%A8%E4%B8%BE%E4%BE%8B/</loc>
+    <loc>https://github.com/LiShengmin/2015/12/30/iOS-3rd-Json%E8%A7%A3%E6%9E%90%E4%B9%8BMJExtension%E5%BA%94%E7%94%A8%E4%B8%BE%E4%BE%8B/</loc>
     <lastmod>2017-05-08T09:54:42.000Z</lastmod>
     <data>
         <display>
@@ -89,7 +410,7 @@
 
     
   <url>
-    <loc>https://github.com/LiShengmin/2015/10/05/3rd-MJRefresh/</loc>
+    <loc>https://github.com/LiShengmin/2015/10/05/iOS-3rd-MJRefresh/</loc>
     <lastmod>2017-05-08T09:52:11.000Z</lastmod>
     <data>
         <display>
@@ -242,23 +563,6 @@
 
     
   <url>
-    <loc>https://github.com/LiShengmin/2016/07/03/%E4%BC%98%E5%8C%96%E8%87%AA%E5%8A%A8%E5%B8%83%E5%B1%80/</loc>
-    <lastmod>2017-05-08T09:48:01.000Z</lastmod>
-    <data>
-        <display>
-        <title>优化自动布局</title>
-        <pubTime>2016-07-03T04:31:02.000Z</pubTime>
-        
-        <tag>iOS</tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>https://github.com/LiShengmin/2016/01/17/iOS-%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%BA%94%E7%94%A8/</loc>
     <lastmod>2017-05-08T09:47:56.000Z</lastmod>
     <data>
@@ -350,274 +654,6 @@
         <display>
         <title>iOS中 请求主线程刷新UI</title>
         <pubTime>2016-11-18T08:07:57.000Z</pubTime>
-        
-        <tag>iOS</tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://github.com/LiShengmin/2017/04/28/Carthage%E4%BD%BF%E7%94%A8/</loc>
-    <lastmod>2017-05-08T09:44:43.000Z</lastmod>
-    <data>
-        <display>
-        <title>Carthage使用</title>
-        <pubTime>2017-04-28T10:49:43.000Z</pubTime>
-        
-        <tag>架构</tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://github.com/LiShengmin/2015/12/08/%E5%90%AF%E5%8A%A8%E5%BC%95%E5%AF%BC%E7%95%8C%E9%9D%A2%E5%92%8C%E5%90%AF%E5%8A%A8%E7%95%8C%E9%9D%A2%E8%AE%BE%E7%BD%AE/</loc>
-    <lastmod>2017-05-08T09:43:52.000Z</lastmod>
-    <data>
-        <display>
-        <title>引导界面和启动界面设置</title>
-        <pubTime>2015-12-08T04:27:39.000Z</pubTime>
-        
-        <tag>iOS</tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://github.com/LiShengmin/2016/11/11/%E5%AE%A2%E6%88%B7%E7%AB%AF-HTTP%E8%AF%B7%E6%B1%82%E7%9A%84Header%E4%BF%A1%E6%81%AF/</loc>
-    <lastmod>2017-05-08T09:43:41.000Z</lastmod>
-    <data>
-        <display>
-        <title>客户端 HTTP请求的Header信息</title>
-        <pubTime>2016-11-11T02:58:09.000Z</pubTime>
-        
-        <tag>架构</tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://github.com/LiShengmin/2016/09/07/NSString-Categary/</loc>
-    <lastmod>2017-04-19T18:05:24.000Z</lastmod>
-    <data>
-        <display>
-        <title>NSString+Categary</title>
-        <pubTime>2016-09-07T07:37:14.000Z</pubTime>
-        
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://github.com/LiShengmin/2016/11/14/Swift2-3-to-Swift3-0-%E8%BF%81%E7%A7%BB/</loc>
-    <lastmod>2016-11-14T11:10:27.000Z</lastmod>
-    <data>
-        <display>
-        <title>Swift2.3 to Swift3.0 迁移</title>
-        <pubTime>2016-11-14T05:34:50.000Z</pubTime>
-        
-        <tag>Swift3</tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://github.com/LiShengmin/2016/11/04/UICollectionView-reloadData%E6%97%A0%E6%B3%95%E6%9B%B4%E6%96%B0%E7%9A%84%E5%A5%87%E6%80%AA%E9%97%AE%E9%A2%98/</loc>
-    <lastmod>2016-11-04T09:51:56.000Z</lastmod>
-    <data>
-        <display>
-        <title>UICollectionView reloadData无法更新视图问题</title>
-        <pubTime>2016-11-04T09:46:11.000Z</pubTime>
-        
-        <tag>iOS UICollectionView</tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://github.com/LiShengmin/2016/09/09/UITextField%E7%9A%84%E5%85%89%E6%A0%87%E6%93%8D%E4%BD%9C%E6%89%A9%E5%B1%95/</loc>
-    <lastmod>2016-09-09T05:50:36.000Z</lastmod>
-    <data>
-        <display>
-        <title>UITextField的光标操作扩展</title>
-        <pubTime>2016-09-09T05:38:26.000Z</pubTime>
-        
-        <tag>textfield   ios   oc   光标   offset</tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://github.com/LiShengmin/2016/09/09/Swift2-0%E4%B8%AD%E7%9A%84Sting-%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/</loc>
-    <lastmod>2016-09-09T01:38:51.000Z</lastmod>
-    <data>
-        <display>
-        <title>Swift2.0中的Sting 的基本操作</title>
-        <pubTime>2016-09-08T17:19:03.000Z</pubTime>
-        
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://github.com/LiShengmin/2016/07/19/RunTime1/</loc>
-    <lastmod>2016-07-19T08:15:08.000Z</lastmod>
-    <data>
-        <display>
-        <title>RunTime1</title>
-        <pubTime>2016-07-19T06:59:12.000Z</pubTime>
-        
-        <tag>RunTime</tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://github.com/LiShengmin/2015/12/21/%E5%A4%9A%E7%BA%BF%E7%A8%8B/</loc>
-    <lastmod>2016-07-07T15:39:39.000Z</lastmod>
-    <data>
-        <display>
-        <title>多线程</title>
-        <pubTime>2015-12-21T08:29:16.000Z</pubTime>
-        
-        <tag>iOS</tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://github.com/LiShengmin/2016/01/14/UITextField%E4%B8%AD%E6%96%87%E8%BE%93%E5%85%A5%E6%B3%95%E6%97%B6%E5%AF%B9%E5%AD%97%E7%AC%A6%E9%95%BF%E5%BA%A6%E7%9A%84%E9%99%90%E5%88%B6/</loc>
-    <lastmod>2016-07-07T15:38:43.000Z</lastmod>
-    <data>
-        <display>
-        <title>中文输入法时对字符长度的限制(UITextField)</title>
-        <pubTime>2016-01-14T04:05:01.000Z</pubTime>
-        
-        <tag>iOS UITextField 转载</tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://github.com/LiShengmin/2015/02/14/Static%20Const%20%E8%AF%A6%E8%A7%A3/</loc>
-    <lastmod>2016-07-07T15:38:21.000Z</lastmod>
-    <data>
-        <display>
-        <title>Static Const</title>
-        <pubTime>2015-02-13T18:05:11.000Z</pubTime>
-        
-        <tag>C C++ iOS</tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://github.com/LiShengmin/2015/03/02/SDWebImage%E7%9A%84%E4%BD%BF%E7%94%A8/</loc>
-    <lastmod>2016-07-07T15:38:13.000Z</lastmod>
-    <data>
-        <display>
-        <title>第三方库 SDWebImage</title>
-        <pubTime>2015-03-02T14:05:11.000Z</pubTime>
-        
-        <tag>iOS 三方库</tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://github.com/LiShengmin/2015/12/21/Objective-C%20Runtime/</loc>
-    <lastmod>2016-07-07T15:37:57.000Z</lastmod>
-    <data>
-        <display>
-        <title>Objective-C Runtime</title>
-        <pubTime>2015-12-21T12:05:12.000Z</pubTime>
-        
-        <tag>iOS</tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://github.com/LiShengmin/2015/06/03/NSUserDefaults/</loc>
-    <lastmod>2016-07-07T15:37:39.000Z</lastmod>
-    <data>
-        <display>
-        <title>自定义对象存储 （NSUserDefaults）</title>
-        <pubTime>2015-06-03T14:05:12.000Z</pubTime>
-        
-        <tag>iOS</tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://github.com/LiShengmin/2015/08/03/NSNumber%E7%9A%84%E4%BD%BF%E7%94%A8/</loc>
-    <lastmod>2016-07-07T15:37:28.000Z</lastmod>
-    <data>
-        <display>
-        <title>数字有关的类（int NSNumber...）</title>
-        <pubTime>2015-08-03T14:05:12.000Z</pubTime>
         
         <tag>iOS</tag>
          
