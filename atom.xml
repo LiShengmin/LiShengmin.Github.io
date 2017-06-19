@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://github.com/LiShengmin/"/>
-  <updated>2017-06-19T17:16:01.838Z</updated>
+  <updated>2017-06-19T17:17:55.728Z</updated>
   <id>https://github.com/LiShengmin/</id>
   
   <author>
@@ -20,10 +20,9 @@
     <link href="https://github.com/LiShengmin/2017/06/20/%E6%9E%B6%E6%9E%84-%E6%9E%B6%E6%9E%84%E6%BC%AB%E8%B0%88/"/>
     <id>https://github.com/LiShengmin/2017/06/20/架构-架构漫谈/</id>
     <published>2017-06-19T17:15:49.000Z</published>
-    <updated>2017-06-19T17:16:01.838Z</updated>
+    <updated>2017-06-19T17:17:55.728Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="架构"><a href="#架构" class="headerlink" title="架构"></a>架构</h1><p>非常感谢Casa的分享！这篇文章主要参考了Casa的分享和博客。还有个人的一些理解，希望通过这些阶段性的总结和思考，来让大家成为更好架构师，和理解架构师在做什么。</p>
-<p>#ios #架构# </p>
+    <content type="html"><![CDATA[<h1 id="架构"><a href="#架构" class="headerlink" title="架构"></a>架构</h1><p>非常感谢Casa的分享！这篇文章主要参考了Casa的分享和博客。还有个人的一些理解，希望通过这些阶段性的总结和思考，来让大家成为更好架构师，和理解架构师在做什么。<a id="more"></a></p>
 <h2 id="什么是架构"><a href="#什么是架构" class="headerlink" title="什么是架构"></a>什么是架构</h2><ul>
 <li>提供完整具备唯一性的解决方案</li>
 <li>通过设计能力减少工程的开发成本</li>
@@ -109,7 +108,7 @@
     
     <summary type="html">
     
-      &lt;h1 id=&quot;架构&quot;&gt;&lt;a href=&quot;#架构&quot; class=&quot;headerlink&quot; title=&quot;架构&quot;&gt;&lt;/a&gt;架构&lt;/h1&gt;&lt;p&gt;非常感谢Casa的分享！这篇文章主要参考了Casa的分享和博客。还有个人的一些理解，希望通过这些阶段性的总结和思考，来让大家成为更好架构师，
+      &lt;h1 id=&quot;架构&quot;&gt;&lt;a href=&quot;#架构&quot; class=&quot;headerlink&quot; title=&quot;架构&quot;&gt;&lt;/a&gt;架构&lt;/h1&gt;&lt;p&gt;非常感谢Casa的分享！这篇文章主要参考了Casa的分享和博客。还有个人的一些理解，希望通过这些阶段性的总结和思考，来让大家成为更好架构师，和理解架构师在做什么。
     
     </summary>
     
