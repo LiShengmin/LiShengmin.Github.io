@@ -18,7 +18,7 @@
 <meta property="og:url" content="https://github.com/LiShengmin/2017/06/20/架构-架构漫谈/index.html">
 <meta property="og:site_name" content="Shemmy">
 <meta property="og:description" content="架构非常感谢Casa的分享！这篇文章主要参考了Casa的分享和博客。还有个人的一些理解，希望通过这些阶段性的总结和思考，来让大家成为更好架构师，和理解架构师在做什么。">
-<meta property="og:updated_time" content="2017-06-19T17:17:55.728Z">
+<meta property="og:updated_time" content="2017-08-01T07:30:16.294Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="架构-架构漫谈">
 <meta name="twitter:description" content="架构非常感谢Casa的分享！这篇文章主要参考了Casa的分享和博客。还有个人的一些理解，希望通过这些阶段性的总结和思考，来让大家成为更好架构师，和理解架构师在做什么。">
@@ -49,7 +49,7 @@
 				<h1 class="site-name"><a href="/" title="Shemmy">Shemmy</a></h1>
 				<h2 class="blog-motto">iOS, 架构， Python, AI, go，（看不到评论模块的请外网访问～）</h2>
 			</div>
-			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜單">
 			</a></div>
 			<nav class="animated">
 				<ul>
@@ -65,7 +65,7 @@
  					
 						<form class="search" action="http://zhannei.baidu.com/cse/search" target="_blank">
 							<label>Search</label>
-						<input name="s" type="hidden" value= 783281470518440700 ><input type="text" name="q" size="30" placeholder="Search"><br>
+						<input name="s" type="hidden" value= 783281470518440700 ><input type="text" name="q" size="30" placeholder="搜索"><br>
 						</form>
 					
 					</li>
@@ -87,14 +87,14 @@
 		<a href="/about" title="Shemmy" target="_blank" itemprop="author">Shemmy</a>
 		
   <p class="article-time">
-    <time datetime="2017-06-19T17:15:49.000Z" itemprop="datePublished"> Published 2017-06-20</time>
+    <time datetime="2017-06-19T17:15:49.000Z" itemprop="datePublished"> 發表於 2017-06-20</time>
     
   </p>
 </header>
 	<div class="article-content">
 		
 		<div id="toc" class="toc-article">
-			<strong class="toc-title">Contents</strong>
+			<strong class="toc-title">文章目錄</strong>
 		
 			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#架构"><span class="toc-number">1.</span> <span class="toc-text">架构</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#什么是架构"><span class="toc-number">1.1.</span> <span class="toc-text">什么是架构</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#架构是审美与权衡"><span class="toc-number">2.</span> <span class="toc-text">架构是审美与权衡</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#权衡"><span class="toc-number">2.1.</span> <span class="toc-text">权衡</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#逻辑"><span class="toc-number">2.2.</span> <span class="toc-text">逻辑</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#追求简约和极致"><span class="toc-number">2.3.</span> <span class="toc-text">追求简约和极致</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#架构是会演化的"><span class="toc-number">3.</span> <span class="toc-text">架构是会演化的</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#如何给大模块做架构"><span class="toc-number">3.1.</span> <span class="toc-text">如何给大模块做架构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#接手新项目时，如何做架构调整"><span class="toc-number">3.2.</span> <span class="toc-text">接手新项目时，如何做架构调整</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#架构中的对称性"><span class="toc-number">3.3.</span> <span class="toc-text">架构中的对称性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#辩证的对待架构的灵活和限制"><span class="toc-number">3.4.</span> <span class="toc-text">辩证的对待架构的灵活和限制</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#辨证对待多和少"><span class="toc-number">3.5.</span> <span class="toc-text">辨证对待多和少</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#几个问题"><span class="toc-number">3.6.</span> <span class="toc-text">几个问题</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Q-amp-A"><span class="toc-number">4.</span> <span class="toc-text">Q&A</span></a></li></ol>
 		
@@ -145,7 +145,7 @@
 <h2 id="如何给大模块做架构"><a href="#如何给大模块做架构" class="headerlink" title="如何给大模块做架构"></a>如何给大模块做架构</h2><p>不是一上来就很精细的，一开始也就是做一个小模块，多个小模块拼接起来，就成了大模块的架构。</p>
 <ul>
 <li>是否要套用现有的方法论？</li>
-<li>具体要怎么做<br>熟悉:做好的东西组装起来。<br>不熟悉：从Demo开始做<h2 id="接手新项目时，如何做架构调整"><a href="#接手新项目时，如何做架构调整" class="headerlink" title="接手新项目时，如何做架构调整"></a>接手新项目时，如何做架构调整</h2></li>
+<li>具体要怎么做<br>熟悉: 做好的东西组装起来。<br>不熟悉：从Demo开始做<h2 id="接手新项目时，如何做架构调整"><a href="#接手新项目时，如何做架构调整" class="headerlink" title="接手新项目时，如何做架构调整"></a>接手新项目时，如何做架构调整</h2></li>
 <li>先找问题，再动手<br>不要直接改，可能团队不会很好接受，找有问题的点切入</li>
 <li>揣测现有架构的设计思路，新方案尽量不要动的很大<br>如果2种方案，都可以，改动的话会很大<br>如果之前没问题，尽量就不要动，顺着思路做就可以了</li>
 <li>找到过度方案<br>先2种方案并存，后一点一点改进<br>如果没有好的过渡方案就尽量不要动</li>
@@ -240,22 +240,22 @@
 
 
 </div>  
-      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+      <div class="openaside"><a class="navbutton" href="#" title="顯示側邊欄"></a></div>
 
   <div id="toc" class="toc-aside">
-  <strong class="toc-title">Contents</strong>
+  <strong class="toc-title">文章目錄</strong>
  
  <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#架构"><span class="toc-number">1.</span> <span class="toc-text">架构</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#什么是架构"><span class="toc-number">1.1.</span> <span class="toc-text">什么是架构</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#架构是审美与权衡"><span class="toc-number">2.</span> <span class="toc-text">架构是审美与权衡</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#权衡"><span class="toc-number">2.1.</span> <span class="toc-text">权衡</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#逻辑"><span class="toc-number">2.2.</span> <span class="toc-text">逻辑</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#追求简约和极致"><span class="toc-number">2.3.</span> <span class="toc-text">追求简约和极致</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#架构是会演化的"><span class="toc-number">3.</span> <span class="toc-text">架构是会演化的</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#如何给大模块做架构"><span class="toc-number">3.1.</span> <span class="toc-text">如何给大模块做架构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#接手新项目时，如何做架构调整"><span class="toc-number">3.2.</span> <span class="toc-text">接手新项目时，如何做架构调整</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#架构中的对称性"><span class="toc-number">3.3.</span> <span class="toc-text">架构中的对称性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#辩证的对待架构的灵活和限制"><span class="toc-number">3.4.</span> <span class="toc-text">辩证的对待架构的灵活和限制</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#辨证对待多和少"><span class="toc-number">3.5.</span> <span class="toc-text">辨证对待多和少</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#几个问题"><span class="toc-number">3.6.</span> <span class="toc-text">几个问题</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Q-amp-A"><span class="toc-number">4.</span> <span class="toc-text">Q&A</span></a></li></ol>
  
   </div>
 
 <div id="asidepart">
-<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<div class="closeaside"><a class="closebutton" href="#" title="隱藏側邊欄"></a></div>
 <aside class="clearfix">
 
   
 <div class="github-card">
-<p class="asidetitle">Github Card</p>
+<p class="asidetitle">Github 名片</p>
 <div class="github-card" data-github="lishengmin" data-width="220" data-height="119" data-theme="medium">
 <script type="text/javascript" src="//cdn.jsdelivr.net/github-cards/latest/widget.js" ></script>
 </div>
@@ -267,11 +267,11 @@
 
   
 <div class="tagslist">
-	<p class="asidetitle">Tags</p>
+	<p class="asidetitle">標簽</p>
 		<ul class="clearfix">
 		
 			
-				<li><a href="/tags/iOS/" title="iOS">iOS<sup>33</sup></a></li>
+				<li><a href="/tags/iOS/" title="iOS">iOS<sup>34</sup></a></li>
 			
 		
 			
@@ -279,11 +279,11 @@
 			
 		
 			
-				<li><a href="/tags/MacOS/" title="MacOS">MacOS<sup>1</sup></a></li>
+				<li><a href="/tags/C/" title="C">C<sup>1</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/C/" title="C">C<sup>1</sup></a></li>
+				<li><a href="/tags/MacOS/" title="MacOS">MacOS<sup>1</sup></a></li>
 			
 		
 			
@@ -295,7 +295,7 @@
 
 
   <div class="linkslist">
-  <p class="asidetitle">Links</p>
+  <p class="asidetitle">友情鏈接</p>
     <ul>
         
           <li>
@@ -347,11 +347,11 @@
 
 
   <div class="rsspart">
-	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
+	<a href="/atom.xml" target="_blank" title="rss">RSS 訂閱</a>
 </div>
 
   <div class="weiboshow">
-  <p class="asidetitle">Weibo</p>
+  <p class="asidetitle">新浪微博</p>
     <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=null&verifier=b3593ceb&dpc=1"></iframe>
 </div>
 
@@ -595,7 +595,7 @@ $(document).ready(function(){
 <!-- Totop Begin -->
 
 	<div id="totop">
-	<a title="Back to Top"><img src="/img/scrollup.png"/></a>
+	<a title="返回頂部"><img src="/img/scrollup.png"/></a>
 	</div>
 	<script src="/js/totop.js"></script>
 

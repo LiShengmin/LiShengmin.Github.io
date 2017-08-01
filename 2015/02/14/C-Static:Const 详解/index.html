@@ -18,7 +18,7 @@
 <meta property="og:url" content="https://github.com/LiShengmin/2015/02/14/C-Static:Const 详解/index.html">
 <meta property="og:site_name" content="Shemmy">
 <meta property="og:description" content="Static Const 说明对于C/C++语言来讲const就是只读的意思,只在声明中使用;static一般有2个作用,规定作用域和存储方式.对于局部变量,static规定其为静态存储方式,每次调用的初始值为上一次调用的值,调用结束后存储空间不释放;对于全局变量,如果以文件划分作用域的话,此变量只在当前文件可见;对于static函数也是在当前模块内函数可见.">
-<meta property="og:updated_time" content="2017-06-19T16:45:24.736Z">
+<meta property="og:updated_time" content="2017-06-19T16:45:24.737Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Static Const">
 <meta name="twitter:description" content="Static Const 说明对于C/C++语言来讲const就是只读的意思,只在声明中使用;static一般有2个作用,规定作用域和存储方式.对于局部变量,static规定其为静态存储方式,每次调用的初始值为上一次调用的值,调用结束后存储空间不释放;对于全局变量,如果以文件划分作用域的话,此变量只在当前文件可见;对于static函数也是在当前模块内函数可见.">
@@ -49,7 +49,7 @@
 				<h1 class="site-name"><a href="/" title="Shemmy">Shemmy</a></h1>
 				<h2 class="blog-motto">iOS, 架构， Python, AI, go，（看不到评论模块的请外网访问～）</h2>
 			</div>
-			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜單">
 			</a></div>
 			<nav class="animated">
 				<ul>
@@ -65,7 +65,7 @@
  					
 						<form class="search" action="http://zhannei.baidu.com/cse/search" target="_blank">
 							<label>Search</label>
-						<input name="s" type="hidden" value= 783281470518440700 ><input type="text" name="q" size="30" placeholder="Search"><br>
+						<input name="s" type="hidden" value= 783281470518440700 ><input type="text" name="q" size="30" placeholder="搜索"><br>
 						</form>
 					
 					</li>
@@ -87,14 +87,14 @@
 		<a href="/about" title="Shemmy" target="_blank" itemprop="author">Shemmy</a>
 		
   <p class="article-time">
-    <time datetime="2015-02-13T18:05:11.000Z" itemprop="datePublished"> Published 2015-02-14</time>
+    <time datetime="2015-02-13T18:05:11.000Z" itemprop="datePublished"> 發表於 2015-02-14</time>
     
   </p>
 </header>
 	<div class="article-content">
 		
 		<div id="toc" class="toc-article">
-			<strong class="toc-title">Contents</strong>
+			<strong class="toc-title">文章目錄</strong>
 		
 			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Static-Const-说明"><span class="toc-number">1.</span> <span class="toc-text">Static Const 说明</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#const-Static在其他情况说明"><span class="toc-number">1.1.</span> <span class="toc-text">const Static在其他情况说明:</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#全局"><span class="toc-number">1.1.1.</span> <span class="toc-text">全局:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#文件"><span class="toc-number">1.1.2.</span> <span class="toc-text">文件:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#函数"><span class="toc-number">1.1.3.</span> <span class="toc-text">函数:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#类"><span class="toc-number">1.1.4.</span> <span class="toc-text">类:</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Const用法"><span class="toc-number">1.2.</span> <span class="toc-text">Const用法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Static用法"><span class="toc-number">1.3.</span> <span class="toc-text">Static用法</span></a></li></ol></li></ol>
 		
@@ -167,22 +167,22 @@
 
 
 </div>  
-      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+      <div class="openaside"><a class="navbutton" href="#" title="顯示側邊欄"></a></div>
 
   <div id="toc" class="toc-aside">
-  <strong class="toc-title">Contents</strong>
+  <strong class="toc-title">文章目錄</strong>
  
  <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Static-Const-说明"><span class="toc-number">1.</span> <span class="toc-text">Static Const 说明</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#const-Static在其他情况说明"><span class="toc-number">1.1.</span> <span class="toc-text">const Static在其他情况说明:</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#全局"><span class="toc-number">1.1.1.</span> <span class="toc-text">全局:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#文件"><span class="toc-number">1.1.2.</span> <span class="toc-text">文件:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#函数"><span class="toc-number">1.1.3.</span> <span class="toc-text">函数:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#类"><span class="toc-number">1.1.4.</span> <span class="toc-text">类:</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Const用法"><span class="toc-number">1.2.</span> <span class="toc-text">Const用法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Static用法"><span class="toc-number">1.3.</span> <span class="toc-text">Static用法</span></a></li></ol></li></ol>
  
   </div>
 
 <div id="asidepart">
-<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<div class="closeaside"><a class="closebutton" href="#" title="隱藏側邊欄"></a></div>
 <aside class="clearfix">
 
   
 <div class="github-card">
-<p class="asidetitle">Github Card</p>
+<p class="asidetitle">Github 名片</p>
 <div class="github-card" data-github="lishengmin" data-width="220" data-height="119" data-theme="medium">
 <script type="text/javascript" src="//cdn.jsdelivr.net/github-cards/latest/widget.js" ></script>
 </div>
@@ -194,11 +194,11 @@
 
   
 <div class="tagslist">
-	<p class="asidetitle">Tags</p>
+	<p class="asidetitle">標簽</p>
 		<ul class="clearfix">
 		
 			
-				<li><a href="/tags/iOS/" title="iOS">iOS<sup>33</sup></a></li>
+				<li><a href="/tags/iOS/" title="iOS">iOS<sup>34</sup></a></li>
 			
 		
 			
@@ -206,11 +206,11 @@
 			
 		
 			
-				<li><a href="/tags/MacOS/" title="MacOS">MacOS<sup>1</sup></a></li>
+				<li><a href="/tags/C/" title="C">C<sup>1</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/C/" title="C">C<sup>1</sup></a></li>
+				<li><a href="/tags/MacOS/" title="MacOS">MacOS<sup>1</sup></a></li>
 			
 		
 			
@@ -222,7 +222,7 @@
 
 
   <div class="linkslist">
-  <p class="asidetitle">Links</p>
+  <p class="asidetitle">友情鏈接</p>
     <ul>
         
           <li>
@@ -274,11 +274,11 @@
 
 
   <div class="rsspart">
-	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
+	<a href="/atom.xml" target="_blank" title="rss">RSS 訂閱</a>
 </div>
 
   <div class="weiboshow">
-  <p class="asidetitle">Weibo</p>
+  <p class="asidetitle">新浪微博</p>
     <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=null&verifier=b3593ceb&dpc=1"></iframe>
 </div>
 
@@ -522,7 +522,7 @@ $(document).ready(function(){
 <!-- Totop Begin -->
 
 	<div id="totop">
-	<a title="Back to Top"><img src="/img/scrollup.png"/></a>
+	<a title="返回頂部"><img src="/img/scrollup.png"/></a>
 	</div>
 	<script src="/js/totop.js"></script>
 

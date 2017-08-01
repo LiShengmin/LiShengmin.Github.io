@@ -49,7 +49,7 @@
 				<h1 class="site-name"><a href="/" title="Shemmy">Shemmy</a></h1>
 				<h2 class="blog-motto">iOS, 架构， Python, AI, go，（看不到评论模块的请外网访问～）</h2>
 			</div>
-			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜單">
 			</a></div>
 			<nav class="animated">
 				<ul>
@@ -65,7 +65,7 @@
  					
 						<form class="search" action="http://zhannei.baidu.com/cse/search" target="_blank">
 							<label>Search</label>
-						<input name="s" type="hidden" value= 783281470518440700 ><input type="text" name="q" size="30" placeholder="Search"><br>
+						<input name="s" type="hidden" value= 783281470518440700 ><input type="text" name="q" size="30" placeholder="搜索"><br>
 						</form>
 					
 					</li>
@@ -87,14 +87,14 @@
 		<a href="/about" title="Shemmy" target="_blank" itemprop="author">Shemmy</a>
 		
   <p class="article-time">
-    <time datetime="2015-12-29T16:08:32.000Z" itemprop="datePublished"> Published 2015-12-30</time>
+    <time datetime="2015-12-29T16:08:32.000Z" itemprop="datePublished"> 發表於 2015-12-30</time>
     
   </p>
 </header>
 	<div class="article-content">
 		
 		<div id="toc" class="toc-article">
-			<strong class="toc-title">Contents</strong>
+			<strong class="toc-title">文章目錄</strong>
 		
 			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#MJExtension应用举例"><span class="toc-number">1.</span> <span class="toc-text">MJExtension应用举例</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Plist-→-模型数组"><span class="toc-number">1.1.</span> <span class="toc-text">Plist → 模型数组</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#对NSLog的优化，解决-调试时，打印模型，只打印出内存地址的问题"><span class="toc-number">1.2.</span> <span class="toc-text">对NSLog的优化，解决 调试时，打印模型，只打印出内存地址的问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#对NSCoding的优化，不用再写繁琐的解档和归档方法了"><span class="toc-number">1.3.</span> <span class="toc-text">对NSCoding的优化，不用再写繁琐的解档和归档方法了</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#字典数组-→-模型数组"><span class="toc-number">2.</span> <span class="toc-text">字典数组 → 模型数组</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#场景一-字典1-字典2-字典3"><span class="toc-number">2.1.</span> <span class="toc-text">场景一  [字典1,字典2,字典3];</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#场景二-在场景一的基础上，每个字典里面，有数组-假设数组的key值是arrayName"><span class="toc-number">2.2.</span> <span class="toc-text">场景二  在场景一的基础上，每个字典里面，有数组(假设数组的key值是arrayName)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#如果-服务器传过来的-字典数组里的字典的Key，是OC里的关键字"><span class="toc-number">2.3.</span> <span class="toc-text">如果 服务器传过来的 字典数组里的字典的Key，是OC里的关键字</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#单个字典-→-单个模型"><span class="toc-number">2.4.</span> <span class="toc-text">单个字典 → 单个模型</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#load-更多"><span class="toc-number">3.</span> <span class="toc-text">+load 更多</span></a></li></ol>
 		
@@ -175,22 +175,22 @@
 
 
 </div>  
-      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+      <div class="openaside"><a class="navbutton" href="#" title="顯示側邊欄"></a></div>
 
   <div id="toc" class="toc-aside">
-  <strong class="toc-title">Contents</strong>
+  <strong class="toc-title">文章目錄</strong>
  
  <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#MJExtension应用举例"><span class="toc-number">1.</span> <span class="toc-text">MJExtension应用举例</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Plist-→-模型数组"><span class="toc-number">1.1.</span> <span class="toc-text">Plist → 模型数组</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#对NSLog的优化，解决-调试时，打印模型，只打印出内存地址的问题"><span class="toc-number">1.2.</span> <span class="toc-text">对NSLog的优化，解决 调试时，打印模型，只打印出内存地址的问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#对NSCoding的优化，不用再写繁琐的解档和归档方法了"><span class="toc-number">1.3.</span> <span class="toc-text">对NSCoding的优化，不用再写繁琐的解档和归档方法了</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#字典数组-→-模型数组"><span class="toc-number">2.</span> <span class="toc-text">字典数组 → 模型数组</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#场景一-字典1-字典2-字典3"><span class="toc-number">2.1.</span> <span class="toc-text">场景一  [字典1,字典2,字典3];</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#场景二-在场景一的基础上，每个字典里面，有数组-假设数组的key值是arrayName"><span class="toc-number">2.2.</span> <span class="toc-text">场景二  在场景一的基础上，每个字典里面，有数组(假设数组的key值是arrayName)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#如果-服务器传过来的-字典数组里的字典的Key，是OC里的关键字"><span class="toc-number">2.3.</span> <span class="toc-text">如果 服务器传过来的 字典数组里的字典的Key，是OC里的关键字</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#单个字典-→-单个模型"><span class="toc-number">2.4.</span> <span class="toc-text">单个字典 → 单个模型</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#load-更多"><span class="toc-number">3.</span> <span class="toc-text">+load 更多</span></a></li></ol>
  
   </div>
 
 <div id="asidepart">
-<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<div class="closeaside"><a class="closebutton" href="#" title="隱藏側邊欄"></a></div>
 <aside class="clearfix">
 
   
 <div class="github-card">
-<p class="asidetitle">Github Card</p>
+<p class="asidetitle">Github 名片</p>
 <div class="github-card" data-github="lishengmin" data-width="220" data-height="119" data-theme="medium">
 <script type="text/javascript" src="//cdn.jsdelivr.net/github-cards/latest/widget.js" ></script>
 </div>
@@ -202,11 +202,11 @@
 
   
 <div class="tagslist">
-	<p class="asidetitle">Tags</p>
+	<p class="asidetitle">標簽</p>
 		<ul class="clearfix">
 		
 			
-				<li><a href="/tags/iOS/" title="iOS">iOS<sup>33</sup></a></li>
+				<li><a href="/tags/iOS/" title="iOS">iOS<sup>34</sup></a></li>
 			
 		
 			
@@ -214,11 +214,11 @@
 			
 		
 			
-				<li><a href="/tags/MacOS/" title="MacOS">MacOS<sup>1</sup></a></li>
+				<li><a href="/tags/C/" title="C">C<sup>1</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/C/" title="C">C<sup>1</sup></a></li>
+				<li><a href="/tags/MacOS/" title="MacOS">MacOS<sup>1</sup></a></li>
 			
 		
 			
@@ -230,7 +230,7 @@
 
 
   <div class="linkslist">
-  <p class="asidetitle">Links</p>
+  <p class="asidetitle">友情鏈接</p>
     <ul>
         
           <li>
@@ -282,11 +282,11 @@
 
 
   <div class="rsspart">
-	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
+	<a href="/atom.xml" target="_blank" title="rss">RSS 訂閱</a>
 </div>
 
   <div class="weiboshow">
-  <p class="asidetitle">Weibo</p>
+  <p class="asidetitle">新浪微博</p>
     <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=null&verifier=b3593ceb&dpc=1"></iframe>
 </div>
 
@@ -530,7 +530,7 @@ $(document).ready(function(){
 <!-- Totop Begin -->
 
 	<div id="totop">
-	<a title="Back to Top"><img src="/img/scrollup.png"/></a>
+	<a title="返回頂部"><img src="/img/scrollup.png"/></a>
 	</div>
 	<script src="/js/totop.js"></script>
 

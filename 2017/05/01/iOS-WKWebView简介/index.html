@@ -1,0 +1,625 @@
+
+ <!DOCTYPE HTML>
+<html >
+<head>
+  <meta charset="UTF-8">
+  
+    <title>iOS-WKWebView简介 | Shemmy</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="Shemmy">
+    
+
+    
+    <meta name="description" content="#笔记#   与UIWebView相比速度更快， 内存更省。 iOS8苹果推出的框架Wekkit，提供了替换UIWebView的组件WKWebView。 在性能、稳定性、功能方面有很大提升（最直观的体现就是加载网页是占用的内存，模拟器加载百度与开源中国网站时，WKWebView占用23M，而UIWebView占用85M）； 允许JavaScript的Nitro库加载并使用（UIWebView中限制">
+<meta name="keywords" content="iOS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iOS-WKWebView简介">
+<meta property="og:url" content="https://github.com/LiShengmin/2017/05/01/iOS-WKWebView简介/index.html">
+<meta property="og:site_name" content="Shemmy">
+<meta property="og:description" content="#笔记#   与UIWebView相比速度更快， 内存更省。 iOS8苹果推出的框架Wekkit，提供了替换UIWebView的组件WKWebView。 在性能、稳定性、功能方面有很大提升（最直观的体现就是加载网页是占用的内存，模拟器加载百度与开源中国网站时，WKWebView占用23M，而UIWebView占用85M）； 允许JavaScript的Nitro库加载并使用（UIWebView中限制">
+<meta property="og:updated_time" content="2017-08-01T08:29:06.405Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="iOS-WKWebView简介">
+<meta name="twitter:description" content="#笔记#   与UIWebView相比速度更快， 内存更省。 iOS8苹果推出的框架Wekkit，提供了替换UIWebView的组件WKWebView。 在性能、稳定性、功能方面有很大提升（最直观的体现就是加载网页是占用的内存，模拟器加载百度与开源中国网站时，WKWebView占用23M，而UIWebView占用85M）； 允许JavaScript的Nitro库加载并使用（UIWebView中限制">
+
+    
+    <link rel="alternative" href="/atom.xml" title="Shemmy" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="Shemmy" title="Shemmy"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="Shemmy">Shemmy</a></h1>
+				<h2 class="blog-motto">iOS, 架构， Python, AI, go，（看不到评论模块的请外网访问～）</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜單">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/about">About</a></li>
+					
+					<li>
+ 					
+						<form class="search" action="http://zhannei.baidu.com/cse/search" target="_blank">
+							<label>Search</label>
+						<input name="s" type="hidden" value= 783281470518440700 ><input type="text" name="q" size="30" placeholder="搜索"><br>
+						</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2017/05/01/iOS-WKWebView简介/" title="iOS-WKWebView简介" itemprop="url">iOS-WKWebView简介</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Shemmy" target="_blank" itemprop="author">Shemmy</a>
+		
+  <p class="article-time">
+    <time datetime="2017-05-01T07:37:43.000Z" itemprop="datePublished"> 發表於 2017-05-01</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目錄</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#初始化（init）"><span class="toc-number">1.</span> <span class="toc-text">初始化（init）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#回调-delegate"><span class="toc-number">2.</span> <span class="toc-text">回调 (delegate)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#生命周期-lifeCycle"><span class="toc-number">2.1.</span> <span class="toc-text">生命周期(lifeCycle)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#页面跳转-load-new-Page-life-cycle"><span class="toc-number">2.2.</span> <span class="toc-text">页面跳转(load new Page life cycle)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#提示框（PromptAlert）"><span class="toc-number">2.3.</span> <span class="toc-text">提示框（PromptAlert）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#多种触摸手势（Peek-and-Pop）-iOS10"><span class="toc-number">2.4.</span> <span class="toc-text">多种触摸手势（Peek and Pop）(iOS10,*)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#手势选择"><span class="toc-number">2.4.1.</span> <span class="toc-text">手势选择</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#视图重按后弹出视图"><span class="toc-number">2.4.2.</span> <span class="toc-text">视图重按后弹出视图</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#JS与WKWebView交互-JavaScript-interacts-With-WKWebView"><span class="toc-number">3.</span> <span class="toc-text">JS与WKWebView交互(JavaScript interacts With WKWebView)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#在WebView加入JS代码"><span class="toc-number">3.1.</span> <span class="toc-text">在WebView加入JS代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#WKWebView-执行JSMethod-WebView-running-JS-method"><span class="toc-number">3.2.</span> <span class="toc-text">WKWebView 执行JSMethod (WebView running JS method)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JS调用App注册的方法"><span class="toc-number">3.3.</span> <span class="toc-text">JS调用App注册的方法</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#控制器不释放！！！"><span class="toc-number">4.</span> <span class="toc-text">控制器不释放！！！</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#方式1"><span class="toc-number">4.1.</span> <span class="toc-text">方式1</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#方式2"><span class="toc-number">4.2.</span> <span class="toc-text">方式2</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#注："><span class="toc-number">5.</span> <span class="toc-text">注：</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#常用函数"><span class="toc-number">6.</span> <span class="toc-text">常用函数</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#性能分析"><span class="toc-number">7.</span> <span class="toc-text">性能分析</span></a></li></ol>
+		
+		</div>
+		
+		<p>#笔记# </p>
+<ul>
+<li>与UIWebView相比速度更快， 内存更省。</li>
+<li>iOS8苹果推出的框架Wekkit，提供了替换UIWebView的组件WKWebView。</li>
+<li>在性能、稳定性、功能方面有很大提升（最直观的体现就是加载网页是占用的内存，模拟器加载百度与开源中国网站时，WKWebView占用23M，而UIWebView占用85M）；</li>
+<li>允许JavaScript的Nitro库加载并使用（UIWebView中限制）；</li>
+<li>支持了更多的HTML5特性；</li>
+<li>高达60fps的滚动刷新率以及内置手势；</li>
+<li>将UIWebViewDelegate与UIWebView重构成了14类与3个协议<a href="https://developer.apple.com/library/mac/documentation/Cocoa/Reference/WebKit/ObjC_classic/index.html" target="_blank" rel="external">（查看苹果官方文档）</a><a id="more"></a></li>
+</ul>
+<h1 id="初始化（init）"><a href="#初始化（init）" class="headerlink" title="初始化（init）"></a>初始化（init）</h1><figure class="highlight mm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">WKWebView</span> * webView = [[<span class="built_in">WKWebView</span> alloc] initWithFrame:<span class="keyword">self</span>.view.bounds];</div><div class="line">[webView loadRequest:[<span class="built_in">NSRULRequest</span> requestWithURL:[<span class="built_in">NSURL</span> URLWithStingL:<span class="string">@"https://www.baidu.com"</span>]]];</div><div class="line">[<span class="keyword">self</span>.view addSubview:webView];</div></pre></td></tr></table></figure>
+<h1 id="回调-delegate"><a href="#回调-delegate" class="headerlink" title="回调 (delegate)"></a>回调 (delegate)</h1><h2 id="生命周期-lifeCycle"><a href="#生命周期-lifeCycle" class="headerlink" title="生命周期(lifeCycle)"></a>生命周期(lifeCycle)</h2><ul>
+<li><p>页面开始加载时调用</p>
+<figure class="highlight mm"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">- (<span class="keyword">void</span>)webView:(<span class="built_in">WKWebView</span> *)webView didStartProvisionalNavigation:(<span class="built_in">WKNavigation</span> *)navigation;</div></pre></td></tr></table></figure>
+</li>
+<li><p>当内容开始返回时调用</p>
+<figure class="highlight mm"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">- (<span class="keyword">void</span>)webView:(<span class="built_in">WKWebView</span> *)webView didCommitNavigation:(<span class="built_in">WKNavigation</span> *)navigation;</div></pre></td></tr></table></figure>
+</li>
+<li><p>页面加载完成之后调用</p>
+<figure class="highlight mm"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">- (<span class="keyword">void</span>)webView:(<span class="built_in">WKWebView</span> *)webView didFinishNavigation:(<span class="built_in">WKNavigation</span> *)navigation;</div></pre></td></tr></table></figure>
+</li>
+<li><p>页面加载失败时调用</p>
+<figure class="highlight mm"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">- (<span class="keyword">void</span>)webView:(<span class="built_in">WKWebView</span> *)webView didFailProvisionalNavigation:(<span class="built_in">WKNavigation</span> *)navigation</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="页面跳转-load-new-Page-life-cycle"><a href="#页面跳转-load-new-Page-life-cycle" class="headerlink" title="页面跳转(load new Page life cycle)"></a>页面跳转(load new Page life cycle)</h2><ul>
+<li><p>接收到服务器跳转请求之后调用</p>
+<figure class="highlight mm"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">- (<span class="keyword">void</span>)webView:(<span class="built_in">WKWebView</span> *)webView didReceiveServerRedirectForProvisionalNavigation:(<span class="built_in">WKNavigation</span> *)navigation;</div></pre></td></tr></table></figure>
+</li>
+<li><p>在收到响应后，决定是否跳转</p>
+<figure class="highlight mm"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">- (<span class="keyword">void</span>)webView:(<span class="built_in">WKWebView</span> *)webView decidePolicyForNavigationResponse:(<span class="built_in">WKNavigationResponse</span> *)navigationResponse decisionHandler:(<span class="keyword">void</span> (^)(<span class="built_in">WKNavigationResponsePolicy</span>))decisionHandler;</div></pre></td></tr></table></figure>
+</li>
+<li><p>在发送请求之前，决定是否跳转*</p>
+<figure class="highlight mm"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">- (<span class="keyword">void</span>)webView:(<span class="built_in">WKWebView</span> *)webView decidePolicyForNavigationAction:(<span class="built_in">WKNavigationAction</span> *)navigationAction decisionHandler:(<span class="keyword">void</span> (^)(<span class="built_in">WKNavigationActionPolicy</span>))decisionHandler;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="提示框（PromptAlert）"><a href="#提示框（PromptAlert）" class="headerlink" title="提示框（PromptAlert）"></a>提示框（PromptAlert）</h2><p>遵守WKUIDelegate,可以执行JS上的3中提示框，（<br>runJavaScriptAlertPanelWithMessage，       // 警告框<br>runJavaScriptConfirmPanelWithMessage， //确认框<br>runJavaScriptTextInputPanelWithPrompt， // 输入框<br>）<br><figure class="highlight mm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/** web界面中有弹出警告框时调用</span></div><div class="line"> *  @param webView           实现该代理的webview</div><div class="line"> *  @param message           警告框中的内容</div><div class="line"> *  @param frame             主窗口</div><div class="line"> *  @param completionHandler 警告框消失调用</div><div class="line"> */</div><div class="line">- (<span class="keyword">void</span>)webView:(<span class="built_in">WKWebView</span> *)webView runJavaScriptAlertPanelWithMessage:(<span class="built_in">NSString</span> *)message initiatedByFrame:(<span class="keyword">void</span> (^)())completionHandler;<span class="comment">//警告框</span></div></pre></td></tr></table></figure></p>
+<h2 id="多种触摸手势（Peek-and-Pop）-iOS10"><a href="#多种触摸手势（Peek-and-Pop）-iOS10" class="headerlink" title="多种触摸手势（Peek and Pop）(iOS10,*)"></a>多种触摸手势（Peek and Pop）(iOS10,*)</h2><ul>
+<li>使用iOS 10 SDK开发的App默认开启了Peek and Pop链接预览，但这并不是一个新特性；从iOS 9开始，在支持3D Touch的设备中使用WKWebView的allowLinkPreview属性，WKWebView客户端就可以选择基于Peek的链接预览。</li>
+<li>当allowLinkPreview属性设为true时，使用者可以<em>轻轻的按下链接</em>来查看，然后在app上的另一个视图里加载链接，同时app在背景中模糊显示。如果使用者<em>用力按下链接</em>，链接会在Safari中弹出。</li>
+<li>如果你有像WKPedia这样的应用程序，并寻求能提供更好的用户体验，你可以开始使用我们在iOS 10里面添加的新的API！在新的API中，只要用户在WKWebView中使用3D Touch查看和弹出链接就可以显示自定义视图控制器。这个API是由WKUIDelegate协议中的三个委托方法组成。<h3 id="手势选择"><a href="#手势选择" class="headerlink" title="手势选择"></a>手势选择</h3><blockquote>
+<p>webView: shouldPreviewElement: … -&gt; Bool<br>webView: commitPreviewingViewController -&gt; Bool</p>
+</blockquote>
+</li>
+<li>第一个方法，当用户触摸元素时webView(_:shouldPreviewElement:)立即被调用。返回false将完全禁用该元素的预览，并且阻止其他方法的调用。返回true将提供一个自定义视图控制的机会，前提是用户触摸时有足够的力度来启动查看。</li>
+<li>第二个方法，如果用户用足够的力触摸来弹出视图控制器， 此时，你可以选择在app中展示／弹出的视图控制器（参见下面的方法 ）。<h3 id="视图重按后弹出视图"><a href="#视图重按后弹出视图" class="headerlink" title="视图重按后弹出视图"></a>视图重按后弹出视图</h3><blockquote>
+<p>webView: previewingViewControllerForElement -&gt; UIViewController</p>
+</blockquote>
+</li>
+<li>为其提供了一个定制视图控制器的机会。返回任何非空视图控制器都会导致视图控制器显示为Peek预览。defaultActions参数是一个活动数组，WebKit Webkit默认使用它作为previewActionItems。如果想要使用这些活动中的任何一个，你只需从视图控制器的previewActionItems执行结果中返回即可。这里是WKPedia中这个委托方法的实现情况：</li>
+</ul>
+<h1 id="JS与WKWebView交互-JavaScript-interacts-With-WKWebView"><a href="#JS与WKWebView交互-JavaScript-interacts-With-WKWebView" class="headerlink" title="JS与WKWebView交互(JavaScript interacts With WKWebView)"></a>JS与WKWebView交互(JavaScript interacts With WKWebView)</h1><h2 id="在WebView加入JS代码"><a href="#在WebView加入JS代码" class="headerlink" title="在WebView加入JS代码"></a>在WebView加入JS代码</h2><ol>
+<li><p>图片缩放的js代码</p>
+<figure class="highlight mm"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">NSString</span> *js = <span class="string">@"var count = document.images.length;for (var i = 0; i &lt; count; i++) &#123;var image = document.images[i];image.style.width=320;&#125;;window.alert('找到' + count + '张图');"</span>;</div></pre></td></tr></table></figure>
+</li>
+<li><p>根据JS字符串初始化WKUserScript对象</p>
+<figure class="highlight mm"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// WKUserScript *script = [[WKUserScript alloc] initWithSource:js injectionTime:WKUserScriptInjectionTimeAtDocumentEnd forMainFrameOnly:YES];</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>根据生成的WKUserScript对象，初始化WKWebViewConfiguration </p>
+<figure class="highlight mm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">WKWebViewConfiguration</span> *config = [[<span class="built_in">WKWebViewConfiguration</span> alloc] init];</div><div class="line">[config.userContentController addUserScript:script];</div><div class="line">_webView = [[<span class="built_in">WKWebView</span> alloc] initWithFrame:<span class="keyword">self</span>.view.bounds configuration:config];</div><div class="line">[_webView loadHTMLString:<span class="string">@"&lt;head&gt;&lt;/head&gt;&lt;imgea src='http://www.nsu.edu.cn/v/2014v3/img/background/3.jpg' /&gt;"</span>baseURL:<span class="literal">nil</span>];</div><div class="line">[<span class="keyword">self</span>.view addSubview:_webView];</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="WKWebView-执行JSMethod-WebView-running-JS-method"><a href="#WKWebView-执行JSMethod-WebView-running-JS-method" class="headerlink" title="WKWebView 执行JSMethod (WebView running JS method)"></a>WKWebView 执行JSMethod (WebView running JS method)</h2><p>用户调用用JS写过的代码<br><figure class="highlight mm"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[<span class="keyword">self</span>.webView evaluateJavaScript:jsMethodNameStr completionHandler:completionHandler];</div></pre></td></tr></table></figure></p>
+<ul>
+<li>jsMethodNameStr:     JS方法名</li>
+<li>completionHandler:     异步回调(@escaping)block<h2 id="JS调用App注册的方法"><a href="#JS调用App注册的方法" class="headerlink" title="JS调用App注册的方法"></a>JS调用App注册的方法</h2>在WKWebView里面注册供JS调用的方法，是通过WKUserContentController类下面的方法<figure class="highlight mm"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">- (<span class="keyword">void</span>)addScriptMessageHandler:(<span class="keyword">id</span> &lt;<span class="built_in">WKScriptMessageHandler</span>&gt;)scriptMessageHandler name:(<span class="built_in">NSString</span> *)name;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>scriptMessageHandler是代理回调, JS调用name方法后，OC会调用scriptMessageHandler指定的对象。</p>
+<hr>
+<ul>
+<li>JS在调用OC注册方法的时候要用下面的方式<figure class="highlight mm"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">window.webkit.messageHandlers.&lt;name&gt;.postMessage(&lt;messageBody&gt;)</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>注意，name(方法名)是放在中间的，messageBody只能是一个对象，如果要传多个值，需要封装成数组，或者字典。整个示例如下：<br><figure class="highlight mm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//OC注册供JS调用的方法</span></div><div class="line">[[_webView configuration].userContentController addScriptMessageHandler:<span class="keyword">self</span> name:<span class="string">@"closeMe"</span>];</div><div class="line"></div><div class="line"><span class="comment">//OC在JS调用方法做的处理</span></div><div class="line">- (<span class="keyword">void</span>)userContentController:(<span class="built_in">WKUserContentController</span> *)userContentController didReceiveScriptMessage:(<span class="built_in">WKScriptMessage</span> *)message</div><div class="line">&#123;</div><div class="line">    <span class="built_in">NSLog</span>(<span class="string">@"JS 调用了 %@ 方法，传回参数 %@"</span>,message.name,message.body);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//JS调用</span></div><div class="line">    window.webkit.messageHandlers.closeMe.postMessage(null);</div></pre></td></tr></table></figure></p>
+<h1 id="控制器不释放！！！"><a href="#控制器不释放！！！" class="headerlink" title="控制器不释放！！！"></a>控制器不释放！！！</h1><h2 id="方式1"><a href="#方式1" class="headerlink" title="方式1"></a>方式1</h2><p>如果你在self的dealloc打个断点，会发现self没有释放！这显然是不行的！(StackoverFlow)看到<a href="http://stackoverflow.com/questions/26383031/wkwebview-causes-my-view-controller-to-leak" target="_blank" rel="external">一种解决方法</a>，如下：<br><figure class="highlight mm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">WeakScriptMessageDelegate</span> : <span class="title">NSObject</span>&lt;<span class="title">WKScriptMessageHandler</span>&gt;</span></div><div class="line"></div><div class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">weak</span>) <span class="keyword">id</span>&lt;<span class="built_in">WKScriptMessageHandler</span>&gt; scriptDelegate;</div><div class="line"></div><div class="line">- (<span class="keyword">instancetype</span>)initWithDelegate:(<span class="keyword">id</span>&lt;<span class="built_in">WKScriptMessageHandler</span>&gt;)scriptDelegate;</div><div class="line"></div><div class="line"><span class="keyword">@end</span></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">WeakScriptMessageDelegate</span></span></div><div class="line"></div><div class="line">- (<span class="keyword">instancetype</span>)initWithDelegate:(<span class="keyword">id</span>&lt;<span class="built_in">WKScriptMessageHandler</span>&gt;)scriptDelegate</div><div class="line">&#123;</div><div class="line">    <span class="keyword">self</span> = [<span class="keyword">super</span> init];</div><div class="line">    <span class="keyword">if</span> (<span class="keyword">self</span>) &#123;</div><div class="line">        _scriptDelegate = scriptDelegate;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">self</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line">- (<span class="keyword">void</span>)userContentController:(<span class="built_in">WKUserContentController</span> *)userContentController didReceiveScriptMessage:(<span class="built_in">WKScriptMessage</span> *)message</div><div class="line">&#123;</div><div class="line">    [<span class="keyword">self</span>.scriptDelegate userContentController:userContentController didReceiveScriptMessage:message];</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">@end</span></div></pre></td></tr></table></figure></p>
+<h2 id="方式2"><a href="#方式2" class="headerlink" title="方式2"></a>方式2</h2><p>思路：创建一个代理对象， 然后通过代理对象回调指定的self。<br><figure class="highlight mm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">WKUserContentController</span> *userContentController = [[<span class="built_in">WKUserContentController</span> alloc] init];    </div><div class="line">[userContentController addScriptMessageHandler:[[WeakScriptMessageDelegate alloc] initWithDelegate:<span class="keyword">self</span>] name:<span class="string">@"closeMe"</span>];</div></pre></td></tr></table></figure></p>
+<p>运行后，发现self被释放了，WeakSciptMessageDelegate没有释放<br>还需要在self的delloc中释放delegatElement<br><figure class="highlight mm"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[[WebView configuration].userContrntContoller removeSctiptMessageHandlerForName:<span class="string">@"closeMe"</span>];</div></pre></td></tr></table></figure></p>
+<h1 id="注："><a href="#注：" class="headerlink" title="注："></a>注：</h1><p> 目前，大多数App需要支持iOS7以上的版本，而WKWebView只在iOS8后才能用，所以需要一个兼容性方案，既iOS7下用UIWebView，iOS8后用WKWebView。<a href="https://github.com/wangyangcc/IMYWebView">这个库</a>提供了这种兼容性方案。</p>
+<h1 id="常用函数"><a href="#常用函数" class="headerlink" title="常用函数"></a>常用函数</h1><figure class="highlight mm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">- goBack -&gt; <span class="built_in">WKNavigation</span></div><div class="line">- goForward -&gt; <span class="built_in">WKNavigation</span></div><div class="line">- reload -&gt; <span class="built_in">WKNavigation</span></div><div class="line">- reloadFromOrigin -&gt; <span class="built_in">WKNavigation</span> <span class="comment">//新增函数，比较网络数据是否有变化，没有变化则使用缓存，否则从新请求。</span></div><div class="line">- goToBackForwardListIterm: -&gt; <span class="built_in">WKNavigation</span> <span class="comment">//新增函数，跳转到某个指定历史页面</span></div><div class="line">- stopLoading</div><div class="line"></div><div class="line">.allowsBackForwardNavigationGestures -&gt; Bool <span class="comment">//是否允许左右划手势导航，默认不允许</span></div><div class="line">.estimatedProgress <span class="comment">//加载进度 0-1</span></div><div class="line">.title -&gt; String <span class="comment">//页面Title</span></div><div class="line">.scrollerView.scrollEnabled -&gt; Bool <span class="comment">//是否允许上下滚动</span></div><div class="line">.backForwardList -&gt; <span class="built_in">WKBackForwardList</span> <span class="comment">//访问历史表</span></div></pre></td></tr></table></figure>
+<h1 id="性能分析"><a href="#性能分析" class="headerlink" title="性能分析"></a>性能分析</h1><p>我们关心的H5加载的性能，主要是</p>
+<blockquote>
+<p>加载链接的性能数据（DNS解析时间、TCP链接时间、Request请求时间、response响应时间、Dom节点解析时间、page渲染时间、获取资源的时序）<br>白屏时间<br>页面渲染耗时</p>
+</blockquote>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/iOS/">iOS</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="https://github.com/LiShengmin/2017/05/01/iOS-WKWebView简介/" data-title="iOS-WKWebView简介 | Shemmy" data-tsina="null" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2017/04/28/架构-Carthage使用/" title="架构-Carthage使用">
+  <strong>上一篇：</strong><br/>
+  <span>
+  架构-Carthage使用</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2017/06/12/iOS-iOS11无线调试/"  title="iOS-iOS11无线调试">
+ <strong>下一篇：</strong><br/> 
+ <span>iOS-iOS11无线调试
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+
+<section id="comments" class="comment">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+
+
+
+<section id="comment">
+  
+</section>
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="顯示側邊欄"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目錄</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#初始化（init）"><span class="toc-number">1.</span> <span class="toc-text">初始化（init）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#回调-delegate"><span class="toc-number">2.</span> <span class="toc-text">回调 (delegate)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#生命周期-lifeCycle"><span class="toc-number">2.1.</span> <span class="toc-text">生命周期(lifeCycle)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#页面跳转-load-new-Page-life-cycle"><span class="toc-number">2.2.</span> <span class="toc-text">页面跳转(load new Page life cycle)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#提示框（PromptAlert）"><span class="toc-number">2.3.</span> <span class="toc-text">提示框（PromptAlert）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#多种触摸手势（Peek-and-Pop）-iOS10"><span class="toc-number">2.4.</span> <span class="toc-text">多种触摸手势（Peek and Pop）(iOS10,*)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#手势选择"><span class="toc-number">2.4.1.</span> <span class="toc-text">手势选择</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#视图重按后弹出视图"><span class="toc-number">2.4.2.</span> <span class="toc-text">视图重按后弹出视图</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#JS与WKWebView交互-JavaScript-interacts-With-WKWebView"><span class="toc-number">3.</span> <span class="toc-text">JS与WKWebView交互(JavaScript interacts With WKWebView)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#在WebView加入JS代码"><span class="toc-number">3.1.</span> <span class="toc-text">在WebView加入JS代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#WKWebView-执行JSMethod-WebView-running-JS-method"><span class="toc-number">3.2.</span> <span class="toc-text">WKWebView 执行JSMethod (WebView running JS method)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JS调用App注册的方法"><span class="toc-number">3.3.</span> <span class="toc-text">JS调用App注册的方法</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#控制器不释放！！！"><span class="toc-number">4.</span> <span class="toc-text">控制器不释放！！！</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#方式1"><span class="toc-number">4.1.</span> <span class="toc-text">方式1</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#方式2"><span class="toc-number">4.2.</span> <span class="toc-text">方式2</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#注："><span class="toc-number">5.</span> <span class="toc-text">注：</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#常用函数"><span class="toc-number">6.</span> <span class="toc-text">常用函数</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#性能分析"><span class="toc-number">7.</span> <span class="toc-text">性能分析</span></a></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隱藏側邊欄"></a></div>
+<aside class="clearfix">
+
+  
+<div class="github-card">
+<p class="asidetitle">Github 名片</p>
+<div class="github-card" data-github="lishengmin" data-width="220" data-height="119" data-theme="medium">
+<script type="text/javascript" src="//cdn.jsdelivr.net/github-cards/latest/widget.js" ></script>
+</div>
+  </div>
+
+
+
+  
+
+  
+<div class="tagslist">
+	<p class="asidetitle">標簽</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/iOS/" title="iOS">iOS<sup>34</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/架构/" title="架构">架构<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/C/" title="C">C<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/MacOS/" title="MacOS">MacOS<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/iOS-机器学习/" title="iOS, 机器学习">iOS, 机器学习<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">友情鏈接</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="https://www.github.com/lishengmin" target="_blank" title="Shemmy&#39;s GitHub">Shemmy&#39;s GitHub</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="https://blog.cnbluebox.com" target="_blank" title="刘坤的技术博客">刘坤的技术博客</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="https://casatwy.com/iosying-yong-jia-gou-tan-viewceng-de-zu-zhi-he-diao-yong-fang-an.html" target="_blank" title="casa&#39;s Blog">casa&#39;s Blog</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://blog.robotframework.cn" target="_blank" title="齐道长的博客">齐道长的博客</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="https://icocos.github.io" target="_blank" title="iCocos@曹理鹏">iCocos@曹理鹏</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="https://gyuan94.com" target="_blank" title="GY Essays">GY Essays</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://blog.ibireme.com" target="_blank" title="伽蓝之堂-ibireme">伽蓝之堂-ibireme</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS 訂閱</a>
+</div>
+
+  <div class="weiboshow">
+  <p class="asidetitle">新浪微博</p>
+    <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=null&verifier=b3593ceb&dpc=1"></iframe>
+</div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> Hello ,I&#39;m Sheemy Page in GitHub. <br/>
+			This is my blog,believe it or not.</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		<a href="http://weibo.com/2176287895" target="_blank" class="icon-weibo" title="微博"></a>
+		
+		
+		<a href="https://github.com/lishengmin" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		<a href="mailto:lishengminbj@gmail.com" target="_blank" class="icon-email" title="Email Me"></a>
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Shemmy</a> © 2017 
+		
+		<a href="/about" target="_blank" title="Shemmy">Shemmy</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+<!--多说-->
+
+
+<!-- disqus-->
+
+    <script type="text/javascript">
+    
+    var disqus_shortname = 'www-lcvem-com';
+    
+    (function(){
+      var dsq = document.createElement('script');
+      dsq.type = 'text/javascript';
+      dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+    (function(){
+      var dsq = document.createElement('script');
+      dsq.type = 'text/javascript';
+      dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+    </script>
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回頂部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>

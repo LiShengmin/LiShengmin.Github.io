@@ -5,7 +5,7 @@
     
   <url>
     <loc>https://github.com/LiShengmin/2017/06/20/iOS-CoreML/</loc>
-    <lastmod>2017-08-01T07:11:59.259Z</lastmod>
+    <lastmod>2017-08-01T08:51:29.358Z</lastmod>
     <data>
         <display>
         <title>iOS-CoreML</title>
@@ -21,8 +21,42 @@
 
     
   <url>
+    <loc>https://github.com/LiShengmin/2017/05/01/iOS-WKWebView%E7%AE%80%E4%BB%8B/</loc>
+    <lastmod>2017-08-01T08:29:06.405Z</lastmod>
+    <data>
+        <display>
+        <title>iOS-WKWebView简介</title>
+        <pubTime>2017-05-01T07:37:43.000Z</pubTime>
+        
+        <tag>iOS</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://github.com/LiShengmin/2017/06/17/iOS-IdtentifyLookUp%E8%BA%AB%E4%BB%BD%E6%9F%A5%E8%AF%A2/</loc>
+    <lastmod>2017-08-01T08:14:30.761Z</lastmod>
+    <data>
+        <display>
+        <title>iOS-IdtentifyLookUp身份查询</title>
+        <pubTime>2017-06-17T13:03:30.000Z</pubTime>
+        
+        <tag>iOS</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://github.com/LiShengmin/2017/06/20/%E6%9E%B6%E6%9E%84-%E6%9E%B6%E6%9E%84%E6%BC%AB%E8%B0%88/</loc>
-    <lastmod>2017-06-19T17:17:55.728Z</lastmod>
+    <lastmod>2017-08-01T07:30:16.294Z</lastmod>
     <data>
         <display>
         <title>架构-架构漫谈</title>
@@ -39,7 +73,7 @@
     
   <url>
     <loc>https://github.com/LiShengmin/2016/09/07/iOS-NSString(Categary)/</loc>
-    <lastmod>2017-06-19T17:16:46.777Z</lastmod>
+    <lastmod>2017-06-19T17:16:46.778Z</lastmod>
     <data>
         <display>
         <title>iOS-NSString(Categary)</title>
@@ -73,7 +107,7 @@
     
   <url>
     <loc>https://github.com/LiShengmin/2016/01/14/iOS-UITextField%E4%B8%AD%E6%96%87%E8%BE%93%E5%85%A5%E6%B3%95%E6%97%B6%E5%AF%B9%E5%AD%97%E7%AC%A6%E9%95%BF%E5%BA%A6%E7%9A%84%E9%99%90%E5%88%B6/</loc>
-    <lastmod>2017-06-19T17:11:25.566Z</lastmod>
+    <lastmod>2017-06-19T17:11:25.567Z</lastmod>
     <data>
         <display>
         <title>iOS-中文输入法时对字符长度的限制(UITextField)</title>
@@ -90,7 +124,7 @@
     
   <url>
     <loc>https://github.com/LiShengmin/2016/09/09/iOS-TextField%E7%9A%84%E5%85%89%E6%A0%87%E6%93%8D%E4%BD%9C/</loc>
-    <lastmod>2017-06-19T17:10:41.033Z</lastmod>
+    <lastmod>2017-06-19T17:10:41.034Z</lastmod>
     <data>
         <display>
         <title>iOS-UITextField的光标操作扩展</title>
@@ -107,7 +141,7 @@
     
   <url>
     <loc>https://github.com/LiShengmin/2016/11/04/iOS-Bug-UICollectionView-reloadData%E6%97%A0%E6%B3%95%E6%9B%B4%E6%96%B0%E7%9A%84%E5%A5%87%E6%80%AA%E9%97%AE%E9%A2%98/</loc>
-    <lastmod>2017-06-19T16:46:07.716Z</lastmod>
+    <lastmod>2017-06-19T16:46:07.717Z</lastmod>
     <data>
         <display>
         <title>iOS-UICollectionView reloadData无法更新视图问题</title>
@@ -141,7 +175,7 @@
     
   <url>
     <loc>https://github.com/LiShengmin/2015/02/14/C-Static:Const%20%E8%AF%A6%E8%A7%A3/</loc>
-    <lastmod>2017-06-19T16:45:24.736Z</lastmod>
+    <lastmod>2017-06-19T16:45:24.737Z</lastmod>
     <data>
         <display>
         <title>Static Const</title>
@@ -192,7 +226,7 @@
     
   <url>
     <loc>https://github.com/LiShengmin/2016/07/19/iOS-RunTime/</loc>
-    <lastmod>2017-06-19T16:42:44.622Z</lastmod>
+    <lastmod>2017-06-19T16:42:44.623Z</lastmod>
     <data>
         <display>
         <title>iOS-RunTime</title>
@@ -209,7 +243,7 @@
     
   <url>
     <loc>https://github.com/LiShengmin/2015/06/03/iOS-NSUserDefaults/</loc>
-    <lastmod>2017-06-19T16:42:12.694Z</lastmod>
+    <lastmod>2017-06-19T16:42:12.695Z</lastmod>
     <data>
         <display>
         <title>iOS-自定义对象存储 （NSUserDefaults）</title>
@@ -226,7 +260,7 @@
     
   <url>
     <loc>https://github.com/LiShengmin/2015/08/03/iOS-%E6%95%B0%E5%AD%97%E6%9C%89%E5%85%B3%E7%9A%84%E7%B1%BB/</loc>
-    <lastmod>2017-06-19T16:39:23.658Z</lastmod>
+    <lastmod>2017-06-19T16:39:23.659Z</lastmod>
     <data>
         <display>
         <title>iOS-数字有关的类（int NSNumber...）</title>
@@ -243,7 +277,7 @@
     
   <url>
     <loc>https://github.com/LiShengmin/2015/12/21/iOS-%E5%A4%9A%E7%BA%BF%E7%A8%8B/</loc>
-    <lastmod>2017-06-19T16:38:48.593Z</lastmod>
+    <lastmod>2017-06-19T16:38:48.594Z</lastmod>
     <data>
         <display>
         <title>iOS-多线程</title>
@@ -260,7 +294,7 @@
     
   <url>
     <loc>https://github.com/LiShengmin/2016/11/11/%E6%9E%B6%E6%9E%84-%E7%BD%91%E7%BB%9C-HTTP%E8%AF%B7%E6%B1%82%E7%9A%84Header%E4%BF%A1%E6%81%AF/</loc>
-    <lastmod>2017-06-19T16:38:35.364Z</lastmod>
+    <lastmod>2017-06-19T16:38:35.365Z</lastmod>
     <data>
         <display>
         <title>架构-网络- 客户端HTTP请求的Header信息</title>
@@ -277,7 +311,7 @@
     
   <url>
     <loc>https://github.com/LiShengmin/2015/12/08/iOS-%E5%90%AF%E5%8A%A8%E5%BC%95%E5%AF%BC%E7%95%8C%E9%9D%A2%E5%92%8C%E5%90%AF%E5%8A%A8%E7%95%8C%E9%9D%A2%E8%AE%BE%E7%BD%AE/</loc>
-    <lastmod>2017-06-19T16:37:38.397Z</lastmod>
+    <lastmod>2017-06-19T16:37:38.398Z</lastmod>
     <data>
         <display>
         <title>iOS-引导界面和启动界面设置</title>
@@ -294,28 +328,11 @@
     
   <url>
     <loc>https://github.com/LiShengmin/2016/07/03/iOS-%E4%BC%98%E5%8C%96%E8%87%AA%E5%8A%A8%E5%B8%83%E5%B1%80/</loc>
-    <lastmod>2017-06-19T16:36:56.643Z</lastmod>
+    <lastmod>2017-06-19T16:36:56.644Z</lastmod>
     <data>
         <display>
         <title>iOS-优化自动布局</title>
         <pubTime>2016-07-03T04:31:02.000Z</pubTime>
-        
-        <tag>iOS</tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://github.com/LiShengmin/2017/06/17/iOS-IdtentifyLookUp%E8%BA%AB%E4%BB%BD%E6%9F%A5%E8%AF%A2/</loc>
-    <lastmod>2017-06-19T15:04:05.281Z</lastmod>
-    <data>
-        <display>
-        <title>iOS-IdtentifyLookUp身份查询</title>
-        <pubTime>2017-06-17T13:03:30.000Z</pubTime>
         
         <tag>iOS</tag>
          
@@ -343,7 +360,7 @@
     
   <url>
     <loc>https://github.com/LiShengmin/2017/06/12/iOS-iOS11%E6%97%A0%E7%BA%BF%E8%B0%83%E8%AF%95/</loc>
-    <lastmod>2017-06-12T15:59:45.157Z</lastmod>
+    <lastmod>2017-06-12T15:59:45.158Z</lastmod>
     <data>
         <display>
         <title>iOS-iOS11无线调试</title>

@@ -18,7 +18,7 @@
 <meta property="og:url" content="https://github.com/LiShengmin/2016/09/09/iOS-TextField的光标操作/index.html">
 <meta property="og:site_name" content="Shemmy">
 <meta property="og:description" content="UITextField的光标操作扩展简介在iOS开发中，有时候需要完全自主的定义键盘，用于完整的单词输入，例如计算机应用中，需要一次性的输入sin(，在移动光标时要完整的跳过sin(，在删除时也要完整的删除，这就需要对光标的位置进行精确控制，而iOS并没有相关的函数可以直接操作光标，只给出了选择某个区域的功能，本文将介绍基于区域选择设计的UITextField扩展，用于获取光标位置以及移动光标。">
-<meta property="og:updated_time" content="2017-06-19T17:10:41.033Z">
+<meta property="og:updated_time" content="2017-06-19T17:10:41.034Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS-UITextField的光标操作扩展">
 <meta name="twitter:description" content="UITextField的光标操作扩展简介在iOS开发中，有时候需要完全自主的定义键盘，用于完整的单词输入，例如计算机应用中，需要一次性的输入sin(，在移动光标时要完整的跳过sin(，在删除时也要完整的删除，这就需要对光标的位置进行精确控制，而iOS并没有相关的函数可以直接操作光标，只给出了选择某个区域的功能，本文将介绍基于区域选择设计的UITextField扩展，用于获取光标位置以及移动光标。">
@@ -49,7 +49,7 @@
 				<h1 class="site-name"><a href="/" title="Shemmy">Shemmy</a></h1>
 				<h2 class="blog-motto">iOS, 架构， Python, AI, go，（看不到评论模块的请外网访问～）</h2>
 			</div>
-			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜單">
 			</a></div>
 			<nav class="animated">
 				<ul>
@@ -65,7 +65,7 @@
  					
 						<form class="search" action="http://zhannei.baidu.com/cse/search" target="_blank">
 							<label>Search</label>
-						<input name="s" type="hidden" value= 783281470518440700 ><input type="text" name="q" size="30" placeholder="Search"><br>
+						<input name="s" type="hidden" value= 783281470518440700 ><input type="text" name="q" size="30" placeholder="搜索"><br>
 						</form>
 					
 					</li>
@@ -87,14 +87,14 @@
 		<a href="/about" title="Shemmy" target="_blank" itemprop="author">Shemmy</a>
 		
   <p class="article-time">
-    <time datetime="2016-09-09T05:38:26.000Z" itemprop="datePublished"> Published 2016-09-09</time>
+    <time datetime="2016-09-09T05:38:26.000Z" itemprop="datePublished"> 發表於 2016-09-09</time>
     
   </p>
 </header>
 	<div class="article-content">
 		
 		<div id="toc" class="toc-article">
-			<strong class="toc-title">Contents</strong>
+			<strong class="toc-title">文章目錄</strong>
 		
 			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#UITextField的光标操作扩展"><span class="toc-number">1.</span> <span class="toc-text">UITextField的光标操作扩展</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#简介"><span class="toc-number">1.1.</span> <span class="toc-text">简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#实现原理"><span class="toc-number">1.2.</span> <span class="toc-text">实现原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#光标位置的获取"><span class="toc-number">1.3.</span> <span class="toc-text">光标位置的获取</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#光标的移动"><span class="toc-number">1.4.</span> <span class="toc-text">光标的移动</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#关键属性"><span class="toc-number">1.5.</span> <span class="toc-text">关键属性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#关键方法"><span class="toc-number">1.6.</span> <span class="toc-text">关键方法</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#具体实现"><span class="toc-number">2.</span> <span class="toc-text">具体实现</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Object-C"><span class="toc-number">2.1.</span> <span class="toc-text">Object-C</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Swift"><span class="toc-number">2.2.</span> <span class="toc-text">Swift</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Extention-OC代码"><span class="toc-number">3.</span> <span class="toc-text">Extention-OC代码</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Protocol-Swift"><span class="toc-number">4.</span> <span class="toc-text">Protocol-Swift</span></a></li></ol>
 		
@@ -182,22 +182,22 @@
 
 
 </div>  
-      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+      <div class="openaside"><a class="navbutton" href="#" title="顯示側邊欄"></a></div>
 
   <div id="toc" class="toc-aside">
-  <strong class="toc-title">Contents</strong>
+  <strong class="toc-title">文章目錄</strong>
  
  <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#UITextField的光标操作扩展"><span class="toc-number">1.</span> <span class="toc-text">UITextField的光标操作扩展</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#简介"><span class="toc-number">1.1.</span> <span class="toc-text">简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#实现原理"><span class="toc-number">1.2.</span> <span class="toc-text">实现原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#光标位置的获取"><span class="toc-number">1.3.</span> <span class="toc-text">光标位置的获取</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#光标的移动"><span class="toc-number">1.4.</span> <span class="toc-text">光标的移动</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#关键属性"><span class="toc-number">1.5.</span> <span class="toc-text">关键属性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#关键方法"><span class="toc-number">1.6.</span> <span class="toc-text">关键方法</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#具体实现"><span class="toc-number">2.</span> <span class="toc-text">具体实现</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Object-C"><span class="toc-number">2.1.</span> <span class="toc-text">Object-C</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Swift"><span class="toc-number">2.2.</span> <span class="toc-text">Swift</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Extention-OC代码"><span class="toc-number">3.</span> <span class="toc-text">Extention-OC代码</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Protocol-Swift"><span class="toc-number">4.</span> <span class="toc-text">Protocol-Swift</span></a></li></ol>
  
   </div>
 
 <div id="asidepart">
-<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<div class="closeaside"><a class="closebutton" href="#" title="隱藏側邊欄"></a></div>
 <aside class="clearfix">
 
   
 <div class="github-card">
-<p class="asidetitle">Github Card</p>
+<p class="asidetitle">Github 名片</p>
 <div class="github-card" data-github="lishengmin" data-width="220" data-height="119" data-theme="medium">
 <script type="text/javascript" src="//cdn.jsdelivr.net/github-cards/latest/widget.js" ></script>
 </div>
@@ -209,11 +209,11 @@
 
   
 <div class="tagslist">
-	<p class="asidetitle">Tags</p>
+	<p class="asidetitle">標簽</p>
 		<ul class="clearfix">
 		
 			
-				<li><a href="/tags/iOS/" title="iOS">iOS<sup>33</sup></a></li>
+				<li><a href="/tags/iOS/" title="iOS">iOS<sup>34</sup></a></li>
 			
 		
 			
@@ -221,11 +221,11 @@
 			
 		
 			
-				<li><a href="/tags/MacOS/" title="MacOS">MacOS<sup>1</sup></a></li>
+				<li><a href="/tags/C/" title="C">C<sup>1</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/C/" title="C">C<sup>1</sup></a></li>
+				<li><a href="/tags/MacOS/" title="MacOS">MacOS<sup>1</sup></a></li>
 			
 		
 			
@@ -237,7 +237,7 @@
 
 
   <div class="linkslist">
-  <p class="asidetitle">Links</p>
+  <p class="asidetitle">友情鏈接</p>
     <ul>
         
           <li>
@@ -289,11 +289,11 @@
 
 
   <div class="rsspart">
-	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
+	<a href="/atom.xml" target="_blank" title="rss">RSS 訂閱</a>
 </div>
 
   <div class="weiboshow">
-  <p class="asidetitle">Weibo</p>
+  <p class="asidetitle">新浪微博</p>
     <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=null&verifier=b3593ceb&dpc=1"></iframe>
 </div>
 
@@ -537,7 +537,7 @@ $(document).ready(function(){
 <!-- Totop Begin -->
 
 	<div id="totop">
-	<a title="Back to Top"><img src="/img/scrollup.png"/></a>
+	<a title="返回頂部"><img src="/img/scrollup.png"/></a>
 	</div>
 	<script src="/js/totop.js"></script>
 
