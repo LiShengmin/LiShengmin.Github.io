@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>Shemmy</title>
-  <subtitle>iOS, 架构， Python, AI, go</subtitle>
+  <subtitle>iOS, 架构， Python, AI, go，（看不到评论模块的请外网访问～）</subtitle>
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://github.com/LiShengmin/"/>
