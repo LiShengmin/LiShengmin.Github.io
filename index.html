@@ -77,173 +77,6 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2017/08/04/架构-CodeReview/" title="架构-CodeReview" itemprop="url">架构-CodeReview</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="Shemmy" target="_blank" itemprop="author">Shemmy</a>
-		
-  <p class="article-time">
-    <time datetime="2017-08-04T15:23:53.000Z" itemprop="datePublished"> Published 2017-08-04</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h1 id="命名"><a href="#命名" class="headerlink" title="命名"></a>命名</h1><h2 id="变量名"><a href="#变量名" class="headerlink" title="变量名"></a>变量名</h2><p>Array类型的 ，全部使用s结尾，names<br>除了算法中，不允许出现极简变量名！！！！！</p>
-<h3 id="成员变量和局部变量的命名？"><a href="#成员变量和局部变量的命名？" class="headerlink" title="成员变量和局部变量的命名？"></a><strong>成员变量和局部变量</strong>的命名？</h3><p>之前在面试中有人问我，你在做CodeReview的时候对成员变量和局部变量是怎么区分的？<br>这本是个充分必要的问题，因为我们总是要区分成员变量和局部变量，但是我这里建议大家不要去区分：</p>
-<ol>
-<li>我们不能去使用一个带有副作用的函数（更改了函数体以外的值）</li>
-<li>我们使用了一个非局部的变量，我们就一定会考虑其是否为非法值的可能性～</li>
-<li>我们可能更需要一款编辑器来为我们做这个事，因为过于长的变量名称会不利于我们搜索和读取代码。<br>以上参考于CodeClearn2.7.2章内容<h2 id="类名"><a href="#类名" class="headerlink" title="类名"></a>类名</h2>应该是名词/名词短语，首字母大写。<br>不允许使用前缀！（不能搜索）<br>不允许出现类名为复数的形式！<h2 id="方法名"><a href="#方法名" class="headerlink" title="方法名"></a>方法名</h2>应该是动词/动词短语，并加上get，set，is等短语<h2 id="接口设计"><a href="#接口设计" class="headerlink" title="接口设计"></a>接口设计</h2><h3 id="常规结构规范"><a href="#常规结构规范" class="headerlink" title="常规结构规范"></a>常规结构规范</h3>明确优于简洁<br>不准使用没有语境的废话<br>必须是可以自解释<br>不准使用双关语、引申意义用语等<br>尽可能的使名称可以被搜索出来<br>不允许使用的函数坚决不能暴露实现细节，我们给外部使用的就是一个方法名，他们看到了我们的名称，就知道要干什么事情，干了什么事情！<h3 id="protocol接口设计"><a href="#protocol接口设计" class="headerlink" title="protocol接口设计"></a>protocol接口设计</h3></li>
-<li>遵循必须返回本身所属对象原则设计</li>
-<li>必须遵循DataSorce，delegate，able分离的原则～</li>
-</ol>
-<h1 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h1><ol>
-<li>小，短小，短小的函数才能让人一眼看清里面写了什么，并且不需要注释</li>
-<li>缩进层次不得多于2层，（使用多线程除外），if  Switch for 等只可以使用一行，多数为一个函数调用。</li>
-<li><p>做好一件事，只做一件事！SRP原则，这里意味着只包含一个函数的抽象。</p>
-<figure class="highlight autoit"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">isCanReturnPage</span><span class="params">()</span> -&gt; <span class="title">Bool</span> &#123;</span></div><div class="line">	getData()</div><div class="line">	toDo()</div><div class="line">  <span class="keyword">return</span> page(data)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-<li><p>起一个能自解释的函数名称</p>
-</li>
-<li>除非有必要，不允许参数返回的形式。</li>
-<li>参数名称必须可以自解释～</li>
-<li>多参数时要考虑参数设置和函数抽象的合理性</li>
-<li>不允许标识参数～<code>func a(bool)</code>，必须使用<code>func aIsTrue()、func aIsFaild()形式</code></li>
-<li>使用异常指令，代替错误代码</li>
-<li>重复的代码不会被总是允许通过～</li>
-<li>不必在写函数最开始就遵循这个规则，没有人可以在一开始就遵循这些规则，好的代码需要打磨！</li>
-</ol>
-<h1 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h1><p>在很多公司面试都会被问及，你是否写注释，注释写的多么？<br>我的回答是不希望页不建议写注释的！我建议大家也不写注释要这么做。</p>
-<ol>
-<li>“别给糟糕的代码加注释-重写吧”-BrainW.Kernighan，注释不能美化糟糕的代码，与其写好的注释，不如没话下我们的代码。</li>
-<li>什么也没有正确的注释来的有用，什么也没有错误的注释带来的破坏性更大。</li>
-<li>注释并不是存天然的友好，因为注释会撒谎，不是谁都会去维护一个注释并保证准确性的～</li>
-<li>注释其实就是我们在用代码表达意图失败的产物～</li>
-<li>有些注释是必须的，也是有利的，你要注意的是真正好的注释是你想办法不去写的注释。</li>
-<li>Todo 是个好东西，但是要定期清理，但愿你的代码不会因为todo的存在而变成一坨垃圾</li>
-<li>不允许出现 //code.. 这种，无用的代码尽早删除，不要留着～</li>
-</ol>
-<p>之前一直不理解CTO说的，我们的代码就是注释～之前一直不理解，一直认为再好的代码也需要注释，好吧，是我肤浅，必要的注释是需要的，那些没有必要，自认为的小聪明都收起来吧，没有用～</p>
-<h1 id="格式"><a href="#格式" class="headerlink" title="格式"></a>格式</h1><p>在格式方面我认为全公司统一，使用某种语言标准的格式就好了。<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="type">Class</span> <span class="type">Person</span>: <span class="type">NSObject</span> &#123;</div><div class="line">	<span class="keyword">var</span> name: <span class="type">String</span></div><div class="line">	<span class="keyword">var</span> age: <span class="type">Int</span> = <span class="number">0</span></div><div class="line">  	<span class="function"><span class="keyword">func</span> <span class="title">init</span><span class="params">(name: string, age: Int = <span class="number">0</span>)</span></span> &#123;</div><div class="line">		<span class="keyword">self</span>.name = name</div><div class="line">		<span class="keyword">self</span>.age = age</div><div class="line">	&#125;</div><div class="line"></div><div class="line">  	<span class="function"><span class="keyword">func</span> <span class="title">des</span><span class="params">()</span></span> -&gt;<span class="type">Void</span> &#123;</div><div class="line">		printf(<span class="string">"name:<span class="subst">\(name)</span>, age:<span class="subst">\(age)</span>"</span>)</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>其中包括空格，冒号在左右，名称使用什么关键字, 空行等等<br><figure class="highlight mm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#define MAX_AGE 400</span></div><div class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">Person</span>: <span class="title">NSObject</span></span></div><div class="line"></div><div class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">copy</span>) <span class="built_in">NSString</span> * name;</div><div class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, assigan) Int * age;</div><div class="line"></div><div class="line"><span class="keyword">@end</span></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">Person</span></span></div><div class="line"></div><div class="line"><span class="meta">#pram mark- lifeCycle</span></div><div class="line"><span class="meta">#parm mark- setter &amp;&amp; getter</span></div><div class="line"><span class="meta">#parm mark- protocol_01</span></div><div class="line"><span class="meta">#parm mark- protocol_02</span></div><div class="line"></div><div class="line"><span class="keyword">@end</span></div></pre></td></tr></table></figure></p>
-<p>OC部分参照禅语Object-C～<br><figure class="highlight mm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">- (<span class="keyword">void</span>)viewWillDisappear:(<span class="built_in">BOOL</span>)animated &#123;<span class="comment">//可以</span></div><div class="line">	<span class="keyword">if</span> a != <span class="number">0</span> &#123;</div><div class="line">		AccessError(msg);</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="comment">//更推荐使用单行表达式～</span></div><div class="line">	<span class="keyword">if</span> a!=<span class="number">0</span> AccessError(msg);</div><div class="line">	<span class="comment">//再来一个例子🌰</span></div><div class="line">	<span class="keyword">if</span> b isB();</div><div class="line">	<span class="keyword">else</span> noB();</div><div class="line"></div><div class="line">&#125;</div><div class="line"><span class="comment">//这里必须要有空行</span></div><div class="line">- (<span class="keyword">void</span>)viewWillDisappear:(<span class="built_in">BOOL</span>)animated </div><div class="line">&#123;<span class="comment">//多参数时可以，单一参数不可以</span></div><div class="line">	<span class="keyword">if</span> a == <span class="number">0</span> </div><div class="line">	&#123; </div><div class="line">		<span class="comment">//...</span></div><div class="line">	&#125; <span class="keyword">else</span> &#123;</div><div class="line">		AccessError（msg）</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>使用运算符优先级格式<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> a = <span class="number">1</span>*<span class="number">1</span> + <span class="number">2</span>*<span class="number">2</span> <span class="comment">//推荐使用</span></div><div class="line"></div><div class="line"><span class="keyword">let</span> a = <span class="number">1</span> * <span class="number">1</span> + <span class="number">2</span> * <span class="number">2</span></div></pre></td></tr></table></figure></p>
-<p>对齐<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//这样的对齐还有其意义</span></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">a</span><span class="params">(paramer_01: String,</span></span></div><div class="line">	  paramer_02_02: Array) -&gt; <span class="type">Bool</span> &#123;</div><div class="line">	<span class="keyword">return</span> <span class="literal">true</span></div><div class="line">&#125;</div><div class="line">	<span class="comment">//	这其实没必要</span></div><div class="line"><span class="keyword">var</span> asrggg4.   : <span class="type">String</span></div><div class="line"><span class="keyword">var</span> d		     : <span class="type">Array</span></div><div class="line"><span class="keyword">var</span> dataSource : <span class="type">Array</span></div></pre></td></tr></table></figure></p>
-<p>if、while等 单行语法没有括号！！！只有一个”;”<br><figure class="highlight swift"><figcaption><span>//不允许使用！！！！</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span>	 a &lt;<span class="number">0</span> </div><div class="line">	;</div></pre></td></tr></table></figure></p>
-<h1 id="对象、数据结构"><a href="#对象、数据结构" class="headerlink" title="对象、数据结构"></a>对象、数据结构</h1><p>我们应该知道 连串的调用对是一种隐藏了过程的方式，他不能使我们的代码变得明了！！但是可以大规模的节约我们开发的时间！说白了就是用的爽。<br>OC中著名的类库Masony就是一种链式调用，但是其控制了复杂度，就是其内部链子只能做一件事。<br>现在我发现许多人在使用Swfit的时候非常轻易使用链式语法，在不同类型中接连转换，可以你在写的时候你会在某一天，某一年回头看自己的代码，那一串一串的逻辑，根本就不能再看好吧～（除非使同一种类型的逻辑，那我也建议使用另外一种封装）<br>如论是否是写成了一串逻辑，还是写成了连续调用方法，我管这种写法叫做火车事件，无论如何我们都应该避免火车事件的发生，更好的做法就是给这个火车方法另外起一个名字～</p>
-<h1 id="错误处理"><a href="#错误处理" class="headerlink" title="错误处理"></a>错误处理</h1><p>全部对象方法不允许返回“null”！！ 需要返回null 的时候创建一个空元素返回，也不允许返回null ！</p>
-<h1 id="第三方代码"><a href="#第三方代码" class="headerlink" title="第三方代码"></a>第三方代码</h1><p>使用第三方库的时候，所有API都要进行一次封装！隐藏屏蔽掉所有第三方实现细节！</p>
-<h1 id="测试代码！"><a href="#测试代码！" class="headerlink" title="测试代码！"></a>测试代码！</h1><p>测试是一种满足现有需要而不去管其他事情的思考问题风格，典型的奥姆剃刀定律践行者～在测试良好的公司，根本不会出现各种库的吧。先说说：测试先行3要素</p>
-<pre><code>1. 先编写测试代码，否则不能开始写业务代码。
-2. 测试代码刚好覆盖需求
-3. 编写刚好可以通过测试的生产代码
-我更偏向于更加精美的封装～而不是仅仅满足需求～
-</code></pre><p>个人认为测试代码的可维护性比生产代码更不易维护，所以写单元测试的朋友们，希望你们还安好～<br>（越大型的项目约需要测试～小项目反而测试的重要性没有大型项目大）</p>
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-
-  <div class="article-tags">
-  
-  <span></span> <a href="/tags/架构/">架构</a>
-  </div>
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-	  	<span></span>
-		<a href="/2017/08/04/架构-CodeReview/#disqus_thread" class="comments-count-link">Comments</a>
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-    
-    
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2017/06/20/架构-架构漫谈/" title="架构-架构漫谈" itemprop="url">架构-架构漫谈</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="Shemmy" target="_blank" itemprop="author">Shemmy</a>
-		
-  <p class="article-time">
-    <time datetime="2017-06-19T17:15:49.000Z" itemprop="datePublished"> Published 2017-06-20</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h1 id="架构"><a href="#架构" class="headerlink" title="架构"></a>架构</h1><p>非常感谢Casa的分享！这篇文章主要参考了Casa的分享和博客。还有个人的一些理解，希望通过这些阶段性的总结和思考，来让大家成为更好架构师，和理解架构师在做什么。
-        
-        
-        <p class="article-more-link">
-          
-            <a href="/2017/06/20/架构-架构漫谈/#more">Read More</a>
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-
-  <div class="article-tags">
-  
-  <span></span> <a href="/tags/架构/">架构</a>
-  </div>
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-	  	<span></span>
-		<a href="/2017/06/20/架构-架构漫谈/#disqus_thread" class="comments-count-link">Comments</a>
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-    
-    
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
       <a href="/2017/06/20/iOS-CoreML/" title="iOS-CoreML" itemprop="url">iOS-CoreML</a>
   </h1>
   <p class="article-author">By
@@ -544,65 +377,6 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2017/04/28/架构-Carthage使用/" title="架构-Carthage使用" itemprop="url">架构-Carthage使用</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="Shemmy" target="_blank" itemprop="author">Shemmy</a>
-		
-  <p class="article-time">
-    <time datetime="2017-04-28T10:49:43.000Z" itemprop="datePublished"> Published 2017-04-28</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <p> 今天有朋友在群里问“怎么使用Swift第三方库？”，对象是SwiftyJSON，正巧这段时间也要用，干脆折腾了下。在SwiftyJSON的GitHub上说，需要先安装Carthage这个包管理。
-        
-        
-        <p class="article-more-link">
-          
-            <a href="/2017/04/28/架构-Carthage使用/#more">Read More</a>
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-
-  <div class="article-tags">
-  
-  <span></span> <a href="/tags/架构/">架构</a>
-  </div>
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-	  	<span></span>
-		<a href="/2017/04/28/架构-Carthage使用/#disqus_thread" class="comments-count-link">Comments</a>
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-    
-    
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
       <a href="/2016/11/18/iOS-请求主线程刷新UI/" title="iOS中 请求主线程刷新UI" itemprop="url">iOS中 请求主线程刷新UI</a>
   </h1>
   <p class="article-author">By
@@ -643,65 +417,6 @@
 	
 	  	<span></span>
 		<a href="/2016/11/18/iOS-请求主线程刷新UI/#disqus_thread" class="comments-count-link">Comments</a>
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-    
-    
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2016/11/11/架构-网络-HTTP请求的Header信息/" title="架构-网络- 客户端HTTP请求的Header信息" itemprop="url">架构-网络- 客户端HTTP请求的Header信息</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="Shemmy" target="_blank" itemprop="author">Shemmy</a>
-		
-  <p class="article-time">
-    <time datetime="2016-11-11T02:58:09.000Z" itemprop="datePublished"> Published 2016-11-11</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h1 id="客户端HTTP请求的Header信息"><a href="#客户端HTTP请求的Header信息" class="headerlink" title="客户端HTTP请求的Header信息"></a>客户端HTTP请求的Header信息</h1><p>HTTP（HyperTextTransferProtocol）即超文本传输协议，目前网页传输的的通用协议。HTTP协议采用了请求/响应模型，浏览器或其他客户端发出请求，服务器给与响应。就整个网络资源传输而言，包括message-header和message-body两部分。首先传递message- header，即http header消息 。http header 消息通常被分为4个部分：general  header, request header, response header, entity header。但是这种分法就理解而言，感觉界限不太明确。根据维基百科对http header内容的组织形式，大体分为Request和Response两部分。<br>
-        
-        
-        <p class="article-more-link">
-          
-            <a href="/2016/11/11/架构-网络-HTTP请求的Header信息/#more">Read More</a>
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-
-  <div class="article-tags">
-  
-  <span></span> <a href="/tags/架构/">架构</a>
-  </div>
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-	  	<span></span>
-		<a href="/2016/11/11/架构-网络-HTTP请求的Header信息/#disqus_thread" class="comments-count-link">Comments</a>
 	
 </div>
 
@@ -1009,6 +724,243 @@
     
 
 
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2016/09/09/iOS-Sting/" title="Swift2.0中的Sting 的基本操作" itemprop="url">Swift2.0中的Sting 的基本操作</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Shemmy" target="_blank" itemprop="author">Shemmy</a>
+		
+  <p class="article-time">
+    <time datetime="2016-09-08T17:19:03.000Z" itemprop="datePublished"> Published 2016-09-09</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <p>Swift中的字符串，第二篇，基本操作。其他的几篇传送门（GitHub打不开链接的同学请自行把地址github改成gitcafe，或者直接去归档里找:-P）：</p>
+<p><a href="https://conanwhf.github.com/2015/12/03/Swift_String_1/">Swift2.0 中的String（一）：常用属性</a><br><a href="https://conanwhf.github.com/2015/12/03/Swift_String_2/">Swift2.0 中的String（二）：基本操作</a><br><a href="https://conanwhf.github.com/2015/12/03/Swift_String_3/">Swift2.0 中的String（三）：类型转换</a><br>编码转换(TBD)<br>我的练习源代码可以在<a href="https://github.com/conanwhf/swiftplayground/tree/master/String.playground">这里</a>看到
+        
+        
+        <p class="article-more-link">
+          
+            <a href="/2016/09/09/iOS-Sting/#more">Read More</a>
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/iOS/">iOS</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/2016/09/09/iOS-Sting/#disqus_thread" class="comments-count-link">Comments</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+    
+    
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2016/09/07/iOS-NSString(Categary)/" title="iOS-NSString(Categary)" itemprop="url">iOS-NSString(Categary)</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Shemmy" target="_blank" itemprop="author">Shemmy</a>
+		
+  <p class="article-time">
+    <time datetime="2016-09-07T07:37:14.000Z" itemprop="datePublished"> Published 2016-09-07</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <p>主要写了一些项目中常用的方法，使用的是OC语言，后续会陆续补充Swift中的写法。<br>
+        
+        
+        <p class="article-more-link">
+          
+            <a href="/2016/09/07/iOS-NSString(Categary)/#more">Read More</a>
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/iOS/">iOS</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/2016/09/07/iOS-NSString(Categary)/#disqus_thread" class="comments-count-link">Comments</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+    
+    
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2016/09/06/iOS-利用Application-Loader-App打包上架流程/" title="iOS[利用Application Loader]App打包上架流程&#39;" itemprop="url">iOS[利用Application Loader]App打包上架流程&#39;</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Shemmy" target="_blank" itemprop="author">Shemmy</a>
+		
+  <p class="article-time">
+    <time datetime="2016-09-05T17:58:16.000Z" itemprop="datePublished"> Published 2016-09-06</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h1 id="如何把App打包成ipa文件，然后App上架流程-利用Application-Loader"><a href="#如何把App打包成ipa文件，然后App上架流程-利用Application-Loader" class="headerlink" title="如何把App打包成ipa文件，然后App上架流程[利用Application Loader]"></a>如何把App打包成ipa文件，然后App上架流程[利用Application Loader]</h1><p><a href="http://www.jianshu.com/p/a885da9ce4a9">本文详情</a>
+        
+        
+        <p class="article-more-link">
+          
+            <a href="/2016/09/06/iOS-利用Application-Loader-App打包上架流程/#more">Read More</a>
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/iOS/">iOS</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/2016/09/06/iOS-利用Application-Loader-App打包上架流程/#disqus_thread" class="comments-count-link">Comments</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+    
+    
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2016/09/01/iOS-UITableViewCell点击时子视图背景透明的解决办法/" title="iOS-UITableViewCell点击时子视图背景透明的解决办法" itemprop="url">iOS-UITableViewCell点击时子视图背景透明的解决办法</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Shemmy" target="_blank" itemprop="author">Shemmy</a>
+		
+  <p class="article-time">
+    <time datetime="2016-09-01T02:57:46.000Z" itemprop="datePublished"> Published 2016-09-01</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h1 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h1><p>在iOS开发中，经常会使用到UITableView，对于自定义的UITableViewCell，当用户点击或者选中时，其上面的子视图会自动背景透明。
+        
+        
+        <p class="article-more-link">
+          
+            <a href="/2016/09/01/iOS-UITableViewCell点击时子视图背景透明的解决办法/#more">Read More</a>
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/iOS/">iOS</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/2016/09/01/iOS-UITableViewCell点击时子视图背景透明的解决办法/#disqus_thread" class="comments-count-link">Comments</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+    
+    
+
+
 
   <nav id="page-nav" class="clearfix">
     <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next<span></span></a>
@@ -1043,7 +995,7 @@
 			
 		
 			
-				<li><a href="/tags/架构/" title="架构">架构<sup>4</sup></a></li>
+				<li><a href="/tags/MacOS/" title="MacOS">MacOS<sup>1</sup></a></li>
 			
 		
 			
@@ -1051,11 +1003,9 @@
 			
 		
 			
-				<li><a href="/tags/MacOS/" title="MacOS">MacOS<sup>1</sup></a></li>
+				<li><a href="/tags/iOS-机器学习/" title="iOS, 机器学习">iOS, 机器学习<sup>1</sup></a></li>
 			
 		
-			
-				<li><a href="/tags/iOS-机器学习/" title="iOS, 机器学习">iOS, 机器学习<sup>1</sup></a></li>
 			
 		
 		</ul>

@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://github.com/LiShengmin/"/>
-  <updated>2017-08-04T15:29:48.440Z</updated>
+  <updated>2017-08-02T09:54:57.779Z</updated>
   <id>https://github.com/LiShengmin/</id>
   
   <author>
@@ -14,179 +14,6 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title>架构-CodeReview</title>
-    <link href="https://github.com/LiShengmin/2017/08/04/%E6%9E%B6%E6%9E%84-CodeReview/"/>
-    <id>https://github.com/LiShengmin/2017/08/04/架构-CodeReview/</id>
-    <published>2017-08-04T15:23:53.000Z</published>
-    <updated>2017-08-04T15:29:48.440Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="命名"><a href="#命名" class="headerlink" title="命名"></a>命名</h1><h2 id="变量名"><a href="#变量名" class="headerlink" title="变量名"></a>变量名</h2><p>Array类型的 ，全部使用s结尾，names<br>除了算法中，不允许出现极简变量名！！！！！</p>
-<h3 id="成员变量和局部变量的命名？"><a href="#成员变量和局部变量的命名？" class="headerlink" title="成员变量和局部变量的命名？"></a><strong>成员变量和局部变量</strong>的命名？</h3><p>之前在面试中有人问我，你在做CodeReview的时候对成员变量和局部变量是怎么区分的？<br>这本是个充分必要的问题，因为我们总是要区分成员变量和局部变量，但是我这里建议大家不要去区分：</p>
-<ol>
-<li>我们不能去使用一个带有副作用的函数（更改了函数体以外的值）</li>
-<li>我们使用了一个非局部的变量，我们就一定会考虑其是否为非法值的可能性～</li>
-<li>我们可能更需要一款编辑器来为我们做这个事，因为过于长的变量名称会不利于我们搜索和读取代码。<br>以上参考于CodeClearn2.7.2章内容<h2 id="类名"><a href="#类名" class="headerlink" title="类名"></a>类名</h2>应该是名词/名词短语，首字母大写。<br>不允许使用前缀！（不能搜索）<br>不允许出现类名为复数的形式！<h2 id="方法名"><a href="#方法名" class="headerlink" title="方法名"></a>方法名</h2>应该是动词/动词短语，并加上get，set，is等短语<h2 id="接口设计"><a href="#接口设计" class="headerlink" title="接口设计"></a>接口设计</h2><h3 id="常规结构规范"><a href="#常规结构规范" class="headerlink" title="常规结构规范"></a>常规结构规范</h3>明确优于简洁<br>不准使用没有语境的废话<br>必须是可以自解释<br>不准使用双关语、引申意义用语等<br>尽可能的使名称可以被搜索出来<br>不允许使用的函数坚决不能暴露实现细节，我们给外部使用的就是一个方法名，他们看到了我们的名称，就知道要干什么事情，干了什么事情！<h3 id="protocol接口设计"><a href="#protocol接口设计" class="headerlink" title="protocol接口设计"></a>protocol接口设计</h3></li>
-<li>遵循必须返回本身所属对象原则设计</li>
-<li>必须遵循DataSorce，delegate，able分离的原则～</li>
-</ol>
-<h1 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h1><ol>
-<li>小，短小，短小的函数才能让人一眼看清里面写了什么，并且不需要注释</li>
-<li>缩进层次不得多于2层，（使用多线程除外），if  Switch for 等只可以使用一行，多数为一个函数调用。</li>
-<li><p>做好一件事，只做一件事！SRP原则，这里意味着只包含一个函数的抽象。</p>
-<figure class="highlight autoit"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">isCanReturnPage</span><span class="params">()</span> -&gt; <span class="title">Bool</span> &#123;</span></div><div class="line">	getData()</div><div class="line">	toDo()</div><div class="line">  <span class="keyword">return</span> page(data)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-<li><p>起一个能自解释的函数名称</p>
-</li>
-<li>除非有必要，不允许参数返回的形式。</li>
-<li>参数名称必须可以自解释～</li>
-<li>多参数时要考虑参数设置和函数抽象的合理性</li>
-<li>不允许标识参数～<code>func a(bool)</code>，必须使用<code>func aIsTrue()、func aIsFaild()形式</code></li>
-<li>使用异常指令，代替错误代码</li>
-<li>重复的代码不会被总是允许通过～</li>
-<li>不必在写函数最开始就遵循这个规则，没有人可以在一开始就遵循这些规则，好的代码需要打磨！</li>
-</ol>
-<h1 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h1><p>在很多公司面试都会被问及，你是否写注释，注释写的多么？<br>我的回答是不希望页不建议写注释的！我建议大家也不写注释要这么做。</p>
-<ol>
-<li>“别给糟糕的代码加注释-重写吧”-BrainW.Kernighan，注释不能美化糟糕的代码，与其写好的注释，不如没话下我们的代码。</li>
-<li>什么也没有正确的注释来的有用，什么也没有错误的注释带来的破坏性更大。</li>
-<li>注释并不是存天然的友好，因为注释会撒谎，不是谁都会去维护一个注释并保证准确性的～</li>
-<li>注释其实就是我们在用代码表达意图失败的产物～</li>
-<li>有些注释是必须的，也是有利的，你要注意的是真正好的注释是你想办法不去写的注释。</li>
-<li>Todo 是个好东西，但是要定期清理，但愿你的代码不会因为todo的存在而变成一坨垃圾</li>
-<li>不允许出现 //code.. 这种，无用的代码尽早删除，不要留着～</li>
-</ol>
-<p>之前一直不理解CTO说的，我们的代码就是注释～之前一直不理解，一直认为再好的代码也需要注释，好吧，是我肤浅，必要的注释是需要的，那些没有必要，自认为的小聪明都收起来吧，没有用～</p>
-<h1 id="格式"><a href="#格式" class="headerlink" title="格式"></a>格式</h1><p>在格式方面我认为全公司统一，使用某种语言标准的格式就好了。<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="type">Class</span> <span class="type">Person</span>: <span class="type">NSObject</span> &#123;</div><div class="line">	<span class="keyword">var</span> name: <span class="type">String</span></div><div class="line">	<span class="keyword">var</span> age: <span class="type">Int</span> = <span class="number">0</span></div><div class="line">  	<span class="function"><span class="keyword">func</span> <span class="title">init</span><span class="params">(name: string, age: Int = <span class="number">0</span>)</span></span> &#123;</div><div class="line">		<span class="keyword">self</span>.name = name</div><div class="line">		<span class="keyword">self</span>.age = age</div><div class="line">	&#125;</div><div class="line"></div><div class="line">  	<span class="function"><span class="keyword">func</span> <span class="title">des</span><span class="params">()</span></span> -&gt;<span class="type">Void</span> &#123;</div><div class="line">		printf(<span class="string">"name:<span class="subst">\(name)</span>, age:<span class="subst">\(age)</span>"</span>)</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>其中包括空格，冒号在左右，名称使用什么关键字, 空行等等<br><figure class="highlight mm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#define MAX_AGE 400</span></div><div class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">Person</span>: <span class="title">NSObject</span></span></div><div class="line"></div><div class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">copy</span>) <span class="built_in">NSString</span> * name;</div><div class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, assigan) Int * age;</div><div class="line"></div><div class="line"><span class="keyword">@end</span></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">Person</span></span></div><div class="line"></div><div class="line"><span class="meta">#pram mark- lifeCycle</span></div><div class="line"><span class="meta">#parm mark- setter &amp;&amp; getter</span></div><div class="line"><span class="meta">#parm mark- protocol_01</span></div><div class="line"><span class="meta">#parm mark- protocol_02</span></div><div class="line"></div><div class="line"><span class="keyword">@end</span></div></pre></td></tr></table></figure></p>
-<p>OC部分参照禅语Object-C～<br><figure class="highlight mm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">- (<span class="keyword">void</span>)viewWillDisappear:(<span class="built_in">BOOL</span>)animated &#123;<span class="comment">//可以</span></div><div class="line">	<span class="keyword">if</span> a != <span class="number">0</span> &#123;</div><div class="line">		AccessError(msg);</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="comment">//更推荐使用单行表达式～</span></div><div class="line">	<span class="keyword">if</span> a!=<span class="number">0</span> AccessError(msg);</div><div class="line">	<span class="comment">//再来一个例子🌰</span></div><div class="line">	<span class="keyword">if</span> b isB();</div><div class="line">	<span class="keyword">else</span> noB();</div><div class="line"></div><div class="line">&#125;</div><div class="line"><span class="comment">//这里必须要有空行</span></div><div class="line">- (<span class="keyword">void</span>)viewWillDisappear:(<span class="built_in">BOOL</span>)animated </div><div class="line">&#123;<span class="comment">//多参数时可以，单一参数不可以</span></div><div class="line">	<span class="keyword">if</span> a == <span class="number">0</span> </div><div class="line">	&#123; </div><div class="line">		<span class="comment">//...</span></div><div class="line">	&#125; <span class="keyword">else</span> &#123;</div><div class="line">		AccessError（msg）</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>使用运算符优先级格式<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> a = <span class="number">1</span>*<span class="number">1</span> + <span class="number">2</span>*<span class="number">2</span> <span class="comment">//推荐使用</span></div><div class="line"></div><div class="line"><span class="keyword">let</span> a = <span class="number">1</span> * <span class="number">1</span> + <span class="number">2</span> * <span class="number">2</span></div></pre></td></tr></table></figure></p>
-<p>对齐<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//这样的对齐还有其意义</span></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">a</span><span class="params">(paramer_01: String,</span></span></div><div class="line">	  paramer_02_02: Array) -&gt; <span class="type">Bool</span> &#123;</div><div class="line">	<span class="keyword">return</span> <span class="literal">true</span></div><div class="line">&#125;</div><div class="line">	<span class="comment">//	这其实没必要</span></div><div class="line"><span class="keyword">var</span> asrggg4.   : <span class="type">String</span></div><div class="line"><span class="keyword">var</span> d		     : <span class="type">Array</span></div><div class="line"><span class="keyword">var</span> dataSource : <span class="type">Array</span></div></pre></td></tr></table></figure></p>
-<p>if、while等 单行语法没有括号！！！只有一个”;”<br><figure class="highlight swift"><figcaption><span>//不允许使用！！！！</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span>	 a &lt;<span class="number">0</span> </div><div class="line">	;</div></pre></td></tr></table></figure></p>
-<h1 id="对象、数据结构"><a href="#对象、数据结构" class="headerlink" title="对象、数据结构"></a>对象、数据结构</h1><p>我们应该知道 连串的调用对是一种隐藏了过程的方式，他不能使我们的代码变得明了！！但是可以大规模的节约我们开发的时间！说白了就是用的爽。<br>OC中著名的类库Masony就是一种链式调用，但是其控制了复杂度，就是其内部链子只能做一件事。<br>现在我发现许多人在使用Swfit的时候非常轻易使用链式语法，在不同类型中接连转换，可以你在写的时候你会在某一天，某一年回头看自己的代码，那一串一串的逻辑，根本就不能再看好吧～（除非使同一种类型的逻辑，那我也建议使用另外一种封装）<br>如论是否是写成了一串逻辑，还是写成了连续调用方法，我管这种写法叫做火车事件，无论如何我们都应该避免火车事件的发生，更好的做法就是给这个火车方法另外起一个名字～</p>
-<h1 id="错误处理"><a href="#错误处理" class="headerlink" title="错误处理"></a>错误处理</h1><p>全部对象方法不允许返回“null”！！ 需要返回null 的时候创建一个空元素返回，也不允许返回null ！</p>
-<h1 id="第三方代码"><a href="#第三方代码" class="headerlink" title="第三方代码"></a>第三方代码</h1><p>使用第三方库的时候，所有API都要进行一次封装！隐藏屏蔽掉所有第三方实现细节！</p>
-<h1 id="测试代码！"><a href="#测试代码！" class="headerlink" title="测试代码！"></a>测试代码！</h1><p>测试是一种满足现有需要而不去管其他事情的思考问题风格，典型的奥姆剃刀定律践行者～在测试良好的公司，根本不会出现各种库的吧。先说说：测试先行3要素</p>
-<pre><code>1. 先编写测试代码，否则不能开始写业务代码。
-2. 测试代码刚好覆盖需求
-3. 编写刚好可以通过测试的生产代码
-我更偏向于更加精美的封装～而不是仅仅满足需求～
-</code></pre><p>个人认为测试代码的可维护性比生产代码更不易维护，所以写单元测试的朋友们，希望你们还安好～<br>（越大型的项目约需要测试～小项目反而测试的重要性没有大型项目大）</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;命名&quot;&gt;&lt;a href=&quot;#命名&quot; class=&quot;headerlink&quot; title=&quot;命名&quot;&gt;&lt;/a&gt;命名&lt;/h1&gt;&lt;h2 id=&quot;变量名&quot;&gt;&lt;a href=&quot;#变量名&quot; class=&quot;headerlink&quot; title=&quot;变量名&quot;&gt;&lt;/a&gt;变量名&lt;/h2&gt;&lt;p
-    
-    </summary>
-    
-    
-      <category term="架构" scheme="https://github.com/LiShengmin/tags/%E6%9E%B6%E6%9E%84/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>架构-架构漫谈</title>
-    <link href="https://github.com/LiShengmin/2017/06/20/%E6%9E%B6%E6%9E%84-%E6%9E%B6%E6%9E%84%E6%BC%AB%E8%B0%88/"/>
-    <id>https://github.com/LiShengmin/2017/06/20/架构-架构漫谈/</id>
-    <published>2017-06-19T17:15:49.000Z</published>
-    <updated>2017-08-01T07:30:16.294Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="架构"><a href="#架构" class="headerlink" title="架构"></a>架构</h1><p>非常感谢Casa的分享！这篇文章主要参考了Casa的分享和博客。还有个人的一些理解，希望通过这些阶段性的总结和思考，来让大家成为更好架构师，和理解架构师在做什么。<a id="more"></a></p>
-<h2 id="什么是架构"><a href="#什么是架构" class="headerlink" title="什么是架构"></a>什么是架构</h2><ul>
-<li>提供完整具备唯一性的解决方案</li>
-<li>通过设计能力减少工程的开发成本</li>
-<li>规避工程实施中可能存在的技术问题&amp;&amp;非技术问题规避：<blockquote>
-<p>避免腐蚀架构<br>避免团队脱节</p>
-</blockquote>
-</li>
-</ul>
-<hr>
-<h1 id="架构是审美与权衡"><a href="#架构是审美与权衡" class="headerlink" title="架构是审美与权衡"></a>架构是审美与权衡</h1><p>在我的认知种架构就是在做如下3件事：</p>
-<ol>
-<li>权衡（大一统&amp;&amp;去中心化）</li>
-<li>决策</li>
-<li>追求简约和极致<br>在下面我会详细的解释上面3点都表达了什么。<h2 id="权衡"><a href="#权衡" class="headerlink" title="权衡"></a>权衡</h2>说到权衡</li>
-</ol>
-<ul>
-<li>不要因小失大（架构师总是在过渡设计和满足需求之间徘徊）<br>当架构师不能控制代码的走向，架构就失败了。 继承？</li>
-<li>不必循规蹈矩（不必为了使用技术而使用技术，一切都是自然而然的）<br>在项目做某个模块的时候，选型为：MVC，MVVM，VIPER？其实都是可以的，没有什么高下，要看业务具体需求。</li>
-<li>要用发展的眼光看待架构。<br>如一开始我们使用了继承基础类的方式来做，感觉非常棒，直接调用，函数什么的用着也方便，但是当工程越来越大，基础类中的东西越来越庞杂，越来越无法分离，慢慢的就会产生很多问题。<br>还有就是有人说我们可以制定一个规范，但是从以往的经验来看，规范一般都是落实在纸上（规范的可行性不会很好）。</li>
-<li>别人事情归别人做，自己的事情就自己做，（你不要去做别人的事）<br>当我们规定了VC做的只是做调度（摆放控件），控件之间通讯由被下发的下一个层级来做，或者由专门的ViewModel来做，就避免了VC做了太多的事情。</li>
-</ul>
-<h2 id="逻辑"><a href="#逻辑" class="headerlink" title="逻辑"></a>逻辑</h2><p>说到逻辑，就不得不说大家在处理逻辑上的一些误区，在这里我就只为大家提供了一些常见的误区。并附赠了一个小例子作为参考。</p>
-<ul>
-<li>画蛇添足：设计了一个并没有解决任何问题的机制<br>这个就是典型的过渡设计的范畴，我见过一个iOS开发工程师，使用连续集成VC来达到扩展VC的目的，然后大概的就是:<br>Base1VC&lt;-Base2VC&lt;-Base3VC&lt;-VC,其中Base1VC还没有想好写的什么就先空着。</li>
-<li>隔靴搔痒：解决了周边问题，并没有解决核心问题<br>因为App的crash率很高，项目组决定从OC迁移到Swift，而不是解决为什么慢。<br>因为界面加载慢，就拍脑袋降低了View的层次；而不是具体分析下为什么加载缓慢的原因。</li>
-<li>顾此失彼：解决主要问题，引入了更多问题；<br>本来要解决照片怎么存储的问题，引入了FMDB，又对其进行了封装，还对其做了状态机，最后其实引入了FileManager就可以实现目的。</li>
-<li>南辕北辙：条件和结果不匹配<br>用一个本来就和结论不相匹配的条件，来作为依据。／条件推倒不出来结果。</li>
-<li>本末倒置：因为作为后果，后果最为前因<br>比如别人通常问我能不能看看你的文件目录，想通过文件结构推到出我的架构模式。其实这是不对的，是先有了架构，才有文件结构。而不是，新建了3个文件夹Model、VIew、Contorller就是MVC了。其实一切都是要按照业务去拆分，不是用文件夹来拆分为架构。</li>
-</ul>
-<h2 id="追求简约和极致"><a href="#追求简约和极致" class="headerlink" title="追求简约和极致"></a>追求简约和极致</h2><p>在这里，首先送给大家的一句话：勤快没有用，需要思考；<br>因为勤快这里指的可不是起的早，而是没有思考下的动手能力。<br>可能大家对这点都是深有感悟，但是这里依然有很多人注意的点是偏离或者只在我以下的所说的某一点上有建树，希望大家有所收获和批评指正。</p>
-<blockquote>
-<p>对业务工程师要做最少的假设；</p>
-<pre><code>* 和你配合的业务工程师，可能对你的架构没有任何的了解，
-* 对你的架构没有任何了解，（直接Crash）；coreData
-</code></pre><p>使用流程不简化Eg；<br>API：设备信息，IP，坐标等，没有必要</p>
-<ul>
-<li>尽可能利用原生框架提供的手段，不要重复发明轮子<br>好的工程就应该1句注释都没有</li>
-</ul>
-</blockquote>
-<hr>
-<h1 id="架构是会演化的"><a href="#架构是会演化的" class="headerlink" title="架构是会演化的"></a>架构是会演化的</h1><p>极致和扩展性不矛盾<br>会随着业务发展，模块会发生演进／引入层的概念。<br>Demo-&gt;VC+模块-&gt;VC+触摸层／应用层等</p>
-<h2 id="如何给大模块做架构"><a href="#如何给大模块做架构" class="headerlink" title="如何给大模块做架构"></a>如何给大模块做架构</h2><p>不是一上来就很精细的，一开始也就是做一个小模块，多个小模块拼接起来，就成了大模块的架构。</p>
-<ul>
-<li>是否要套用现有的方法论？</li>
-<li>具体要怎么做<br>熟悉: 做好的东西组装起来。<br>不熟悉：从Demo开始做<h2 id="接手新项目时，如何做架构调整"><a href="#接手新项目时，如何做架构调整" class="headerlink" title="接手新项目时，如何做架构调整"></a>接手新项目时，如何做架构调整</h2></li>
-<li>先找问题，再动手<br>不要直接改，可能团队不会很好接受，找有问题的点切入</li>
-<li>揣测现有架构的设计思路，新方案尽量不要动的很大<br>如果2种方案，都可以，改动的话会很大<br>如果之前没问题，尽量就不要动，顺着思路做就可以了</li>
-<li>找到过度方案<br>先2种方案并存，后一点一点改进<br>如果没有好的过渡方案就尽量不要动</li>
-<li>提供自动化工具<br>创建APIManager的脚本等，以降低业务工程师成本为目的。<br>方便工程师工作<h2 id="架构中的对称性"><a href="#架构中的对称性" class="headerlink" title="架构中的对称性"></a>架构中的对称性</h2>就是思维考虑的对称。</li>
-<li>有if 就要有else<br>（思考问题的方式）</li>
-<li>有大有小，有集约有离散<br>整体架构是胖Model，那要思考瘦Model是否有好处，意义。</li>
-<li>能删就能增，有来有去<br>哪里能增的哪里就应该能删。<h2 id="辩证的对待架构的灵活和限制"><a href="#辩证的对待架构的灵活和限制" class="headerlink" title="辩证的对待架构的灵活和限制"></a>辩证的对待架构的灵活和限制</h2>灵活：是引入混乱的根源。(不是越灵活越好)<br>限制：使用的时候不要把不应该这么使用的时候不让其这么使用<br>  限制也有时候会限制业务的发展（不应该）<br>  在某种方案下只有1种解决的方法。</li>
-</ul>
-<p>在架构改变的场景下保持灵活，在方案实现的场景下保持限制，（架构是会演化的）</p>
-<h2 id="辨证对待多和少"><a href="#辨证对待多和少" class="headerlink" title="辨证对待多和少"></a>辨证对待多和少</h2><p>复杂的问题，对应复杂的方案。<br>简单的问题，对应简单的方案。</p>
-<p>多不怕，怕的是乱，因为多会导致管理跟不上。<br>组件话只是把不同的代码放在不同的文件里。</p>
-<p>类爆炸，可能会导致功能维护上问题。关键还是因为多了后不能很好管理。<br>组件化，不是为了减少编译时间，目的是分治。解决的问是事隔离和便于维护。<br>尽可能少的传递数据，<br>一股脑的把数据都丢改你，然后你需要什么就自己挑。非常不好维护，非常容易的做拆分。<br>传递最少的参数：<br>e.g.：搜索列表：只传递个searchStr；numPage等交给APIManager处理。</p>
-<p>一开始给的少，不要紧，以后想要的话可以加。（以后需要的话的话，可以以后加，（➕的方式不一定就是现在这个样子了））</p>
-<h2 id="几个问题"><a href="#几个问题" class="headerlink" title="几个问题"></a>几个问题</h2><ul>
-<li>如何看待设计模式<br>只是方便架构师之间做交流的。<br>不是百宝箱，你的方案正好是这个设计模式，而方便交流。</li>
-<li>所有的方案都是自然<br>你有一套统一的价值观的话，或者进一步细化后，方案应该是唯一的。<br>反对大一统（我要用MVVM，reecticCocoa），不同的问题，就应该给其最适合的方案。</li>
-<li>架构师是如何看待技术的<br>新的技术是一种证明，是一种可行的方案而已。不是新的就是好的。<br>例如：响应式能给所有的问题给了很好的方案，但是不是你提供的解决方案就是最优的解决方案。<br>不存在一种技术能完美解决所有问题，挑选合适的技术解决合适的问题。<br>没必要去追风，重要的是要知道其是怎么回事。<br>没有最全面的技术，只有最适合的技术。<br>响应式和命令式，<br>命令：必须找到响应者然后另其做事，delegate可做更精细的控制<br>响应式:一声吼，监听的人就去做事。不需要知道响应着。可以非常方便的完成问题。但也没办法对监听的人做更精细的控制。<br>IO和动画应该才会影响效率，而不是对象的交互方式。<h1 id="Q-amp-A"><a href="#Q-amp-A" class="headerlink" title="Q&amp;A"></a>Q&amp;A</h1>架构师是唯物，讲究点证据。<br>只要看到API，看到类名，等就能知道这个东西是啥，怎么用<br>第三方适用于你的项目？不是看第三方代码量多少，而是看是否适应你的需求<br>API可以是一个单独工程来管理。Coil。。<br>Q：review；<ol>
-<li>避免单点问题。</li>
-<li>Review Code是否符合规范</li>
-<li>避免你搞乱七八糟的东西<br>Q：Delegate,Block更喜欢哪个；</li>
-<li>看需求吧<br>Q：继承缺点</li>
-<li>可能会引入跟你无关的代码。<br>Q：架构师角色</li>
-<li>不是老大的角色，而是backup帮助大家解决问题。<br>Q：组件都是很大的么？</li>
-<li>不是看东西很大，而是看是不是需要被复用。<br>Q：单元测试怎么推行？</li>
-<li>少写代码，多做测试。</li>
-<li>单独抽出成为工程，方便调试。</li>
-<li>单元测试会很少。<br>Q：平时面试问的什么？</li>
-<li>比简历问的深些。<br>Q：如何帮助初级开发者提高？</li>
-<li>帮助其CodeReview，给其写commit<br>Q：不加班领导同意么？工作能完成么？</li>
-<li>不同意，工作能完成，离职了了。。。<br>Q：如何提高逻辑思维能力</li>
-<li>读：批判性思维</li>
-<li>做：GRE作文第二题</li>
-<li>讨论：跟逻辑能力强的人讨论问题</li>
-</ol>
-</li>
-</ul>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;架构&quot;&gt;&lt;a href=&quot;#架构&quot; class=&quot;headerlink&quot; title=&quot;架构&quot;&gt;&lt;/a&gt;架构&lt;/h1&gt;&lt;p&gt;非常感谢Casa的分享！这篇文章主要参考了Casa的分享和博客。还有个人的一些理解，希望通过这些阶段性的总结和思考，来让大家成为更好架构师，和理解架构师在做什么。
-    
-    </summary>
-    
-    
-      <category term="架构" scheme="https://github.com/LiShengmin/tags/%E6%9E%B6%E6%9E%84/"/>
-    
-  </entry>
   
   <entry>
     <title>iOS-CoreML</title>
@@ -599,39 +426,6 @@
   </entry>
   
   <entry>
-    <title>架构-Carthage使用</title>
-    <link href="https://github.com/LiShengmin/2017/04/28/%E6%9E%B6%E6%9E%84-Carthage%E4%BD%BF%E7%94%A8/"/>
-    <id>https://github.com/LiShengmin/2017/04/28/架构-Carthage使用/</id>
-    <published>2017-04-28T10:49:43.000Z</published>
-    <updated>2017-06-19T17:13:17.483Z</updated>
-    
-    <content type="html"><![CDATA[<p> 今天有朋友在群里问“怎么使用Swift第三方库？”，对象是SwiftyJSON，正巧这段时间也要用，干脆折腾了下。在SwiftyJSON的GitHub上说，需要先安装Carthage这个包管理。 <a id="more"></a></p>
-<p>github地址：<a href="https://github.com/Carthage/Carthage">https://github.com/Carthage/Carthage</a></p>
-<ol>
-<li>安装Carthage<br>首先到github上Download或者Clone Git 或者使用HomeBrew（我是用这个），安装好。<br><code>brew update</code>(先更新).<code>brew install carthage</code> (安装Carthage).  </li>
-<li>安装好以后在carthage的根目录<strong>创建一个Cartfile</strong>文件：<br><code>vim Cartfile</code>输入你想要编译成Framework的Swift第三方库，比如说SwiftyJSON和Alamofire，如下所示:</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">github &quot;Alamofire/Alamofire&quot; &amp;gt;= 1.1</div><div class="line">github &quot;SwiftyJSON/SwiftyJSON&quot; &amp;gt;= 2.1.2</div></pre></td></tr></table></figure>
-<p>github代表源，而后面的就是用户名和版本库的名字，而”&gt;=” 后面是Tag（本质上就是版本号）</p>
-<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">carthage update</span></div></pre></td></tr></table></figure>
-<p>之后会发现在跟目录下多出了“Carthage”文件夹和“Cartfile.resolved”文件。<br>进入“Carthage/Checkouts”下可以看到刚刚得到的Alamofire和SwiftyJSON。</p>
-<h1 id="使用第三方库"><a href="#使用第三方库" class="headerlink" title="使用第三方库"></a>使用第三方库</h1><p>在你的应用程序target的“General”设置标签中的“Embedded Binaries”区域，将“Carthage/Build”目录下你想使用的第三方库文件夹拖进去即可，比如“Carthage/Build/SwiftyJSON”。</p>
-<h1 id="失败了不可怕"><a href="#失败了不可怕" class="headerlink" title="失败了不可怕"></a>失败了不可怕</h1><p>如果Build文件夹里是空的，说明刚刚在update的时候一定出现了错误。可以查看下刚刚执行的日志文件里说了什么，按部就班的解决就行。</p>
-<p>像我遇到的问题就是因为我没有为SwiftyJSON项目配置我的apple 开发者账号ID，99刀就可以解决问题！<br>解决完问题之后，因为之前执行update时，已经将github的内容抓取到了Checkout目录中，就不用再update抓取了，执行bootstrap就可以开始编译，节省时间。<br><a href="http://blog.crazyphper.com/?p=3661" target="_blank" rel="external">本文链接地址: 使用Carthage安装第三方Swift库</a><br><a href="http://www.isaced.com/post-265.html" target="_blank" rel="external">更加全面的文章在这里</a></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt; 今天有朋友在群里问“怎么使用Swift第三方库？”，对象是SwiftyJSON，正巧这段时间也要用，干脆折腾了下。在SwiftyJSON的GitHub上说，需要先安装Carthage这个包管理。
-    
-    </summary>
-    
-    
-      <category term="架构" scheme="https://github.com/LiShengmin/tags/%E6%9E%B6%E6%9E%84/"/>
-    
-  </entry>
-  
-  <entry>
     <title>iOS中 请求主线程刷新UI</title>
     <link href="https://github.com/LiShengmin/2016/11/18/iOS-%E8%AF%B7%E6%B1%82%E4%B8%BB%E7%BA%BF%E7%A8%8B%E5%88%B7%E6%96%B0UI/"/>
     <id>https://github.com/LiShengmin/2016/11/18/iOS-请求主线程刷新UI/</id>
@@ -651,404 +445,6 @@
     
     
       <category term="iOS" scheme="https://github.com/LiShengmin/tags/iOS/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>架构-网络- 客户端HTTP请求的Header信息</title>
-    <link href="https://github.com/LiShengmin/2016/11/11/%E6%9E%B6%E6%9E%84-%E7%BD%91%E7%BB%9C-HTTP%E8%AF%B7%E6%B1%82%E7%9A%84Header%E4%BF%A1%E6%81%AF/"/>
-    <id>https://github.com/LiShengmin/2016/11/11/架构-网络-HTTP请求的Header信息/</id>
-    <published>2016-11-11T02:58:09.000Z</published>
-    <updated>2017-06-19T16:38:35.365Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="客户端HTTP请求的Header信息"><a href="#客户端HTTP请求的Header信息" class="headerlink" title="客户端HTTP请求的Header信息"></a>客户端HTTP请求的Header信息</h1><p>HTTP（HyperTextTransferProtocol）即超文本传输协议，目前网页传输的的通用协议。HTTP协议采用了请求/响应模型，浏览器或其他客户端发出请求，服务器给与响应。就整个网络资源传输而言，包括message-header和message-body两部分。首先传递message- header，即http header消息 。http header 消息通常被分为4个部分：general  header, request header, response header, entity header。但是这种分法就理解而言，感觉界限不太明确。根据维基百科对http header内容的组织形式，大体分为Request和Response两部分。<br><a id="more"></a></p>
-<h2 id="1、HTTP请求方式"><a href="#1、HTTP请求方式" class="headerlink" title="1、HTTP请求方式"></a>1、HTTP请求方式</h2><h3 id="如下表："><a href="#如下表：" class="headerlink" title="如下表："></a>如下表：</h3><table>
-<thead>
-<tr>
-<th>方 法</th>
-<th>描 述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>GET</td>
-<td>向Web服务器请求一个文件</td>
-</tr>
-<tr>
-<td>POST</td>
-<td>向Web服务器发送数据让Web服务器进行处理</td>
-</tr>
-<tr>
-<td>PUT</td>
-<td>向Web服务器发送数据并存储在Web服务器内部</td>
-</tr>
-<tr>
-<td>HEAD</td>
-<td>检查一个对象是否存在</td>
-</tr>
-<tr>
-<td>DELETE</td>
-<td>从Web服务器上删除一个文件</td>
-</tr>
-<tr>
-<td>CONNECT</td>
-<td>对通道提供支持</td>
-</tr>
-<tr>
-<td>TRACE</td>
-<td>跟踪到服务器的路径</td>
-</tr>
-<tr>
-<td>OPTIONS</td>
-<td>查询Web服务器的性能</td>
-</tr>
-</tbody>
-</table>
-<h3 id="说明："><a href="#说明：" class="headerlink" title="说明："></a>说明：</h3><p>主要使用到“GET”和“POST”。</p>
-<h3 id="实例："><a href="#实例：" class="headerlink" title="实例："></a>实例：</h3><p>POST /test/tupian/cm HTTP/1.1<br>分成三部分：<br>（1）POST：HTTP请求方式<br>（2）/test/tupian/cm：请求Web服务器的目录地址（或者指令）<br>（3）HTTP/1.1: URI（Uniform Resource Identifier，统一资源标识符）及其版本<br>备注：在Ajax中，对应method属性设置。</p>
-<h2 id="2、Host"><a href="#2、Host" class="headerlink" title="2、Host"></a>2、Host</h2><p>说明：<br>请求的web服务器域名地址<br>实例：<br>    例如web请求URL：<a href="http://zjm-forum-test10.zjm.baidu.com:8088/test/tupian/cm" target="_blank" rel="external">http://zjm-forum-test10.zjm.baidu.com:8088/test/tupian/cm</a><br>    Host就为zjm-forum-test10.zjm.baidu.com:8088</p>
-<h2 id="3、User-Agent"><a href="#3、User-Agent" class="headerlink" title="3、User-Agent"></a>3、User-Agent</h2><p>说明：<br>HTTP客户端运行的浏览器类型的详细信息。通过该头部信息，web服务器可以判断到当前HTTP请求的客户端浏览器类别。<br>实例：<br>    User-Agent: Mozilla/5.0 (Windows; U; Windows NT 5.1; zh-CN; rv:1.8.1.11) Gecko/20071127 Firefox/2.0.0.11</p>
-<h2 id="4、Accept"><a href="#4、Accept" class="headerlink" title="4、Accept"></a>4、Accept</h2><p>说明：<br>指定客户端能够接收的内容类型，内容类型中的先后次序表示客户端接收的先后次序。<br>实例：<br>    例如：Accept:text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,<em>/</em>;<br>q=0.5<br>备注：在Prototyp（1.5）的Ajax代码封装中，将Accept默认设置为“text/javascript, text/html, application/xml, text/xml, <em>/</em>”。<br>这是因为Ajax默认获取服务器返回的Json数据模式。<br>在Ajax代码中，可以使用XMLHttpRequest 对象中setRequestHeader函数方法来动态设置这些Header信息。</p>
-<h2 id="5、Accept-Language"><a href="#5、Accept-Language" class="headerlink" title="5、Accept-Language"></a>5、Accept-Language</h2><p>说明：指定HTTP客户端浏览器用来展示返回信息所优先选择的语言。<br>实例：Accept-Language: zh-cn,zh;q=0.5<br>         这里默认为中文。</p>
-<h2 id="6、Accept-Encoding"><a href="#6、Accept-Encoding" class="headerlink" title="6、Accept-Encoding"></a>6、Accept-Encoding</h2><p>说明：<br>指定客户端浏览器可以支持的web服务器返回内容压缩编码类型。表示允许服务器在将输出内容发送到客户端以前进行压缩，以节约带宽。而这里设置的就是客户端浏览器所能够支持的返回压缩格式。<br>实例：Accept-Encoding: gzip,deflate<br>备注：其实在百度很多产品线中，apache在给客户端返回页面数据之前，将数据以gzip格式进行压缩。<br><a href="http://man.chinaunix.net/newsoft/ApacheMenual_CN_2.2new/mod/mod_deflate.html" target="_blank" rel="external">另外有关deflate压缩介绍</a></p>
-<h2 id="7、Accept-Charset"><a href="#7、Accept-Charset" class="headerlink" title="7、Accept-Charset"></a>7、Accept-Charset</h2><p>说明：浏览器可以接受的字符编码集。<br>实例：Accept-Charset: gb2312,utf-8;q=0.7,*;q=0.7</p>
-<h2 id="8、Content-Type"><a href="#8、Content-Type" class="headerlink" title="8、Content-Type"></a>8、Content-Type</h2><p>说明：显示此HTTP请求提交的内容类型。一般只有post提交时才需要设置该属性。<br>实例：Content-type: application/x-www-form-urlencoded;charset:UTF-8<br>有关Content-Type属性值可以如下两种编码类型：<br>（1）“application/x-www-form-urlencoded”： 表单数据向服务器提交时所采用的编码类型，默认的缺省值就是“application/x-www-form-urlencoded”。 然而，在向服务器发送大量的文本、包含非ASCII字符的文本或二进制数据时这种编码方式效率很低。<br>（2）“multipart/form-data”： 在文件上载时，所使用的编码类型应当是“multipart/form-data”，它既可以发送文本数据，也支持二进制数据上载。<br>当提交为单单数据时，可以使用“application/x-www-form-urlencoded”；当提交的是文件时，就需要使用“multipart/form-data”编码类型。<br>在Content-Type属性当中还是指定提交内容的charset字符编码。一般不进行设置，它只是告诉web服务器post提交的数据采用的何种字符编码。<br>         一般在开发过程，是由前端工程与后端UI工程师商量好使用什么字符编码格式来post提交的，然后后端ui工程师按照固定的字符编码来解析提交的数据。所以这里设置的charset没有多大作用。</p>
-<h2 id="9、Connection"><a href="#9、Connection" class="headerlink" title="9、Connection"></a>9、Connection</h2><p>说明：<br>表示是否需要持久连接。如果web服务器端看到这里的值为“Keep-Alive”，或者看到请求使用的是HTTP 1.1（HTTP 1.1默认进行持久连接），它就可以利用持久连接的优点，当页面包含多个元素时（例如Applet，图片），显著地减少下载所需要的时间。要实现这一点， web服务器需要在返回给客户端HTTP头信息中发送一个Content-Length（返回信息正文的长度）头，最简单的实现方法是：先把内容写入ByteArrayOutputStream，然 后在正式写出内容之前计算它的大小。</p>
-<p>实例：<br>Connection: keep-alive</p>
-<h2 id="10、Keep-Alive"><a href="#10、Keep-Alive" class="headerlink" title="10、Keep-Alive"></a>10、Keep-Alive</h2><p>说明：<br>         显示此HTTP连接的Keep-Alive时间。使客户端到服务器端的连接持续有效，当出现对服务器的后继请求时，Keep-Alive功能避免了建立或者重新建立连接。<br>         以前HTTP请求是一站式连接，从HTTP/1.1协议之后，就有了长连接，即在规定的Keep-Alive时间内，连接是不会断开的。</p>
-<p>实例：<br>Keep-Alive: 300</p>
-<h2 id="11、cookie"><a href="#11、cookie" class="headerlink" title="11、cookie"></a>11、cookie</h2><p>说明：<br>         HTTP请求发送时，会把保存在该请求域名下的所有cookie值一起发送给web服务器。</p>
-<h2 id="12、Referer"><a href="#12、Referer" class="headerlink" title="12、Referer"></a>12、Referer</h2><p>说明：<br>包含一个URL，用户从该URL代表的页面出发访问当前请求的页面</p>
-<h1 id="服务器端返回HTTP头部信息"><a href="#服务器端返回HTTP头部信息" class="headerlink" title="服务器端返回HTTP头部信息"></a>服务器端返回HTTP头部信息</h1><p>1、Content-Length<br>说明：表示web服务器返回消息正文的长度</p>
-<p>2、Content-Type:<br>说明：返回数据的类型（例如text/html文本类型）和字符编码格式。<br>实例：Content-Type: text/html;charset=utf-8</p>
-<p>3、Date<br>说明：显示当前的时间</p>
-<p>4、Server<br>说明： 服务器类型</p>
-<h1 id="Requests部分"><a href="#Requests部分" class="headerlink" title="Requests部分"></a>Requests部分</h1><table>
-<thead>
-<tr>
-<th style="text-align:left">Header</th>
-<th>解释</th>
-<th>示例</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">Accept</td>
-<td>指定客户端能够接收的内容类型</td>
-<td>Accept:text/plain, text/html</td>
-</tr>
-<tr>
-<td style="text-align:left">Accept-Charset</td>
-<td>浏览器可以接受的字符编码集。</td>
-<td>Accept-Charset: iso-8859-5</td>
-</tr>
-<tr>
-<td style="text-align:left">Accept-Encoding</td>
-<td>指定浏览器可以支持的web服务器返回内容压缩编码类型。</td>
-<td>Accept-Encoding: compress, gzip</td>
-</tr>
-<tr>
-<td style="text-align:left">Accept-Language</td>
-<td>浏览器可接受的语言</td>
-<td>Accept-Language: en,zh</td>
-<td></td>
-</tr>
-<tr>
-<td style="text-align:left">Accept-Ranges</td>
-<td>可以请求网页实体的一个或者多个子范围字段</td>
-<td>Accept-Ranges: bytes</td>
-</tr>
-<tr>
-<td style="text-align:left">Authorization</td>
-<td>HTTP授权的授权证书</td>
-<td>Authorization: Basic QWxhZGRpbjpvcGVuIHNlc2FtZQ==</td>
-</tr>
-<tr>
-<td style="text-align:left">Cache-Control</td>
-<td>指定请求和响应遵循的缓存机制</td>
-<td>Cache-Control: no-cache</td>
-<td></td>
-</tr>
-<tr>
-<td style="text-align:left">Connection</td>
-<td>表示是否需要持久连接。（HTTP 1.1默认进行持久连接）</td>
-<td>Connection: close</td>
-</tr>
-<tr>
-<td style="text-align:left">Cookie</td>
-<td>HTTP请求发送时，会把保存在该请求域名下的所有cookie值一起发送给web服务器。</td>
-<td>Cookie: $Version=1; Skin=new;</td>
-</tr>
-<tr>
-<td style="text-align:left">Content-Length</td>
-<td>请求的内容长度</td>
-<td>Content-Length: 348</td>
-</tr>
-<tr>
-<td style="text-align:left">Content-Type</td>
-<td>请求的与实体对应的MIME信息</td>
-<td>Content-Type: application/x-www-form-urlencoded</td>
-</tr>
-<tr>
-<td style="text-align:left">Date</td>
-<td>请求发送的日期和时间</td>
-<td>Date: Tue, 15 Nov 2010 08:12:31 GMT</td>
-</tr>
-<tr>
-<td style="text-align:left">Expect</td>
-<td>请求的特定的服务器行为</td>
-<td>Expect: 100-continue</td>
-</tr>
-<tr>
-<td style="text-align:left">From</td>
-<td>发出请求的用户的Email</td>
-<td>From: user@email.com</td>
-</tr>
-<tr>
-<td style="text-align:left">Host</td>
-<td>指定请求的服务器的域名和端口号</td>
-<td>Host: www.zcmhi.com</td>
-</tr>
-<tr>
-<td style="text-align:left">If-Match</td>
-<td>只有请求内容与实体相匹配才有效</td>
-<td>If-Match: “737060cd8c284d8af7ad3082f209582d”</td>
-</tr>
-<tr>
-<td style="text-align:left">If-Modified-Since</td>
-<td>如果请求的部分在指定时间之后被修改则请求成功，未被修改则返回304代码</td>
-<td>If-Modified-Since: Sat, 29 Oct 2010 19:43:31 GMT</td>
-</tr>
-<tr>
-<td style="text-align:left">If-None-Match</td>
-<td>如果内容未改变返回304代码，参数为服务器先前发送的Etag，与服务器回应的Etag比较判断是否改变</td>
-<td>If-None-Match: “737060cd8c284d8af7ad3082f209582d”</td>
-</tr>
-<tr>
-<td style="text-align:left">If-Range</td>
-<td>如果实体未改变，服务器发送客户端丢失的部分，否则发送整个实体。参数也为Etag</td>
-<td>If-Range: “737060cd8c284d8af7ad3082f209582d”</td>
-</tr>
-<tr>
-<td style="text-align:left">If-Unmodified-Since</td>
-<td>只在实体在指定时间之后未被修改才请求成功</td>
-<td>If-Unmodified-Since: Sat, 29 Oct 2010 19:43:31 GMT</td>
-</tr>
-<tr>
-<td style="text-align:left">Max-Forwards</td>
-<td>限制信息通过代理和网关传送的时间</td>
-<td>Max-Forwards: 10</td>
-</tr>
-<tr>
-<td style="text-align:left">Pragma</td>
-<td>用来包含实现特定的指令</td>
-<td>Pragma: no-cache</td>
-</tr>
-<tr>
-<td style="text-align:left">Proxy-Authorization</td>
-<td>连接到代理的授权证书</td>
-<td>Proxy-Authorization: Basic QWxhZGRpbjpvcGVuIHNlc2FtZQ==</td>
-</tr>
-<tr>
-<td style="text-align:left">Range</td>
-<td>只请求实体的一部分，指定范围</td>
-<td>Range: bytes=500-999</td>
-</tr>
-<tr>
-<td style="text-align:left">Referer</td>
-<td>先前网页的地址，当前请求网页紧随其后,即来路</td>
-<td>Referer: <a href="http://www.zcmhi.com/archives/71.html" target="_blank" rel="external">http://www.zcmhi.com/archives/71.html</a></td>
-</tr>
-<tr>
-<td style="text-align:left">TE</td>
-<td>客户端愿意接受的传输编码，并通知服务器接受接受尾加头信息</td>
-<td>TE: trailers,deflate;q=0.5</td>
-</tr>
-<tr>
-<td style="text-align:left">Upgrade</td>
-<td>向服务器指定某种传输协议以便服务器进行转换（如果支持）</td>
-<td>Upgrade: HTTP/2.0, SHTTP/1.3, IRC/6.9, RTA/x11</td>
-</tr>
-<tr>
-<td style="text-align:left">User-Agent</td>
-<td>User-Agent的内容包含发出请求的用户信息</td>
-<td>User-Agent: Mozilla/5.0 (Linux; X11)</td>
-</tr>
-<tr>
-<td style="text-align:left">Via</td>
-<td>通知中间网关或代理服务器地址，通信协议</td>
-<td>Via: 1.0 fred, 1.1 nowhere.com (Apache/1.1)</td>
-</tr>
-<tr>
-<td style="text-align:left">Warning</td>
-<td>关于消息实体的警告信息</td>
-<td>Warn: 199 Miscellaneous warning</td>
-</tr>
-</tbody>
-</table>
-<h1 id="Responses-部分"><a href="#Responses-部分" class="headerlink" title="Responses 部分"></a>Responses 部分</h1><table>
-<thead>
-<tr>
-<th>Header</th>
-<th>解释</th>
-<th>示例</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Accept-Ranges</td>
-<td>表明服务器是否支持指定范围请求及哪种类型的分段请求</td>
-<td>Accept-Ranges: bytes</td>
-</tr>
-<tr>
-<td>Age</td>
-<td>从原始服务器到代理缓存形成的估算时间（以秒计，非负）</td>
-<td>Age: 12</td>
-</tr>
-<tr>
-<td>Allow</td>
-<td>对某网络资源的有效的请求行为，不允许则返回405</td>
-<td>Allow: GET, HEAD</td>
-</tr>
-<tr>
-<td>Cache-Control</td>
-<td>告诉所有的缓存机制是否可以缓存及哪种类型</td>
-<td>Cache-Control: no-cache</td>
-</tr>
-<tr>
-<td>Content-Encoding</td>
-<td>web服务器支持的返回内容压缩编码类型。</td>
-<td>Content-Encoding: gzip</td>
-</tr>
-<tr>
-<td>Content-Language</td>
-<td>响应体的语言</td>
-<td>Content-Language: en,zh</td>
-</tr>
-<tr>
-<td>Content-Length</td>
-<td>响应体的长度</td>
-<td>Content-Length: 348</td>
-</tr>
-<tr>
-<td>Content-Location</td>
-<td>请求资源可替代的备用的另一地址</td>
-<td>Content-Location: /index.htm</td>
-</tr>
-<tr>
-<td>Content-MD5</td>
-<td>返回资源的MD5校验值</td>
-<td>Content-MD5: Q2hlY2sgSW50ZWdyaXR5IQ==</td>
-</tr>
-<tr>
-<td>Content-Range</td>
-<td>在整个返回体中本部分的字节位置</td>
-<td>Content-Range: bytes 21010-47021/47022</td>
-</tr>
-<tr>
-<td>Content-Type</td>
-<td>返回内容的MIME类型</td>
-<td>Content-Type: text/html; charset=utf-8</td>
-</tr>
-<tr>
-<td>Date</td>
-<td>原始服务器消息发出的时间</td>
-<td>Date: Tue, 15 Nov 2010 08:12:31 GMT</td>
-</tr>
-<tr>
-<td>ETag</td>
-<td>请求变量的实体标签的当前值</td>
-<td>ETag: “737060cd8c284d8af7ad3082f209582d”</td>
-</tr>
-<tr>
-<td>Expires</td>
-<td>响应过期的日期和时间</td>
-<td>Expires: Thu, 01 Dec 2010 16:00:00 GMT</td>
-</tr>
-<tr>
-<td>Last-Modified</td>
-<td>请求资源的最后修改时间</td>
-<td>Last-Modified: Tue, 15 Nov 2010 12:45:26 GMT</td>
-</tr>
-<tr>
-<td>Location</td>
-<td>用来重定向接收方到非请求URL的位置来完成请求或标识新的资源</td>
-<td>Location: <a href="http://www.zcmhi.com/archives/94.html" target="_blank" rel="external">http://www.zcmhi.com/archives/94.html</a></td>
-</tr>
-<tr>
-<td>Pragma</td>
-<td>包括实现特定的指令，它可应用到响应链上的任何接收方</td>
-<td>Pragma: no-cache</td>
-</tr>
-<tr>
-<td>Proxy-Authenticate</td>
-<td>它指出认证方案和可应用到代理的该URL上的参数</td>
-<td>Proxy-Authenticate: Basic</td>
-</tr>
-<tr>
-<td>refresh</td>
-<td>应用于重定向或一个新的资源被创造，在5秒之后重定向（由网景提出，被大部分浏览器支持）</td>
-<td>Refresh: 5; url=<a href="http://www.zcmhi.com/archives/94.html" target="_blank" rel="external">http://www.zcmhi.com/archives/94.html</a></td>
-</tr>
-<tr>
-<td>Retry-After</td>
-<td>如果实体暂时不可取，通知客户端在指定时间之后再次尝试</td>
-<td>Retry-After: 120</td>
-</tr>
-<tr>
-<td>Server</td>
-<td>web服务器软件名称</td>
-<td>Server: Apache/1.3.27 (Unix) (Red-Hat/Linux)</td>
-</tr>
-<tr>
-<td>Set-Cookie</td>
-<td>设置Http Cookie</td>
-<td>Set-Cookie: UserID=JohnDoe; Max-Age=3600; Version=1</td>
-</tr>
-<tr>
-<td>Trailer</td>
-<td>指出头域在分块传输编码的尾部存在</td>
-<td>Trailer: Max-Forwards</td>
-</tr>
-<tr>
-<td>Transfer-Encoding</td>
-<td>文件传输编码</td>
-<td>Transfer-Encoding:chunked</td>
-</tr>
-<tr>
-<td>Vary</td>
-<td>告诉下游代理是使用缓存响应还是从原始服务器请求</td>
-<td>Vary: *</td>
-</tr>
-<tr>
-<td>Via</td>
-<td>告知代理客户端响应是通过哪里发送的</td>
-<td>Via: 1.0 fred, 1.1 nowhere.com (Apache/1.1)</td>
-</tr>
-<tr>
-<td>Warning</td>
-<td>警告实体可能存在的问题</td>
-<td>Warning: 199 Miscellaneous warning</td>
-</tr>
-<tr>
-<td>WWW-Authenticate</td>
-<td>表明客户端请求实体应该使用的授权方案</td>
-<td>WWW-Authenticate: Basic</td>
-</tr>
-</tbody>
-</table>
-<p>更多参见 <a href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html" target="_blank" rel="external">w3c官网</a></p>
-<h1 id="引用："><a href="#引用：" class="headerlink" title="引用："></a>引用：</h1><p>1.<a href="http://kb.cnblogs.com/page/92320/" target="_blank" rel="external">Http header详解</a>   <a href="http://www.zcmhi.com/archives/71.html" target="_blank" rel="external">原文链接</a><br>2.<a href="http://technique-digest.iteye.com/blog/1174581" target="_blank" rel="external">客户端HTTP请求的Header信息</a></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;客户端HTTP请求的Header信息&quot;&gt;&lt;a href=&quot;#客户端HTTP请求的Header信息&quot; class=&quot;headerlink&quot; title=&quot;客户端HTTP请求的Header信息&quot;&gt;&lt;/a&gt;客户端HTTP请求的Header信息&lt;/h1&gt;&lt;p&gt;HTTP（HyperTextTransferProtocol）即超文本传输协议，目前网页传输的的通用协议。HTTP协议采用了请求/响应模型，浏览器或其他客户端发出请求，服务器给与响应。就整个网络资源传输而言，包括message-header和message-body两部分。首先传递message- header，即http header消息 。http header 消息通常被分为4个部分：general  header, request header, response header, entity header。但是这种分法就理解而言，感觉界限不太明确。根据维基百科对http header内容的组织形式，大体分为Request和Response两部分。&lt;br&gt;
-    
-    </summary>
-    
-    
-      <category term="架构" scheme="https://github.com/LiShengmin/tags/%E6%9E%B6%E6%9E%84/"/>
     
   </entry>
   
@@ -1338,6 +734,166 @@
     <summary type="html">
     
       &lt;h1 id=&quot;需求：&quot;&gt;&lt;a href=&quot;#需求：&quot; class=&quot;headerlink&quot; title=&quot;需求：&quot;&gt;&lt;/a&gt;需求：&lt;/h1&gt;&lt;p&gt;需要的Button 的个数不一定 Button上显示的字符串的长度不一定，Button上显示的字符串和Button的个数全部从服务器
+    
+    </summary>
+    
+    
+      <category term="iOS" scheme="https://github.com/LiShengmin/tags/iOS/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>iOS-RunTime</title>
+    <link href="https://github.com/LiShengmin/2016/07/19/iOS-RunTime/"/>
+    <id>https://github.com/LiShengmin/2016/07/19/iOS-RunTime/</id>
+    <published>2016-07-19T06:59:12.000Z</published>
+    <updated>2017-06-19T16:42:44.623Z</updated>
+    
+    <content type="html"><![CDATA[<p><img src="http://cdn.cocimg.com/cms/uploads/allimg/141105/4196_141105101156_1.jpg" alt="image1"><br>Objective<br>-C中的分类允许我们通过给一个类添加方法来扩充它（但是通过category不能添加新的实例变量），并且我们不需要访问类中的代码就可以做到。</p>
+<p>Objective-C中的协议是普遍存在的接口定义方式，即在一个类中通过@protocol定义接口，在另外类中实现接口，这种接口定义方式也成为“delegation”模式，@protocol声明了可以呗其他任何方法类实现的方法，协议仅仅是定义一个接口，而由其他的类去负责实现。<a id="more"></a></p>
+<p>在本章中，我们来看看runtime对分类与协议的支持。</p>
+<h1 id="基础数据类型"><a href="#基础数据类型" class="headerlink" title="基础数据类型"></a>基础数据类型</h1><h2 id="Category"><a href="#Category" class="headerlink" title="Category"></a>Category</h2><p>Category是表示一个指向分类的结构体的指针，其定义如下：</p>
+<figure class="highlight mm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> objc_category *Category;</div><div class="line"></div><div class="line"><span class="keyword">struct</span> objc_category &#123;</div><div class="line"><span class="keyword">char</span> *category_name                          OBJC2_UNAVAILABLE; <span class="comment">// 分类名</span></div><div class="line"><span class="keyword">char</span> *class_name                             OBJC2_UNAVAILABLE; <span class="comment">// 分类所属的类名</span></div><div class="line"><span class="keyword">struct</span> objc_method_list *instance_methods    OBJC2_UNAVAILABLE; <span class="comment">// 实例方法列表</span></div><div class="line"><span class="keyword">struct</span> objc_method_list *class_methods       OBJC2_UNAVAILABLE; <span class="comment">// 类方法列表</span></div><div class="line"><span class="keyword">struct</span> objc_protocol_list *protocols         OBJC2_UNAVAILABLE; <span class="comment">// 分类所实现的协议列表</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这个结构体主要包含了分类定义的实例方法与类方法，其中instance_methods列表是objc_class中方法列表的一个子集，而class_methods列表是元类方法列表的一个子集。</p>
+<h2 id="Protocol"><a href="#Protocol" class="headerlink" title="Protocol"></a>Protocol</h2><p>Protocol的定义如下：<br><figure class="highlight mm"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> objc_object Protocol;</div></pre></td></tr></table></figure></p>
+<p>我们可以看到，Protocol其中实就是一个对象结构体。</p>
+<h1 id="操作函数"><a href="#操作函数" class="headerlink" title="操作函数"></a>操作函数</h1><p>Runtime并没有在<objc runtime.h="">头文件中提供针对分类的操作函数。因为这些分类中的信息都包含在objc_class中，我们可以通过针对objc_class的操作函数来获取分类的信息。如下例所示：<br><figure class="highlight mm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">RuntimeCategoryClass</span> : <span class="title">NSObject</span></span></div><div class="line">- (<span class="keyword">void</span>)method1;</div><div class="line"><span class="keyword">@end</span></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">RuntimeCategoryClass</span> (<span class="title">Category</span>)</span></div><div class="line">- (<span class="keyword">void</span>)method2;</div><div class="line"><span class="keyword">@end</span></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">RuntimeCategoryClass</span></span></div><div class="line"></div><div class="line">- (<span class="keyword">void</span>)method1 &#123;</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">@end</span></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">RuntimeCategoryClass</span> (<span class="title">Category</span>)</span></div><div class="line"></div><div class="line">- (<span class="keyword">void</span>)method2 &#123;</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">@end</span></div><div class="line"></div><div class="line"><span class="meta">#pragma mark -</span></div><div class="line"></div><div class="line"><span class="built_in">NSLog</span>(<span class="string">@"测试objc_class中的方法列表是否包含分类中的方法"</span>);</div><div class="line"><span class="keyword">unsigned</span> <span class="keyword">int</span> outCount = <span class="number">0</span>;</div><div class="line">Method *methodList = class_copyMethodList(RuntimeCategoryClass.class, &amp;outCount);</div><div class="line"></div><div class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; outCount; i++) &#123;</div><div class="line">Method method = methodList[i];</div><div class="line"></div><div class="line"><span class="keyword">const</span> <span class="keyword">char</span> *name = sel_getName(method_getName(method));</div><div class="line"></div><div class="line"><span class="built_in">NSLog</span>(<span class="string">@"RuntimeCategoryClass's method: %s"</span>, name);</div><div class="line"></div><div class="line"><span class="keyword">if</span> (strcmp(name, sel_getName(<span class="keyword">@selector</span>(method2)))) &#123;</div><div class="line"><span class="built_in">NSLog</span>(<span class="string">@"分类方法method2在objc_class的方法列表中"</span>);</div><div class="line">&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></objc></p>
+<h3 id="其输出是："><a href="#其输出是：" class="headerlink" title="其输出是："></a>其输出是：</h3><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">2014-11-08 10:36:39.213 [561:151847] 测试objc_class中的方法列表是否包含分类中的方法</div><div class="line">2014-11-08 10:36:39.215 [561:151847] RuntimeCategoryClass's method: method2</div><div class="line">2014-11-08 10:36:39.215 [561:151847] RuntimeCategoryClass's method: method1</div><div class="line">2014-11-08 10:36:39.215 [561:151847] 分类方法method2在objc_class的方法列表中</div></pre></td></tr></table></figure>
+<h2 id="而对于Protocol，runtime提供了一系列函数来对其进行操作，这些函数包括："><a href="#而对于Protocol，runtime提供了一系列函数来对其进行操作，这些函数包括：" class="headerlink" title="而对于Protocol，runtime提供了一系列函数来对其进行操作，这些函数包括："></a>而对于Protocol，runtime提供了一系列函数来对其进行操作，这些函数包括：</h2><figure class="highlight mm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 返回指定的协议</span></div><div class="line">Protocol * objc_getProtocol ( <span class="keyword">const</span> <span class="keyword">char</span> *name );</div><div class="line"></div><div class="line"><span class="comment">// 获取运行时所知道的所有协议的数组</span></div><div class="line">Protocol ** objc_copyProtocolList ( <span class="keyword">unsigned</span> <span class="keyword">int</span> *outCount );</div><div class="line"></div><div class="line"><span class="comment">// 创建新的协议实例</span></div><div class="line">Protocol * objc_allocateProtocol ( <span class="keyword">const</span> <span class="keyword">char</span> *name );</div><div class="line"></div><div class="line"><span class="comment">// 在运行时中注册新创建的协议</span></div><div class="line"><span class="keyword">void</span> objc_registerProtocol ( Protocol *proto );</div><div class="line"></div><div class="line"><span class="comment">// 为协议添加方法</span></div><div class="line"><span class="keyword">void</span> protocol_addMethodDescription ( Protocol *proto, SEL name, <span class="keyword">const</span> <span class="keyword">char</span> *types, <span class="built_in">BOOL</span> isRequiredMethod, <span class="built_in">BOOL</span> isInstanceMethod );</div><div class="line"></div><div class="line"><span class="comment">// 添加一个已注册的协议到协议中</span></div><div class="line"><span class="keyword">void</span> protocol_addProtocol ( Protocol *proto, Protocol *addition );</div><div class="line"></div><div class="line"><span class="comment">// 为协议添加属性</span></div><div class="line"><span class="keyword">void</span> protocol_addProperty ( Protocol *proto, <span class="keyword">const</span> <span class="keyword">char</span> *name, <span class="keyword">const</span> objc_property_attribute_t *attributes, <span class="keyword">unsigned</span> <span class="keyword">int</span> attributeCount, <span class="built_in">BOOL</span> isRequiredProperty, <span class="built_in">BOOL</span> isInstanceProperty );</div><div class="line"></div><div class="line"><span class="comment">// 返回协议名</span></div><div class="line"><span class="keyword">const</span> <span class="keyword">char</span> * protocol_getName ( Protocol *p );</div><div class="line"></div><div class="line"><span class="comment">// 测试两个协议是否相等</span></div><div class="line"><span class="built_in">BOOL</span> protocol_isEqual ( Protocol *proto, Protocol *other );</div><div class="line"></div><div class="line"><span class="comment">// 获取协议中指定条件的方法的方法描述数组</span></div><div class="line"><span class="keyword">struct</span> objc_method_description * protocol_copyMethodDescriptionList ( Protocol *p, <span class="built_in">BOOL</span> isRequiredMethod, <span class="built_in">BOOL</span> isInstanceMethod, <span class="keyword">unsigned</span> <span class="keyword">int</span> *outCount );</div><div class="line"></div><div class="line"><span class="comment">// 获取协议中指定方法的方法描述</span></div><div class="line"><span class="keyword">struct</span> objc_method_description protocol_getMethodDescription ( Protocol *p, SEL aSel, <span class="built_in">BOOL</span> isRequiredMethod, <span class="built_in">BOOL</span> isInstanceMethod );</div><div class="line"></div><div class="line"><span class="comment">// 获取协议中的属性列表</span></div><div class="line">objc_property_t * protocol_copyPropertyList ( Protocol *proto, <span class="keyword">unsigned</span> <span class="keyword">int</span> *outCount );</div><div class="line"></div><div class="line"><span class="comment">// 获取协议的指定属性</span></div><div class="line">objc_property_t protocol_getProperty ( Protocol *proto, <span class="keyword">const</span> <span class="keyword">char</span> *name, <span class="built_in">BOOL</span> isRequiredProperty, <span class="built_in">BOOL</span> isInstanceProperty );</div><div class="line"></div><div class="line"><span class="comment">// 获取协议采用的协议</span></div><div class="line">Protocol ** protocol_copyProtocolList ( Protocol *proto, <span class="keyword">unsigned</span> <span class="keyword">int</span> *outCount );</div><div class="line"></div><div class="line"><span class="comment">// 查看协议是否采用了另一个协议</span></div><div class="line"><span class="built_in">BOOL</span> protocol_conformsToProtocol ( Protocol *proto, Protocol *other );</div></pre></td></tr></table></figure>
+<p>objc_getProtocol函数，需要注意的是如果仅仅是声明了一个协议，而未在任何类中实现这个协议，则该函数返回的是nil。</p>
+<p>● objc_copyProtocolList函数，获取到的数组需要使用free来释放</p>
+<p>● objc_allocateProtocol函数，如果同名的协议已经存在，则返回nil</p>
+<p>● objc_registerProtocol函数，创建一个新的协议后，必须调用该函数以在运行时中注册新的协议。协议注册后便可以使用，但不能再做修改，即注册完后不能再向协议添加方法或协议</p>
+<p>需要强调的是，协议一旦注册后就不可再修改，即无法再通过调用protocol_addMethodDescription、protocol_addProtocol和protocol_addProperty往协议中添加方法等。</p>
+<h1 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h1><p>Runtime并没有提供过多的函数来处理分类。对于协议，我们可以动态地创建协议，并向其添加方法、属性及继承的协议，并在运行时动态地获取这些信息。</p>
+<p><a href="http://www.cocoachina.com/ios/20141031/10105.html" target="_blank" rel="external">Objective-C Runtime 运行时之一：类与对象</a><br><a href="http://www.cocoachina.com/ios/20141105/10134.html" target="_blank" rel="external">Objective-C Runtime 运行时之二：成员变量与属性</a><br><a href="http://www.cocoachina.com/ios/20141106/10150.html" target="_blank" rel="external">Objective-C Runtime 运行时之三：方法与消息</a><br><a href="http://www.cocoachina.com/ios/20140225/7880.html" target="_blank" rel="external">Objective-C Runtime 运行时之四：Method Swizzling</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;img src=&quot;http://cdn.cocimg.com/cms/uploads/allimg/141105/4196_141105101156_1.jpg&quot; alt=&quot;image1&quot;&gt;&lt;br&gt;Objective&lt;br&gt;-C中的分类允许我们通过给一个类添加方法来扩充它（但是通过category不能添加新的实例变量），并且我们不需要访问类中的代码就可以做到。&lt;/p&gt;
+&lt;p&gt;Objective-C中的协议是普遍存在的接口定义方式，即在一个类中通过@protocol定义接口，在另外类中实现接口，这种接口定义方式也成为“delegation”模式，@protocol声明了可以呗其他任何方法类实现的方法，协议仅仅是定义一个接口，而由其他的类去负责实现。
+    
+    </summary>
+    
+    
+      <category term="iOS" scheme="https://github.com/LiShengmin/tags/iOS/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>iOS-获取网卡地址和IP地址</title>
+    <link href="https://github.com/LiShengmin/2016/07/13/iOS-%E8%8E%B7%E5%8F%96%E7%BD%91%E5%8D%A1%E5%9C%B0%E5%9D%80%E5%92%8CIP%E5%9C%B0%E5%9D%80/"/>
+    <id>https://github.com/LiShengmin/2016/07/13/iOS-获取网卡地址和IP地址/</id>
+    <published>2016-07-13T08:25:27.000Z</published>
+    <updated>2017-05-08T09:50:31.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>直接上代码<a id="more"></a></p>
+<h1 id="网卡的硬件地址"><a href="#网卡的硬件地址" class="headerlink" title="网卡的硬件地址:"></a>网卡的硬件地址:</h1><figure class="highlight mm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#include <span class="meta-string">&lt;sys/socket.h&gt;</span> // Per msqr</span></div><div class="line"><span class="meta">#include <span class="meta-string">&lt;sys/sysctl.h&gt;</span></span></div><div class="line"><span class="meta">#include <span class="meta-string">&lt;net/if.h&gt;</span></span></div><div class="line"><span class="meta">#include <span class="meta-string">&lt;net/if_dl.h&gt;</span></span></div><div class="line"></div><div class="line"><span class="meta">#pragma mark MAC addy</span></div><div class="line"><span class="comment">// Return the local MAC addy</span></div><div class="line"><span class="comment">// Courtesy of FreeBSD hackers email list</span></div><div class="line"><span class="comment">// Accidentally munged during previous update. Fixed thanks to mlamb.</span></div><div class="line">- (<span class="built_in">NSString</span> *) macaddress</div><div class="line">&#123;</div><div class="line">    <span class="keyword">int</span>                  mib[<span class="number">6</span>];</div><div class="line">    size_t               len;</div><div class="line">    <span class="keyword">char</span>                *buf;</div><div class="line">    <span class="keyword">unsigned</span> <span class="keyword">char</span>       *ptr;</div><div class="line">    <span class="keyword">struct</span> if_msghdr    *ifm;</div><div class="line">    <span class="keyword">struct</span> sockaddr_dl  *sdl;</div><div class="line"></div><div class="line">    mib[<span class="number">0</span>] = <span class="built_in">CTL_NET</span>;</div><div class="line">    mib[<span class="number">1</span>] = AF_ROUTE;</div><div class="line">    mib[<span class="number">2</span>] = <span class="number">0</span>;</div><div class="line">    mib[<span class="number">3</span>] = AF_LINK;</div><div class="line">    mib[<span class="number">4</span>] = NET_RT_IFLIST;</div><div class="line"></div><div class="line">    <span class="keyword">if</span> ((mib[<span class="number">5</span>] = if_nametoindex(<span class="string">"en0"</span>)) == <span class="number">0</span>) &#123;</div><div class="line">        printf(<span class="string">"Error: if_nametoindex error/n"</span>);</div><div class="line">        <span class="keyword">return</span> <span class="literal">NULL</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">if</span> (sysctl(mib, <span class="number">6</span>, <span class="literal">NULL</span>, &amp;len, <span class="literal">NULL</span>, <span class="number">0</span>) &lt; <span class="number">0</span>) &#123;</div><div class="line">        printf(<span class="string">"Error: sysctl, take 1/n"</span>);</div><div class="line">        <span class="keyword">return</span> <span class="literal">NULL</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">if</span> ((buf = malloc(len)) == <span class="literal">NULL</span>) &#123;</div><div class="line">        printf(<span class="string">"Could not allocate memory. error!/n"</span>);</div><div class="line">        <span class="keyword">return</span> <span class="literal">NULL</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">if</span> (sysctl(mib, <span class="number">6</span>, buf, &amp;len, <span class="literal">NULL</span>, <span class="number">0</span>) &lt; <span class="number">0</span>) &#123;</div><div class="line">        printf(<span class="string">"Error: sysctl, take 2"</span>);</div><div class="line">        <span class="keyword">return</span> <span class="literal">NULL</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    ifm = (<span class="keyword">struct</span> if_msghdr *)buf;</div><div class="line">    sdl = (<span class="keyword">struct</span> sockaddr_dl *)(ifm + <span class="number">1</span>);</div><div class="line">    ptr = (<span class="keyword">unsigned</span> <span class="keyword">char</span> *)LLADDR(sdl);</div><div class="line">    <span class="comment">// NSString *outstring = [NSString stringWithFormat:@"x:x:x:x:x:x", *ptr, *(ptr+1), *(ptr+2), *(ptr+3), *(ptr+4), *(ptr+5)];</span></div><div class="line">    <span class="built_in">NSString</span> *outstring = [<span class="built_in">NSString</span> stringWithFormat:<span class="string">@"xxxxxx"</span>, *ptr, *(ptr+<span class="number">1</span>), *(ptr+<span class="number">2</span>), *(ptr+<span class="number">3</span>), *(ptr+<span class="number">4</span>), *(ptr+<span class="number">5</span>)];</div><div class="line">    free(buf);</div><div class="line">    <span class="keyword">return</span> [outstring uppercaseString];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="这写头文件是用于获取ip等系列功能的"><a href="#这写头文件是用于获取ip等系列功能的" class="headerlink" title="这写头文件是用于获取ip等系列功能的"></a>这写头文件是用于获取ip等系列功能的</h1><figure class="highlight mm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#include <span class="meta-string">&lt;arpa/inet.h&gt;</span></span></div><div class="line"><span class="meta">#include <span class="meta-string">&lt;netdb.h&gt;</span></span></div><div class="line"></div><div class="line"><span class="meta">#include <span class="meta-string">&lt;net/if.h&gt;</span></span></div><div class="line"></div><div class="line"><span class="meta">#include <span class="meta-string">&lt;ifaddrs.h&gt;</span></span></div><div class="line"><span class="meta">#import <span class="meta-string">&lt;dlfcn.h&gt;</span></span></div><div class="line"><span class="meta">#import <span class="meta-string">"wwanconnect.h//frome apple 你可能没有哦</span></span></div><div class="line"></div><div class="line">#import &lt;SystemConfiguration/SystemConfiguration.h&gt;</div></pre></td></tr></table></figure>
+<h2 id="这是外网可见的ip地址，如果你在小区的局域网中，那就是小区的，不是局域网的内网地址。"><a href="#这是外网可见的ip地址，如果你在小区的局域网中，那就是小区的，不是局域网的内网地址。" class="headerlink" title="这是外网可见的ip地址，如果你在小区的局域网中，那就是小区的，不是局域网的内网地址。"></a>这是外网可见的ip地址，如果你在小区的局域网中，那就是小区的，不是局域网的内网地址。</h2><figure class="highlight mm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">- (<span class="built_in">NSString</span> *) whatismyipdotcom</div><div class="line">&#123;</div><div class="line">    <span class="built_in">NSError</span> *error;</div><div class="line">    <span class="built_in">NSURL</span> *ipURL = [<span class="built_in">NSURL</span> URLWithString:<span class="string">@"http://www.whatismyip.com/automation/n09230945.asp"</span>];</div><div class="line">    <span class="built_in">NSString</span> *ip = [<span class="built_in">NSString</span> stringWithContentsOfURL:ipURL encoding:<span class="number">1</span> error:&amp;error];</div><div class="line">    <span class="keyword">return</span> ip ? ip : [error localizedDescription];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="这是获取本地wifi的ip地址"><a href="#这是获取本地wifi的ip地址" class="headerlink" title="这是获取本地wifi的ip地址"></a>这是获取本地wifi的ip地址</h2><figure class="highlight mm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// Matt Brown's get WiFi IP addy solution</span></div><div class="line"><span class="comment">// Author gave permission to use in Cookbook under cookbook license</span></div><div class="line"><span class="comment">// http://mattbsoftware.blogspot.com/2009/04/how-to-get-ip-address-of-iphone-os-v221.html</span></div><div class="line">- (<span class="built_in">NSString</span> *) localWiFiIPAddress</div><div class="line">&#123;</div><div class="line">    <span class="built_in">BOOL</span> success;</div><div class="line">    <span class="keyword">struct</span> ifaddrs * addrs;</div><div class="line">    <span class="keyword">const</span> <span class="keyword">struct</span> ifaddrs * cursor;</div><div class="line"></div><div class="line">    success = getifaddrs(&amp;addrs) == <span class="number">0</span>;</div><div class="line">    <span class="keyword">if</span> (success) &#123;</div><div class="line">        cursor = addrs;</div><div class="line">        <span class="keyword">while</span> (cursor != <span class="literal">NULL</span>) &#123;</div><div class="line">        <span class="comment">// the second test keeps from picking up the loopback address</span></div><div class="line">        <span class="keyword">if</span> (cursor-&gt;ifa_addr-&gt;sa_family == AF_INET &amp;&amp; (cursor-&gt;ifa_flags &amp; IFF_LOOPBACK) == <span class="number">0</span>)</div><div class="line">        &#123;</div><div class="line">            <span class="built_in">NSString</span> *name = [<span class="built_in">NSString</span> stringWithUTF8String:cursor-&gt;ifa_name];</div><div class="line">            <span class="keyword">if</span> ([name isEqualToString:<span class="string">@"en0"</span>])  <span class="comment">// Wi-Fi adapter</span></div><div class="line">                <span class="keyword">return</span> [<span class="built_in">NSString</span> stringWithUTF8String:inet_ntoa(((<span class="keyword">struct</span> sockaddr_in *)cursor-&gt;ifa_addr)-&gt;sin_addr)];</div><div class="line">            &#125;</div><div class="line">            cursor = cursor-&gt;ifa_next;</div><div class="line">        &#125;</div><div class="line">        freeifaddrs(addrs);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="literal">nil</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="NSString和Address的转换"><a href="#NSString和Address的转换" class="headerlink" title="NSString和Address的转换"></a>NSString和Address的转换</h1><figure class="highlight mm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">+ (<span class="built_in">NSString</span> *) stringFromAddress: (<span class="keyword">const</span> <span class="keyword">struct</span> sockaddr *) address</div><div class="line">&#123;</div><div class="line">    <span class="keyword">if</span>(address &amp;&amp; address-&gt;sa_family == AF_INET) &#123;</div><div class="line">        <span class="keyword">const</span> <span class="keyword">struct</span> sockaddr_in* sin = (<span class="keyword">struct</span> sockaddr_in*) address;</div><div class="line">        <span class="keyword">return</span> [<span class="built_in">NSString</span> stringWithFormat:<span class="string">@"%@:%d"</span>, [<span class="built_in">NSString</span> stringWithUTF8String:inet_ntoa(sin-&gt;sin_addr)], ntohs(sin-&gt;sin_port)];</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">return</span> <span class="literal">nil</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line">+ (<span class="built_in">BOOL</span>)addressFromString:(<span class="built_in">NSString</span> *)IPAddress address:(<span class="keyword">struct</span> sockaddr_in *)address</div><div class="line">&#123;</div><div class="line">    <span class="keyword">if</span> (!IPAddress || ![IPAddress length]) &#123;</div><div class="line">        <span class="keyword">return</span> <span class="literal">NO</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    memset((<span class="keyword">char</span> *) address, <span class="keyword">sizeof</span>(<span class="keyword">struct</span> sockaddr_in), <span class="number">0</span>);</div><div class="line">    address-&gt;sin_family = AF_INET;</div><div class="line">    address-&gt;sin_len = <span class="keyword">sizeof</span>(<span class="keyword">struct</span> sockaddr_in);</div><div class="line"></div><div class="line">    <span class="keyword">int</span> conversionResult = inet_aton([IPAddress UTF8String], &amp;address-&gt;sin_addr);</div><div class="line">    <span class="keyword">if</span> (conversionResult == <span class="number">0</span>) &#123;</div><div class="line">        <span class="built_in">NSAssert1</span>(conversionResult != <span class="number">1</span>, <span class="string">@"Failed to convert the IP address string into a sockaddr_in: %@"</span>, IPAddress);</div><div class="line">        <span class="keyword">return</span> <span class="literal">NO</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">return</span> <span class="literal">YES</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="获取host的名称"><a href="#获取host的名称" class="headerlink" title="获取host的名称"></a>获取host的名称</h1><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">- (NSString *) hostname</div><div class="line">&#123;</div><div class="line">    char baseHostName[256]; // Thanks, Gunnar Larisch</div><div class="line">    int success = gethostname(baseHostName, 255);</div><div class="line">    if (success != 0) return nil;</div><div class="line">    baseHostName[255] = '/0';</div><div class="line"></div><div class="line">    #if TARGET_IPHONE_SIMULATOR</div><div class="line">        return [NSString stringWithFormat:@"%s", baseHostName];</div><div class="line">    #else</div><div class="line">        return [NSString stringWithFormat:@"%s.local", baseHostName];</div><div class="line">    #endif</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="从host获取地址"><a href="#从host获取地址" class="headerlink" title="从host获取地址"></a>从host获取地址</h1><figure class="highlight mm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">- (<span class="built_in">NSString</span> *) getIPAddressForHost: (<span class="built_in">NSString</span> *) theHost</div><div class="line">&#123;</div><div class="line">    <span class="keyword">struct</span> hostent *host = gethostbyname([theHost UTF8String]);</div><div class="line">    <span class="keyword">if</span> (!host) &#123;herror(<span class="string">"resolv"</span>); <span class="keyword">return</span> <span class="literal">NULL</span>; &#125;</div><div class="line">    <span class="keyword">struct</span> in_addr **list = (<span class="keyword">struct</span> in_addr **)host-&gt;h_addr_list;</div><div class="line">    <span class="built_in">NSString</span> *addressString = [<span class="built_in">NSString</span> stringWithCString:inet_ntoa(*list[<span class="number">0</span>]) encoding:<span class="built_in">NSUTF8StringEncoding</span>];</div><div class="line">    <span class="keyword">return</span> addressString;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="这是本地host的IP地址"><a href="#这是本地host的IP地址" class="headerlink" title="这是本地host的IP地址"></a>这是本地host的IP地址</h1><figure class="highlight mm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">- (<span class="built_in">NSString</span> *) localIPAddress</div><div class="line">&#123;</div><div class="line">    <span class="keyword">struct</span> hostent *host = gethostbyname([[<span class="keyword">self</span> hostname] UTF8String]);</div><div class="line">    <span class="keyword">if</span> (!host) &#123;herror(<span class="string">"resolv"</span>); <span class="keyword">return</span> <span class="literal">nil</span>;&#125;</div><div class="line">    <span class="keyword">struct</span> in_addr **list = (<span class="keyword">struct</span> in_addr **)host-&gt;h_addr_list;</div><div class="line">    <span class="keyword">return</span> [<span class="built_in">NSString</span> stringWithCString:inet_ntoa(*list[<span class="number">0</span>]) encoding:<span class="built_in">NSUTF8StringEncoding</span>];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>大家有什么不懂尽请留言<a href="http://www.cnblogs.com/hanjun/archive/2013/07/12/3185860.html" target="_blank" rel="external">原文地址</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;直接上代码
+    
+    </summary>
+    
+    
+      <category term="iOS" scheme="https://github.com/LiShengmin/tags/iOS/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>iOS-优化自动布局</title>
+    <link href="https://github.com/LiShengmin/2016/07/03/iOS-%E4%BC%98%E5%8C%96%E8%87%AA%E5%8A%A8%E5%B8%83%E5%B1%80/"/>
+    <id>https://github.com/LiShengmin/2016/07/03/iOS-优化自动布局/</id>
+    <published>2016-07-03T04:31:02.000Z</published>
+    <updated>2017-06-19T16:36:56.644Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="优化自动布局"><a href="#优化自动布局" class="headerlink" title="优化自动布局"></a>优化自动布局</h1><p>有一个帖子由弗洛里安·库格勒最近一轮持续大约在iOS自动布局的性能。它看着它需要多少时间自动布局添加的意见，这与视图的数量增加如何。该职位，同时提供非常有用的信息，似乎没有最能代表自动布局的现实世界中的表现，而不是显示一组最坏的情况。<a id="more"></a></p>
+<p>在这篇文章中，我想看到​​更多的，为什么弗洛里安了他做的结果。我的希望是要突出一些不好的做法，人们可以有自动布局，看看是什么让双方的陈述，“自动布局需要几秒钟布局几百意见”和“自动布局可以布局一些100浏览速度非常快”真，尽管他们看似矛盾的性质。</p>
+<h1 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h1><p>首先，我想捂住我究竟是如何在问题测量的数字。我相信这是弗洛里安如何衡量他们稍有不同，但更加紧密地显示了布局。我开始用原始的源项目，并进行了修改，以测试一些变化。你可以找到我的版本的项目的GitHub上。</p>
+<p>为了测量时序，我跑了使用时间探查模板仪器的应用程序。我并不觉得有必要每次重新启动应用程序因为很少有到无缓存的事情。我跑了每个测试3次连续，清除每次测试之间的意见。之后，在仪器，我集中，其中每个测试运行示例的区域。为了得到一个布局花时间，我用的时候说的仪器其布局方法了。我计算了3次的平均值和使用，要为这个职位提供数据。</p>
+<h1 id="重建的初步结果"><a href="#重建的初步结果" class="headerlink" title="重建的初步结果"></a>重建的初步结果</h1><p>正如我的方法是略有不同，我使用的是不同的设备弗洛里安（第3代iPad），我第一次开始测试他做同样的事情。他的项目测试铺设的3种方式：</p>
+<pre><code>各种观点的平面层次结构，绝对定位在根视图
+各种观点的平面层次结构，相对定位彼此
+视图嵌套层次结构，相对定位彼此
+</code></pre><p>他还通过简单的设置框架做了平坦和嵌套层次两者。下面是显示我得到了平面层次结构图。<br><img src="http://pilky.me/static/blogmedia/optimiseautolayout1.png" alt="img1"><br>如果你比较弗洛里安的帖子，你会看到这看起来相当不同。在弗洛里安的图中，绿线是比橙线差，但他们都相当接近。在我的图中，橙色线是差很多（作为一个例子，对于600的看法，弗洛里安了5秒，而我走近7.5秒时，尽管有一个更快的iPad），但绿线是好多了（对于600的观点我在2.5秒VS弗洛里安的6-7秒）。</p>
+<p>我把这种差异下降到测量的差异。如前面提到的，我使用的方法产生的限制的定时。为了做到这一点，我调用-layoutIfNeeded在每个方法的末尾上的根查看方法。这迫使自动布局立即运行，而不是延迟，直到运行循环结束，这意味着仪器计数的方法创建的限制，而不是系统的方法的性能。</p>
+<p>我怀疑是弗洛里安测量总时间的CPU是工作，但是这不一定都是因为自动布局。我相信我的方式更表明了什么自动布局正在做，但弗洛里安之更有象征的应用程序多长时间是没有响应。无论如何，实际值并不重要不亚于曲线，和任何相对的改进，我们可以找到。<br><img src="http://pilky.me/static/blogmedia/optimiseautolayout2.png" alt="img2"><br>嵌套布局图与原检验少的差别。曲线几乎是相同的。唯一的区别是，我的时间稍快，这是更快的设备上运行时，可以预期的。</p>
+<h1 id="电源局部性"><a href="#电源局部性" class="headerlink" title="电源局部性"></a>电源局部性</h1><p>有一件事我注意到了有关的原代码是正在的根视图中添加所有的约束。在某些情况下，这是必需的，作为约束引用根视图。所有意见的约束引用必须在它被添加到视图的子树。因此，你可以随便扔在UI每一个约束到应用程序的根视图。</p>
+<p>你不想做，虽然，有几个原因。最明显的是，这是一个很多更容易理解的代码时，它在本地添加约束。另一种是，它显着地影响性能。</p>
+<p>让我们来看看我们的公寓布局。虽然位置限制必须是根视图，尺寸的限制没有。我改变了代码，这样大小的限制，正在加入到子视图来代替，并得到了以下结果：<br><img src="http://pilky.me/static/blogmedia/optimiseautolayout3.png" alt="img3"><br>紫线是相对布局，大小限制为尽可能地方，红色为绝对布局的等效线。正如你所看到的，我们得到了一些性能改进。我不是100％肯定，但我的猜测是，这是因为我们正在减少对根视图计算的大小。我们让自动布局进行布局的一部分，因为很多小的计算，而不是在一个大的blob计算整个事情。</p>
+<p>这些收益都比较小，但。在更复杂的计算仍然是所有聚集在一起，并尽可能本地。让我们来看看嵌套布局的话，因为所有涉及到一个视图的约束可以放在眼前的上海华，极大地提高当地。下图显示了刚才的改进如何显著这给。<br><img src="http://pilky.me/static/blogmedia/optimiseautolayout4.png" alt="img4"><br>为了给实际的数字，200视图布局时，把根视图中的所有限制，但把他们当只有2.00秒于眼前的SuperView了22.75秒。把根认为同样的限制导致运行在11倍慢的代码。这个教训应该是显而易见的。当使用自动布局工作，把所有的约束作为本地越好。</p>
+<h1 id="修改现有视图层次"><a href="#修改现有视图层次" class="headerlink" title="修改现有视图层次"></a>修改现有视图层次</h1><p>弗洛里安提到，约束满足问题有一个多项式复杂性。我们可以在上面的图的曲线看到这一点。然而，测试上述基本上不具代表性的实际使用自动布局的。了解自动布局有多快扔在1000意见纳入父视图是很有用的，就像知道NSArray的速度有多快是增加数百万个对象。然而，大多数创造NSArrays很少持有超过几百项的更多，许多持有小于10.同样，也很少为个人观点持有多40-50子视图，或者视图层次超过20-深30次（我怀疑这些值将大大偏高）。</p>
+<p>更现实的情况是有，我们希望移动的一些看法，或者添加一些额外的看法视图层次。我进行基于上面的一些测试。以两个平（绝对的，不是相对）和嵌套布局，在上面使用的大小，然后我计算过了多长时间，将所有的意见，并增加10个额外的意见。</p>
+<p>我们可以从下面的图中看到，即使在高达1000的意见，增加一个额外的10次到平，绝对定位的布局基本上是线性的。这是因为我们仅引用根视图，并且因此，所有的其他观点并不需要重新计算。如果我们插入的图成的相对定位视图的链的中间，它可能会不这么快。</p>
+<p>同样，移动基本上是线性的，尽管它在1000的观点确实秒杀。再次，这是因为对于一个视图的约束不依赖于任何其它同级图。<br><img src="http://pilky.me/static/blogmedia/optimiseautolayout5.png" alt="img4"><br>如果我们看一下嵌套布局，我们发现，移动也看似线性的。虽然它看起来比持平层次浅了很多，它仅仅是图的一招，他们大多是在同一行。当谈到加入，我们确实看到了曲线，但我们在这里添加视图层次额外10层，每层依赖于前。<br><img src="http://pilky.me/static/blogmedia/optimiseautolayout6.png" alt="img5"><br>与所有这些需要注意的事，就是他们的速度有多快相比之前的测试。要加1000绝对定位的看法了6.6秒，但要加一个额外的10只花了0.055秒。这归结为食火鸡约束解算器多么聪明的。</p>
+<p>而不是试图每次重新解决从无到有的全部问题，它有一个增量系统。它可以重新使用以前的所有计算，当您添加，编辑或删除约束仅仅是修改的结果。这就是为什么它可能需要几秒钟的时间一气呵成添加一些100的观点，但你可以迅速地调整该窗口，并拥有所有的约束进行重新计算和框架集。</p>
+<p>自动布局比手动设定帧慢。它是要概括的解决跨整个UI相当复杂的布局问题。其专注于一个单一的视图专门的算法总是会更快地运行。自动布局的优势不在于布局使得在运行时速度较快，但在使其更快，更容易为我们的编码时定义布局。</p>
+<p>像许多我们使用的工具，自动布局充分利用了我们有处理能力丰富的事实，为了使我们更容易编写应用程序。对于绝大多数的用例，如果正确使用，自动布局比速度不够快了。这听起来像一个借口，但它是我们使用我们的高级编程语言，而不是议会来证明书写同样的借口。</p>
+<p>如果您正在寻找更多的自动布局，检出自动布局指南，未来的2014年夏季。<br>如果你想给我一个评论对这个职位，请发送电子邮件至pilky@mcubedsw.com。或者发推@pilky。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;优化自动布局&quot;&gt;&lt;a href=&quot;#优化自动布局&quot; class=&quot;headerlink&quot; title=&quot;优化自动布局&quot;&gt;&lt;/a&gt;优化自动布局&lt;/h1&gt;&lt;p&gt;有一个帖子由弗洛里安·库格勒最近一轮持续大约在iOS自动布局的性能。它看着它需要多少时间自动布局添加的意见，这与视图的数量增加如何。该职位，同时提供非常有用的信息，似乎没有最能代表自动布局的现实世界中的表现，而不是显示一组最坏的情况。
+    
+    </summary>
+    
+    
+      <category term="iOS" scheme="https://github.com/LiShengmin/tags/iOS/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>iOS-状态栏(UIStatusBar)颜色</title>
+    <link href="https://github.com/LiShengmin/2016/04/29/iOS-%E7%8A%B6%E6%80%81%E6%A0%8F-UIStatusBar-%E9%A2%9C%E8%89%B2/"/>
+    <id>https://github.com/LiShengmin/2016/04/29/iOS-状态栏-UIStatusBar-颜色/</id>
+    <published>2016-04-29T08:06:19.000Z</published>
+    <updated>2017-05-08T09:48:16.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="UIStatusBar的相关设置"><a href="#UIStatusBar的相关设置" class="headerlink" title="UIStatusBar的相关设置"></a>UIStatusBar的相关设置</h1><h2 id="知识普及"><a href="#知识普及" class="headerlink" title="知识普及"></a>知识普及</h2><p>iOS上状态栏 就是指的最上面的20像素高的部分<br>状态栏分前后两部分，要分清这两个概念，后面会用到：<br>前景部分：就是指的显示电池、时间等部分；<br>背景部分：就是显示黑色或者图片的背景部分；</p>
+<p>如下图：前景部分为白色，背景部分为黑色<br><img src="/image/005046_Oztm_574576.png" alt=""><br>在此输入图片描述</p>
+<p>注意：这里只涉及到ios7以及更高版本，低版本下面的讲解可能无效。<a id="more"></a></p>
+<h2 id="设置statusBar的【前景部分】"><a href="#设置statusBar的【前景部分】" class="headerlink" title="设置statusBar的【前景部分】"></a>设置statusBar的【前景部分】</h2><p>简单来说，就是设置显示电池电量、时间、网络部分标示的颜色，<br>这里只能设置两种颜色：<br>    默认的黑色（UIStatusBarStyleDefault）<br>    白色     （UIStatusBarStyleLightContent）<br>可以设置的地方有两个：plist设置里面 和 程序代码里</p>
+<h3 id="1-plist设置statusBar"><a href="#1-plist设置statusBar" class="headerlink" title="1.plist设置statusBar"></a>1.plist设置statusBar</h3><p>在plist里增加一行 UIStatusBarStyle(或者是“Status bar style”也可以)，这里可以设置两个值，就是上面提到那两个<br>UIStatusBarStyleDefault 和 UIStatusBarStyleLightContent<br>这样在app启动的launch页显示的时候，statusBar的样式就是上面plist设置的风格。</p>
+<h3 id="2-程序代码里设置statusBar"><a href="#2-程序代码里设置statusBar" class="headerlink" title="2.程序代码里设置statusBar"></a>2.程序代码里设置statusBar</h3><figure class="highlight mm"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[[<span class="built_in">UIApplication</span> sharedApplication] setStatusBarStyle:<span class="built_in">UIStatusBarStyleLightContent</span>];</div></pre></td></tr></table></figure>
+<p>或者<br>//相对于上面的接口，这个接口可以动画的改变statusBar的前景色<br><figure class="highlight mm"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[[<span class="built_in">UIApplication</span> sharedApplication] setStatusBarStyle:<span class="built_in">UIStatusBarStyleLightContent</span> animated:<span class="literal">YES</span>];</div></pre></td></tr></table></figure></p>
+<p>不仅如此，ios还很贴心的在UIViewController也增加了几个接口，<br>目的是让状态栏根据当前显示的UIViewController来定制statusBar的前景部分。<br><figure class="highlight mm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">- (<span class="built_in">UIStatusBarStyle</span>)preferredStatusBarStyle;</div><div class="line">- (<span class="built_in">UIViewController</span> *)childViewControllerForStatusBarStyle;</div><div class="line">- (<span class="keyword">void</span>)setNeedsStatusBarAppearanceUpdate</div><div class="line">- (<span class="built_in">UIStatusBarStyle</span>)preferredStatusBarStyle:</div></pre></td></tr></table></figure></p>
+<p>在你自己的UIViewController里重写此方法，返回你需要的值(UIStatusBarStyleDefault 或者 UIStatusBarStyleLightContent)；</p>
+<h4 id="注意："><a href="#注意：" class="headerlink" title="注意："></a>注意：</h4><p>这里如果你只是简单的return一个固定的值，那么该UIViewController显示的时候，程序就会马上调用该方法，来改变statusBar的前景部分；<br>如果在该UIViewController已经在显示在当前，你可能还要在当前页面不时的更改statusBar的前景色，那么，你首先需要调用下面的setNeedsStatusBarAppearanceUpdate方法(这个方法会通知系统去调用当前UIViewController的preferredStatusBarStyle方法)， 这个和UIView的setNeedsDisplay原理差不多(调用UIView对象的setNeedsDisplay方法后，系统会在下次页面刷新时，调用重绘该view，系统最快能1秒刷新60次页面，具体要看程序设置)。<br><figure class="highlight mm"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">- (<span class="built_in">UIViewController</span> *)childViewControllerForStatusBarStyle:</div></pre></td></tr></table></figure></p>
+<p>这个接口也很重要，默认返回值为nil。当我们调用setNeedsStatusBarAppearanceUpdate时，系统会调用application.window的rootViewController的preferredStatusBarStyle方法，我们的程序里一般都是用UINavigationController做root，如果是这种情况，那我们自己的UIViewController里的preferredStatusBarStyle根本不会被调用；<br>这种情况下childViewControllerForStatusBarStyle就派上用场了，<br>我们要子类化一个UINavigationController，在这个子类里面重写childViewControllerForStatusBarStyle方法，如下：<br><figure class="highlight mm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">- (<span class="built_in">UIViewController</span> *)childViewControllerForStatusBarStyle&#123;</div><div class="line"><span class="keyword">return</span> <span class="keyword">self</span>.topViewController;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>上面代码的意思就是说，不要调用我自己(就是UINavigationController)的preferredStatusBarStyle方法，而是去调用navigationController.topViewController的preferredStatusBarStyle方法，这样写的话，就能保证当前显示的UIViewController的preferredStatusBarStyle方法能影响statusBar的前景部分。</p>
+<p>另外，有时我们的当前显示的UIViewController可能有多个childViewController，重写当前UIViewController的childViewControllerForStatusBarStyle方法，让childViewController的preferredStatusBarStyle生效(当前UIViewController的preferredStatusBarStyle就不会被调用了)。</p>
+<p>简单来说，只要UIViewController重写的的childViewControllerForStatusBarStyle方法返回值不是nil，那么，UIViewController的preferredStatusBarStyle方法就不会被系统调用，系统会调用childViewControllerForStatusBarStyle方法返回的UIViewController的preferredStatusBarStyle方法。</p>
+<ul>
+<li>(void)setNeedsStatusBarAppearanceUpdate:</li>
+</ul>
+<p>让系统去调用application.window的rootViewController的preferredStatusBarStyle方法,如果rootViewController的childViewControllerForStatusBarStyle返回值不为nil，则参考上面的讲解。</p>
+<h2 id="设置statusBar的【背景部分】"><a href="#设置statusBar的【背景部分】" class="headerlink" title="设置statusBar的【背景部分】"></a>设置statusBar的【背景部分】</h2><p>背景部分，简单来说，就是背景色；改变方法有两种：<br>系统提供的方法<br>navigationBar的setBarTintColor接口，用此接口可改变statusBar的背景色<br>注意：一旦你设置了navigationBar的- (void)setBackgroundImage:(UIImage *)backgroundImage forBarMetrics:(UIBarMetrics)barMetrics接口，那么上面的setBarTintColor接口就不能改变statusBar的背景色，statusBar的背景色就会变成纯黑色。<br>另辟蹊径<br>创建一个UIView，<br>设置该UIView的frame.size 和statusBar大小一样，<br>设置该UIView的frame.origin 为{0,-20},<br>设置该UIView的背景色为你希望的statusBar的颜色，<br>在navigationBar上addSubView该UIView即可。<br>注意：<br>1.引用来自“云天青”的评论<br>你好，<br><figure class="highlight mm"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[[<span class="built_in">UIApplication</span> sharedApplication] setStatusBarStyle:<span class="built_in">UIStatusBarStyleLightContent</span>];在 AppDelegate里</div></pre></td></tr></table></figure></p>
+<figure class="highlight mm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">- (<span class="built_in">BOOL</span>)application:(<span class="built_in">UIApplication</span> *)application didFinishLaunchingWithOptions:(<span class="built_in">NSDictionary</span> *)launchOptions &#123; 执行也不会起作用。就在控制里写</div><div class="line">- (<span class="built_in">UIStatusBarStyle</span>)preferredStatusBarStyle:起到作用。请问这是什么问题？</div></pre></td></tr></table></figure>
+<p>回答：<br>info.plist文件中，View controller-based status bar appearance项设为YES，则View controller对status bar的设置优先级高于application的设置。为NO则以application的设置为准，view controller的prefersStatusBarHidden方法无效，是根本不会被调用的</p>
+<p>作者：shede333<br>版权声明：原创文章，版权声明：自由转载-非商用-非衍生-保持署名<br>主页：<a href="http://my.oschina.net/shede333" target="_blank" rel="external">主页1</a> &amp;&amp; <a href="http://blog.sina.com.cn/u/1509658847" target="_blank" rel="external">主页2</a></p>
+<p>第三方方法<br>“CWStatusBarNotification 在状态栏显示自定义通知”,我感觉 这个第三方,挺好用的 <a href="http://www.ios122.com/2015/08/cwstatusbarnotification/" target="_blank" rel="external">地址</a></p>
+<h1 id="最后说点别的"><a href="#最后说点别的" class="headerlink" title="最后说点别的"></a>最后说点别的</h1><p>IOS7最让人尿性的就是UI的改动，这几天把项目放到ios7上运行，结果让我大跌眼镜，特别是NavigationBar实在我恶心！</p>
+<h2 id="NavigationBar与UIViewController-重叠的问题困扰我两天。"><a href="#NavigationBar与UIViewController-重叠的问题困扰我两天。" class="headerlink" title="NavigationBar与UIViewController 重叠的问题困扰我两天。"></a>NavigationBar与UIViewController 重叠的问题困扰我两天。</h2><p>后来发现IOS7的视图有个边缘延伸的属性：edgesForExtendedLayout，<br>其默认值是UIExtendedEdgeAll。<br>只要将其改成UIExtendedEdgeNone即可，要注意的是在IOS7以下版本会出现bug。<br>所以在UIViewController 的viewDidLoad里加上下面代码就完美解决了这个问题<br><figure class="highlight mm"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span>( ([[[<span class="built_in">UIDevicecurrentDevice</span>] systemVersion] doubleValue]&gt;=<span class="number">7.0</span>)) &#123;<span class="keyword">self</span>.edgesForExtendedLayout= <span class="built_in">UIExtendedEdgeNone</span>;    &#125;</div></pre></td></tr></table></figure></p>
+<h2 id="还有一个问题是NavigationBar-setTintColor这个方法设置颜色无效！"><a href="#还有一个问题是NavigationBar-setTintColor这个方法设置颜色无效！" class="headerlink" title="还有一个问题是NavigationBar setTintColor这个方法设置颜色无效！"></a>还有一个问题是NavigationBar setTintColor这个方法设置颜色无效！</h2><p>但是我发现IOS7有个setBarTintColor 的方法，而且能达到效果。同样也要判断是否是IOS7。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;UIStatusBar的相关设置&quot;&gt;&lt;a href=&quot;#UIStatusBar的相关设置&quot; class=&quot;headerlink&quot; title=&quot;UIStatusBar的相关设置&quot;&gt;&lt;/a&gt;UIStatusBar的相关设置&lt;/h1&gt;&lt;h2 id=&quot;知识普及&quot;&gt;&lt;a href=&quot;#知识普及&quot; class=&quot;headerlink&quot; title=&quot;知识普及&quot;&gt;&lt;/a&gt;知识普及&lt;/h2&gt;&lt;p&gt;iOS上状态栏 就是指的最上面的20像素高的部分&lt;br&gt;状态栏分前后两部分，要分清这两个概念，后面会用到：&lt;br&gt;前景部分：就是指的显示电池、时间等部分；&lt;br&gt;背景部分：就是显示黑色或者图片的背景部分；&lt;/p&gt;
+&lt;p&gt;如下图：前景部分为白色，背景部分为黑色&lt;br&gt;&lt;img src=&quot;/image/005046_Oztm_574576.png&quot; alt=&quot;&quot;&gt;&lt;br&gt;在此输入图片描述&lt;/p&gt;
+&lt;p&gt;注意：这里只涉及到ios7以及更高版本，低版本下面的讲解可能无效。
     
     </summary>
     
