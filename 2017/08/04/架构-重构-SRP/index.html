@@ -1,0 +1,569 @@
+
+ <!DOCTYPE HTML>
+<html >
+<head>
+  <meta charset="UTF-8">
+  
+    <title>架构-重构-SRP | Shemmy</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="Shemmy">
+    
+
+    
+    <meta name="description" content="重构- SRP今天看了一篇朋友推荐文章，如何重构“箭头型”代码，看了这篇文章，不得不感叹历史是何其相似。一个再优秀的产品，最终都是死在这些技术（卧底）手里～&amp;lt;!— more —&amp;gt;我们先来看下这段代码：其实看到这段代码的时候我心中是一万头草泥马飞过的，因为眼熟啊，是在我们安卓转去写前端的时候，全体技术Review他的代码的时候，我不敢想象这段代码放在公司的代码库中历经5年之后的样子。（我">
+<meta name="keywords" content="架构">
+<meta property="og:type" content="article">
+<meta property="og:title" content="架构-重构-SRP">
+<meta property="og:url" content="https://github.com/LiShengmin/2017/08/04/架构-重构-SRP/index.html">
+<meta property="og:site_name" content="Shemmy">
+<meta property="og:description" content="重构- SRP今天看了一篇朋友推荐文章，如何重构“箭头型”代码，看了这篇文章，不得不感叹历史是何其相似。一个再优秀的产品，最终都是死在这些技术（卧底）手里～&amp;lt;!— more —&amp;gt;我们先来看下这段代码：其实看到这段代码的时候我心中是一万头草泥马飞过的，因为眼熟啊，是在我们安卓转去写前端的时候，全体技术Review他的代码的时候，我不敢想象这段代码放在公司的代码库中历经5年之后的样子。（我">
+<meta property="og:image" content="http://coolshell.cn//wp-content/uploads/2017/04/IMG_7411.jpg">
+<meta property="og:image" content="https://github.com/image/28915069-9AA5-4569-8112-29FABBEE7398.png">
+<meta property="og:image" content="https://github.com/image/1E0E7807-086A-4B14-9983-91BF5DECE378.png">
+<meta property="og:updated_time" content="2017-08-04T15:32:10.773Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="架构-重构-SRP">
+<meta name="twitter:description" content="重构- SRP今天看了一篇朋友推荐文章，如何重构“箭头型”代码，看了这篇文章，不得不感叹历史是何其相似。一个再优秀的产品，最终都是死在这些技术（卧底）手里～&amp;lt;!— more —&amp;gt;我们先来看下这段代码：其实看到这段代码的时候我心中是一万头草泥马飞过的，因为眼熟啊，是在我们安卓转去写前端的时候，全体技术Review他的代码的时候，我不敢想象这段代码放在公司的代码库中历经5年之后的样子。（我">
+<meta name="twitter:image" content="http://coolshell.cn//wp-content/uploads/2017/04/IMG_7411.jpg">
+
+    
+    <link rel="alternative" href="/atom.xml" title="Shemmy" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="Shemmy" title="Shemmy"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="Shemmy">Shemmy</a></h1>
+				<h2 class="blog-motto">iOS, 架构， Python, AI, go，（看不到评论模块的请外网访问～）</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/about">About</a></li>
+					
+					<li>
+ 					
+						<form class="search" action="http://zhannei.baidu.com/cse/search" target="_blank">
+							<label>Search</label>
+						<input name="s" type="hidden" value= 783281470518440700 ><input type="text" name="q" size="30" placeholder="Search"><br>
+						</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2017/08/04/架构-重构-SRP/" title="架构-重构-SRP" itemprop="url">架构-重构-SRP</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Shemmy" target="_blank" itemprop="author">Shemmy</a>
+		
+  <p class="article-time">
+    <time datetime="2017-08-04T15:26:14.000Z" itemprop="datePublished"> Published 2017-08-04</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#重构-SRP"><span class="toc-number">1.</span> <span class="toc-text">重构- SRP</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#状态机-多层级状态机"><span class="toc-number">1.1.</span> <span class="toc-text">状态机/多层级状态机</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#元素容错"><span class="toc-number">1.2.</span> <span class="toc-text">元素容错</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#for循环"><span class="toc-number">1.3.</span> <span class="toc-text">for循环</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#多线程"><span class="toc-number">1.4.</span> <span class="toc-text">多线程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#函数嵌套"><span class="toc-number">1.5.</span> <span class="toc-text">函数嵌套</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#参考"><span class="toc-number">2.</span> <span class="toc-text">参考</span></a></li></ol>
+		
+		</div>
+		
+		<h1 id="重构-SRP"><a href="#重构-SRP" class="headerlink" title="重构- SRP"></a>重构- SRP</h1><p>今天看了一篇朋友推荐文章，如何重构“箭头型”代码，看了这篇文章，不得不感叹历史是何其相似。一个再优秀的产品，最终都是死在这些技术（卧底）手里～<br>&lt;!— more —&gt;<br>我们先来看下这段代码：<br><img src="http://coolshell.cn//wp-content/uploads/2017/04/IMG_7411.jpg" alt="image"><br>其实看到这段代码的时候我心中是一万头草泥马飞过的，因为眼熟啊，是在我们安卓转去写前端的时候，全体技术Review他的代码的时候，我不敢想象这段代码放在公司的代码库中历经5年之后的样子。（我们那个比这个长多了，差不多3倍长度缩进）</p>
+<p>话不多说，我们先来分析这种代码里面有可能有什么鬼～</p>
+<ol>
+<li>状态机  最有可能的就是上来一串Switch-Case ，最为状态码</li>
+<li>多元素状态机， 哈哈哈就是Switch-Case ，case里面还需要判断。。</li>
+<li>元素容错，就是这个元素不可能出现的值全部过滤掉</li>
+<li>for循环，对其中元素进行遍历</li>
+<li>多线程，</li>
+<li>Block嵌套/ 函数嵌套</li>
+</ol>
+<p><strong>本文全部使用伪代码，便于理解～</strong></p>
+<h2 id="状态机-多层级状态机"><a href="#状态机-多层级状态机" class="headerlink" title="状态机/多层级状态机"></a>状态机/多层级状态机</h2><p>首先，我草这种东西根本就没法抽取好么。。但是这里还是要谈下去的，就是输入值，我们可以对这些来自不同值的源状态在一个方法里进行统一返回，<br>举个🌰：</p>
+<p>我们对第一个值判断后可以得出3个状态，对第二个值判断后可以得到另外1个状态，并且其中有一个和第一个相重合<br><img src="/image/28915069-9AA5-4569-8112-29FABBEE7398.png" alt="image2"></p>
+<p>伟大的谁说过来着没有什么是不能通过增加一个中间层来解决的，如果有就加2层～如下～<br><img src="/image/1E0E7807-086A-4B14-9983-91BF5DECE378.png" alt="image3"></p>
+<p>不得不说这是一个可以解决的方案，但是不可忽视的是中间层的增加的心智成本～<br>如果多状态机，最后输出的状态只有有限的几个，建议使用中间层解决～这样就可以将状态维护部分的代码抽出，这样如果你发现如果状态维护困难，可以将中间层，抽象成为一个专门的状态机，来维护，这样也不会改变你代码的层册和逻辑，变相降低了项目的维护的成本。</p>
+<p>这里面其实还有一个Tip，就是将所有的case都抽成一个函数，就是将每个case进行一个包装～这样可以显著降低层次。</p>
+<h2 id="元素容错"><a href="#元素容错" class="headerlink" title="元素容错"></a>元素容错</h2><p>如果要对元素容错，如果需要容错非常多，那么尽可能抽象成为函数，在函数内的通用判断，例如是不是为空，是否越界什么的都可以抽象出来，单独包装，以便其他类来复用，最后通过一个返回值来判断是否合乎逻辑。<br>🌰：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">isEligibility</span><span class="params">(value: String, value2: Int)</span></span> -&gt; text?  &#123;</div><div class="line">	value <span class="keyword">is</span> not nill  <span class="keyword">else</span> &#123;</div><div class="line">		<span class="keyword">return</span> “value <span class="keyword">is</span> null”</div><div class="line">	&#125;</div><div class="line">	…</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span> <span class="params">()</span></span> &#123;</div><div class="line">	<span class="keyword">if</span>  <span class="keyword">let</span> errorStr = isEligibility(“name”, “<span class="number">1</span>”)  != <span class="literal">nil</span> &#123;</div><div class="line">		accessError(errorStr)</div><div class="line">	&#125;</div><div class="line">	…</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="for循环"><a href="#for循环" class="headerlink" title="for循环"></a>for循环</h2><p>尽可能梳理for循环中做的事～然后分别抽象为函数，并将值给予你抽象的函数，进行运算～<br><figure class="highlight haskell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="title">func</span> for_imp() &#123;</div><div class="line">	for index <span class="keyword">in</span> indexs &#123;</div><div class="line">		<span class="keyword">let</span> <span class="class"><span class="keyword">data</span> = getData()</span></div><div class="line">		reloadView(<span class="class"><span class="keyword">data</span>)</span></div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="多线程"><a href="#多线程" class="headerlink" title="多线程"></a>多线程</h2><p>没想好先留着，需要小伙伴们的支援～<br><figure class="highlight haskell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="title">func</span> dispath() &#123;</div><div class="line">	dispath_async(queen) &#123;</div><div class="line">		for index <span class="keyword">in</span> indexs &#123;</div><div class="line">			<span class="keyword">let</span> <span class="class"><span class="keyword">data</span> = getData()</span></div><div class="line">			dispath_main() &#123;</div><div class="line">				reloadView(<span class="class"><span class="keyword">data</span>)</span></div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>我自己的做法都是封装成逃逸闭包，然后调用的时候直接写一套大括号～将内部东西抽象成为一个或者多个函数～。层级增加2～<br>问题是这部分根本就不是逻辑的一部分，只是必须要的手段，你抽象为函数也没有道理～<br>我认为比较好的做法是写一些语法糖，例如：<br>func.().main 或者 func().async的玩应，回去写写看吧～</p>
+<h2 id="函数嵌套"><a href="#函数嵌套" class="headerlink" title="函数嵌套"></a>函数嵌套</h2><p>iOS开发者中，只有Swfit中才会出现的痛了！<br><figure class="highlight autoit"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> 01 <span class="params">()</span> &#123;</span></div><div class="line">	<span class="function"><span class="keyword">func</span> 11<span class="params">()</span> &#123;</span></div><div class="line">		<span class="function"><span class="keyword">func</span> 21<span class="params">()</span> &#123;</span></div><div class="line">			block^() = ^&#123;</div><div class="line">				func11()</div><div class="line">			&#125;</div><div class="line">			block()</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>给个中肯的建议就是不要这么写函数，函数嵌套最多3层好吧～<br>同时希望小伙伴给出解决方案～</p>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a href="http://coolshell.cn/articles/17757.html" target="_blank" rel="external">如何重构“箭头型”代码 | | 酷 壳 - CoolShell</a></p>
+<p>#架构</p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/架构/">架构</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="https://github.com/LiShengmin/2017/08/04/架构-重构-SRP/" data-title="架构-重构-SRP | Shemmy" data-tsina="null" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2017/08/04/架构-CodeReview/" title="架构-CodeReview">
+  <strong>上一篇：</strong><br/>
+  <span>
+  架构-CodeReview</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2017/08/07/架构-AppleReview/"  title="架构-AppleReview">
+ <strong>下一篇：</strong><br/> 
+ <span>架构-AppleReview
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+
+<section id="comments" class="comment">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+
+
+
+<section id="comment">
+  
+</section>
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#重构-SRP"><span class="toc-number">1.</span> <span class="toc-text">重构- SRP</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#状态机-多层级状态机"><span class="toc-number">1.1.</span> <span class="toc-text">状态机/多层级状态机</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#元素容错"><span class="toc-number">1.2.</span> <span class="toc-text">元素容错</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#for循环"><span class="toc-number">1.3.</span> <span class="toc-text">for循环</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#多线程"><span class="toc-number">1.4.</span> <span class="toc-text">多线程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#函数嵌套"><span class="toc-number">1.5.</span> <span class="toc-text">函数嵌套</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#参考"><span class="toc-number">2.</span> <span class="toc-text">参考</span></a></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+<div class="github-card">
+<p class="asidetitle">Github Card</p>
+<div class="github-card" data-github="lishengmin" data-width="220" data-height="119" data-theme="medium">
+<script type="text/javascript" src="//cdn.jsdelivr.net/github-cards/latest/widget.js" ></script>
+</div>
+  </div>
+
+
+
+  
+
+  
+<div class="tagslist">
+	<p class="asidetitle">Tags</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/iOS/" title="iOS">iOS<sup>34</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/架构/" title="架构">架构<sup>6</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/MacOS/" title="MacOS">MacOS<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/C/" title="C">C<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/iOS-机器学习/" title="iOS, 机器学习">iOS, 机器学习<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">Links</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="https://www.github.com/lishengmin" target="_blank" title="Shemmy&#39;s GitHub">Shemmy&#39;s GitHub</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="https://blog.cnbluebox.com" target="_blank" title="刘坤的技术博客">刘坤的技术博客</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="https://casatwy.com/iosying-yong-jia-gou-tan-viewceng-de-zu-zhi-he-diao-yong-fang-an.html" target="_blank" title="casa&#39;s Blog">casa&#39;s Blog</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://blog.robotframework.cn" target="_blank" title="齐道长的博客">齐道长的博客</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="https://icocos.github.io" target="_blank" title="iCocos@曹理鹏">iCocos@曹理鹏</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="https://gyuan94.com" target="_blank" title="GY Essays">GY Essays</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://blog.ibireme.com" target="_blank" title="伽蓝之堂-ibireme">伽蓝之堂-ibireme</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
+</div>
+
+  <div class="weiboshow">
+  <p class="asidetitle">Weibo</p>
+    <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=null&verifier=b3593ceb&dpc=1"></iframe>
+</div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> Hello ,I&#39;m Sheemy Page in GitHub. <br/>
+			This is my blog,believe it or not.</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		<a href="http://weibo.com/2176287895" target="_blank" class="icon-weibo" title="微博"></a>
+		
+		
+		<a href="https://github.com/lishengmin" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		<a href="mailto:lishengminbj@gmail.com" target="_blank" class="icon-email" title="Email Me"></a>
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Shemmy</a> © 2017 
+		
+		<a href="/about" target="_blank" title="Shemmy">Shemmy</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+<!--多说-->
+
+
+<!-- disqus-->
+
+    <script type="text/javascript">
+    
+    var disqus_shortname = 'www-lcvem-com';
+    
+    (function(){
+      var dsq = document.createElement('script');
+      dsq.type = 'text/javascript';
+      dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+    (function(){
+      var dsq = document.createElement('script');
+      dsq.type = 'text/javascript';
+      dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+    </script>
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="Back to Top"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>
