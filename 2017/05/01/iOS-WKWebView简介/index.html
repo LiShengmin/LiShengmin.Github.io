@@ -49,7 +49,7 @@
 				<h1 class="site-name"><a href="/" title="Shemmy">Shemmy</a></h1>
 				<h2 class="blog-motto">iOS, 架构， Python, AI, go，（看不到评论模块的请外网访问～）</h2>
 			</div>
-			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
 			</a></div>
 			<nav class="animated">
 				<ul>
@@ -65,7 +65,7 @@
  					
 						<form class="search" action="http://zhannei.baidu.com/cse/search" target="_blank">
 							<label>Search</label>
-						<input name="s" type="hidden" value= 783281470518440700 ><input type="text" name="q" size="30" placeholder="Search"><br>
+						<input name="s" type="hidden" value= 783281470518440700 ><input type="text" name="q" size="30" placeholder="搜索"><br>
 						</form>
 					
 					</li>
@@ -87,14 +87,14 @@
 		<a href="/about" title="Shemmy" target="_blank" itemprop="author">Shemmy</a>
 		
   <p class="article-time">
-    <time datetime="2017-05-01T07:37:43.000Z" itemprop="datePublished"> Published 2017-05-01</time>
+    <time datetime="2017-05-01T07:37:43.000Z" itemprop="datePublished"> 发表于 2017-05-01</time>
     
   </p>
 </header>
 	<div class="article-content">
 		
 		<div id="toc" class="toc-article">
-			<strong class="toc-title">Contents</strong>
+			<strong class="toc-title">文章目录</strong>
 		
 			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#初始化（init）"><span class="toc-number">1.</span> <span class="toc-text">初始化（init）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#回调-delegate"><span class="toc-number">2.</span> <span class="toc-text">回调 (delegate)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#生命周期-lifeCycle"><span class="toc-number">2.1.</span> <span class="toc-text">生命周期(lifeCycle)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#页面跳转-load-new-Page-life-cycle"><span class="toc-number">2.2.</span> <span class="toc-text">页面跳转(load new Page life cycle)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#提示框（PromptAlert）"><span class="toc-number">2.3.</span> <span class="toc-text">提示框（PromptAlert）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#多种触摸手势（Peek-and-Pop）-iOS10"><span class="toc-number">2.4.</span> <span class="toc-text">多种触摸手势（Peek and Pop）(iOS10,*)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#手势选择"><span class="toc-number">2.4.1.</span> <span class="toc-text">手势选择</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#视图重按后弹出视图"><span class="toc-number">2.4.2.</span> <span class="toc-text">视图重按后弹出视图</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#JS与WKWebView交互-JavaScript-interacts-With-WKWebView"><span class="toc-number">3.</span> <span class="toc-text">JS与WKWebView交互(JavaScript interacts With WKWebView)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#在WebView加入JS代码"><span class="toc-number">3.1.</span> <span class="toc-text">在WebView加入JS代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#WKWebView-执行JSMethod-WebView-running-JS-method"><span class="toc-number">3.2.</span> <span class="toc-text">WKWebView 执行JSMethod (WebView running JS method)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JS调用App注册的方法"><span class="toc-number">3.3.</span> <span class="toc-text">JS调用App注册的方法</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#控制器不释放！！！"><span class="toc-number">4.</span> <span class="toc-text">控制器不释放！！！</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#方式1"><span class="toc-number">4.1.</span> <span class="toc-text">方式1</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#方式2"><span class="toc-number">4.2.</span> <span class="toc-text">方式2</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#注："><span class="toc-number">5.</span> <span class="toc-text">注：</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#常用函数"><span class="toc-number">6.</span> <span class="toc-text">常用函数</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#性能分析"><span class="toc-number">7.</span> <span class="toc-text">性能分析</span></a></li></ol>
 		
@@ -250,22 +250,22 @@
 
 
 </div>  
-      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
 
   <div id="toc" class="toc-aside">
-  <strong class="toc-title">Contents</strong>
+  <strong class="toc-title">文章目录</strong>
  
  <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#初始化（init）"><span class="toc-number">1.</span> <span class="toc-text">初始化（init）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#回调-delegate"><span class="toc-number">2.</span> <span class="toc-text">回调 (delegate)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#生命周期-lifeCycle"><span class="toc-number">2.1.</span> <span class="toc-text">生命周期(lifeCycle)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#页面跳转-load-new-Page-life-cycle"><span class="toc-number">2.2.</span> <span class="toc-text">页面跳转(load new Page life cycle)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#提示框（PromptAlert）"><span class="toc-number">2.3.</span> <span class="toc-text">提示框（PromptAlert）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#多种触摸手势（Peek-and-Pop）-iOS10"><span class="toc-number">2.4.</span> <span class="toc-text">多种触摸手势（Peek and Pop）(iOS10,*)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#手势选择"><span class="toc-number">2.4.1.</span> <span class="toc-text">手势选择</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#视图重按后弹出视图"><span class="toc-number">2.4.2.</span> <span class="toc-text">视图重按后弹出视图</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#JS与WKWebView交互-JavaScript-interacts-With-WKWebView"><span class="toc-number">3.</span> <span class="toc-text">JS与WKWebView交互(JavaScript interacts With WKWebView)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#在WebView加入JS代码"><span class="toc-number">3.1.</span> <span class="toc-text">在WebView加入JS代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#WKWebView-执行JSMethod-WebView-running-JS-method"><span class="toc-number">3.2.</span> <span class="toc-text">WKWebView 执行JSMethod (WebView running JS method)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JS调用App注册的方法"><span class="toc-number">3.3.</span> <span class="toc-text">JS调用App注册的方法</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#控制器不释放！！！"><span class="toc-number">4.</span> <span class="toc-text">控制器不释放！！！</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#方式1"><span class="toc-number">4.1.</span> <span class="toc-text">方式1</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#方式2"><span class="toc-number">4.2.</span> <span class="toc-text">方式2</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#注："><span class="toc-number">5.</span> <span class="toc-text">注：</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#常用函数"><span class="toc-number">6.</span> <span class="toc-text">常用函数</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#性能分析"><span class="toc-number">7.</span> <span class="toc-text">性能分析</span></a></li></ol>
  
   </div>
 
 <div id="asidepart">
-<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
 <aside class="clearfix">
 
   
 <div class="github-card">
-<p class="asidetitle">Github Card</p>
+<p class="asidetitle">Github 名片</p>
 <div class="github-card" data-github="lishengmin" data-width="220" data-height="119" data-theme="medium">
 <script type="text/javascript" src="//cdn.jsdelivr.net/github-cards/latest/widget.js" ></script>
 </div>
@@ -277,7 +277,7 @@
 
   
 <div class="tagslist">
-	<p class="asidetitle">Tags</p>
+	<p class="asidetitle">标签</p>
 		<ul class="clearfix">
 		
 			
@@ -297,13 +297,15 @@
 			
 		
 			
+				<li><a href="/tags/架构/" title="架构">架构<sup>1</sup></a></li>
+			
 		
 		</ul>
 </div>
 
 
   <div class="linkslist">
-  <p class="asidetitle">Links</p>
+  <p class="asidetitle">友情链接</p>
     <ul>
         
           <li>
@@ -355,11 +357,11 @@
 
 
   <div class="rsspart">
-	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
+	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
 </div>
 
   <div class="weiboshow">
-  <p class="asidetitle">Weibo</p>
+  <p class="asidetitle">新浪微博</p>
     <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=null&verifier=b3593ceb&dpc=1"></iframe>
 </div>
 
@@ -603,7 +605,7 @@ $(document).ready(function(){
 <!-- Totop Begin -->
 
 	<div id="totop">
-	<a title="Back to Top"><img src="/img/scrollup.png"/></a>
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
 	</div>
 	<script src="/js/totop.js"></script>
 
