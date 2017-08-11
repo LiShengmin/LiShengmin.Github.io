@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://github.com/LiShengmin/"/>
-  <updated>2017-08-09T10:56:15.229Z</updated>
+  <updated>2017-08-11T04:37:27.536Z</updated>
   <id>https://github.com/LiShengmin/</id>
   
   <author>
@@ -14,6 +14,39 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>iOS-GUI为什么必须在线程中执行</title>
+    <link href="https://github.com/LiShengmin/2017/08/11/iOS-GUI%E4%B8%BA%E4%BB%80%E4%B9%88%E5%BF%85%E9%A1%BB%E5%9C%A8%E7%BA%BF%E7%A8%8B%E4%B8%AD%E6%89%A7%E8%A1%8C/"/>
+    <id>https://github.com/LiShengmin/2017/08/11/iOS-GUI为什么必须在线程中执行/</id>
+    <published>2017-08-11T04:35:30.000Z</published>
+    <updated>2017-08-11T04:37:27.536Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="面试-为什么UI必须在主线程中更新"><a href="#面试-为什么UI必须在主线程中更新" class="headerlink" title="面试-为什么UI必须在主线程中更新"></a>面试-为什么UI必须在主线程中更新</h1><p>早期的GUI应用程序都是单线程的，并且GUI事件都是在主线程中执行,<br>现代的gui框架使用了一个略微不同的模型：模型创建了一个专门的线程，事件派发线程（event dispatch thread，RDT）来处理gui事件。</p>
+<p>单线程化的GUI框架并不仅仅存在于Java中：Qt、NextStep、Macos Cocoa、XWindows,等等都是单线程化的。也并不缺少反面的尝试；有很多试图写出多线程的GUI框架的努力，最终都由于竞争条件和死锁导致的稳定性问题，又回到了单线程化的事件队列模型的老路上来：采用一个专门的线程从队列中抽取事件，并把它们转发给应用程序定义的事件处理器。（awt最初曾尝试在某种程度上支持多线程访问，单线程化地实现swing的决定主要基于AWT中的经验和教训。）</p>
+<h2 id="多线程的GUI框架会尤其易受死锁的影响"><a href="#多线程的GUI框架会尤其易受死锁的影响" class="headerlink" title="多线程的GUI框架会尤其易受死锁的影响"></a><strong>多线程的GUI框架会尤其易受死锁的影响</strong></h2><p>部分原因在于:</p>
+<ol>
+<li>输入事件处理与任何GUI组件背后的对象模型之间存在偶发的交互。用户发起的动作总会冒泡似的从操作系统传递给应用程序—先是由os检测到一次鼠标点击，然后工具集把它转化为“鼠标点击”事件，最终它会作为一个高层事件（比如“buttonpressed”事件）转发给应用程序的监听器。</li>
+<li>另一方面，应用程序发起的动作又会以冒泡的形式传回操作系统—应用程序发起一个动作要改变某个组件的背景颜色，这会被转发给一个特定的组件类，最终转发给os进行渲染。</li>
+</ol>
+<p>两种动作以完全相反的顺序访问相同的GUI对象，需要保证让每一个对象都是线程安全的，这会导致一系列的锁顺序的不一致，这会直接引发死锁。这个问题机会在每一次GUI工具集的开发中都会出现，是经验之谈。</p>
+<p><strong>MVC模式的普遍流行形成了导致多线程GUI框架出现死锁的另一原因</strong>。把用户的互交分拨到模型、视图和控制器之间的写作中，极大地简化了GUI应用程序的实现，但这让不一致的锁顺序再次雪上加霜。控制器调用模型，模型通知视图已经发生了一些事情。控制器同样可以调用视图，视图可以依次回调模型来查询模型的状态。结果是，不一致的锁顺序再次伴随死锁的风险一同到来。</p>
+<p>Graham hamilton，sun公司的vp，在他的weblog中详尽地概括了这些挑战，描述了多线程GUI工具集之所以会成为计算机科学史上又一次“失败的梦”。<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">如果多线程GUI工具集经过非常谨慎的设计；如果工具集能使它加锁的方法鲜明地显露；如果你非常聪明，非常仔细，并且对工具集的整体框架有着全局的把握，我相信你还是可以成功地编写出多线程的GUI来。但是如果这些事情有一些轻微的偏差，程序多数时候仍然运行良好，但是你会偶尔看到程序挂起或者运行故障。那些密切参与了工具集设计的人能够很好地运用这种多线程方案。</div><div class="line">不幸的是，我认为这些特性并没有和商业流行度成正比。一个中等能力的程序员，整日构建着 被一些莫名其妙的原因困扰着而不能稳定运行的应用程序，我们很容易落入这种境界。于是应该程序的作者会倍感怨恨与失落，对无辜的工具集恶语相加。</div></pre></td></tr></table></figure></p>
+<p>单线程化的GUI框架通过现场限制来达到现场安全性；<strong>所有GUI中的对象，包括可视组件和数据模型，都只是被事件线程访问</strong>。当然，这只把线程安全负担的一部分推给了应用程序的开发者，他们必须确保这些对象是被正确限制的。</p>
+<p>这里着重提下iOS中ASDK<br>ASDK号称可以使用多线程来更新UI，但是其更新原理并不是异步的来更新，只不过做了一个中间的容器，把你要提交的修改，优先合并后再在每次读区缓冲区之后提交。</p>
+<h1 id="借鉴"><a href="#借鉴" class="headerlink" title="借鉴"></a>借鉴</h1><p>这个题目是在2017@Swift群里Listen提示下找到的答案，来源于Java Concurrency in practice(Java 并发编程实战)9.1章</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;面试-为什么UI必须在主线程中更新&quot;&gt;&lt;a href=&quot;#面试-为什么UI必须在主线程中更新&quot; class=&quot;headerlink&quot; title=&quot;面试-为什么UI必须在主线程中更新&quot;&gt;&lt;/a&gt;面试-为什么UI必须在主线程中更新&lt;/h1&gt;&lt;p&gt;早期的GUI应用程序
+    
+    </summary>
+    
+    
+      <category term="iOS" scheme="https://github.com/LiShengmin/tags/iOS/"/>
+    
+  </entry>
   
   <entry>
     <title>架构-AppleReview</title>
@@ -236,7 +269,7 @@
     <link href="https://github.com/LiShengmin/2017/08/04/%E6%9E%B6%E6%9E%84-CodeReview/"/>
     <id>https://github.com/LiShengmin/2017/08/04/架构-CodeReview/</id>
     <published>2017-08-04T15:23:53.000Z</published>
-    <updated>2017-08-08T03:19:30.072Z</updated>
+    <updated>2017-08-11T04:39:45.052Z</updated>
     
     <content type="html"><![CDATA[<p>这篇文章主要是规范iOSer们对于代码整体风格的选择，明确梳理了大家在写Program时候需要注意的点。<br>我会从命名、注释、对象调用、数据结构、Test、错误处理为大家整理，欢迎私信讨论～<br>希望我的博客可以为大家提供帮助～</p>
 <p>这是一篇没有完工的文章我会逐步补充进来的<a id="more"></a></p>
@@ -322,9 +355,9 @@
     <link href="https://github.com/LiShengmin/2017/06/20/%E6%9E%B6%E6%9E%84-%E6%9E%B6%E6%9E%84%E6%BC%AB%E8%B0%88/"/>
     <id>https://github.com/LiShengmin/2017/06/20/架构-架构漫谈/</id>
     <published>2017-06-19T17:15:49.000Z</published>
-    <updated>2017-08-09T09:53:43.772Z</updated>
+    <updated>2017-08-11T04:39:10.705Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="架构"><a href="#架构" class="headerlink" title="架构"></a>架构</h1><p>非常感谢Casa的分享！这篇文章主要参考了Casa的分享和博客。还有个人的一些理解，希望通过这些阶段性的总结和思考，来让大家成为更好架构师，和理解架构师在做什么。<a id="more"></a></p>
+    <content type="html"><![CDATA[<p>非常感谢Casa的分享！这篇文章主要参考了Casa的分享和博客。还有个人的一些理解，希望通过这些阶段性的总结和思考，来让大家成为更好架构师，和理解架构师在做什么。<a id="more"></a></p>
 <h2 id="什么是架构"><a href="#什么是架构" class="headerlink" title="什么是架构"></a>什么是架构</h2><ul>
 <li>提供完整具备唯一性的解决方案</li>
 <li>通过设计能力减少工程的开发成本</li>
@@ -410,7 +443,7 @@
     
     <summary type="html">
     
-      &lt;h1 id=&quot;架构&quot;&gt;&lt;a href=&quot;#架构&quot; class=&quot;headerlink&quot; title=&quot;架构&quot;&gt;&lt;/a&gt;架构&lt;/h1&gt;&lt;p&gt;非常感谢Casa的分享！这篇文章主要参考了Casa的分享和博客。还有个人的一些理解，希望通过这些阶段性的总结和思考，来让大家成为更好架构师，和理解架构师在做什么。
+      &lt;p&gt;非常感谢Casa的分享！这篇文章主要参考了Casa的分享和博客。还有个人的一些理解，希望通过这些阶段性的总结和思考，来让大家成为更好架构师，和理解架构师在做什么。
     
     </summary>
     
@@ -1418,7 +1451,7 @@
     
     <content type="html"><![CDATA[<p>Swift中的字符串，第二篇，基本操作。其他的几篇传送门（GitHub打不开链接的同学请自行把地址github改成gitcafe，或者直接去归档里找:-P）：</p>
 <p><a href="https://conanwhf.github.com/2015/12/03/Swift_String_1/" target="_blank" rel="external">Swift2.0 中的String（一）：常用属性</a><br><a href="https://conanwhf.github.com/2015/12/03/Swift_String_2/" target="_blank" rel="external">Swift2.0 中的String（二）：基本操作</a><br><a href="https://conanwhf.github.com/2015/12/03/Swift_String_3/" target="_blank" rel="external">Swift2.0 中的String（三）：类型转换</a><br>编码转换(TBD)<br>我的练习源代码可以在<a href="https://github.com/conanwhf/swiftplayground/tree/master/String.playground">这里</a>看到<a id="more"></a><br>首先，我们要记得使用字符串最常用的两个参数：下标(Index)和范围(Range)，几乎所有API都要用到它们<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> offset = str.startIndex.advancedBy(<span class="number">2</span>)<span class="comment">// offset: 3rd char</span></div><div class="line"><span class="keyword">let</span> range  = <span class="type">Range</span>(start: str.startIndex.advancedBy(<span class="number">3</span>), end: str.endIndex.advancedBy(-<span class="number">2</span>))<span class="comment">// range: 3..&lt;6, "345"</span></div></pre></td></tr></table></figure></p>
-<h1 id="强制类型转换"><a href="#强制类型转换" class="headerlink" title="强制类型转换"></a>强制类型转换</h1><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> n = <span class="type">Int</span>(str)!</div><div class="line"><span class="type">String</span>(<span class="string">"the number is \(n)"</span>)</div><div class="line"><span class="type">String</span>(format:<span class="string">"%.2f,  %i"</span>, <span class="number">9.1</span>, <span class="number">304</span>)</div></pre></td></tr></table></figure>
+<h1 id="强制类型转换"><a href="#强制类型转换" class="headerlink" title="强制类型转换"></a>强制类型转换</h1><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> n = <span class="type">Int</span>(str)!</div><div class="line"><span class="type">String</span>(<span class="string">"the number is <span class="subst">\(n)</span>"</span>)</div><div class="line"><span class="type">String</span>(format:<span class="string">"%.2f,  %i"</span>, <span class="number">9.1</span>, <span class="number">304</span>)</div></pre></td></tr></table></figure>
 <h1 id="内容反转"><a href="#内容反转" class="headerlink" title="内容反转"></a>内容反转</h1><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="type">String</span>(str.characters.<span class="built_in">reverse</span>())</div></pre></td></tr></table></figure>
 <h1 id="删除和部分删除"><a href="#删除和部分删除" class="headerlink" title="删除和部分删除"></a>删除和部分删除</h1><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">str.removeRange(range)</div><div class="line">str.removeAtIndex(offset)</div><div class="line"><span class="type">String</span>(str.characters.<span class="built_in">dropFirst</span>())</div><div class="line"><span class="type">String</span>(str.characters.<span class="built_in">dropFirst</span>(<span class="number">3</span>))</div><div class="line"><span class="type">String</span>(str.characters.<span class="built_in">dropLast</span>())</div><div class="line"><span class="type">String</span>(str.characters.<span class="built_in">dropLast</span>(<span class="number">3</span>))</div><div class="line"><span class="comment">//以上对character的操作不改变原来的值！</span></div><div class="line"><span class="comment">// 删除头尾空白字符</span></div><div class="line"><span class="string">"     I love you "</span>.stringByTrimmingCharactersInSet(<span class="type">NSCharacterSet</span>.whitespaceCharacterSet())</div><div class="line"><span class="comment">// 删除头尾字符集</span></div><div class="line"><span class="string">" I love you, too!"</span>.stringByTrimmingCharactersInSet(<span class="type">NSCharacterSet</span>(charactersInString: <span class="string">",. !"</span>))</div><div class="line"><span class="comment">//清空</span></div><div class="line">str.removeAll()</div></pre></td></tr></table></figure>
 <h1 id="获取固定位置的子串"><a href="#获取固定位置的子串" class="headerlink" title="获取固定位置的子串"></a>获取固定位置的子串</h1><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">str.substringToIndex(offset)</div><div class="line">str.substringFromIndex(offset)</div><div class="line">str.substringWithRange(range)</div><div class="line">str[range]</div></pre></td></tr></table></figure>
@@ -1464,27 +1497,6 @@
     <summary type="html">
     
       &lt;p&gt;主要写了一些项目中常用的方法，使用的是OC语言，后续会陆续补充Swift中的写法。&lt;br&gt;
-    
-    </summary>
-    
-    
-      <category term="iOS" scheme="https://github.com/LiShengmin/tags/iOS/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>iOS[利用Application Loader]App打包上架流程&#39;</title>
-    <link href="https://github.com/LiShengmin/2016/09/06/iOS-%E5%88%A9%E7%94%A8Application-Loader-App%E6%89%93%E5%8C%85%E4%B8%8A%E6%9E%B6%E6%B5%81%E7%A8%8B/"/>
-    <id>https://github.com/LiShengmin/2016/09/06/iOS-利用Application-Loader-App打包上架流程/</id>
-    <published>2016-09-05T17:58:16.000Z</published>
-    <updated>2017-05-08T09:46:52.000Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="如何把App打包成ipa文件，然后App上架流程-利用Application-Loader"><a href="#如何把App打包成ipa文件，然后App上架流程-利用Application-Loader" class="headerlink" title="如何把App打包成ipa文件，然后App上架流程[利用Application Loader]"></a>如何把App打包成ipa文件，然后App上架流程[利用Application Loader]</h1><p><a href="http://www.jianshu.com/p/a885da9ce4a9" target="_blank" rel="external">本文详情</a> <a id="more"></a><br>在上一篇博客已经讲过上传项目了，但是有的时候，需要我们进行打包成ipa包到别的手机上跑（但是前提是，这个手机的UDID必须绑定到对应的开发者账号中，也就是证书也得是从同样的开发者账号申请下来的才可以）<br>假设你现在已经完成了证书，Bundle Identifier 和描述文件的配置（如果没有请参考这个博客中)<br><a href="http://www.jianshu.com/p/391f6102b4fb" target="_blank" rel="external">http://www.jianshu.com/p/391f6102b4fb</a><br>的前4步<br>然后配置工程<br>打开你项目工程 第一步，这里不能选择模拟器，选择iOS Device<br><img src="http://upload-images.jianshu.io/upload_images/1400788-d6282beac5d4aa67.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image1"><br>如果不支持横屏，把这2个勾去掉<br><img src="http://upload-images.jianshu.io/upload_images/1400788-507035f0aeeba65f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image2"><br>然后查看版本号和构建版本号<br><img src="http://upload-images.jianshu.io/upload_images/1400788-c115b621232831e3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image3"><br>然后配置发布证书<br><img src="http://upload-images.jianshu.io/upload_images/1400788-0ab593756949d975.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image4"><br>然后，如果这里没有黄色叹号，代表你的配置没问题，如果有，那就是证书和描述文件不匹配，或者描述文件里刚才选的Bundle和现在的工程的Bundle Identifier不一致，去develop.apple.com 上找到你的描述文件在确认下绑定的bundle Identifier和你工程是不是一样的？<br><img src="http://upload-images.jianshu.io/upload_images/1400788-6b105c3ef679946d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image5"><br>然后继续。断点，全局断点，僵尸模式等都要去掉。<br><img src="http://upload-images.jianshu.io/upload_images/1400788-c1d557383ff16be5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image6"></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;如何把App打包成ipa文件，然后App上架流程-利用Application-Loader&quot;&gt;&lt;a href=&quot;#如何把App打包成ipa文件，然后App上架流程-利用Application-Loader&quot; class=&quot;headerlink&quot; title=&quot;如何把App打包成ipa文件，然后App上架流程[利用Application Loader]&quot;&gt;&lt;/a&gt;如何把App打包成ipa文件，然后App上架流程[利用Application Loader]&lt;/h1&gt;&lt;p&gt;&lt;a href=&quot;http://www.jianshu.com/p/a885da9ce4a9&quot;&gt;本文详情&lt;/a&gt;
     
     </summary>
     

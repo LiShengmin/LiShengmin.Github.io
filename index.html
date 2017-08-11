@@ -77,6 +77,76 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
+      <a href="/2017/08/11/iOS-GUI为什么必须在线程中执行/" title="iOS-GUI为什么必须在线程中执行" itemprop="url">iOS-GUI为什么必须在线程中执行</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Shemmy" target="_blank" itemprop="author">Shemmy</a>
+		
+  <p class="article-time">
+    <time datetime="2017-08-11T04:35:30.000Z" itemprop="datePublished"> Published 2017-08-11</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h1 id="面试-为什么UI必须在主线程中更新"><a href="#面试-为什么UI必须在主线程中更新" class="headerlink" title="面试-为什么UI必须在主线程中更新"></a>面试-为什么UI必须在主线程中更新</h1><p>早期的GUI应用程序都是单线程的，并且GUI事件都是在主线程中执行,<br>现代的gui框架使用了一个略微不同的模型：模型创建了一个专门的线程，事件派发线程（event dispatch thread，RDT）来处理gui事件。</p>
+<p>单线程化的GUI框架并不仅仅存在于Java中：Qt、NextStep、Macos Cocoa、XWindows,等等都是单线程化的。也并不缺少反面的尝试；有很多试图写出多线程的GUI框架的努力，最终都由于竞争条件和死锁导致的稳定性问题，又回到了单线程化的事件队列模型的老路上来：采用一个专门的线程从队列中抽取事件，并把它们转发给应用程序定义的事件处理器。（awt最初曾尝试在某种程度上支持多线程访问，单线程化地实现swing的决定主要基于AWT中的经验和教训。）</p>
+<h2 id="多线程的GUI框架会尤其易受死锁的影响"><a href="#多线程的GUI框架会尤其易受死锁的影响" class="headerlink" title="多线程的GUI框架会尤其易受死锁的影响"></a><strong>多线程的GUI框架会尤其易受死锁的影响</strong></h2><p>部分原因在于:</p>
+<ol>
+<li>输入事件处理与任何GUI组件背后的对象模型之间存在偶发的交互。用户发起的动作总会冒泡似的从操作系统传递给应用程序—先是由os检测到一次鼠标点击，然后工具集把它转化为“鼠标点击”事件，最终它会作为一个高层事件（比如“buttonpressed”事件）转发给应用程序的监听器。</li>
+<li>另一方面，应用程序发起的动作又会以冒泡的形式传回操作系统—应用程序发起一个动作要改变某个组件的背景颜色，这会被转发给一个特定的组件类，最终转发给os进行渲染。</li>
+</ol>
+<p>两种动作以完全相反的顺序访问相同的GUI对象，需要保证让每一个对象都是线程安全的，这会导致一系列的锁顺序的不一致，这会直接引发死锁。这个问题机会在每一次GUI工具集的开发中都会出现，是经验之谈。</p>
+<p><strong>MVC模式的普遍流行形成了导致多线程GUI框架出现死锁的另一原因</strong>。把用户的互交分拨到模型、视图和控制器之间的写作中，极大地简化了GUI应用程序的实现，但这让不一致的锁顺序再次雪上加霜。控制器调用模型，模型通知视图已经发生了一些事情。控制器同样可以调用视图，视图可以依次回调模型来查询模型的状态。结果是，不一致的锁顺序再次伴随死锁的风险一同到来。</p>
+<p>Graham hamilton，sun公司的vp，在他的weblog中详尽地概括了这些挑战，描述了多线程GUI工具集之所以会成为计算机科学史上又一次“失败的梦”。<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">如果多线程GUI工具集经过非常谨慎的设计；如果工具集能使它加锁的方法鲜明地显露；如果你非常聪明，非常仔细，并且对工具集的整体框架有着全局的把握，我相信你还是可以成功地编写出多线程的GUI来。但是如果这些事情有一些轻微的偏差，程序多数时候仍然运行良好，但是你会偶尔看到程序挂起或者运行故障。那些密切参与了工具集设计的人能够很好地运用这种多线程方案。</div><div class="line">不幸的是，我认为这些特性并没有和商业流行度成正比。一个中等能力的程序员，整日构建着 被一些莫名其妙的原因困扰着而不能稳定运行的应用程序，我们很容易落入这种境界。于是应该程序的作者会倍感怨恨与失落，对无辜的工具集恶语相加。</div></pre></td></tr></table></figure></p>
+<p>单线程化的GUI框架通过现场限制来达到现场安全性；<strong>所有GUI中的对象，包括可视组件和数据模型，都只是被事件线程访问</strong>。当然，这只把线程安全负担的一部分推给了应用程序的开发者，他们必须确保这些对象是被正确限制的。</p>
+<p>这里着重提下iOS中ASDK<br>ASDK号称可以使用多线程来更新UI，但是其更新原理并不是异步的来更新，只不过做了一个中间的容器，把你要提交的修改，优先合并后再在每次读区缓冲区之后提交。</p>
+<h1 id="借鉴"><a href="#借鉴" class="headerlink" title="借鉴"></a>借鉴</h1><p>这个题目是在2017@Swift群里Listen提示下找到的答案，来源于Java Concurrency in practice(Java 并发编程实战)9.1章</p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/iOS/">iOS</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/2017/08/11/iOS-GUI为什么必须在线程中执行/#disqus_thread" class="comments-count-link">Comments</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+    
+    
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
       <a href="/2017/08/07/架构-AppleReview/" title="架构-AppleReview" itemprop="url">架构-AppleReview</a>
   </h1>
   <p class="article-author">By
@@ -290,7 +360,7 @@
 </header>
     <div class="article-content">
         
-        <h1 id="架构"><a href="#架构" class="headerlink" title="架构"></a>架构</h1><p>非常感谢Casa的分享！这篇文章主要参考了Casa的分享和博客。还有个人的一些理解，希望通过这些阶段性的总结和思考，来让大家成为更好架构师，和理解架构师在做什么。
+        <p>非常感谢Casa的分享！这篇文章主要参考了Casa的分享和博客。还有个人的一些理解，希望通过这些阶段性的总结和思考，来让大家成为更好架构师，和理解架构师在做什么。
         
         
         <p class="article-more-link">
@@ -924,65 +994,6 @@
     
 
 
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2016/10/18/iOS8中使用UIAlertController/" title="iOS8中使用UIAlertController" itemprop="url">iOS8中使用UIAlertController</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="Shemmy" target="_blank" itemprop="author">Shemmy</a>
-		
-  <p class="article-time">
-    <time datetime="2016-10-18T06:51:30.000Z" itemprop="datePublished"> Published 2016-10-18</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <p><a href="http://www.cocoachina.com/ios/20141126/10320.html">http://www.cocoachina.com/ios/20141126/10320.html</a>
-        
-        
-        <p class="article-more-link">
-          
-            <a href="/2016/10/18/iOS8中使用UIAlertController/#more">Read More</a>
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-
-  <div class="article-tags">
-  
-  <span></span> <a href="/tags/iOS/">iOS</a>
-  </div>
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-	  	<span></span>
-		<a href="/2016/10/18/iOS8中使用UIAlertController/#disqus_thread" class="comments-count-link">Comments</a>
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-    
-    
-
-
 
   <nav id="page-nav" class="clearfix">
     <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next<span></span></a>
@@ -1013,7 +1024,7 @@
 		<ul class="clearfix">
 		
 			
-				<li><a href="/tags/iOS/" title="iOS">iOS<sup>34</sup></a></li>
+				<li><a href="/tags/iOS/" title="iOS">iOS<sup>35</sup></a></li>
 			
 		
 			
@@ -1021,11 +1032,11 @@
 			
 		
 			
-				<li><a href="/tags/MacOS/" title="MacOS">MacOS<sup>1</sup></a></li>
+				<li><a href="/tags/C/" title="C">C<sup>1</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/C/" title="C">C<sup>1</sup></a></li>
+				<li><a href="/tags/MacOS/" title="MacOS">MacOS<sup>1</sup></a></li>
 			
 		
 			

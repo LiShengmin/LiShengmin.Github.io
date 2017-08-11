@@ -4,24 +4,24 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>iOS-数字有关的类（int NSNumber...） | Shemmy</title>
+    <title>iOS-GUI为什么必须在线程中执行 | Shemmy</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="Shemmy">
     
 
     
-    <meta name="description" content="iOS开发之int,NSInteger,NSUInteger,NSNumber的使用1、首先先了解下NSNumber类型：苹果官方文档地址：https://developer.apple.com/library/ios/documentation/Cocoa/Reference/Foundation/Classes/NSNumber_Class/Reference/Reference.htmlNS">
+    <meta name="description" content="面试-为什么UI必须在主线程中更新早期的GUI应用程序都是单线程的，并且GUI事件都是在主线程中执行,现代的gui框架使用了一个略微不同的模型：模型创建了一个专门的线程，事件派发线程（event dispatch thread，RDT）来处理gui事件。 单线程化的GUI框架并不仅仅存在于Java中：Qt、NextStep、Macos Cocoa、XWindows,等等都是单线程化的。也并不缺少反">
 <meta name="keywords" content="iOS">
 <meta property="og:type" content="article">
-<meta property="og:title" content="iOS-数字有关的类（int NSNumber...）">
-<meta property="og:url" content="https://github.com/LiShengmin/2015/08/03/iOS-数字有关的类/index.html">
+<meta property="og:title" content="iOS-GUI为什么必须在线程中执行">
+<meta property="og:url" content="https://github.com/LiShengmin/2017/08/11/iOS-GUI为什么必须在线程中执行/index.html">
 <meta property="og:site_name" content="Shemmy">
-<meta property="og:description" content="iOS开发之int,NSInteger,NSUInteger,NSNumber的使用1、首先先了解下NSNumber类型：苹果官方文档地址：https://developer.apple.com/library/ios/documentation/Cocoa/Reference/Foundation/Classes/NSNumber_Class/Reference/Reference.htmlNS">
-<meta property="og:updated_time" content="2017-06-19T16:39:23.659Z">
+<meta property="og:description" content="面试-为什么UI必须在主线程中更新早期的GUI应用程序都是单线程的，并且GUI事件都是在主线程中执行,现代的gui框架使用了一个略微不同的模型：模型创建了一个专门的线程，事件派发线程（event dispatch thread，RDT）来处理gui事件。 单线程化的GUI框架并不仅仅存在于Java中：Qt、NextStep、Macos Cocoa、XWindows,等等都是单线程化的。也并不缺少反">
+<meta property="og:updated_time" content="2017-08-11T04:37:27.536Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="iOS-数字有关的类（int NSNumber...）">
-<meta name="twitter:description" content="iOS开发之int,NSInteger,NSUInteger,NSNumber的使用1、首先先了解下NSNumber类型：苹果官方文档地址：https://developer.apple.com/library/ios/documentation/Cocoa/Reference/Foundation/Classes/NSNumber_Class/Reference/Reference.htmlNS">
+<meta name="twitter:title" content="iOS-GUI为什么必须在线程中执行">
+<meta name="twitter:description" content="面试-为什么UI必须在主线程中更新早期的GUI应用程序都是单线程的，并且GUI事件都是在主线程中执行,现代的gui框架使用了一个略微不同的模型：模型创建了一个专门的线程，事件派发线程（event dispatch thread，RDT）来处理gui事件。 单线程化的GUI框架并不仅仅存在于Java中：Qt、NextStep、Macos Cocoa、XWindows,等等都是单线程化的。也并不缺少反">
 
     
     <link rel="alternative" href="/atom.xml" title="Shemmy" type="application/atom+xml">
@@ -80,14 +80,14 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2015/08/03/iOS-数字有关的类/" title="iOS-数字有关的类（int NSNumber...）" itemprop="url">iOS-数字有关的类（int NSNumber...）</a>
+      <a href="/2017/08/11/iOS-GUI为什么必须在线程中执行/" title="iOS-GUI为什么必须在线程中执行" itemprop="url">iOS-GUI为什么必须在线程中执行</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="Shemmy" target="_blank" itemprop="author">Shemmy</a>
 		
   <p class="article-time">
-    <time datetime="2015-08-03T14:05:12.000Z" itemprop="datePublished"> Published 2015-08-03</time>
+    <time datetime="2017-08-11T04:35:30.000Z" itemprop="datePublished"> Published 2017-08-11</time>
     
   </p>
 </header>
@@ -96,16 +96,23 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">Contents</strong>
 		
-			
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#面试-为什么UI必须在主线程中更新"><span class="toc-number">1.</span> <span class="toc-text">面试-为什么UI必须在主线程中更新</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#多线程的GUI框架会尤其易受死锁的影响"><span class="toc-number">1.1.</span> <span class="toc-text">多线程的GUI框架会尤其易受死锁的影响</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#借鉴"><span class="toc-number">2.</span> <span class="toc-text">借鉴</span></a></li></ol>
 		
 		</div>
 		
-		<p>iOS开发之int,NSInteger,NSUInteger,NSNumber的使用<br>1、首先先了解下NSNumber类型：<br>苹果官方文档地址：<a href="https://developer.apple.com/library/ios/documentation/Cocoa/Reference/Foundation/Classes/NSNumber_Class/Reference/Reference.html" target="_blank" rel="external">https://developer.apple.com/library/ios/documentation/Cocoa/Reference/Foundation/Classes/NSNumber_Class/Reference/Reference.html</a><br>NSNumber是NSValue的一个子类，它是一个对象来存储数字值包括bool型，它提供了一系列的方法来存储char a signed or unsigned char, short int, int, long int, long long int, float, or double or as a BOOL，它提供了一个compare：方法来决定两个NSNumber对象的排序；<a id="more"></a><br>创建一个NSNumber对象有以下方法：<br><figure class="highlight mm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">+ numberWithBool:  </div><div class="line">+ numberWithChar:  </div><div class="line">+ numberWithDouble:  </div><div class="line">+ numberWithFloat:  </div><div class="line">+ numberWithInt:  </div><div class="line">+ numberWithInteger:  </div><div class="line">+ numberWithLong:  </div><div class="line">+ numberWithLongLong:  </div><div class="line">+ numberWithShort:  </div><div class="line">+ numberWithUnsignedChar:  </div><div class="line">+ numberWithUnsignedInt:  </div><div class="line">+ numberWithUnsignedInteger:  </div><div class="line">+ numberWithUnsignedLong:  </div><div class="line">+ numberWithUnsignedLongLong:  </div><div class="line">+ numberWithUnsignedShort:</div></pre></td></tr></table></figure></p>
-<p>初始化方法：<br><figure class="highlight mm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div></pre></td><td class="code"><pre><div class="line">	– initWithBool:  </div><div class="line">	– initWithChar:  </div><div class="line">    – initWithDouble:  </div><div class="line">	– initWithFloat:  </div><div class="line">	– initWithInt:  </div><div class="line">	– initWithInteger:  </div><div class="line">	– initWithLong:  </div><div class="line">	– initWithLongLong:  </div><div class="line">	– initWithShort:  </div><div class="line">	– initWithUnsignedChar:  </div><div class="line">	– initWithUnsignedInt:  </div><div class="line">	– initWithUnsignedInteger:  </div><div class="line">	– initWithUnsignedLong:  </div><div class="line">	– initWithUnsignedLongLong:  </div><div class="line">	– initWithUnsignedShort: </div><div class="line">``` </div><div class="line">检索</div><div class="line"></div><div class="line">```mm</div><div class="line"><span class="number">1</span>	– boolValue  </div><div class="line"><span class="number">2</span>	– charValue  </div><div class="line"><span class="number">3</span>	– decimalValue  </div><div class="line"><span class="number">4</span>	– doubleValue  </div><div class="line"><span class="number">5</span>	– floatValue  </div><div class="line"><span class="number">6</span>	– intValue  </div><div class="line"><span class="number">7</span>	– integerValue  </div><div class="line"><span class="number">8</span>	– longLongValue  </div><div class="line"><span class="number">9</span>	– longValue  </div><div class="line"><span class="number">10</span>	– shortValue  </div><div class="line"><span class="number">11</span>	– unsignedCharValue  </div><div class="line"><span class="number">12</span>	– unsignedIntegerValue  </div><div class="line"><span class="number">13</span>	– unsignedIntValue  </div><div class="line"><span class="number">14</span>	– unsignedLongLongValue  </div><div class="line"><span class="number">15</span>	– unsignedLongValue  </div><div class="line"><span class="number">16</span>	– unsignedShortValue</div><div class="line">```  </div><div class="line"><span class="built_in">NSNumber</span>类型有点类似<span class="keyword">id</span>类型，对于任何类型的数字对象都能用它来声明，也就是用它来声明数字对象，通过声明，很难判断声明变量是什么数字类型，确定数字对象类型多是在初始化的时候才能确定。</div><div class="line"></div><div class="line">数字对象的创建或者初始化：</div><div class="line">格式：</div><div class="line"><span class="built_in">NSNumber</span> 数字对象 ＝ ［<span class="built_in">NSNumber</span> numberWith数字类型：数值］；</div><div class="line">```mm</div><div class="line">	intNumber = [<span class="built_in">NSNumber</span> numberWithInt:<span class="number">100</span>];  </div><div class="line">	longNumber = [<span class="built_in">NSNumber</span> numberWithLong:<span class="number">0xabcdef</span>];  </div><div class="line">	floatNumber = [<span class="built_in">NSNumber</span> numberWithFloat:<span class="number">10.01</span>];</div></pre></td></tr></table></figure></p>
-<p>2、int、 NSInteger、 NSUInteger、NSNumber之间的区别和联系<br>int ： 当使用int类型定义变量的时候，可以像写C程序一样，用int也可以用NSInteger，推荐使用NSInteger ，因为这样就不用考虑设备是32位还是64位了。<br>NSUInteger是无符号的，即没有负数，NSInteger是有符号的。<br>1》、当需要使用int类型的变量的时候，可以像写C的程序一样，用int，也可以用NSInteger，但更推荐使用NSInteger，因为这样就不用考虑设备是32位的还是64位的。<br>2》、NSUInteger是无符号的，即没有负数,NSInteger是有符号的。<br>3》、有人说既然都有了NSInteger等这些基础类型了为什么还要有NSNumber？它们的功能当然是不同的。<br>NSInteger是基础类型，但是NSNumber是一个类。如果想要存储一个数值，直接用NSInteger是不行的，比如在一个Array里面这样用：<br><figure class="highlight mm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">NSArray</span> *array= [[<span class="built_in">NSArray</span> alloc]init];</div><div class="line">[array addObject:<span class="number">3</span>];<span class="comment">//会编译错误</span></div><div class="line">这样是会引发编译错误的，因为<span class="built_in">NSArray</span>里面放的需要是一个类，但‘<span class="number">3</span>’不是。这个时候需要用到<span class="built_in">NSNumber</span>:</div><div class="line"><span class="built_in">NSMutableArray</span> *array= [[<span class="built_in">NSMutableArray</span> alloc]init];</div><div class="line">[array addObject:[<span class="built_in">NSNumber</span> numberWithInt:<span class="number">3</span>]];</div><div class="line"></div><div class="line">一下两行代码是会有警告的  因为<span class="built_in">NSArray</span> 是不可变的.</div><div class="line"><span class="built_in">NSArray</span> *array1= [[<span class="built_in">NSArray</span> alloc]init];</div><div class="line">[array1 addObject:[<span class="built_in">NSNumber</span> numberWithInt:<span class="number">3</span>]];</div></pre></td></tr></table></figure></p>
-<p>Cocoa提供了NSNumber类来包装（即以对象形式实现）基本数据类型。<br>例如以下创建方法：<br><figure class="highlight mm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">+ (<span class="built_in">NSNumber</span>*)numberWithChar: (<span class="keyword">char</span>)value;</div><div class="line">+ (<span class="built_in">NSNumber</span>*)numberWithInt: (<span class="keyword">int</span>)value;</div><div class="line">+ (<span class="built_in">NSNumber</span>*)numberWithFloat: (<span class="keyword">float</span>)value;</div><div class="line">+ (<span class="built_in">NSNumber</span>*)numberWithBool: (<span class="built_in">BOOL</span>) value;</div></pre></td></tr></table></figure></p>
-<p>将基本类型数据封装到NSNumber中后，就可以通过下面的实例方法重新获取它：<br><figure class="highlight mm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">- (<span class="keyword">char</span>)charValue;</div><div class="line">- (<span class="keyword">int</span>)intValue;</div><div class="line">- (<span class="keyword">float</span>)floatValue;</div><div class="line">- (<span class="built_in">BOOL</span>)boolValue;</div><div class="line">- (<span class="built_in">NSString</span>*)stringValue;</div></pre></td></tr></table></figure></p>
-<p>参考:<br><a href="http://www.wuleilei.com/blog/335" target="_blank" rel="external">http://www.wuleilei.com/blog/335</a><br><a href="http://blog.csdn.net/weasleyqi/article/details/33396809" target="_blank" rel="external">http://blog.csdn.net/weasleyqi/article/details/33396809</a></p>
+		<h1 id="面试-为什么UI必须在主线程中更新"><a href="#面试-为什么UI必须在主线程中更新" class="headerlink" title="面试-为什么UI必须在主线程中更新"></a>面试-为什么UI必须在主线程中更新</h1><p>早期的GUI应用程序都是单线程的，并且GUI事件都是在主线程中执行,<br>现代的gui框架使用了一个略微不同的模型：模型创建了一个专门的线程，事件派发线程（event dispatch thread，RDT）来处理gui事件。</p>
+<p>单线程化的GUI框架并不仅仅存在于Java中：Qt、NextStep、Macos Cocoa、XWindows,等等都是单线程化的。也并不缺少反面的尝试；有很多试图写出多线程的GUI框架的努力，最终都由于竞争条件和死锁导致的稳定性问题，又回到了单线程化的事件队列模型的老路上来：采用一个专门的线程从队列中抽取事件，并把它们转发给应用程序定义的事件处理器。（awt最初曾尝试在某种程度上支持多线程访问，单线程化地实现swing的决定主要基于AWT中的经验和教训。）</p>
+<h2 id="多线程的GUI框架会尤其易受死锁的影响"><a href="#多线程的GUI框架会尤其易受死锁的影响" class="headerlink" title="多线程的GUI框架会尤其易受死锁的影响"></a><strong>多线程的GUI框架会尤其易受死锁的影响</strong></h2><p>部分原因在于:</p>
+<ol>
+<li>输入事件处理与任何GUI组件背后的对象模型之间存在偶发的交互。用户发起的动作总会冒泡似的从操作系统传递给应用程序—先是由os检测到一次鼠标点击，然后工具集把它转化为“鼠标点击”事件，最终它会作为一个高层事件（比如“buttonpressed”事件）转发给应用程序的监听器。</li>
+<li>另一方面，应用程序发起的动作又会以冒泡的形式传回操作系统—应用程序发起一个动作要改变某个组件的背景颜色，这会被转发给一个特定的组件类，最终转发给os进行渲染。</li>
+</ol>
+<p>两种动作以完全相反的顺序访问相同的GUI对象，需要保证让每一个对象都是线程安全的，这会导致一系列的锁顺序的不一致，这会直接引发死锁。这个问题机会在每一次GUI工具集的开发中都会出现，是经验之谈。</p>
+<p><strong>MVC模式的普遍流行形成了导致多线程GUI框架出现死锁的另一原因</strong>。把用户的互交分拨到模型、视图和控制器之间的写作中，极大地简化了GUI应用程序的实现，但这让不一致的锁顺序再次雪上加霜。控制器调用模型，模型通知视图已经发生了一些事情。控制器同样可以调用视图，视图可以依次回调模型来查询模型的状态。结果是，不一致的锁顺序再次伴随死锁的风险一同到来。</p>
+<p>Graham hamilton，sun公司的vp，在他的weblog中详尽地概括了这些挑战，描述了多线程GUI工具集之所以会成为计算机科学史上又一次“失败的梦”。<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">如果多线程GUI工具集经过非常谨慎的设计；如果工具集能使它加锁的方法鲜明地显露；如果你非常聪明，非常仔细，并且对工具集的整体框架有着全局的把握，我相信你还是可以成功地编写出多线程的GUI来。但是如果这些事情有一些轻微的偏差，程序多数时候仍然运行良好，但是你会偶尔看到程序挂起或者运行故障。那些密切参与了工具集设计的人能够很好地运用这种多线程方案。</div><div class="line">不幸的是，我认为这些特性并没有和商业流行度成正比。一个中等能力的程序员，整日构建着 被一些莫名其妙的原因困扰着而不能稳定运行的应用程序，我们很容易落入这种境界。于是应该程序的作者会倍感怨恨与失落，对无辜的工具集恶语相加。</div></pre></td></tr></table></figure></p>
+<p>单线程化的GUI框架通过现场限制来达到现场安全性；<strong>所有GUI中的对象，包括可视组件和数据模型，都只是被事件线程访问</strong>。当然，这只把线程安全负担的一部分推给了应用程序的开发者，他们必须确保这些对象是被正确限制的。</p>
+<p>这里着重提下iOS中ASDK<br>ASDK号称可以使用多线程来更新UI，但是其更新原理并不是异步的来更新，只不过做了一个中间的容器，把你要提交的修改，优先合并后再在每次读区缓冲区之后提交。</p>
+<h1 id="借鉴"><a href="#借鉴" class="headerlink" title="借鉴"></a>借鉴</h1><p>这个题目是在2017@Swift群里Listen提示下找到的答案，来源于Java Concurrency in practice(Java 并发编程实战)9.1章</p>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -123,7 +130,7 @@
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="https://github.com/LiShengmin/2015/08/03/iOS-数字有关的类/" data-title="iOS-数字有关的类（int NSNumber...） | Shemmy" data-tsina="null" class="share clearfix">
+	  <div data-url="https://github.com/LiShengmin/2017/08/11/iOS-GUI为什么必须在线程中执行/" data-title="iOS-GUI为什么必须在线程中执行 | Shemmy" data-tsina="null" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -137,21 +144,13 @@
 <nav class="article-nav clearfix">
  
  <div class="prev" >
- <a href="/2015/06/03/iOS-NSUserDefaults/" title="iOS-自定义对象存储 （NSUserDefaults）">
+ <a href="/2017/08/07/架构-AppleReview/" title="架构-AppleReview">
   <strong>上一篇：</strong><br/>
   <span>
-  iOS-自定义对象存储 （NSUserDefaults）</span>
+  架构-AppleReview</span>
 </a>
 </div>
 
-
-<div class="next">
-<a href="/2015/10/05/iOS-3rd-MJRefresh/"  title="iOS-MJRefresh">
- <strong>下一篇：</strong><br/> 
- <span>iOS-MJRefresh
-</span>
-</a>
-</div>
 
 </nav>
 
@@ -177,7 +176,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">Contents</strong>
  
- 
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#面试-为什么UI必须在主线程中更新"><span class="toc-number">1.</span> <span class="toc-text">面试-为什么UI必须在主线程中更新</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#多线程的GUI框架会尤其易受死锁的影响"><span class="toc-number">1.1.</span> <span class="toc-text">多线程的GUI框架会尤其易受死锁的影响</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#借鉴"><span class="toc-number">2.</span> <span class="toc-text">借鉴</span></a></li></ol>
  
   </div>
 
