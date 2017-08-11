@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://github.com/LiShengmin/"/>
-  <updated>2017-08-11T04:37:27.536Z</updated>
+  <updated>2017-08-11T04:41:13.700Z</updated>
   <id>https://github.com/LiShengmin/</id>
   
   <author>
@@ -20,10 +20,10 @@
     <link href="https://github.com/LiShengmin/2017/08/11/iOS-GUI%E4%B8%BA%E4%BB%80%E4%B9%88%E5%BF%85%E9%A1%BB%E5%9C%A8%E7%BA%BF%E7%A8%8B%E4%B8%AD%E6%89%A7%E8%A1%8C/"/>
     <id>https://github.com/LiShengmin/2017/08/11/iOS-GUI为什么必须在线程中执行/</id>
     <published>2017-08-11T04:35:30.000Z</published>
-    <updated>2017-08-11T04:37:27.536Z</updated>
+    <updated>2017-08-11T04:41:13.700Z</updated>
     
     <content type="html"><![CDATA[<h1 id="面试-为什么UI必须在主线程中更新"><a href="#面试-为什么UI必须在主线程中更新" class="headerlink" title="面试-为什么UI必须在主线程中更新"></a>面试-为什么UI必须在主线程中更新</h1><p>早期的GUI应用程序都是单线程的，并且GUI事件都是在主线程中执行,<br>现代的gui框架使用了一个略微不同的模型：模型创建了一个专门的线程，事件派发线程（event dispatch thread，RDT）来处理gui事件。</p>
-<p>单线程化的GUI框架并不仅仅存在于Java中：Qt、NextStep、Macos Cocoa、XWindows,等等都是单线程化的。也并不缺少反面的尝试；有很多试图写出多线程的GUI框架的努力，最终都由于竞争条件和死锁导致的稳定性问题，又回到了单线程化的事件队列模型的老路上来：采用一个专门的线程从队列中抽取事件，并把它们转发给应用程序定义的事件处理器。（awt最初曾尝试在某种程度上支持多线程访问，单线程化地实现swing的决定主要基于AWT中的经验和教训。）</p>
+<p>单线程化的GUI框架并不仅仅存在于Java中：Qt、NextStep、Macos Cocoa、XWindows,等等都是单线程化的。也并不缺少反面的尝试；有很多试图写出多线程的GUI框架的努力，最终都由于竞争条件和死锁导致的稳定性问题，又回到了单线程化的事件队列模型的老路上来：采用一个专门的线程从队列中抽取事件，并把它们转发给应用程序定义的事件处理器。（awt最初曾尝试在某种程度上支持多线程访问，单线程化地实现swing的决定主要基于AWT中的经验和教训。）<a id="more"></a></p>
 <h2 id="多线程的GUI框架会尤其易受死锁的影响"><a href="#多线程的GUI框架会尤其易受死锁的影响" class="headerlink" title="多线程的GUI框架会尤其易受死锁的影响"></a><strong>多线程的GUI框架会尤其易受死锁的影响</strong></h2><p>部分原因在于:</p>
 <ol>
 <li>输入事件处理与任何GUI组件背后的对象模型之间存在偶发的交互。用户发起的动作总会冒泡似的从操作系统传递给应用程序—先是由os检测到一次鼠标点击，然后工具集把它转化为“鼠标点击”事件，最终它会作为一个高层事件（比如“buttonpressed”事件）转发给应用程序的监听器。</li>
@@ -39,7 +39,8 @@
     
     <summary type="html">
     
-      &lt;h1 id=&quot;面试-为什么UI必须在主线程中更新&quot;&gt;&lt;a href=&quot;#面试-为什么UI必须在主线程中更新&quot; class=&quot;headerlink&quot; title=&quot;面试-为什么UI必须在主线程中更新&quot;&gt;&lt;/a&gt;面试-为什么UI必须在主线程中更新&lt;/h1&gt;&lt;p&gt;早期的GUI应用程序
+      &lt;h1 id=&quot;面试-为什么UI必须在主线程中更新&quot;&gt;&lt;a href=&quot;#面试-为什么UI必须在主线程中更新&quot; class=&quot;headerlink&quot; title=&quot;面试-为什么UI必须在主线程中更新&quot;&gt;&lt;/a&gt;面试-为什么UI必须在主线程中更新&lt;/h1&gt;&lt;p&gt;早期的GUI应用程序都是单线程的，并且GUI事件都是在主线程中执行,&lt;br&gt;现代的gui框架使用了一个略微不同的模型：模型创建了一个专门的线程，事件派发线程（event dispatch thread，RDT）来处理gui事件。&lt;/p&gt;
+&lt;p&gt;单线程化的GUI框架并不仅仅存在于Java中：Qt、NextStep、Macos Cocoa、XWindows,等等都是单线程化的。也并不缺少反面的尝试；有很多试图写出多线程的GUI框架的努力，最终都由于竞争条件和死锁导致的稳定性问题，又回到了单线程化的事件队列模型的老路上来：采用一个专门的线程从队列中抽取事件，并把它们转发给应用程序定义的事件处理器。（awt最初曾尝试在某种程度上支持多线程访问，单线程化地实现swing的决定主要基于AWT中的经验和教训。）
     
     </summary>
     
@@ -225,7 +226,7 @@
     <link href="https://github.com/LiShengmin/2017/08/04/%E6%9E%B6%E6%9E%84-%E9%87%8D%E6%9E%84-SRP/"/>
     <id>https://github.com/LiShengmin/2017/08/04/架构-重构-SRP/</id>
     <published>2017-08-04T15:26:14.000Z</published>
-    <updated>2017-08-04T15:32:10.773Z</updated>
+    <updated>2017-08-11T04:40:55.471Z</updated>
     
     <content type="html"><![CDATA[<h1 id="重构-SRP"><a href="#重构-SRP" class="headerlink" title="重构- SRP"></a>重构- SRP</h1><p>今天看了一篇朋友推荐文章，如何重构“箭头型”代码，看了这篇文章，不得不感叹历史是何其相似。一个再优秀的产品，最终都是死在这些技术（卧底）手里～<br>&lt;!— more —&gt;<br>我们先来看下这段代码：<br><img src="http://coolshell.cn//wp-content/uploads/2017/04/IMG_7411.jpg" alt="image"><br>其实看到这段代码的时候我心中是一万头草泥马飞过的，因为眼熟啊，是在我们安卓转去写前端的时候，全体技术Review他的代码的时候，我不敢想象这段代码放在公司的代码库中历经5年之后的样子。（我们那个比这个长多了，差不多3倍长度缩进）</p>
 <p>话不多说，我们先来分析这种代码里面有可能有什么鬼～</p>
@@ -237,7 +238,7 @@
 <li>多线程，</li>
 <li>Block嵌套/ 函数嵌套</li>
 </ol>
-<p><strong>本文全部使用伪代码，便于理解～</strong></p>
+<p><strong>本文全部使用伪代码，便于理解～</strong><a id="more"></a></p>
 <h2 id="状态机-多层级状态机"><a href="#状态机-多层级状态机" class="headerlink" title="状态机/多层级状态机"></a>状态机/多层级状态机</h2><p>首先，我草这种东西根本就没法抽取好么。。但是这里还是要谈下去的，就是输入值，我们可以对这些来自不同值的源状态在一个方法里进行统一返回，<br>举个🌰：</p>
 <p>我们对第一个值判断后可以得出3个状态，对第二个值判断后可以得到另外1个状态，并且其中有一个和第一个相重合<br><img src="/image/28915069-9AA5-4569-8112-29FABBEE7398.png" alt="image2"></p>
 <p>伟大的谁说过来着没有什么是不能通过增加一个中间层来解决的，如果有就加2层～如下～<br><img src="/image/1E0E7807-086A-4B14-9983-91BF5DECE378.png" alt="image3"></p>
@@ -255,7 +256,17 @@
     
     <summary type="html">
     
-      &lt;h1 id=&quot;重构-SRP&quot;&gt;&lt;a href=&quot;#重构-SRP&quot; class=&quot;headerlink&quot; title=&quot;重构- SRP&quot;&gt;&lt;/a&gt;重构- SRP&lt;/h1&gt;&lt;p&gt;今天看了一篇朋友推荐文章，如何重构“箭头型”代码，看了这篇文章，不得不感叹历史是何其相似。一个再优秀的产
+      &lt;h1 id=&quot;重构-SRP&quot;&gt;&lt;a href=&quot;#重构-SRP&quot; class=&quot;headerlink&quot; title=&quot;重构- SRP&quot;&gt;&lt;/a&gt;重构- SRP&lt;/h1&gt;&lt;p&gt;今天看了一篇朋友推荐文章，如何重构“箭头型”代码，看了这篇文章，不得不感叹历史是何其相似。一个再优秀的产品，最终都是死在这些技术（卧底）手里～&lt;br&gt;&amp;lt;!— more —&amp;gt;&lt;br&gt;我们先来看下这段代码：&lt;br&gt;&lt;img src=&quot;http://coolshell.cn//wp-content/uploads/2017/04/IMG_7411.jpg&quot; alt=&quot;image&quot;&gt;&lt;br&gt;其实看到这段代码的时候我心中是一万头草泥马飞过的，因为眼熟啊，是在我们安卓转去写前端的时候，全体技术Review他的代码的时候，我不敢想象这段代码放在公司的代码库中历经5年之后的样子。（我们那个比这个长多了，差不多3倍长度缩进）&lt;/p&gt;
+&lt;p&gt;话不多说，我们先来分析这种代码里面有可能有什么鬼～&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;状态机  最有可能的就是上来一串Switch-Case ，最为状态码&lt;/li&gt;
+&lt;li&gt;多元素状态机， 哈哈哈就是Switch-Case ，case里面还需要判断。。&lt;/li&gt;
+&lt;li&gt;元素容错，就是这个元素不可能出现的值全部过滤掉&lt;/li&gt;
+&lt;li&gt;for循环，对其中元素进行遍历&lt;/li&gt;
+&lt;li&gt;多线程，&lt;/li&gt;
+&lt;li&gt;Block嵌套/ 函数嵌套&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;本文全部使用伪代码，便于理解～&lt;/strong&gt;
     
     </summary>
     

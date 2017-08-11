@@ -21,7 +21,7 @@
 <meta property="og:image" content="http://coolshell.cn//wp-content/uploads/2017/04/IMG_7411.jpg">
 <meta property="og:image" content="https://github.com/image/28915069-9AA5-4569-8112-29FABBEE7398.png">
 <meta property="og:image" content="https://github.com/image/1E0E7807-086A-4B14-9983-91BF5DECE378.png">
-<meta property="og:updated_time" content="2017-08-04T15:32:10.773Z">
+<meta property="og:updated_time" content="2017-08-11T04:40:55.471Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="架构-重构-SRP">
 <meta name="twitter:description" content="重构- SRP今天看了一篇朋友推荐文章，如何重构“箭头型”代码，看了这篇文章，不得不感叹历史是何其相似。一个再优秀的产品，最终都是死在这些技术（卧底）手里～&amp;lt;!— more —&amp;gt;我们先来看下这段代码：其实看到这段代码的时候我心中是一万头草泥马飞过的，因为眼熟啊，是在我们安卓转去写前端的时候，全体技术Review他的代码的时候，我不敢想象这段代码放在公司的代码库中历经5年之后的样子。（我">
@@ -114,7 +114,7 @@
 <li>多线程，</li>
 <li>Block嵌套/ 函数嵌套</li>
 </ol>
-<p><strong>本文全部使用伪代码，便于理解～</strong></p>
+<p><strong>本文全部使用伪代码，便于理解～</strong><a id="more"></a></p>
 <h2 id="状态机-多层级状态机"><a href="#状态机-多层级状态机" class="headerlink" title="状态机/多层级状态机"></a>状态机/多层级状态机</h2><p>首先，我草这种东西根本就没法抽取好么。。但是这里还是要谈下去的，就是输入值，我们可以对这些来自不同值的源状态在一个方法里进行统一返回，<br>举个🌰：</p>
 <p>我们对第一个值判断后可以得出3个状态，对第二个值判断后可以得到另外1个状态，并且其中有一个和第一个相重合<br><img src="/image/28915069-9AA5-4569-8112-29FABBEE7398.png" alt="image2"></p>
 <p>伟大的谁说过来着没有什么是不能通过增加一个中间层来解决的，如果有就加2层～如下～<br><img src="/image/1E0E7807-086A-4B14-9983-91BF5DECE378.png" alt="image3"></p>

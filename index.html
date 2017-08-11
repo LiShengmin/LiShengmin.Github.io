@@ -91,22 +91,12 @@
     <div class="article-content">
         
         <h1 id="面试-为什么UI必须在主线程中更新"><a href="#面试-为什么UI必须在主线程中更新" class="headerlink" title="面试-为什么UI必须在主线程中更新"></a>面试-为什么UI必须在主线程中更新</h1><p>早期的GUI应用程序都是单线程的，并且GUI事件都是在主线程中执行,<br>现代的gui框架使用了一个略微不同的模型：模型创建了一个专门的线程，事件派发线程（event dispatch thread，RDT）来处理gui事件。</p>
-<p>单线程化的GUI框架并不仅仅存在于Java中：Qt、NextStep、Macos Cocoa、XWindows,等等都是单线程化的。也并不缺少反面的尝试；有很多试图写出多线程的GUI框架的努力，最终都由于竞争条件和死锁导致的稳定性问题，又回到了单线程化的事件队列模型的老路上来：采用一个专门的线程从队列中抽取事件，并把它们转发给应用程序定义的事件处理器。（awt最初曾尝试在某种程度上支持多线程访问，单线程化地实现swing的决定主要基于AWT中的经验和教训。）</p>
-<h2 id="多线程的GUI框架会尤其易受死锁的影响"><a href="#多线程的GUI框架会尤其易受死锁的影响" class="headerlink" title="多线程的GUI框架会尤其易受死锁的影响"></a><strong>多线程的GUI框架会尤其易受死锁的影响</strong></h2><p>部分原因在于:</p>
-<ol>
-<li>输入事件处理与任何GUI组件背后的对象模型之间存在偶发的交互。用户发起的动作总会冒泡似的从操作系统传递给应用程序—先是由os检测到一次鼠标点击，然后工具集把它转化为“鼠标点击”事件，最终它会作为一个高层事件（比如“buttonpressed”事件）转发给应用程序的监听器。</li>
-<li>另一方面，应用程序发起的动作又会以冒泡的形式传回操作系统—应用程序发起一个动作要改变某个组件的背景颜色，这会被转发给一个特定的组件类，最终转发给os进行渲染。</li>
-</ol>
-<p>两种动作以完全相反的顺序访问相同的GUI对象，需要保证让每一个对象都是线程安全的，这会导致一系列的锁顺序的不一致，这会直接引发死锁。这个问题机会在每一次GUI工具集的开发中都会出现，是经验之谈。</p>
-<p><strong>MVC模式的普遍流行形成了导致多线程GUI框架出现死锁的另一原因</strong>。把用户的互交分拨到模型、视图和控制器之间的写作中，极大地简化了GUI应用程序的实现，但这让不一致的锁顺序再次雪上加霜。控制器调用模型，模型通知视图已经发生了一些事情。控制器同样可以调用视图，视图可以依次回调模型来查询模型的状态。结果是，不一致的锁顺序再次伴随死锁的风险一同到来。</p>
-<p>Graham hamilton，sun公司的vp，在他的weblog中详尽地概括了这些挑战，描述了多线程GUI工具集之所以会成为计算机科学史上又一次“失败的梦”。<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">如果多线程GUI工具集经过非常谨慎的设计；如果工具集能使它加锁的方法鲜明地显露；如果你非常聪明，非常仔细，并且对工具集的整体框架有着全局的把握，我相信你还是可以成功地编写出多线程的GUI来。但是如果这些事情有一些轻微的偏差，程序多数时候仍然运行良好，但是你会偶尔看到程序挂起或者运行故障。那些密切参与了工具集设计的人能够很好地运用这种多线程方案。</div><div class="line">不幸的是，我认为这些特性并没有和商业流行度成正比。一个中等能力的程序员，整日构建着 被一些莫名其妙的原因困扰着而不能稳定运行的应用程序，我们很容易落入这种境界。于是应该程序的作者会倍感怨恨与失落，对无辜的工具集恶语相加。</div></pre></td></tr></table></figure></p>
-<p>单线程化的GUI框架通过现场限制来达到现场安全性；<strong>所有GUI中的对象，包括可视组件和数据模型，都只是被事件线程访问</strong>。当然，这只把线程安全负担的一部分推给了应用程序的开发者，他们必须确保这些对象是被正确限制的。</p>
-<p>这里着重提下iOS中ASDK<br>ASDK号称可以使用多线程来更新UI，但是其更新原理并不是异步的来更新，只不过做了一个中间的容器，把你要提交的修改，优先合并后再在每次读区缓冲区之后提交。</p>
-<h1 id="借鉴"><a href="#借鉴" class="headerlink" title="借鉴"></a>借鉴</h1><p>这个题目是在2017@Swift群里Listen提示下找到的答案，来源于Java Concurrency in practice(Java 并发编程实战)9.1章</p>
-
+<p>单线程化的GUI框架并不仅仅存在于Java中：Qt、NextStep、Macos Cocoa、XWindows,等等都是单线程化的。也并不缺少反面的尝试；有很多试图写出多线程的GUI框架的努力，最终都由于竞争条件和死锁导致的稳定性问题，又回到了单线程化的事件队列模型的老路上来：采用一个专门的线程从队列中抽取事件，并把它们转发给应用程序定义的事件处理器。（awt最初曾尝试在某种程度上支持多线程访问，单线程化地实现swing的决定主要基于AWT中的经验和教训。）
         
         
         <p class="article-more-link">
+          
+            <a href="/2017/08/11/iOS-GUI为什么必须在线程中执行/#more">Read More</a>
           
        </p>
     </div>
@@ -229,24 +219,12 @@
 <li>多线程，</li>
 <li>Block嵌套/ 函数嵌套</li>
 </ol>
-<p><strong>本文全部使用伪代码，便于理解～</strong></p>
-<h2 id="状态机-多层级状态机"><a href="#状态机-多层级状态机" class="headerlink" title="状态机/多层级状态机"></a>状态机/多层级状态机</h2><p>首先，我草这种东西根本就没法抽取好么。。但是这里还是要谈下去的，就是输入值，我们可以对这些来自不同值的源状态在一个方法里进行统一返回，<br>举个🌰：</p>
-<p>我们对第一个值判断后可以得出3个状态，对第二个值判断后可以得到另外1个状态，并且其中有一个和第一个相重合<br><img src="/image/28915069-9AA5-4569-8112-29FABBEE7398.png" alt="image2"></p>
-<p>伟大的谁说过来着没有什么是不能通过增加一个中间层来解决的，如果有就加2层～如下～<br><img src="/image/1E0E7807-086A-4B14-9983-91BF5DECE378.png" alt="image3"></p>
-<p>不得不说这是一个可以解决的方案，但是不可忽视的是中间层的增加的心智成本～<br>如果多状态机，最后输出的状态只有有限的几个，建议使用中间层解决～这样就可以将状态维护部分的代码抽出，这样如果你发现如果状态维护困难，可以将中间层，抽象成为一个专门的状态机，来维护，这样也不会改变你代码的层册和逻辑，变相降低了项目的维护的成本。</p>
-<p>这里面其实还有一个Tip，就是将所有的case都抽成一个函数，就是将每个case进行一个包装～这样可以显著降低层次。</p>
-<h2 id="元素容错"><a href="#元素容错" class="headerlink" title="元素容错"></a>元素容错</h2><p>如果要对元素容错，如果需要容错非常多，那么尽可能抽象成为函数，在函数内的通用判断，例如是不是为空，是否越界什么的都可以抽象出来，单独包装，以便其他类来复用，最后通过一个返回值来判断是否合乎逻辑。<br>🌰：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">isEligibility</span><span class="params">(value: String, value2: Int)</span></span> -&gt; text?  &#123;</div><div class="line">	value <span class="keyword">is</span> not nill  <span class="keyword">else</span> &#123;</div><div class="line">		<span class="keyword">return</span> “value <span class="keyword">is</span> null”</div><div class="line">	&#125;</div><div class="line">	…</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span> <span class="params">()</span></span> &#123;</div><div class="line">	<span class="keyword">if</span>  <span class="keyword">let</span> errorStr = isEligibility(“name”, “<span class="number">1</span>”)  != <span class="literal">nil</span> &#123;</div><div class="line">		accessError(errorStr)</div><div class="line">	&#125;</div><div class="line">	…</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<h2 id="for循环"><a href="#for循环" class="headerlink" title="for循环"></a>for循环</h2><p>尽可能梳理for循环中做的事～然后分别抽象为函数，并将值给予你抽象的函数，进行运算～<br><figure class="highlight haskell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="title">func</span> for_imp() &#123;</div><div class="line">	for index <span class="keyword">in</span> indexs &#123;</div><div class="line">		<span class="keyword">let</span> <span class="class"><span class="keyword">data</span> = getData()</span></div><div class="line">		reloadView(<span class="class"><span class="keyword">data</span>)</span></div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<h2 id="多线程"><a href="#多线程" class="headerlink" title="多线程"></a>多线程</h2><p>没想好先留着，需要小伙伴们的支援～<br><figure class="highlight haskell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="title">func</span> dispath() &#123;</div><div class="line">	dispath_async(queen) &#123;</div><div class="line">		for index <span class="keyword">in</span> indexs &#123;</div><div class="line">			<span class="keyword">let</span> <span class="class"><span class="keyword">data</span> = getData()</span></div><div class="line">			dispath_main() &#123;</div><div class="line">				reloadView(<span class="class"><span class="keyword">data</span>)</span></div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>我自己的做法都是封装成逃逸闭包，然后调用的时候直接写一套大括号～将内部东西抽象成为一个或者多个函数～。层级增加2～<br>问题是这部分根本就不是逻辑的一部分，只是必须要的手段，你抽象为函数也没有道理～<br>我认为比较好的做法是写一些语法糖，例如：<br>func.().main 或者 func().async的玩应，回去写写看吧～</p>
-<h2 id="函数嵌套"><a href="#函数嵌套" class="headerlink" title="函数嵌套"></a>函数嵌套</h2><p>iOS开发者中，只有Swfit中才会出现的痛了！<br><figure class="highlight autoit"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> 01 <span class="params">()</span> &#123;</span></div><div class="line">	<span class="function"><span class="keyword">func</span> 11<span class="params">()</span> &#123;</span></div><div class="line">		<span class="function"><span class="keyword">func</span> 21<span class="params">()</span> &#123;</span></div><div class="line">			block^() = ^&#123;</div><div class="line">				func11()</div><div class="line">			&#125;</div><div class="line">			block()</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>给个中肯的建议就是不要这么写函数，函数嵌套最多3层好吧～<br>同时希望小伙伴给出解决方案～</p>
-<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a href="http://coolshell.cn/articles/17757.html" target="_blank" rel="external">如何重构“箭头型”代码 | | 酷 壳 - CoolShell</a></p>
-<p>#架构</p>
-
+<p><strong>本文全部使用伪代码，便于理解～</strong>
         
         
         <p class="article-more-link">
+          
+            <a href="/2017/08/04/架构-重构-SRP/#more">Read More</a>
           
        </p>
     </div>
